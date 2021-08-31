@@ -38,7 +38,7 @@ public class denominations extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Your Amount is Rs. 5000");
+        jLabel1.setText("Your Amount is Rs. 500");
 
         jRadioButton1.setText("50");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +79,7 @@ public class denominations extends javax.swing.JFrame {
         jButton1.setText("WITHDRAW");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("you will receive 10 of Rs. 500 denomination");
+        jLabel2.setText("you will receive 1 of Rs. 500 denomination");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
