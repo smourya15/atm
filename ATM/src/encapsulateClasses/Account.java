@@ -9,7 +9,7 @@ package encapsulateClasses;
  *
  * @author smourya
  */
-public class Account {
+public class Account implements test{
     
     private final String AccNum;
     private final String CIF_Num;
@@ -84,6 +84,22 @@ public class Account {
         }
     }
 
+    @Override
+    public void update_query(String... Param) {
+        
+        // update balance query here after withdrawing or transfering funds have been taken place.
+        // input should be table name as string, and rest can be accessed via *this."variable_name"* such asa this.Account_Bal
+        
+        
+    }
+
+    @Override
+    public void view_query(String... Param) {
+        
+        //insert select statement here balance check.
+    }
+    
+    
 }
 
 

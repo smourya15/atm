@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package atmFrontend;
+import encapsulateClasses.*;
 //import java.u
 /**
  *

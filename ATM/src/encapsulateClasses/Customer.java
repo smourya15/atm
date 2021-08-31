@@ -10,7 +10,7 @@ package encapsulateClasses;
  * @author smourya
  */
 public class Customer {
-    private String address;
+    private final String address;
     private final String CIF_NO;
     private final String Name;
     private final String email;
