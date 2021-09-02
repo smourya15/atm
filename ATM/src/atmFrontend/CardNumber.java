@@ -31,7 +31,7 @@ public class CardNumber extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        verifyPin = new javax.swing.JPasswordField();
+        verifyCard = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,8 +46,18 @@ public class CardNumber extends javax.swing.JFrame {
             }
         });
 
-        verifyPin.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        verifyPin.setText("jPasswordField1");
+        verifyCard.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        verifyCard.setText("jPasswordField1");
+        verifyCard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verifyCardActionPerformed(evt);
+            }
+        });
+        verifyCard.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                verifyCardKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -59,7 +69,7 @@ public class CardNumber extends javax.swing.JFrame {
                         .addGap(96, 96, 96)
                         .addComponent(jLabel1)
                         .addGap(28, 28, 28)
-                        .addComponent(verifyPin, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(verifyCard, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(255, 255, 255)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -71,7 +81,7 @@ public class CardNumber extends javax.swing.JFrame {
                 .addGap(97, 97, 97)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(verifyPin, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(verifyCard, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(72, 72, 72)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(94, Short.MAX_VALUE))
@@ -87,6 +97,18 @@ public class CardNumber extends javax.swing.JFrame {
         dispose();
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void verifyCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verifyCardActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_verifyCardActionPerformed
+
+    private void verifyCardKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verifyCardKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(!((Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE) && verifyCard.getText().length()<16)){
+             evt.consume();
+        }
+    }//GEN-LAST:event_verifyCardKeyTyped
 
     /**
      * @param args the command line arguments
@@ -129,6 +151,6 @@ public class CardNumber extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPasswordField verifyPin;
+    private javax.swing.JPasswordField verifyCard;
     // End of variables declaration//GEN-END:variables
 }
