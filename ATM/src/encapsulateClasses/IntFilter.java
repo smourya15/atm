@@ -3,6 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+
+
+
+// Not to be used for time being, it was meant for filtering the inputs like, accepting
+// only integers values, but it didn't work so, for time being i am using keyEvents to ignore the key presses which does not fall 
+// in integer range.
 package encapsulateClasses;
 
 import javax.swing.text.AttributeSet;

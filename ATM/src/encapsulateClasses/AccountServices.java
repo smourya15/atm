@@ -13,6 +13,10 @@ public class AccountServices  implements DbQueryInterface{
     
     Account objAccount = new Account("123", "4576", "sjdk", 90);
     
+    public long viewBalance(){
+        return objAccount.getAccount_Bal();
+    }
+    
     public void deductAmount(long deductAmt){
         try{
             // if the user is trying to remove excess amount from what he/she is having in her account. throw an exception and try again.
@@ -24,6 +28,7 @@ public class AccountServices  implements DbQueryInterface{
             //update Amount commad here.
             
         }catch(NoAmountException ne){
+            System.out.println("Less Balance");
             
         }
     }
@@ -60,5 +65,15 @@ public class AccountServices  implements DbQueryInterface{
         
         //insert select statement here balance check.
     }
-    
+ 
+//    public static void main(String[] args) {
+//        AccountServices acc = new AccountServices();
+//        System.out.println(""+acc.viewBalance());
+//        acc.deductAmount(100);
+//        acc.addAmount(500);
+//        System.out.println(""+acc.viewBalance());
+//        acc.deductAmount(20);
+//        System.out.println(""+acc.viewBalance());
+//        System.out.println(""+acc.objAccount.getAccNum());
+//    }
 }

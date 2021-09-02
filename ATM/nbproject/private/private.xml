@@ -5,6 +5,7 @@
         <group>
             <file>file:/C:/Users/smourya/Documents/GitHub/atm/ATM/src/atmFrontend/Services.java</file>
             <file>file:/C:/Users/smourya/Documents/GitHub/atm/ATM/src/atmFrontend/CardNumber.java</file>
+            <file>file:/C:/Users/smourya/Documents/GitHub/atm/ATM/src/encapsulateClasses/ATMServices.java</file>
             <file>file:/C:/Users/smourya/Documents/GitHub/atm/ATM/src/encapsulateClasses/Account.java</file>
             <file>file:/C:/Users/smourya/Documents/GitHub/atm/ATM/src/atmFrontend/withdraw.java</file>
             <file>file:/C:/Users/smourya/Documents/GitHub/atm/ATM/src/atmFrontend/denominations.java</file>
@@ -14,7 +15,6 @@
             <file>file:/C:/Users/smourya/Documents/GitHub/atm/ATM/src/encapsulateClasses/NoAmountException.java</file>
             <file>file:/C:/Users/smourya/Documents/GitHub/atm/ATM/src/atmFrontend/depositAmount.java</file>
             <file>file:/C:/Users/smourya/Documents/GitHub/atm/ATM/src/encapsulateClasses/AccountServices.java</file>
-            <file>file:/C:/Users/smourya/Documents/GitHub/atm/ATM/src/encapsulateClasses/IntFilter.java</file>
             <file>file:/C:/Users/smourya/Documents/GitHub/atm/ATM/src/atmFrontend/enquire.java</file>
             <file>file:/C:/Users/smourya/Documents/GitHub/atm/ATM/src/atmFrontend/depositCash.java</file>
             <file>file:/C:/Users/smourya/Documents/GitHub/atm/ATM/src/encapsulateClasses/DatabaseConnections.java</file>

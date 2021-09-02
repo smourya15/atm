@@ -12,4 +12,5 @@ package encapsulateClasses;
 public interface DbQueryInterface {
     void update_query(String... Param);
     void view_query(String... Param);
+    
 }
