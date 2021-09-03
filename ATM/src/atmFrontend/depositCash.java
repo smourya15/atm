@@ -39,9 +39,10 @@ public class depositCash extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 30)); // NOI18N
         jLabel1.setText("Select Denominations");
 
+        D50_checkbox.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         D50_checkbox.setText("Rs. 50");
         D50_checkbox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -49,16 +50,25 @@ public class depositCash extends javax.swing.JFrame {
             }
         });
 
+        D500_checkbox.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         D500_checkbox.setText("Rs. 500");
 
+        D100_checkbox.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         D100_checkbox.setText("Rs. 100");
+        D100_checkbox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                D100_checkboxActionPerformed(evt);
+            }
+        });
 
+        D1000_checkbox.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         D1000_checkbox.setText("Rs. 1000");
 
+        D2000_checkbox.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         D2000_checkbox.setText("Rs. 2000");
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton1.setText("Next");
+        jButton1.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        jButton1.setText("NEXT");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -70,27 +80,26 @@ public class depositCash extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addContainerGap()
                 .addComponent(D50_checkbox)
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(D100_checkbox)
-                        .addGap(18, 18, 18)
-                        .addComponent(D500_checkbox)
-                        .addGap(18, 18, 18)
-                        .addComponent(D1000_checkbox)
-                        .addGap(26, 26, 26)
-                        .addComponent(D2000_checkbox)
-                        .addGap(0, 44, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
+                        .addGap(80, 80, 80)
                         .addComponent(jLabel1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(188, 188, 188)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(D100_checkbox)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(D500_checkbox)
+                                .addGap(18, 18, 18)
+                                .addComponent(D1000_checkbox)
+                                .addGap(18, 18, 18)
+                                .addComponent(D2000_checkbox)))
+                        .addGap(0, 7, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,9 +113,9 @@ public class depositCash extends javax.swing.JFrame {
                     .addComponent(D500_checkbox)
                     .addComponent(D1000_checkbox)
                     .addComponent(D2000_checkbox))
-                .addGap(48, 48, 48)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
-                .addGap(68, 68, 68))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34))
         );
 
         pack();
@@ -124,6 +133,10 @@ public class depositCash extends javax.swing.JFrame {
         dispose();
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void D100_checkboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D100_checkboxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_D100_checkboxActionPerformed
 
     /**
      * @param args the command line arguments
