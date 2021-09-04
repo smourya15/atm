@@ -48,8 +48,8 @@ public class Services extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 40)); // NOI18N
         jLabel1.setText("Choose a Service");
 
-        jButton2.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        jButton2.setText("ENQUIRE");
+        jButton2.setFont(new java.awt.Font("Arial Black", 1, 13)); // NOI18N
+        jButton2.setText("BALANCE ENQUIRY");
         jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
