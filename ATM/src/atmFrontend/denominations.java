@@ -71,7 +71,7 @@ public class denominations extends javax.swing.JFrame {
             }
         });
 
-        D500.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        D500.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         D500.setText("500");
         D500.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,7 +130,7 @@ public class denominations extends javax.swing.JFrame {
                                 .addComponent(D500)
                                 .addGap(18, 18, 18)
                                 .addComponent(D1000)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                                 .addComponent(D2000)))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -154,7 +154,7 @@ public class denominations extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
