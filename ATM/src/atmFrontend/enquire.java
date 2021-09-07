@@ -5,6 +5,7 @@
  * and open the template in the editor.
  */
 package atmFrontend;
+
 import encapsulateClasses.Account;
 /**
  *
@@ -130,11 +131,13 @@ public class enquire extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitbuttonActionPerformed
-        // TODO add your handling code here:
+        welcomPage objwelcome = new welcomPage();
+        objwelcome.setVisible(true);
     }//GEN-LAST:event_exitbuttonActionPerformed
 
     private void homebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homebuttonActionPerformed
-        // TODO add your handling code here:
+        Services objServices = new Services();
+        objServices.setVisible(true);
     }//GEN-LAST:event_homebuttonActionPerformed
 
     /**
@@ -166,7 +169,6 @@ public class enquire extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
             public void run() {
                 Account a = new Account("123456", "987654321", "1NB00732", 10000.5678);
                 String accno = a.getAccNum();
