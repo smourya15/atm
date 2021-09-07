@@ -191,9 +191,6 @@ public class fundTransfer extends javax.swing.JFrame {
             
             AccountServices a = new AccountServices();
         a.transferFunds(benAcc, transferAmt);
-        
-            
-            
         success objsuccess = new success("Funds Transfered");
         
         objsuccess.setVisible(true);

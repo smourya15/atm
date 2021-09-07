@@ -42,15 +42,10 @@ public class ATMServices {
     }
     
     public Boolean callWithdrawNodule(){
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
          return Boolean.FALSE;
-=======
-        return Boolean.TRUE;
->>>>>>> Stashed changes
-=======
-        return Boolean.TRUE;
->>>>>>> Stashed changes
+
+        
     }
     
 }
