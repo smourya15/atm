@@ -17,7 +17,11 @@ public class success extends javax.swing.JFrame {
     public success() {
         initComponents();
     }
-
+ public success(String message) {
+        initComponents();
+        
+        successMessage.setText(message);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,15 +31,15 @@ public class success extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        successMessage = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        jLabel1.setText("Your Transaction of Rs. 5000 was successfull");
+        successMessage.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        successMessage.setText("Your Transaction of Rs. 5000 was successfull");
 
         jButton1.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         jButton1.setText("PRINT RECEIPT");
@@ -78,7 +82,7 @@ public class success extends javax.swing.JFrame {
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton3))
-                            .addComponent(jLabel1)))
+                            .addComponent(successMessage)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(154, 154, 154)
                         .addComponent(jButton1)))
@@ -88,7 +92,7 @@ public class success extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addComponent(jLabel1)
+                .addComponent(successMessage)
                 .addGap(41, 41, 41)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
@@ -155,6 +159,6 @@ public class success extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel successMessage;
     // End of variables declaration//GEN-END:variables
 }
