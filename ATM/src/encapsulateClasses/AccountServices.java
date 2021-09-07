@@ -13,7 +13,7 @@ public class AccountServices  implements DbQueryInterface{
     
     Account objAccount = new Account("123", "4576", "sjdk", 90);
     
-    public long viewBalance(){
+    public double viewBalance(){
         return objAccount.getAccount_Bal();
     }
     

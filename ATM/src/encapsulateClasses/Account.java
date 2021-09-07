@@ -14,11 +14,11 @@ public class Account{
     private final String AccNum;
     private final String CIF_Num;
     private final String IFSC_Code;
-    private long Account_Bal;
+    private double Account_Bal;
 
     
     
-    public Account(String AccNum, String CIF_Num, String IFSC_Code, long Account_Bal) {
+    public Account(String AccNum, String CIF_Num, String IFSC_Code, double Account_Bal) {
         this.AccNum = AccNum;
         this.CIF_Num = CIF_Num;
         this.IFSC_Code = IFSC_Code;
@@ -52,11 +52,11 @@ public class Account{
     /**
      * @return the Account_Bal
      */
-    public long getAccount_Bal() {
+    public double getAccount_Bal() {
         return Account_Bal;
     }
 
-    public void setAccount_Bal(long Account_Bal) {
+    public void setAccount_Bal(double Account_Bal) {
         this.Account_Bal = Account_Bal;
     }
     
