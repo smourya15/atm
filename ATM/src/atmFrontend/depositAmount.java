@@ -102,6 +102,11 @@ public class depositAmount extends javax.swing.JFrame {
         });
 
         d50Field.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        d50Field.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                d50FieldFocusLost(evt);
+            }
+        });
         d50Field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 d50FieldActionPerformed(evt);
@@ -323,19 +328,22 @@ public class depositAmount extends javax.swing.JFrame {
  
     private void d50FieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_d50FieldKeyTyped
         // TODO add your handling code here:
+         
         char c = evt.getKeyChar();
+
         if(!(c == KeyEvent.VK_BACK_SPACE || Character.isDigit(c))){
              evt.consume();
         }
-        
-        String s = d50Field.getText();
-        
-        if(s.isEmpty()){
-            return;
-        }else{
-             int ans = Integer.parseInt(s)*50;
-        System.out.println(ans);
-        }
+//        
+//        String s = d50Field.getText();
+//         System.out.println(s);
+//        
+//        if(s.isEmpty()){
+//            return;
+//        }else{
+//             int ans = Integer.parseInt(s)*50;
+//        System.out.println(ans);
+//        }
         
         
 //        eq50Label.setText("Rs. " + ans);
@@ -343,6 +351,19 @@ public class depositAmount extends javax.swing.JFrame {
 
     private void d50FieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_d50FieldKeyPressed
     }//GEN-LAST:event_d50FieldKeyPressed
+
+    private void d50FieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_d50FieldFocusLost
+        // TODO add your handling code here:
+         String s = d50Field.getText();
+         if(s.isEmpty()){
+            return;
+        }else{
+             int ans = Integer.parseInt(s)*50;
+//        System.out.println(ans);
+       eq50Label.setText("Rs. " + Integer.toString(ans));
+
+        }
+    }//GEN-LAST:event_d50FieldFocusLost
 
     /**
      * @param args the command line arguments
