@@ -33,7 +33,7 @@ public class AccountServices  implements DbQueryInterface{
         }
     }
     public void addAmount(long addAmt){
-        objAccount.setAccount_Bal(objAccount.getAccount_Bal()+addAmt);
+        objAccount.setAccount_Bal(objAccount.getAccount_Bal() + addAmt);
     }
     public void transferFunds(final String benificiary_Account_num, long Amount){
         try{
