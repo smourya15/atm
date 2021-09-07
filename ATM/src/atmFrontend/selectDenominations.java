@@ -35,8 +35,8 @@ public class selectDenominations extends javax.swing.JFrame {
         D100_checkbox = new javax.swing.JCheckBox();
         D1000_checkbox = new javax.swing.JCheckBox();
         D2000_checkbox = new javax.swing.JCheckBox();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        nextBtn = new javax.swing.JButton();
+        homeBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,21 +68,21 @@ public class selectDenominations extends javax.swing.JFrame {
         D2000_checkbox.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         D2000_checkbox.setText("Rs. 2000");
 
-        jButton1.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        jButton1.setText("NEXT");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        nextBtn.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        nextBtn.setText("NEXT");
+        nextBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        nextBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                nextBtnActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        jButton2.setText("HOME");
-        jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        homeBtn.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        homeBtn.setText("HOME");
+        homeBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        homeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                homeBtnActionPerformed(evt);
             }
         });
 
@@ -105,10 +105,10 @@ public class selectDenominations extends javax.swing.JFrame {
                                 .addComponent(D100_checkbox)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(D500_checkbox))
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(homeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nextBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(D1000_checkbox)
                                 .addGap(18, 18, 18)
@@ -129,8 +129,8 @@ public class selectDenominations extends javax.swing.JFrame {
                     .addComponent(D2000_checkbox))
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(homeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                    .addComponent(nextBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
@@ -139,24 +139,39 @@ public class selectDenominations extends javax.swing.JFrame {
 
     private void D50_checkboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D50_checkboxActionPerformed
         // TODO add your handling code here:
+       
+         
+        
     }//GEN-LAST:event_D50_checkboxActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void nextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBtnActionPerformed
         // TODO add your handling code here:
-        
-        totalAmountDeposited objDeposit = new totalAmountDeposited();
+         boolean d50 = D50_checkbox.isSelected();
+         boolean d100 = D100_checkbox.isSelected();
+         boolean d500 = D500_checkbox.isSelected();
+         boolean d1000= D1000_checkbox.isSelected();
+         boolean d2000 = D2000_checkbox.isSelected();
+         
+//         System.out.println(d50); System.out.println(d100); System.out.println(d500); System.out.println(d1000); System.out.println(d2000);
+         
+         
+         
+         
+        depositAmount objDeposit = new depositAmount(d50,d100,d500,d1000,d2000);
         objDeposit.setVisible(true);
         dispose();
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+        
+        
+    }//GEN-LAST:event_nextBtnActionPerformed
 
     private void D100_checkboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D100_checkboxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_D100_checkboxActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void homeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_homeBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,8 +215,8 @@ public class selectDenominations extends javax.swing.JFrame {
     private javax.swing.JCheckBox D2000_checkbox;
     private javax.swing.JCheckBox D500_checkbox;
     private javax.swing.JCheckBox D50_checkbox;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton homeBtn;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton nextBtn;
     // End of variables declaration//GEN-END:variables
 }
