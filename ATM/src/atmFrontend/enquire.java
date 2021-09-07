@@ -130,11 +130,13 @@ public class enquire extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitbuttonActionPerformed
-        // TODO add your handling code here:
+        welcomPage objwelcomePage = new welcomPage();
+        objwelcomePage.setVisible(true);
     }//GEN-LAST:event_exitbuttonActionPerformed
 
     private void homebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homebuttonActionPerformed
-        // TODO add your handling code here:
+        Services objServices = new Services();
+        objServices.setVisible(true);
     }//GEN-LAST:event_homebuttonActionPerformed
 
     /**
