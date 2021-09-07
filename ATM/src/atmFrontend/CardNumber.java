@@ -25,6 +25,11 @@ public class CardNumber extends javax.swing.JFrame {
         initComponents();
         verifyCard.setText(null);
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+        verifyCardNum_Btn.setEnabled(Boolean.FALSE);
+        
+>>>>>>> Stashed changes
 =======
         verifyCardNum_Btn.setEnabled(Boolean.FALSE);
         
