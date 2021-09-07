@@ -20,6 +20,42 @@ public class depositAmount extends javax.swing.JFrame {
         initComponents();
 //        d50Field.setText("");
     }
+    
+     public depositAmount(boolean d50,boolean d100,boolean d500,boolean d1000,boolean d2000) {
+        initComponents();
+        
+//        boolean den50 = d50;
+//        boolean den100=d100;
+//        boolean den500=d500;
+//        boolean den1000=d1000;
+//        boolean den2000=d2000;
+        
+        rs50Label.setVisible(d50);
+        rs100Label.setVisible(d100);
+        rs500Label.setVisible(d500);
+        rs1000Label.setVisible(d1000);
+        rs2000Label.setVisible(d2000);
+        
+        d50Field.setVisible(d50);
+        d100Field.setVisible(d100);
+        d500Field.setVisible(d500);
+        d1000Field.setVisible(d1000);
+        d2000Field.setVisible(d2000);
+        
+        eq50Label.setVisible(d50);
+        eq100Label.setVisible(d100);
+        eq500Label.setVisible(d500);
+        eq1000Label.setVisible(d1000);
+        eq2000Label.setVisible(d2000);
+            
+            
+        
+        
+        
+        
+//        System.out.println(den50); System.out.println(den100); System.out.println(den500); System.out.println(den1000); System.out.println(den2000);
+
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -277,6 +313,7 @@ public class depositAmount extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_d2000FieldActionPerformed
 
+ 
     private void d50FieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_d50FieldKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
