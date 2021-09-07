@@ -29,7 +29,7 @@ public class totalAmountDeposited extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        noOfNotesTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -40,8 +40,8 @@ public class totalAmountDeposited extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        noOfNotesTable.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        noOfNotesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"50", "0", "0"},
                 {"100", "0", "0"},
@@ -61,11 +61,11 @@ public class totalAmountDeposited extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
+        jScrollPane1.setViewportView(noOfNotesTable);
+        if (noOfNotesTable.getColumnModel().getColumnCount() > 0) {
+            noOfNotesTable.getColumnModel().getColumn(0).setResizable(false);
+            noOfNotesTable.getColumnModel().getColumn(1).setResizable(false);
+            noOfNotesTable.getColumnModel().getColumn(2).setResizable(false);
         }
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
@@ -178,6 +178,6 @@ public class totalAmountDeposited extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable noOfNotesTable;
     // End of variables declaration//GEN-END:variables
 }
