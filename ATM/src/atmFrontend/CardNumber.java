@@ -18,6 +18,7 @@ public class CardNumber extends javax.swing.JFrame {
      */
     public CardNumber() {
         initComponents();
+        verifyCard.setText(null);
     }
 
     /**
