@@ -43,11 +43,11 @@ public class totalAmountDeposited extends javax.swing.JFrame {
         noOfNotesTable.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         noOfNotesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"50", "0", "0"},
-                {"100", "0", "0"},
-                {"500", "0", "0"},
-                {"1000", "0", "0"},
-                {"2000", "0", "0"}
+                {"50", "", "0"},
+                {"100", "", "0"},
+                {"500", "", "0"},
+                {"1000", "", "0"},
+                {"2000", "", "0"}
             },
             new String [] {
                 "Denominations", "No. of Notes", "Total"

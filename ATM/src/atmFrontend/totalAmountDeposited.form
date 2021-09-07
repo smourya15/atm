@@ -104,11 +104,11 @@
                   <Data value="2000"/>
                 </Column>
                 <Column editable="true" title="No. of Notes" type="java.lang.Object">
-                  <Data value="0"/>
-                  <Data value="0"/>
-                  <Data value="0"/>
-                  <Data value="0"/>
-                  <Data value="0"/>
+                  <Data value=""/>
+                  <Data value=""/>
+                  <Data value=""/>
+                  <Data value=""/>
+                  <Data value=""/>
                 </Column>
                 <Column editable="false" title="Total" type="java.lang.Object">
                   <Data value="0"/>
