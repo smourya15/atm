@@ -146,16 +146,11 @@ public class selectDenominations extends javax.swing.JFrame {
 
     private void nextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBtnActionPerformed
         // TODO add your handling code here:
-         boolean d50 = D50_checkbox.isSelected();
-         boolean d100 = D100_checkbox.isSelected();
-         boolean d500 = D500_checkbox.isSelected();
-         boolean d1000= D1000_checkbox.isSelected();
-         boolean d2000 = D2000_checkbox.isSelected();
-         
-//         System.out.println(d50); System.out.println(d100); System.out.println(d500); System.out.println(d1000); System.out.println(d2000);
-         
-         
-         
+        boolean d50 = D50_checkbox.isSelected();
+        boolean d100 = D100_checkbox.isSelected();
+        boolean d500 = D500_checkbox.isSelected();
+        boolean d1000= D1000_checkbox.isSelected();
+        boolean d2000 = D2000_checkbox.isSelected();
          
         depositAmount objDeposit = new depositAmount(d50,d100,d500,d1000,d2000);
         objDeposit.setVisible(true);

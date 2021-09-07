@@ -24,11 +24,11 @@ public class depositAmount extends javax.swing.JFrame {
      public depositAmount(boolean d50,boolean d100,boolean d500,boolean d1000,boolean d2000) {
         initComponents();
         
-//        boolean den50 = d50;
-//        boolean den100=d100;
-//        boolean den500=d500;
-//        boolean den1000=d1000;
-//        boolean den2000=d2000;
+        equald50.setVisible(d50);
+        equald100.setVisible(d100);
+        equald500.setVisible(d500);
+        equald1000.setVisible(d1000);
+        equald2000.setVisible(d2000);
         
         rs50Label.setVisible(d50);
         rs100Label.setVisible(d100);
@@ -86,6 +86,11 @@ public class depositAmount extends javax.swing.JFrame {
         totalLabel = new javax.swing.JLabel();
         eqTotalLabel = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        equald50 = new javax.swing.JLabel();
+        equald100 = new javax.swing.JLabel();
+        equald500 = new javax.swing.JLabel();
+        equald1000 = new javax.swing.JLabel();
+        equald2000 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -143,7 +148,6 @@ public class depositAmount extends javax.swing.JFrame {
         rs2000Label.setText("Rs. 2000      X");
 
         d100Field.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        d100Field.setText("Enter No. of Notes");
         d100Field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 d100FieldActionPerformed(evt);
@@ -151,7 +155,6 @@ public class depositAmount extends javax.swing.JFrame {
         });
 
         d500Field.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        d500Field.setText("Enter No. of Notes");
         d500Field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 d500FieldActionPerformed(evt);
@@ -159,7 +162,6 @@ public class depositAmount extends javax.swing.JFrame {
         });
 
         d1000Field.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        d1000Field.setText("Enter No. of Notes");
         d1000Field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 d1000FieldActionPerformed(evt);
@@ -167,7 +169,6 @@ public class depositAmount extends javax.swing.JFrame {
         });
 
         d2000Field.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        d2000Field.setText("Enter No. of Notes");
         d2000Field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 d2000FieldActionPerformed(evt);
@@ -175,40 +176,52 @@ public class depositAmount extends javax.swing.JFrame {
         });
 
         eq100Label.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        eq100Label.setText("=           Rs. 0000");
+        eq100Label.setText("Rs. 0000");
 
         eq1000Label.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        eq1000Label.setText("=           Rs. 0000");
+        eq1000Label.setText("Rs. 0000");
 
         eq50Label.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        eq50Label.setText("=           Rs. 0000");
+        eq50Label.setText("Rs. 0000");
 
         eq500Label.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        eq500Label.setText("=           Rs. 0000");
+        eq500Label.setText("Rs. 0000");
 
         eq2000Label.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        eq2000Label.setText("=           Rs. 0000");
+        eq2000Label.setText("Rs. 0000");
 
         totalLabel.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         totalLabel.setText("TOTAL");
 
         eqTotalLabel.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        eqTotalLabel.setText("=         Rs. 00000");
+        eqTotalLabel.setText("Rs. 00000");
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel7.setText("Enter the number of notes for the denominations");
+
+        equald50.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        equald50.setText("=");
+
+        equald100.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        equald100.setText("=");
+
+        equald500.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        equald500.setText("=");
+
+        equald1000.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        equald1000.setText("=");
+
+        equald2000.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        equald2000.setText("=");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(totalLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(eqTotalLabel))
+                    .addComponent(eqTotalLabel, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addComponent(homeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -222,67 +235,91 @@ public class depositAmount extends javax.swing.JFrame {
                                 .addComponent(rs500Label)
                                 .addComponent(rs1000Label))
                             .addGap(34, 34, 34)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(d100Field, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(d50Field, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(54, 54, 54)
+                                    .addGap(18, 18, 18)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(eq50Label, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(eq100Label, javax.swing.GroupLayout.Alignment.TRAILING)))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(d1000Field, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(d500Field, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(d2000Field, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(54, 54, 54)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(equald50)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(eq50Label))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(equald100)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(eq100Label))))
+                                .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(eq500Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(eq1000Label))
-                                        .addComponent(eq2000Label, javax.swing.GroupLayout.Alignment.TRAILING))))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(34, 34, 34)))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(d2000Field, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(totalLabel))
+                                            .addGap(18, 18, 18)
+                                            .addComponent(equald2000)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addGap(0, 0, Short.MAX_VALUE)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(d1000Field, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(equald1000))
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(d500Field, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(equald500)))
+                                            .addGap(54, 54, 54)))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(eq500Label, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(eq1000Label, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(eq2000Label, javax.swing.GroupLayout.Alignment.TRAILING)))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addGap(25, 25, 25))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(36, 36, 36)
                 .addComponent(jLabel7)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(eq50Label)
-                            .addComponent(rs50Label)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(d50Field, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rs50Label)
+                    .addComponent(d50Field, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(eq50Label)
+                    .addComponent(equald50, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(d100Field, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eq100Label)
-                    .addComponent(rs100Label))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(d500Field, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eq500Label)
-                    .addComponent(rs500Label))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(d1000Field, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eq1000Label)
-                    .addComponent(rs1000Label))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(eq2000Label)
-                        .addComponent(rs2000Label))
-                    .addComponent(d2000Field, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(d100Field, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(rs100Label)
+                        .addComponent(equald100, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(eq100Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(rs500Label)
+                        .addComponent(d500Field, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(equald500, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(eq500Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(eq1000Label)
+                    .addComponent(rs1000Label)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(d1000Field, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(equald1000, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(d2000Field, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(rs2000Label)
+                        .addComponent(equald2000, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(eq2000Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(totalLabel)
@@ -291,7 +328,7 @@ public class depositAmount extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(homeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(depositButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(37, 37, 37))
         );
 
         pack();
@@ -413,6 +450,11 @@ public class depositAmount extends javax.swing.JFrame {
     private javax.swing.JLabel eq500Label;
     private javax.swing.JLabel eq50Label;
     private javax.swing.JLabel eqTotalLabel;
+    private javax.swing.JLabel equald100;
+    private javax.swing.JLabel equald1000;
+    private javax.swing.JLabel equald2000;
+    private javax.swing.JLabel equald50;
+    private javax.swing.JLabel equald500;
     private javax.swing.JButton homeButton;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel rs1000Label;
