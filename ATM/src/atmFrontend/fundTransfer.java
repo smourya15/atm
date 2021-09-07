@@ -175,7 +175,8 @@ public class fundTransfer extends javax.swing.JFrame {
         
         String benAcc = BenAccNoTextField.getText();
         String reBenAcc=ReBenAccNoTextField.getText();
-        long transferAmt = Long.parseLong(trfAmt.getText());
+        long transferAmt=0;
+
         
         if(benAcc.isEmpty() || reBenAcc.isEmpty() || trfAmt.getText().isEmpty())
         {
@@ -188,6 +189,9 @@ public class fundTransfer extends javax.swing.JFrame {
         { 
             ErrorMessage.setText("Error");
             ErrorMessage.setVisible(false);
+            
+            transferAmt=Long.parseLong(trfAmt.getText());
+//            System.out.println(transferAmt);
             
             AccountServices a = new AccountServices();
         a.transferFunds(benAcc, transferAmt);

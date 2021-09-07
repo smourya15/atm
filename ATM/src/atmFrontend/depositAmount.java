@@ -17,7 +17,11 @@ public class depositAmount extends javax.swing.JFrame {
     public depositAmount() {
         initComponents();
     }
-
+    public depositAmount(Boolean d50,Boolean d100,Boolean d500,Boolean d1000,Boolean d2000){
+        
+        initComponents();
+        System.out.println(d50); System.out.println(d100); System.out.println(d500); System.out.println(d1000); System.out.println(d2000);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
