@@ -210,10 +210,10 @@ public class fundTransfer extends javax.swing.JFrame {
         { 
             ErrorMessage.setText("Error");
             ErrorMessage.setVisible(false);
-            long transferAmt = Long.parseLong(trfAmt.getText());
+            int transferAmt = Integer.parseInt(trfAmt.getText());
             AccountServices a = new AccountServices();
         a.transferFunds(benAcc, transferAmt);
-        success objsuccess = new success("Funds Transfered");
+        success objsuccess = new success(transferAmt);
         
         objsuccess.setVisible(true);
         dispose();
