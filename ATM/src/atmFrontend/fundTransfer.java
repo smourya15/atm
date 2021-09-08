@@ -229,10 +229,10 @@ public class fundTransfer extends javax.swing.JFrame {
 //            System.out.println("length"+BenAccNoTextField.getText().length());
 //            trfConfirm.setEnabled(Boolean.FALSE);
 //        }
-System.out.println(ReBenAccNoTextField.getText().length()==15);
-        System.out.println(BenAccNoTextField.getText().length());
-System.out.println(BenAccNoTextField.getText().length()==15 && ReBenAccNoTextField.getText().length()==15);
-        if(BenAccNoTextField.getText().length()==15 && ReBenAccNoTextField.getText().length()==15){
+//System.out.println(ReBenAccNoTextField.getText().length());
+//        System.out.println(BenAccNoTextField.getText().length());
+//System.out.println(BenAccNoTextField.getText().length()==16 && ReBenAccNoTextField.getText().length()==16);
+        if(BenAccNoTextField.getText().length()==16 && ReBenAccNoTextField.getText().length()==16){
              System.out.println("length"+BenAccNoTextField.getText().length());
              
              if(!trfAmt.getText().isEmpty()){
@@ -247,6 +247,7 @@ System.out.println(BenAccNoTextField.getText().length()==15 && ReBenAccNoTextFie
 
     private void ReBenAccNoTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ReBenAccNoTextFieldKeyTyped
         // TODO add your handling code here:
+        
          char c = evt.getKeyChar();
         
         if(!((Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE) && ReBenAccNoTextField.getText().length()<16)){
@@ -270,13 +271,17 @@ System.out.println(BenAccNoTextField.getText().length()==15 && ReBenAccNoTextFie
 //            }
 //        }
 //System.out.println(BenAccNoTextField.getText().length()==15 && ReBenAccNoTextField.getText().length()==15 && !trfAmt.getText().isEmpty());
-        if(BenAccNoTextField.getText().length()==15 && ReBenAccNoTextField.getText().length()==15 && !trfAmt.getText().isEmpty()){
-                   // System.out.println("length"+BenAccNoTextField.getText().length());
-                   trfConfirm.setEnabled(Boolean.TRUE);
-                   if(c == KeyEvent.VK_BACK_SPACE){
-                       trfConfirm.setEnabled(Boolean.FALSE);
-                   }
-        }  
+         if(BenAccNoTextField.getText().length()==16 && ReBenAccNoTextField.getText().length()==16){
+             System.out.println("length"+BenAccNoTextField.getText().length());
+             
+             if(!trfAmt.getText().isEmpty()){
+                  System.out.println("works");
+            trfConfirm.setEnabled(Boolean.TRUE);
+            if(c == KeyEvent.VK_BACK_SPACE){
+                trfConfirm.setEnabled(Boolean.FALSE);
+            }
+        }
+        }
     }//GEN-LAST:event_ReBenAccNoTextFieldKeyTyped
 
     private void trfAmtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_trfAmtKeyTyped
@@ -287,13 +292,17 @@ System.out.println(BenAccNoTextField.getText().length()==15 && ReBenAccNoTextFie
              evt.consume();
         }
        // System.out.println(BenAccNoTextField.getText().length()==15 && ReBenAccNoTextField.getText().length()==15 && !trfAmt.getText().isEmpty());
-        if(BenAccNoTextField.getText().length()==15 && ReBenAccNoTextField.getText().length()==15 && !trfAmt.getText().isEmpty()){
-                    //System.out.println("length"+BenAccNoTextField.getText().length());
-                   trfConfirm.setEnabled(Boolean.TRUE);
-//                   if(c == KeyEvent.VK_BACK_SPACE){
-//                       trfConfirm.setEnabled(Boolean.FALSE);
-//                   }
-        }  
+       if(BenAccNoTextField.getText().length()==16 && ReBenAccNoTextField.getText().length()==16){
+             System.out.println("length"+BenAccNoTextField.getText().length());
+             
+             if(!trfAmt.getText().isEmpty()){
+                  System.out.println("works");
+            trfConfirm.setEnabled(Boolean.TRUE);
+            if(c == KeyEvent.VK_BACK_SPACE){
+                trfConfirm.setEnabled(Boolean.FALSE);
+            }
+        }
+        }
 
     }//GEN-LAST:event_trfAmtKeyTyped
 
