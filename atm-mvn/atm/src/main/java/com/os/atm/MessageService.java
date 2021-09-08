@@ -15,12 +15,12 @@ public class MessageService {
         dictionary.put("welcomePage.title","WELCOME TO "+ dictionary.get("bank.name"));
         dictionary.put("welcomePage.click.continue","Please Click Continue");
         dictionary.put("welcomePage.continue", "Continue");
-        dictionary.put("validation.message", "Your input value:{} is incorrect.");
+//        dictionary.put("validation.message", "Your input value:{} is incorrect.");
     }
 
     //MessageFormat
     public String getMsg(String key) {
-        MessageFormat.format(dictionary.get("validation.message"), 89);
+//        MessageFormat.format(dictionary.get("validation.message"), 89);
         return dictionary.get(key);
     }
 }

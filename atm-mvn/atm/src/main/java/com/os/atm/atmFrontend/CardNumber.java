@@ -21,7 +21,7 @@ import java.util.List;
  * @author smourya
  */
 @Component
-@Scope(value = BeanDefinition.SCOPE_PROTOTYPE)
+//@Scope(value = BeanDefinition.SCOPE_PROTOTYPE)
 public class CardNumber extends javax.swing.JFrame {
 
     public void initialize() {

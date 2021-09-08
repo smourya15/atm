@@ -234,7 +234,7 @@ public class fundTransfer extends javax.swing.JFrame {
 //System.out.println(ReBenAccNoTextField.getText().length());
 //        System.out.println(BenAccNoTextField.getText().length());
 //System.out.println(BenAccNoTextField.getText().length()==16 && ReBenAccNoTextField.getText().length()==16);
-        if(BenAccNoTextField.getText().length()==16 && ReBenAccNoTextField.getText().length()==16){
+        if(BenAccNoTextField.getText().length()==15 && ReBenAccNoTextField.getText().length()==15){
              System.out.println("length"+BenAccNoTextField.getText().length());
              
              if(!trfAmt.getText().isEmpty()){
@@ -306,9 +306,7 @@ public class fundTransfer extends javax.swing.JFrame {
              if(!trfAmt.getText().isEmpty()){
                   System.out.println("works");
             trfConfirm.setEnabled(Boolean.TRUE);
-            if(c == KeyEvent.VK_BACK_SPACE){
-                trfConfirm.setEnabled(Boolean.FALSE);
-            }
+            
         }
         }
 if(trfAmt.getText().isEmpty()){
