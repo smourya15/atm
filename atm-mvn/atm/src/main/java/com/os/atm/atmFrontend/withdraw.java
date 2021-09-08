@@ -128,7 +128,12 @@ public class withdraw extends javax.swing.JFrame {
         
         
         int amount;
-        amount = Integer.parseInt(withdrawAmountField.getText());
+        if (withdrawAmountField.getText().isEmpty()){
+            amount = 1;
+        }
+        else{
+            amount = Integer.parseInt(withdrawAmountField.getText());
+        }
         System.out.println(amount);
         
         if(amount%50==0){

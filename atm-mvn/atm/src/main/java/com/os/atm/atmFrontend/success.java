@@ -14,15 +14,20 @@ public class success extends javax.swing.JFrame {
     /**
      * Creates new form success
      */
-    public success() {
+    int amount;
+    public success(){
         initComponents();
+    }
+    public success(int amount) {
+        initComponents();
+        this.amount = amount;
+        SuccessMessage.setText("Your Transaction of Rs."+ amount +" was successfull");
     }
     
       public success(String s) {
         initComponents();
-        SuccessMessage.setText(s);
         
-    }
+      }
 
     /**
      * This method is called from within the constructor to initialize the form.
