@@ -14,18 +14,23 @@ public class success extends javax.swing.JFrame {
     /**
      * Creates new form success
      */
-    int amount;
+    int amount1;
+    String amount2;
     public success(){
         initComponents();
     }
-    public success(int amount) {
+    public success(int amount1) {
         initComponents();
-        this.amount = amount;
-        SuccessMessage.setText("Your Transaction of Rs."+ amount +" was successfull");
+        this.amount1 = amount1;
+        SuccessMessage.setText("Your Transaction of Rs."+ amount1 +" was successfull");
     }
     
-      public success(String s) {
+      public success(String amount2) {
+        
         initComponents();
+        this.amount2 = amount2;
+        SuccessMessage.setText("Your Transaction of Rs."+ amount2 +" was successfull");
+    
         
       }
 

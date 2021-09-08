@@ -70,9 +70,9 @@ public class depositConfirm extends javax.swing.JFrame {
                eq2000Confirm.setText("=  Rs."+D2000*2000);
         }
         
-        
         String  total= String.valueOf(D50*50+D100*100+D500*500+D1000*1000+D2000*2000);
         displaytotal.setText(total);
+        
         
 }
     
@@ -455,7 +455,9 @@ public class depositConfirm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void depositbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositbuttonActionPerformed
-        success objsuccess = new success();
+       
+    	
+    	success objsuccess = new success(String.valueOf(D50*50+D100*100+D500*500+D1000*1000+D2000*2000));
         objsuccess.setVisible(true);
         dispose();
         // TODO add your handling code here:
