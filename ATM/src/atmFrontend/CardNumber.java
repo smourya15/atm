@@ -123,7 +123,7 @@ public class CardNumber extends javax.swing.JFrame {
             case 3:
                 JOptionPane.showMessageDialog(this, verifyCard.getText());
                 StringBuilder accNumber = new StringBuilder(verifyCard.getText().substring(0, 2)).append("XX-XXXX-XXXX-").append(verifyCard.getText().substring(12, 16));
-                pin objPin = new pin(accNumber.toString(), pb.getEncrypt());
+                Pin objPin = new Pin(accNumber.toString(), pb.getEncrypt());
                 objPin.setVisible(true);
                 dispose();
                 break;

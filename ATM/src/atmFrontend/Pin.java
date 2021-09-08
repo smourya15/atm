@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  *
  * @author smourya
  */
-public class pin extends javax.swing.JFrame {
+public class Pin extends javax.swing.JFrame {
 
     /**
      * Creates new form pin
@@ -24,12 +24,12 @@ public class pin extends javax.swing.JFrame {
 //    private DebitCard dbCard;
     private final String encryptCard;
     private int attempts =3;
-    public pin() {
+    public Pin() {
         initComponents();
         this.encryptCard= "test";
         iniComponents();
     }
-    public pin(String maskedCardNumber, String cardNumber){
+    public Pin(String maskedCardNumber, String cardNumber){
         
         initComponents();
         cardNumberLabel.setText(maskedCardNumber);
@@ -201,20 +201,21 @@ public class pin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(pin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(pin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(pin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(pin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new pin().setVisible(true);
+                new Pin().setVisible(true);
             }
         });
     }
