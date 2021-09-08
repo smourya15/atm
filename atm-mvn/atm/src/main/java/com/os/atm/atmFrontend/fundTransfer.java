@@ -42,6 +42,7 @@ public class fundTransfer extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         ReBenAccNoTextField = new javax.swing.JTextField();
         ErrorMessage = new javax.swing.JLabel();
+        trfcancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,7 +50,7 @@ public class fundTransfer extends javax.swing.JFrame {
         jLabel1.setText("Beneficiary Acc No");
 
         BenAccNoTextField.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        BenAccNoTextField.setText("12345678901");
+        BenAccNoTextField.setText("1234567890123456");
         BenAccNoTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BenAccNoTextFieldActionPerformed(evt);
@@ -96,7 +97,7 @@ public class fundTransfer extends javax.swing.JFrame {
         jLabel3.setText("Re-enter Beneficiary Acc No");
 
         ReBenAccNoTextField.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        ReBenAccNoTextField.setText("12345678901");
+        ReBenAccNoTextField.setText("1234567890123456");
         ReBenAccNoTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ReBenAccNoTextFieldActionPerformed(evt);
@@ -116,37 +117,47 @@ public class fundTransfer extends javax.swing.JFrame {
         ErrorMessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ErrorMessage.setText("Error");
 
+        trfcancel.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        trfcancel.setText("CANCEL");
+        trfcancel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        trfcancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                trfcancelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(BenAccNoTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                .addContainerGap(21, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel3)
-                        .addGap(15, 15, 15)
-                        .addComponent(ReBenAccNoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(51, 51, 51)
+                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(EnterAmount)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(trfAmt, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12))
-                            .addComponent(ErrorMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(trfConfirm)
-                .addGap(140, 140, 140))
+                        .addContainerGap()
+                        .addComponent(jLabel3)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ReBenAccNoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                    .addComponent(BenAccNoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                .addGap(23, 23, 23))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(72, 72, 72)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(EnterAmount)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(trfAmt, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(12, 12, 12))
+                        .addComponent(ErrorMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(trfcancel, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
+                        .addComponent(trfConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,7 +177,9 @@ public class fundTransfer extends javax.swing.JFrame {
                     .addComponent(trfAmt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(EnterAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(trfConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(trfConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(trfcancel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -429,6 +442,10 @@ if(trfAmt.getText().isEmpty()){
             }
     }//GEN-LAST:event_trfAmtKeyReleased
 
+    private void trfcancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trfcancelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_trfcancelActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -473,5 +490,6 @@ if(trfAmt.getText().isEmpty()){
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField trfAmt;
     private javax.swing.JButton trfConfirm;
+    private javax.swing.JButton trfcancel;
     // End of variables declaration//GEN-END:variables
 }

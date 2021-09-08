@@ -21,10 +21,12 @@ public class denominations extends javax.swing.JFrame {
         
         initComponents();
         groupRadioButtons();
+        withdrawButton.setEnabled(false);
     }
     public denominations(int amount){
         initComponents();
         groupRadioButtons();
+        withdrawButton.setEnabled(false);
         this.amount = amount;
         headText.setText("Your Amount is Rs."+amount);
         if(amount<2000 || amount%2000!=0){
@@ -60,31 +62,33 @@ public class denominations extends javax.swing.JFrame {
     private void initComponents() {
 
         headText = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        display_denomination = new javax.swing.JLabel();
+        withdrawButton = new javax.swing.JButton();
+        displayDenomination = new javax.swing.JLabel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         D500 = new javax.swing.JRadioButton();
         D2000 = new javax.swing.JRadioButton();
         D100 = new javax.swing.JRadioButton();
         D1000 = new javax.swing.JRadioButton();
         D50 = new javax.swing.JRadioButton();
+        cancelButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         headText.setFont(new java.awt.Font("Times New Roman", 0, 30)); // NOI18N
         headText.setText("Your Amount is Rs. 500");
 
-        jButton1.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        jButton1.setText("WITHDRAW");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        withdrawButton.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        withdrawButton.setText("WITHDRAW");
+        withdrawButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        withdrawButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                withdrawButtonActionPerformed(evt);
             }
         });
 
-        display_denomination.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        display_denomination.setText("Selece Denomination");
+        displayDenomination.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        displayDenomination.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        displayDenomination.setText("Select Denomination");
 
         D500.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         D500.setText("500");
@@ -162,26 +166,36 @@ public class denominations extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        cancelButton.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        cancelButton.setText("CANCEL");
+        cancelButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(headText)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(displayDenomination)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(20, Short.MAX_VALUE)
-                .addComponent(jDesktopPane1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(withdrawButton, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDesktopPane1))
                 .addContainerGap(29, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(headText)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(display_denomination)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,9 +205,11 @@ public class denominations extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(jDesktopPane1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addComponent(display_denomination)
+                .addComponent(displayDenomination)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(withdrawButton, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
@@ -203,34 +219,39 @@ public class denominations extends javax.swing.JFrame {
     private void D50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D50ActionPerformed
         // TODO add your handling code here:
         no_notes = amount/50;
-        display_denomination.setText(no_notes+" x 50 = "+amount);
+        displayDenomination.setText(no_notes+" x 50 = "+amount);
+        withdrawButton.setEnabled(true);
     }//GEN-LAST:event_D50ActionPerformed
 
     private void D100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D100ActionPerformed
         // TODO add your handling code here:
         no_notes = amount/100;
-        display_denomination.setText(no_notes+" x 100 = "+amount);
+        displayDenomination.setText(no_notes+" x 100 = "+amount);
+        withdrawButton.setEnabled(true);
     }//GEN-LAST:event_D100ActionPerformed
 
     private void D500ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D500ActionPerformed
         // TODO add your handling code here:
         no_notes = amount/500;
-        display_denomination.setText(no_notes+" x 500 = "+amount);
+        displayDenomination.setText(no_notes+" x 500 = "+amount);
+        withdrawButton.setEnabled(true);
     }//GEN-LAST:event_D500ActionPerformed
 
     private void D1000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D1000ActionPerformed
         // TODO add your handling code here:
         no_notes = amount/1000;
-        display_denomination.setText(no_notes+" x 1000 = "+amount);
+        displayDenomination.setText(no_notes+" x 1000 = "+amount);
+        withdrawButton.setEnabled(true);
     }//GEN-LAST:event_D1000ActionPerformed
 
     private void D2000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D2000ActionPerformed
         // TODO add your handling code here:
         no_notes = amount/2000;
-        display_denomination.setText(no_notes+" x 2000 = "+amount);
+        displayDenomination.setText(no_notes+" x 2000 = "+amount);
+        withdrawButton.setEnabled(true);
     }//GEN-LAST:event_D2000ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void withdrawButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawButtonActionPerformed
         // TODO add your handling code here:
         
         
@@ -240,7 +261,11 @@ public class denominations extends javax.swing.JFrame {
         objSuccess.setVisible(true);
         dispose();
             
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_withdrawButtonActionPerformed
+
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancelButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -283,9 +308,10 @@ public class denominations extends javax.swing.JFrame {
     private javax.swing.JRadioButton D2000;
     private javax.swing.JRadioButton D50;
     private javax.swing.JRadioButton D500;
-    private javax.swing.JLabel display_denomination;
+    private javax.swing.JButton cancelButton;
+    private javax.swing.JLabel displayDenomination;
     private javax.swing.JLabel headText;
-    private javax.swing.JButton jButton1;
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JButton withdrawButton;
     // End of variables declaration//GEN-END:variables
 }
