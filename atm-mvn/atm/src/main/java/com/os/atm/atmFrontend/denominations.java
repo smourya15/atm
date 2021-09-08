@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.os.atm.atmFrontend;
+package atmFrontend;
 
 import javax.swing.ButtonGroup;
 
@@ -13,7 +13,7 @@ import javax.swing.ButtonGroup;
  */
 public class denominations extends javax.swing.JFrame {
      
-    private int selected_denomination, amt, no_notes;
+    private int selected_denomination, amount, no_notes;
     /**
      * Creates new form denominations
      */
@@ -25,18 +25,18 @@ public class denominations extends javax.swing.JFrame {
     public denominations(int amount){
         initComponents();
         groupRadioButtons();
-        amt = amount;
+        this.amount = amount;
         headText.setText("Your Amount is Rs."+amount);
-        if(amount<2000){
+        if(amount<2000 || amount%2000!=0){
             D2000.setVisible(false);
         }
-        if(amount<1000){
+        if(amount<1000 || amount%1000!=0){
             D1000.setVisible(false);
         }
-        if(amount<500){
+        if(amount<500 || amount%500!=0){
             D500.setVisible(false);
         }
-        if(amount<100){
+        if(amount<100 || amount%100!=0){
             D100.setVisible(false);
         }
     }
@@ -84,7 +84,7 @@ public class denominations extends javax.swing.JFrame {
         });
 
         display_denomination.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        display_denomination.setText("1 x 500 = 500");
+        display_denomination.setText("Selece Denomination");
 
         D500.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         D500.setText("500");
@@ -167,34 +167,32 @@ public class denominations extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jDesktopPane1)
-                        .addContainerGap(41, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(headText)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addComponent(jDesktopPane1)
+                .addContainerGap(29, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(display_denomination)
-                        .addGap(15, 15, 15)))
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(headText)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(display_denomination)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addContainerGap(35, Short.MAX_VALUE)
                 .addComponent(headText)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(jDesktopPane1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addComponent(display_denomination)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(37, Short.MAX_VALUE))
         );
@@ -204,32 +202,32 @@ public class denominations extends javax.swing.JFrame {
 
     private void D50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D50ActionPerformed
         // TODO add your handling code here:
-        no_notes = amt/50;
-        display_denomination.setText(no_notes+" x 50 = "+amt);
+        no_notes = amount/50;
+        display_denomination.setText(no_notes+" x 50 = "+amount);
     }//GEN-LAST:event_D50ActionPerformed
 
     private void D100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D100ActionPerformed
         // TODO add your handling code here:
-        no_notes = amt/100;
-        display_denomination.setText(no_notes+" x 100 = "+amt);
+        no_notes = amount/100;
+        display_denomination.setText(no_notes+" x 100 = "+amount);
     }//GEN-LAST:event_D100ActionPerformed
 
     private void D500ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D500ActionPerformed
         // TODO add your handling code here:
-        no_notes = amt/500;
-        display_denomination.setText(no_notes+" x 500 = "+amt);
+        no_notes = amount/500;
+        display_denomination.setText(no_notes+" x 500 = "+amount);
     }//GEN-LAST:event_D500ActionPerformed
 
     private void D1000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D1000ActionPerformed
         // TODO add your handling code here:
-        no_notes = amt/1000;
-        display_denomination.setText(no_notes+" x 1000 = "+amt);
+        no_notes = amount/1000;
+        display_denomination.setText(no_notes+" x 1000 = "+amount);
     }//GEN-LAST:event_D1000ActionPerformed
 
     private void D2000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D2000ActionPerformed
         // TODO add your handling code here:
-        no_notes = amt/2000;
-        display_denomination.setText(no_notes+" x 2000 = "+amt);
+        no_notes = amount/2000;
+        display_denomination.setText(no_notes+" x 2000 = "+amount);
     }//GEN-LAST:event_D2000ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -238,7 +236,7 @@ public class denominations extends javax.swing.JFrame {
         
         
         
-        success objSuccess = new success();
+        success objSuccess = new success(amount);
         objSuccess.setVisible(true);
         dispose();
             

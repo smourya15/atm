@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.os.atm.atmFrontend;
+package atmFrontend;
 
-import com.os.atm.encapsulateClasses.*;
+import encapsulateClasses.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.text.PlainDocument;
 
+import encapsulateClasses.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -128,7 +129,12 @@ public class withdraw extends javax.swing.JFrame {
         
         
         int amount;
-        amount = Integer.parseInt(withdrawAmountField.getText());
+        if (withdrawAmountField.getText().isEmpty()){
+            amount = 1;
+        }
+        else{
+            amount = Integer.parseInt(withdrawAmountField.getText());
+        }
         System.out.println(amount);
         
         if(amount%50==0){

@@ -84,7 +84,7 @@ public class denominations extends javax.swing.JFrame {
         });
 
         display_denomination.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        display_denomination.setText("Selece Denomination");
+        display_denomination.setText("Select Denomination");
 
         D500.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         D500.setText("500");
