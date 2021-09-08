@@ -49,7 +49,7 @@ public class fundTransfer extends javax.swing.JFrame {
         jLabel1.setText("Beneficiary Acc No");
 
         BenAccNoTextField.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        BenAccNoTextField.setText("12345678901");
+        BenAccNoTextField.setText("1234567890123456");
         BenAccNoTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BenAccNoTextFieldActionPerformed(evt);
@@ -62,7 +62,9 @@ public class fundTransfer extends javax.swing.JFrame {
         });
 
         EnterAmount.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        EnterAmount.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         EnterAmount.setText("Enter Amount");
+        EnterAmount.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         trfAmt.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         trfAmt.setText("000000");
@@ -80,6 +82,7 @@ public class fundTransfer extends javax.swing.JFrame {
         trfConfirm.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         trfConfirm.setText("CONFIRM");
         trfConfirm.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        trfConfirm.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         trfConfirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 trfConfirmActionPerformed(evt);
@@ -90,7 +93,7 @@ public class fundTransfer extends javax.swing.JFrame {
         jLabel3.setText("Re-enter Beneficiary Acc No");
 
         ReBenAccNoTextField.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        ReBenAccNoTextField.setText("12345678901");
+        ReBenAccNoTextField.setText("1234567890123456");
         ReBenAccNoTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ReBenAccNoTextFieldActionPerformed(evt);
@@ -112,53 +115,52 @@ public class fundTransfer extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(BenAccNoTextField)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel3)
-                        .addGap(15, 15, 15)
-                        .addComponent(ReBenAccNoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(ErrorMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(EnterAmount)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel3))
+                                .addGap(15, 15, 15)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(BenAccNoTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+                                    .addComponent(ReBenAccNoTextField)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(EnterAmount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(trfAmt, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12))
-                            .addComponent(ErrorMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(trfAmt, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(164, 164, 164)
+                .addComponent(trfConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(trfConfirm)
-                .addGap(121, 121, 121))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(BenAccNoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(ReBenAccNoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(32, 32, 32)
                 .addComponent(ErrorMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(trfAmt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(EnterAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
+                    .addComponent(EnterAmount)
+                    .addComponent(trfAmt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(trfConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
@@ -232,17 +234,19 @@ public class fundTransfer extends javax.swing.JFrame {
 //System.out.println(ReBenAccNoTextField.getText().length());
 //        System.out.println(BenAccNoTextField.getText().length());
 //System.out.println(BenAccNoTextField.getText().length()==16 && ReBenAccNoTextField.getText().length()==16);
-        if(BenAccNoTextField.getText().length()==16 && ReBenAccNoTextField.getText().length()==16){
+        if(BenAccNoTextField.getText().length()==15 && ReBenAccNoTextField.getText().length()==15){
              System.out.println("length"+BenAccNoTextField.getText().length());
              
              if(!trfAmt.getText().isEmpty()){
                   System.out.println("works");
             trfConfirm.setEnabled(Boolean.TRUE);
-            if(c == KeyEvent.VK_BACK_SPACE){
+            
+        }
+        }
+        
+        if(c == KeyEvent.VK_BACK_SPACE){
                 trfConfirm.setEnabled(Boolean.FALSE);
             }
-        }
-        }
     }//GEN-LAST:event_BenAccNoTextFieldKeyTyped
 
     private void ReBenAccNoTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ReBenAccNoTextFieldKeyTyped
@@ -282,6 +286,10 @@ public class fundTransfer extends javax.swing.JFrame {
             }
         }
         }
+         
+         if(c == KeyEvent.VK_BACK_SPACE){
+                trfConfirm.setEnabled(Boolean.FALSE);
+            }
     }//GEN-LAST:event_ReBenAccNoTextFieldKeyTyped
 
     private void trfAmtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_trfAmtKeyTyped
@@ -298,12 +306,12 @@ public class fundTransfer extends javax.swing.JFrame {
              if(!trfAmt.getText().isEmpty()){
                   System.out.println("works");
             trfConfirm.setEnabled(Boolean.TRUE);
-            if(c == KeyEvent.VK_BACK_SPACE){
+            
+        }
+        }
+if(trfAmt.getText().isEmpty()){
                 trfConfirm.setEnabled(Boolean.FALSE);
             }
-        }
-        }
-
     }//GEN-LAST:event_trfAmtKeyTyped
 
     /**
