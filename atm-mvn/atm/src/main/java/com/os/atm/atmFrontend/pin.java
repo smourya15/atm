@@ -5,7 +5,7 @@
  */
 package com.os.atm.atmFrontend;
 import com.os.atm.encapsulateClasses.Account;
-import encapsulateClasses.ATMServices;
+import com.os.atm.encapsulateClasses.ATMServices;
 import com.os.atm.encapsulateClasses.DebitCardServices;
 import com.os.atm.encapsulateClasses.PBES_Encryption;
 import java.awt.event.KeyEvent;
