@@ -48,7 +48,6 @@ public class CardNumber extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel1.setText("Enter the Card Number");
 
-        verifyCardNum_Btn.setBackground(new java.awt.Color(255, 255, 255));
         verifyCardNum_Btn.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         verifyCardNum_Btn.setText("VERIFY");
         verifyCardNum_Btn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
