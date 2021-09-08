@@ -101,6 +101,7 @@ public class welcomPage extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         CardNumber aNum= context.getBean(CardNumber.class);//new CardNumber();
+        aNum.initialize();
         aNum.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
