@@ -24,6 +24,8 @@ public class withdraw extends javax.swing.JFrame {
     public withdraw() {
         initComponents();
         
+        confirmButton.setEnabled(Boolean.FALSE);
+        
     }
 
     /**
@@ -39,15 +41,15 @@ public class withdraw extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        withdrawLabel = new javax.swing.JLabel();
         withdrawAmountField = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        amountLabel = new javax.swing.JLabel();
+        confirmButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 40)); // NOI18N
-        jLabel1.setText("WITHDRAW");
+        withdrawLabel.setFont(new java.awt.Font("Times New Roman", 1, 40)); // NOI18N
+        withdrawLabel.setText("WITHDRAW");
 
         withdrawAmountField.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         withdrawAmountField.addActionListener(new java.awt.event.ActionListener() {
@@ -61,15 +63,15 @@ public class withdraw extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        jLabel2.setText("Amount");
+        amountLabel.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        amountLabel.setText("Amount");
 
-        jButton1.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        jButton1.setText("CONFIRM");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        confirmButton.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        confirmButton.setText("CONFIRM");
+        confirmButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        confirmButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                confirmButtonActionPerformed(evt);
             }
         });
 
@@ -81,37 +83,37 @@ public class withdraw extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(111, Short.MAX_VALUE)
-                        .addComponent(jLabel1))
+                        .addComponent(withdrawLabel))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(88, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
+                        .addComponent(amountLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                         .addComponent(withdrawAmountField, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(88, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(confirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(54, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(withdrawLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(amountLabel)
                     .addComponent(withdrawAmountField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54))
+                .addGap(72, 72, 72)
+                .addComponent(confirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void withdrawAmountFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawAmountFieldActionPerformed
-
+        
       
 //        PlainDocument pd = (PlainDocument) withdrawAmountField.getDocument();
 //        pd.setDocumentFilter(new IntFilter());
@@ -122,7 +124,7 @@ public class withdraw extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_withdrawAmountFieldActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed
         // TODO add your handling code here:
         
         
@@ -144,10 +146,11 @@ public class withdraw extends javax.swing.JFrame {
         else{
             JOptionPane.showMessageDialog(null,"Enter The Amount In The Multiple Of Rs.50");
             withdrawAmountField.setText("");
+            confirmButton.setEnabled(Boolean.FALSE);
         }
         
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_confirmButtonActionPerformed
 
     private void withdrawAmountFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_withdrawAmountFieldKeyTyped
         // TODO add your handling code here:
@@ -155,6 +158,13 @@ public class withdraw extends javax.swing.JFrame {
         char c = evt.getKeyChar();
         if(!((Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE) && withdrawAmountField.getText().length()<5)){
              evt.consume();
+        }
+        
+        if (withdrawAmountField.getText().isEmpty()){
+            confirmButton.setEnabled(Boolean.FALSE);
+        }
+        else{
+            confirmButton.setEnabled(Boolean.TRUE);
         }
         
          
@@ -196,9 +206,9 @@ public class withdraw extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel amountLabel;
+    private javax.swing.JButton confirmButton;
     private javax.swing.JTextField withdrawAmountField;
+    private javax.swing.JLabel withdrawLabel;
     // End of variables declaration//GEN-END:variables
 }
