@@ -1,2 +1,3 @@
 /ATM/dist/
 *.class
+/atm-mvn/atm/target/
