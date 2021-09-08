@@ -13,7 +13,7 @@ public class ATMServices {
     
     //verify the card status
     //if card is active return true else if blocked return false
-    public int verifyCard(String searchCardHash, String Card){
+    public int verifyCard(String searchCardHash){
         String query = "select card_status from debit_card where card_num =  "+searchCardHash;
 //        if(rs.isempty()){
 //            return 1;
