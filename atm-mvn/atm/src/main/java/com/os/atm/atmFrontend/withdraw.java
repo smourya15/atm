@@ -3,14 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package atmFrontend;
+package com.os.atm.atmFrontend;
 
-import encapsulateClasses.*;
+import com.os.atm.encapsulateClasses.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.text.PlainDocument;
 
-import encapsulateClasses.*;
 import javax.swing.JOptionPane;
 
 /**
