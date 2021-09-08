@@ -58,6 +58,9 @@ public class withdraw extends javax.swing.JFrame {
             }
         });
         withdrawAmountField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                withdrawAmountFieldKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 withdrawAmountFieldKeyTyped(evt);
             }
@@ -159,16 +162,16 @@ public class withdraw extends javax.swing.JFrame {
         if(!((Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE) && withdrawAmountField.getText().length()<5)){
              evt.consume();
         }
-        
+    }//GEN-LAST:event_withdrawAmountFieldKeyTyped
+
+    private void withdrawAmountFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_withdrawAmountFieldKeyReleased
         if (withdrawAmountField.getText().isEmpty()){
             confirmButton.setEnabled(Boolean.FALSE);
         }
         else{
             confirmButton.setEnabled(Boolean.TRUE);
         }
-        
-         
-    }//GEN-LAST:event_withdrawAmountFieldKeyTyped
+    }//GEN-LAST:event_withdrawAmountFieldKeyReleased
 
     /**
      * @param args the command line arguments
