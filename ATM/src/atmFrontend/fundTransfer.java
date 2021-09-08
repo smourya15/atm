@@ -22,6 +22,7 @@ public class fundTransfer extends javax.swing.JFrame {
         ReBenAccNoTextField.setText(null);
         trfAmt.setText(null);
         ErrorMessage.setVisible(false);
+        trfConfirm.setEnabled(false);
     }
 
     /**
@@ -220,6 +221,29 @@ public class fundTransfer extends javax.swing.JFrame {
         if(!((Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE) && BenAccNoTextField.getText().length()<16)){
              evt.consume();
         }
+        
+//        if(BenAccNoTextField.getText().isEmpty()){
+//            System.out.println("length"+BenAccNoTextField.getText().length());
+//            trfConfirm.setEnabled(Boolean.FALSE);
+//        }
+//        else if(BenAccNoTextField.getText().length()<15){
+//            System.out.println("length"+BenAccNoTextField.getText().length());
+//            trfConfirm.setEnabled(Boolean.FALSE);
+//        }
+System.out.println(ReBenAccNoTextField.getText().length()==15);
+        System.out.println(BenAccNoTextField.getText().length());
+System.out.println(BenAccNoTextField.getText().length()==15 && ReBenAccNoTextField.getText().length()==15);
+        if(BenAccNoTextField.getText().length()==15 && ReBenAccNoTextField.getText().length()==15){
+             System.out.println("length"+BenAccNoTextField.getText().length());
+             
+             if(!trfAmt.getText().isEmpty()){
+                  System.out.println("works");
+            trfConfirm.setEnabled(Boolean.TRUE);
+            if(c == KeyEvent.VK_BACK_SPACE){
+                trfConfirm.setEnabled(Boolean.FALSE);
+            }
+        }
+        }
     }//GEN-LAST:event_BenAccNoTextFieldKeyTyped
 
     private void ReBenAccNoTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ReBenAccNoTextFieldKeyTyped
@@ -229,6 +253,31 @@ public class fundTransfer extends javax.swing.JFrame {
         if(!((Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE) && ReBenAccNoTextField.getText().length()<16)){
              evt.consume();
         }
+        
+//       if(ReBenAccNoTextField.getText().isEmpty()){
+//            System.out.println("length"+ReBenAccNoTextField.getText().length());
+//            trfConfirm.setEnabled(Boolean.FALSE);
+//        }
+//        else if(ReBenAccNoTextField.getText().length()<15){
+//            System.out.println("length"+ReBenAccNoTextField.getText().length());
+//            trfConfirm.setEnabled(Boolean.FALSE);
+//        }
+//        else if(ReBenAccNoTextField.getText().length()==15){
+//             System.out.println("length"+ReBenAccNoTextField.getText().length());
+//            trfConfirm.setEnabled(Boolean.TRUE);
+//            if(c == KeyEvent.VK_BACK_SPACE){
+//                trfConfirm.setEnabled(Boolean.FALSE);
+//                
+//            }
+//        }
+//System.out.println(BenAccNoTextField.getText().length()==15 && ReBenAccNoTextField.getText().length()==15 && !trfAmt.getText().isEmpty());
+        if(BenAccNoTextField.getText().length()==15 && ReBenAccNoTextField.getText().length()==15 && !trfAmt.getText().isEmpty()){
+                   // System.out.println("length"+BenAccNoTextField.getText().length());
+                   trfConfirm.setEnabled(Boolean.TRUE);
+                   if(c == KeyEvent.VK_BACK_SPACE){
+                       trfConfirm.setEnabled(Boolean.FALSE);
+                   }
+        }  
     }//GEN-LAST:event_ReBenAccNoTextFieldKeyTyped
 
     private void trfAmtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_trfAmtKeyTyped
@@ -238,6 +287,14 @@ public class fundTransfer extends javax.swing.JFrame {
         if(!(Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE)){
              evt.consume();
         }
+       // System.out.println(BenAccNoTextField.getText().length()==15 && ReBenAccNoTextField.getText().length()==15 && !trfAmt.getText().isEmpty());
+        if(BenAccNoTextField.getText().length()==15 && ReBenAccNoTextField.getText().length()==15 && !trfAmt.getText().isEmpty()){
+                    //System.out.println("length"+BenAccNoTextField.getText().length());
+                   trfConfirm.setEnabled(Boolean.TRUE);
+//                   if(c == KeyEvent.VK_BACK_SPACE){
+//                       trfConfirm.setEnabled(Boolean.FALSE);
+//                   }
+        }  
 
     }//GEN-LAST:event_trfAmtKeyTyped
 
