@@ -4,8 +4,13 @@
  * and open the template in the editor.
  */
 package atmFrontend;
-
+import encapsulateClasses.Account;
+import encapsulateClasses.ATMServices;
+import encapsulateClasses.DebitCardServices;
+import encapsulateClasses.PBES_Encryption;
 import java.awt.event.KeyEvent;
+import java.time.LocalDate;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,10 +21,26 @@ public class pin extends javax.swing.JFrame {
     /**
      * Creates new form pin
      */
+//    private DebitCard dbCard;
+    private final String encryptCard;
+    private int attempts =3;
     public pin() {
         initComponents();
+        this.encryptCard= "test";
+        iniComponents();
     }
-
+    public pin(String maskedCardNumber, String cardNumber){
+        
+        initComponents();
+        cardNumberLabel.setText(maskedCardNumber);
+        iniComponents();
+//        DebitCard db = new DebitCard(, cardNumber, cardNumber, LocalDate.MIN, rootPaneCheckingEnabled)
+        this.encryptCard = cardNumber;
+    }
+    private void iniComponents(){
+        verifyPin.setText(null);
+        verifyPinNum_Btn.setEnabled(Boolean.FALSE);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,22 +51,22 @@ public class pin extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        verifyPinNum_Btn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         verifyPin = new javax.swing.JPasswordField();
-        jLabel3 = new javax.swing.JLabel();
+        cardNumberLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel1.setText("Enter the PIN");
 
-        jButton1.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        jButton1.setText("VERIFY");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        verifyPinNum_Btn.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        verifyPinNum_Btn.setText("VERIFY");
+        verifyPinNum_Btn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        verifyPinNum_Btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                verifyPinNum_BtnActionPerformed(evt);
             }
         });
 
@@ -53,14 +74,19 @@ public class pin extends javax.swing.JFrame {
         jLabel2.setText("Your Account Number is");
 
         verifyPin.setText("jPasswordField1");
+        verifyPin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verifyPinActionPerformed(evt);
+            }
+        });
         verifyPin.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 verifyPinKeyTyped(evt);
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        jLabel3.setText("XXXXXXX1234");
+        cardNumberLabel.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        cardNumberLabel.setText("XXXXXXX1234");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -76,11 +102,11 @@ public class pin extends javax.swing.JFrame {
                         .addGap(47, 47, 47)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(verifyPin, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)))
+                            .addComponent(cardNumberLabel)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(208, 208, 208)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(53, Short.MAX_VALUE))
+                        .addComponent(verifyPinNum_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,25 +114,47 @@ public class pin extends javax.swing.JFrame {
                 .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                    .addComponent(cardNumberLabel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(verifyPin, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(verifyPinNum_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(50, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void verifyPinNum_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verifyPinNum_BtnActionPerformed
         // TODO add your handling code here:
-        Services objServices = new Services();
-        objServices.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+        
+        PBES_Encryption pbes = new PBES_Encryption(getEncryptCard(), verifyPin.getText());
+        DebitCardServices db=new DebitCardServices();
+        ATMServices objATMServices = new ATMServices();
+        
+        Boolean pinValid = objATMServices.VerifyPin(pbes.getEncrypt(), getEncryptCard());
+        if(attempts >1 && (!pinValid)){
+            attempts -=1;
+            JOptionPane.showMessageDialog(this, "Inccorrect Pin\nAttempts Left "+attempts);
+            verifyPin.setText("");
+            
+        }
+        else if(pinValid){
+            
+            Services objServices = new Services();
+            objServices.setVisible(true);
+            dispose();
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Card Blocked Contact your Bank");
+            welcomPage welcomPage = new welcomPage();
+            welcomPage.setVisible(true);
+            dispose();
+        }
+        
+    }//GEN-LAST:event_verifyPinNum_BtnActionPerformed
 
     private void verifyPinKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verifyPinKeyTyped
         // TODO add your handling code here:
@@ -114,7 +162,27 @@ public class pin extends javax.swing.JFrame {
         if(!((Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE) && verifyPin.getText().length()<4)){
              evt.consume();
         }
+        if(verifyPin.getText().isEmpty()){
+//            System.out.println("length"+verifyPin.getText().length());
+            verifyPinNum_Btn.setEnabled(Boolean.FALSE);
+        }
+        else if(verifyPin.getText().length()<3){
+//            System.out.println("length"+verifyPin.getText().length());
+            verifyPinNum_Btn.setEnabled(Boolean.FALSE);
+        }
+        else if(verifyPin.getText().length()==3){
+//             System.out.println("length"+verifyPin.getText().length());
+            verifyPinNum_Btn.setEnabled(Boolean.TRUE);
+            if(c == KeyEvent.VK_BACK_SPACE){
+                verifyPinNum_Btn.setEnabled(Boolean.FALSE);
+            }
+//
+        }
     }//GEN-LAST:event_verifyPinKeyTyped
+
+    private void verifyPinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verifyPinActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_verifyPinActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,10 +220,17 @@ public class pin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel cardNumberLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPasswordField verifyPin;
+    private javax.swing.JButton verifyPinNum_Btn;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the encryptCard
+     */
+    public String getEncryptCard() {
+        return encryptCard;
+    }
 }

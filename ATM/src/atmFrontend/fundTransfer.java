@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package atmFrontend;
-import encapsulateClasses.*;
+import encapsulateClasses.AccountServices;
 import java.awt.event.KeyEvent;
 //import java.u
 /**
@@ -175,8 +175,9 @@ public class fundTransfer extends javax.swing.JFrame {
         
         String benAcc = BenAccNoTextField.getText();
         String reBenAcc=ReBenAccNoTextField.getText();
-        String transferAmt = trfAmt.getText();
-        if(benAcc.isEmpty() || reBenAcc.isEmpty() || transferAmt.isEmpty())
+
+        
+        if(benAcc.isEmpty() || reBenAcc.isEmpty() || trfAmt.getText().isEmpty())
         {
             ErrorMessage.setText("Please Enter in the empty fields");
             ErrorMessage.setVisible(true);
@@ -184,9 +185,14 @@ public class fundTransfer extends javax.swing.JFrame {
         }
         
         if(benAcc.equals(reBenAcc))
-        { ErrorMessage.setText("Error");
-        ErrorMessage.setVisible(false);
-             success objsuccess = new success();
+        { 
+            ErrorMessage.setText("Error");
+            ErrorMessage.setVisible(false);
+            long transferAmt = Long.parseLong(trfAmt.getText());
+            AccountServices a = new AccountServices();
+        a.transferFunds(benAcc, transferAmt);
+        success objsuccess = new success("Funds Transfered");
+        
         objsuccess.setVisible(true);
         dispose();
         } else {
