@@ -240,11 +240,13 @@ public class fundTransfer extends javax.swing.JFrame {
              if(!trfAmt.getText().isEmpty()){
                   System.out.println("works");
             trfConfirm.setEnabled(Boolean.TRUE);
-            if(c == KeyEvent.VK_BACK_SPACE){
+            
+        }
+        }
+        
+        if(c == KeyEvent.VK_BACK_SPACE){
                 trfConfirm.setEnabled(Boolean.FALSE);
             }
-        }
-        }
     }//GEN-LAST:event_BenAccNoTextFieldKeyTyped
 
     private void ReBenAccNoTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ReBenAccNoTextFieldKeyTyped
@@ -284,6 +286,10 @@ public class fundTransfer extends javax.swing.JFrame {
             }
         }
         }
+         
+         if(c == KeyEvent.VK_BACK_SPACE){
+                trfConfirm.setEnabled(Boolean.FALSE);
+            }
     }//GEN-LAST:event_ReBenAccNoTextFieldKeyTyped
 
     private void trfAmtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_trfAmtKeyTyped
@@ -305,7 +311,9 @@ public class fundTransfer extends javax.swing.JFrame {
             }
         }
         }
-
+if(trfAmt.getText().isEmpty()){
+                trfConfirm.setEnabled(Boolean.FALSE);
+            }
     }//GEN-LAST:event_trfAmtKeyTyped
 
     /**
