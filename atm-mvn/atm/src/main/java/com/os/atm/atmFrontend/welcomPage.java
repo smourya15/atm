@@ -3,21 +3,37 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package atmFrontend;
+package com.os.atm.atmFrontend;
+
+import com.os.atm.MessageService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author smourya
  */
+@Component
 public class welcomPage extends javax.swing.JFrame {
+
+    @Autowired
+    private MessageService messageService;
+
+    @Autowired
+    private ApplicationContext context;
+
 
     /**
      * Creates new form welcomPage
      */
-    public welcomPage() {
-        initComponents();
-    }
 
+
+
+    public void createAndShow(){
+        initComponents();
+        setVisible(true);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,13 +52,13 @@ public class welcomPage extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("WELCOME TO ABC BANK,");
+        jLabel1.setText(messageService.getMsg("welcomePage.title"));
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jLabel2.setText("Please Click Continue");
+        jLabel2.setText(messageService.getMsg("welcomePage.click.continue"));
 
         jButton1.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        jButton1.setText("CONTINUE");
+        jButton1.setText(messageService.getMsg("welcomePage.continue"));
         jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,7 +100,8 @@ public class welcomPage extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        CardNumber aNum= new CardNumber();
+        CardNumber aNum= context.getBean(CardNumber.class);//new CardNumber();
+        aNum.initialize();
         aNum.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -117,11 +134,11 @@ public class welcomPage extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+       /* java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new welcomPage().setVisible(true);
             }
-        });
+        }); */
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,2 +1,8 @@
 /ATM/dist/
 *.class
+*.jar
+/atm-mvn/atm/target/
+/ATM/nbproject
+/ATM/build
+/atm-mvn/atm/.idea/
+/atm-mvn/atm/atm.iml

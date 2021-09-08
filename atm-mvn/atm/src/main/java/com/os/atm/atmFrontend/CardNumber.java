@@ -3,11 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package atmFrontend;
+package com.os.atm.atmFrontend;
 
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
-import encapsulateClasses.*;
+import com.os.atm.encapsulateClasses.*;
+import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,18 +20,15 @@ import java.util.List;
  *
  * @author smourya
  */
+@Component
+@Scope(value = BeanDefinition.SCOPE_PROTOTYPE)
 public class CardNumber extends javax.swing.JFrame {
 
-    /**
-     * Creates new form homepage
-     */
-    public CardNumber() {
+    public void initialize() {
         initComponents();
         verifyCard.setText(null);
 
         verifyCardNum_Btn.setEnabled(Boolean.FALSE);
-        
-
     }
 
     /**
@@ -48,6 +49,7 @@ public class CardNumber extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel1.setText("Enter the Card Number");
 
+        verifyCardNum_Btn.setBackground(new java.awt.Color(255, 255, 255));
         verifyCardNum_Btn.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         verifyCardNum_Btn.setText("VERIFY");
         verifyCardNum_Btn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -122,7 +124,7 @@ public class CardNumber extends javax.swing.JFrame {
             case 3:
                 JOptionPane.showMessageDialog(this, verifyCard.getText());
                 StringBuilder accNumber = new StringBuilder(verifyCard.getText().substring(0, 2)).append("XX-XXXX-XXXX-").append(verifyCard.getText().substring(12, 16));
-                Pin objPin = new Pin(accNumber.toString(), pb.getEncrypt());
+                pin objPin = new pin(accNumber.toString(), pb.getEncrypt());
                 objPin.setVisible(true);
                 dispose();
                 break;
