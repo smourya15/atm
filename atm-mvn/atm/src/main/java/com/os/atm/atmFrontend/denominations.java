@@ -5,7 +5,12 @@
  */
 package com.os.atm.atmFrontend;
 
+import java.sql.*;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -252,14 +257,37 @@ public class denominations extends javax.swing.JFrame {
     }//GEN-LAST:event_D2000ActionPerformed
 
     private void withdrawButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawButtonActionPerformed
-        // TODO add your handling code here:
+        
+        try {
+                // TODO add your handling code here:
+                int[] deno = new int[5];
+                int i =0;
+                String sqlQuery1 = "SELECT d50, d100, d500, d1000, d2000 FROM atm_machine WHERE machine_id = 1010000000";
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
+                
+//                Statement st= (Statement) con.createStatement();
+//                ResultSet rs= st.executeQuery(sqlQuery1);
+//                
+//                while(rs.next()){
+//                    deno[i]=Integer.parseInt(rs.getString(i));
+//                    i++;
+//                }
+//                JOptionPane.showMessageDialog(null, deno[0]+" "+deno[1]);
+//                success objSuccess = new success(amount);
+//                objSuccess.setVisible(true);
+//                dispose();
+                 System.out.println("Worked!!!");
+
+            } 
+            catch (ClassNotFoundException | SQLException ex) {
+                System.out.println("There is an error");
+            }
+   
         
         
         
         
-        success objSuccess = new success(amount);
-        objSuccess.setVisible(true);
-        dispose();
             
     }//GEN-LAST:event_withdrawButtonActionPerformed
 
