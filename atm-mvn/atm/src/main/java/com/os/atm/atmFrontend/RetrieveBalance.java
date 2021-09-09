@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 public class RetrieveBalance extends javax.swing.JFrame {
 
     /**
-     * Creates new form enquire
+     * Creates new form RetrieveBalance
      */
     public RetrieveBalance(String a, double b) {
         initComponents();

@@ -34,13 +34,6 @@ public class DepositAmount extends javax.swing.JFrame {
         d500Field.setVisible(d500);
         d1000Field.setVisible(d1000);
         d2000Field.setVisible(d2000);
-        
-      //eq50Label.setVisible(d50);
-      //eq100Label.setVisible(d100);
-     // eq500Label.setVisible(d500);
-     // eq1000Label.setVisible(d1000);
-      //eq2000Label.setVisible(d2000);
-        
     }
 
     /**

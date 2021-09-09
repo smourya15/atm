@@ -138,10 +138,8 @@ public class WelcomePage extends javax.swing.JFrame {
             public void run() {
                 new welcomPage().setVisible(true);
             }
-        //</editor-fold>
-
         /* Create and display the form */
-       /* java.awt.EventQueue.invokeLater(new Runnable() {
+        /* java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new WelcomePage().setVisible(true);
             }

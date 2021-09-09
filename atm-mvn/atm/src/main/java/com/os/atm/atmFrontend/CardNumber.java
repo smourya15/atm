@@ -163,27 +163,17 @@ public class CardNumber extends javax.swing.JFrame {
              evt.consume();
         }
         if(verifyCard.getText().isEmpty()){
-//            System.out.println("length"+verifyCard.getText().length());
             verifyCardNum_Btn.setEnabled(Boolean.FALSE);
         }
         else if(verifyCard.getText().length()<15){
-//            System.out.println("length"+verifyCard.getText().length());
             verifyCardNum_Btn.setEnabled(Boolean.FALSE);
         }
         else if(verifyCard.getText().length()==15){
-//             System.out.println("length"+verifyCard.getText().length());
-            verifyCardNum_Btn.setEnabled(Boolean.TRUE);
-            if(c == KeyEvent.VK_BACK_SPACE){
-                verifyCardNum_Btn.setEnabled(Boolean.FALSE);
-            }
-//
+                verifyCardNum_Btn.setEnabled(Boolean.TRUE);
+                if(c == KeyEvent.VK_BACK_SPACE){
+                    verifyCardNum_Btn.setEnabled(Boolean.FALSE);
+                }
         }
-        
-        
-//        else{
-//            verifyCardNum_Btn.setEnabled(Boolean.FALSE); 
-//        }
-        
     }//GEN-LAST:event_verifyCardKeyTyped
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed

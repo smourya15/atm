@@ -18,9 +18,9 @@ import javax.swing.JOptionPane;
  */
 public class Denominations extends javax.swing.JFrame {
      
-    private int selected_denomination, amount, no_notes;
+    private int selectedDenomination, amount, no_notes;
     /**
-     * Creates new form denominations
+     * Creates new form Denominations
      */
     public Denominations() {
         
@@ -33,17 +33,17 @@ public class Denominations extends javax.swing.JFrame {
         groupRadioButtons();
         withdrawButton.setEnabled(false);
         this.amount = amount;
-        headText.setText("Your Amount is Rs."+amount);
-        if(amount<2000 || amount%2000!=0){
+        headText.setText("Your Amount is Rs." + amount);
+        if(amount<2000 || amount%2000 != 0){
             D2000.setVisible(false);
         }
-        if(amount<1000 || amount%1000!=0){
+        if(amount<1000 || amount%1000 != 0){
             D1000.setVisible(false);
         }
-        if(amount<500 || amount%500!=0){
+        if(amount<500 || amount%500 != 0){
             D500.setVisible(false);
         }
-        if(amount<100 || amount%100!=0){
+        if(amount<100 || amount%100 != 0){
             D100.setVisible(false);
         }
     }
@@ -55,7 +55,6 @@ public class Denominations extends javax.swing.JFrame {
         buttonGroup.add(D500);
         buttonGroup.add(D1000);
         buttonGroup.add(D2000);
-//        D50.addActionListener(this);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -223,36 +222,36 @@ public class Denominations extends javax.swing.JFrame {
 
     private void D50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D50ActionPerformed
         // TODO add your handling code here:
-        no_notes = amount/50;
-        displayDenomination.setText(no_notes+" x 50 = "+amount);
+        no_notes = amount / 50;
+        displayDenomination.setText(no_notes + " x 50 = " + amount);
         withdrawButton.setEnabled(true);
     }//GEN-LAST:event_D50ActionPerformed
 
     private void D100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D100ActionPerformed
         // TODO add your handling code here:
-        no_notes = amount/100;
-        displayDenomination.setText(no_notes+" x 100 = "+amount);
+        no_notes = amount / 100;
+        displayDenomination.setText(no_notes + " x 100 = " + amount);
         withdrawButton.setEnabled(true);
     }//GEN-LAST:event_D100ActionPerformed
 
     private void D500ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D500ActionPerformed
         // TODO add your handling code here:
-        no_notes = amount/500;
-        displayDenomination.setText(no_notes+" x 500 = "+amount);
+        no_notes = amount / 500;
+        displayDenomination.setText(no_notes + " x 500 = " + amount);
         withdrawButton.setEnabled(true);
     }//GEN-LAST:event_D500ActionPerformed
 
     private void D1000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D1000ActionPerformed
         // TODO add your handling code here:
-        no_notes = amount/1000;
-        displayDenomination.setText(no_notes+" x 1000 = "+amount);
+        no_notes = amount / 1000;
+        displayDenomination.setText(no_notes + " x 1000 = " + amount);
         withdrawButton.setEnabled(true);
     }//GEN-LAST:event_D1000ActionPerformed
 
     private void D2000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D2000ActionPerformed
         // TODO add your handling code here:
-        no_notes = amount/2000;
-        displayDenomination.setText(no_notes+" x 2000 = "+amount);
+        no_notes = amount / 2000;
+        displayDenomination.setText(no_notes + " x 2000 = " + amount);
         withdrawButton.setEnabled(true);
     }//GEN-LAST:event_D2000ActionPerformed
 
@@ -261,10 +260,10 @@ public class Denominations extends javax.swing.JFrame {
         try {
                 // TODO add your handling code here:
                 int[] deno = new int[5];
-                int i =0;
+                int i = 0;
                 String sqlQuery1 = "SELECT d50, d100, d500, d1000, d2000 FROM atm_machine WHERE machine_id = 1010000000";
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
+                Connection con =(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
                 
 //                Statement st= (Statement) con.createStatement();
 //                ResultSet rs= st.executeQuery(sqlQuery1);
@@ -283,12 +282,6 @@ public class Denominations extends javax.swing.JFrame {
             catch (ClassNotFoundException | SQLException ex) {
                 System.out.println("There is an error");
             }
-   
-        
-        
-        
-        
-            
     }//GEN-LAST:event_withdrawButtonActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
