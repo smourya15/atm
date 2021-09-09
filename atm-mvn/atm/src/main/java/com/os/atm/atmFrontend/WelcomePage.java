@@ -28,8 +28,6 @@ public class WelcomePage extends javax.swing.JFrame {
      * Creates new form WelcomePage
      */
 
-
-
     public void createAndShow(){
         initComponents();
         setVisible(true);
@@ -99,7 +97,6 @@ public class WelcomePage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
         CardNumber objCardNumber= context.getBean(CardNumber.class);//new CardNumber();
         objCardNumber.initializeComponent();
         objCardNumber.setVisible(true);
@@ -138,10 +135,8 @@ public class WelcomePage extends javax.swing.JFrame {
             public void run() {
                 new welcomPage().setVisible(true);
             }
-        //</editor-fold>
-
         /* Create and display the form */
-       /* java.awt.EventQueue.invokeLater(new Runnable() {
+        /* java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new WelcomePage().setVisible(true);
             }

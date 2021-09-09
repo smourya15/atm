@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 public class RetrieveBalance extends javax.swing.JFrame {
 
     /**
-     * Creates new form enquire
+     * Creates new form RetrieveBalance
      */
     public RetrieveBalance(String a, double b) {
         initComponents();
@@ -37,11 +37,11 @@ public class RetrieveBalance extends javax.swing.JFrame {
 
         accnolabel = new javax.swing.JLabel();
         ballabel = new javax.swing.JLabel();
-        exitbutton = new javax.swing.JButton();
+        cancelButton = new javax.swing.JButton();
         bal = new javax.swing.JLabel();
-        printbutton = new javax.swing.JButton();
+        printButton = new javax.swing.JButton();
         accno = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        timerLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,26 +51,26 @@ public class RetrieveBalance extends javax.swing.JFrame {
         ballabel.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         ballabel.setText("Balance:");
 
-        exitbutton.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        exitbutton.setText("EXIT");
-        exitbutton.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
-        exitbutton.addActionListener(new java.awt.event.ActionListener() {
+        cancelButton.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        cancelButton.setText("CANCEL");
+        cancelButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitbuttonActionPerformed(evt);
+                cancelButtonActionPerformed(evt);
             }
         });
 
         bal.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         bal.setText("00987654321");
 
-        printbutton.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        printbutton.setText("PRINT");
-        printbutton.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        printButton.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        printButton.setText("PRINT");
+        printButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         accno.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         accno.setText("00987654321");
 
-        jLabel1.setText("Remaining Time: 00.00");
+        timerLabel.setText("Remaining Time: 00.00");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,13 +88,13 @@ public class RetrieveBalance extends javax.swing.JFrame {
                             .addComponent(bal)
                             .addComponent(accno)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(exitbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel1)))
+                        .addComponent(timerLabel)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(printbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(printButton, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(140, 140, 140))
         );
         layout.setVerticalGroup(
@@ -110,21 +110,23 @@ public class RetrieveBalance extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(ballabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(2, 2, 2)))
-                .addComponent(printbutton, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                .addComponent(printButton, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(exitbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(timerLabel))
                 .addGap(34, 34, 34))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void exitbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitbuttonActionPerformed
-        WelcomePage objwelcomePage = new WelcomePage();
-        objwelcomePage.setVisible(true);
-    }//GEN-LAST:event_exitbuttonActionPerformed
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        WelcomePage objPage = new WelcomePage();
+        objPage.createAndShow();
+        objPage.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_cancelButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,8 +173,8 @@ public class RetrieveBalance extends javax.swing.JFrame {
     private javax.swing.JLabel accnolabel;
     private javax.swing.JLabel bal;
     private javax.swing.JLabel ballabel;
-    private javax.swing.JButton exitbutton;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton printbutton;
+    private javax.swing.JButton cancelButton;
+    private javax.swing.JButton printButton;
+    private javax.swing.JLabel timerLabel;
     // End of variables declaration//GEN-END:variables
 }

@@ -28,7 +28,6 @@ public class PinVerification extends javax.swing.JFrame {
     /**
      * Creates new form PinVerification
      */
-//    private DebitCard dbCard;
     private String encryptCard;
     private int attempts =3;
     public PinVerification() {
@@ -36,14 +35,6 @@ public class PinVerification extends javax.swing.JFrame {
         this.encryptCard= "test";
         iniComponents();
     }
-//    public PinVerification(String maskedCardNumber, String cardNumberHash){
-//        
-//        initComponents();
-//        cardNumberLabel.setText(maskedCardNumber);
-//        iniComponents();
-////        DebitCard db = new DebitCard(, cardNumber, cardNumber, LocalDate.MIN, rootPaneCheckingEnabled)
-//        this.encryptCard = cardNumberHash;
-//    }
     private void iniComponents(){
         verifyPin.setText(null);
         verifyPinNum_Btn.setEnabled(Boolean.FALSE);
@@ -52,7 +43,6 @@ public class PinVerification extends javax.swing.JFrame {
         initComponents();
         cardNumberLabel.setText(maskedCardNumber);
         iniComponents();
-//        DebitCard db = new DebitCard(, cardNumber, cardNumber, LocalDate.MIN, rootPaneCheckingEnabled)
         this.encryptCard = cardNumberHash;
     }
     /**
@@ -155,15 +145,12 @@ public class PinVerification extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void verifyPinNum_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verifyPinNum_BtnActionPerformed
-        // TODO add your handling code here:
-        
-//        PBES_Encryption pbes = new PBES_Encryption(getEncryptCard(), verifyPin.getText());
         MD5Hashing md = new MD5Hashing(verifyPin.getText());
         DebitCardServices db=new DebitCardServices();
         ATMServices objATMServices = new ATMServices();
         Boolean pinValid = objATMServices.VerifyPin(md.getHashText(), getEncryptCard());
-        if(attempts >1 && (!pinValid)){
-            attempts -=1;
+        if(attempts > 1 && (!pinValid)){
+            attempts -= 1;
             JOptionPane.showMessageDialog(this, "Inccorrect Pin\nAttempts Left "+attempts);
             verifyPin.setText("");
             
@@ -184,21 +171,17 @@ public class PinVerification extends javax.swing.JFrame {
     }//GEN-LAST:event_verifyPinNum_BtnActionPerformed
 
     private void verifyPinKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verifyPinKeyTyped
-        // TODO add your handling code here:
         char c = evt.getKeyChar();
         if(!((Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE) && verifyPin.getText().length()<4)){
              evt.consume();
         }
         if(verifyPin.getText().isEmpty()){
-//            System.out.println("length"+verifyPin.getText().length());
             verifyPinNum_Btn.setEnabled(Boolean.FALSE);
         }
         else if(verifyPin.getText().length()<3){
-//            System.out.println("length"+verifyPin.getText().length());
             verifyPinNum_Btn.setEnabled(Boolean.FALSE);
         }
         else if(verifyPin.getText().length()==3){
-//             System.out.println("length"+verifyPin.getText().length());
             verifyPinNum_Btn.setEnabled(Boolean.TRUE);
             if(c == KeyEvent.VK_BACK_SPACE){
                 verifyPinNum_Btn.setEnabled(Boolean.FALSE);
@@ -212,7 +195,10 @@ public class PinVerification extends javax.swing.JFrame {
     }//GEN-LAST:event_verifyPinActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
-        // TODO add your handling code here:
+        WelcomePage objPage = new WelcomePage();
+        objPage.createAndShow();
+        objPage.setVisible(true);
+        dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     /**
@@ -240,9 +226,6 @@ public class PinVerification extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(PinVerification.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

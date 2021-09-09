@@ -15,11 +15,11 @@ public class DepositConfirm extends javax.swing.JFrame {
     /**
      * Creates new form depositConfirm
      */
-    private int D50;
-    private int D100;
-    private int D500;
-    private int D1000;
-    private int D2000;
+    private int d50;
+    private int d100;
+    private int d500;
+    private int d1000;
+    private int d2000;
     
     public DepositConfirm() {
        
@@ -27,50 +27,50 @@ public class DepositConfirm extends javax.swing.JFrame {
         initComponents();
     }
 
-    public DepositConfirm(int D50, int D100, int D500, int D1000, int D2000){
+    public DepositConfirm(int d50, int d100, int d500, int d1000, int d2000){
        
     initComponents();
-        this.D50 = D50;
-        if (D50==0)
+        this.d50 = d50;
+        if (d50 == 0)
             d50Pane.setVisible(false);
         else{
-            d50Notes.setText(String.valueOf(D50));
-            eq50Confirm.setText("=  Rs."+D50*50);
+            d50Notes.setText(String.valueOf(d50));
+            eq50Confirm.setText("=  Rs." + d50 * 50);
         }
         
-        this.D100 = D100;
-        if (D100==0)
+        this.d100 = d100;
+        if (d100 == 0)
             d100Pane.setVisible(false);
         else {
-            d100Notes.setText(String.valueOf(D100));
-            eq100Confirm.setText("=  Rs."+D100*100);
+            d100Notes.setText(String.valueOf(d100));
+            eq100Confirm.setText("=  Rs." + d100 * 100);
         }
         
-        this.D500 = D500;
-        if (D500==0)
+        this.d500 = d500;
+        if (d500 == 0)
             d500Pane.setVisible(false);
         else{
-            d500Notes.setText(String.valueOf(D500));
-            eq500Confirm.setText("=  Rs."+D500*500);
+            d500Notes.setText(String.valueOf(d500));
+            eq500Confirm.setText("=  Rs." + d500 * 500);
         }
         
-        this.D1000 = D1000;
-         if (D1000==0)
+        this.d1000 = d1000;
+         if (d1000 == 0)
             d1000Pane.setVisible(false);
          else{
-              d1000Notes.setText(String.valueOf(D1000));
-              eq1000Confirm.setText("=  Rs."+D1000*1000);
+              d1000Notes.setText(String.valueOf(d1000));
+              eq1000Confirm.setText("=  Rs." + d1000 * 1000);
         }
         
-        this.D2000 = D2000;
-        if (D2000==0)
+        this.d2000 = d2000;
+        if (d2000 == 0)
             d2000Pane.setVisible(false);
         else {
-               d2000Notes.setText(String.valueOf(D2000));
-               eq2000Confirm.setText("=  Rs."+D2000*2000);
+               d2000Notes.setText(String.valueOf(d2000));
+               eq2000Confirm.setText("=  Rs." + d2000 * 2000);
         }
         
-        String  total= String.valueOf(D50*50+D100*100+D500*500+D1000*1000+D2000*2000);
+        String  total = String.valueOf(d50 * 50 + d100 * 100 + d500 * 500 + d1000 * 1000 + d2000 * 2000);
         displaytotal.setText(total);
         
         
@@ -452,14 +452,14 @@ public class DepositConfirm extends javax.swing.JFrame {
     private void depositbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositbuttonActionPerformed
        
     	
-    	Success objsuccess = new Success(String.valueOf(D50*50+D100*100+D500*500+D1000*1000+D2000*2000));
+    	Success objsuccess = new Success(String.valueOf(d50 * 50 + d100 * 100 + d500 * 500 + d1000 * 1000 + d2000 * 2000));
         objsuccess.setVisible(true);
         dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_depositbuttonActionPerformed
 
     private void backtoselectdenominationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backtoselectdenominationActionPerformed
-        SelectDenominations deposit= new SelectDenominations();
+        SelectDenominations deposit = new SelectDenominations();
         deposit.setVisible(true);
         dispose();
         // TODO add your handling code here:
