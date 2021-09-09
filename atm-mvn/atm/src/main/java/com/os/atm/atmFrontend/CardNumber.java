@@ -171,8 +171,10 @@ public class CardNumber extends javax.swing.JFrame {
             case 3:
                 JOptionPane.showMessageDialog(this, verifyCard.getText());
                 String accNumber = verifyCard.getText().substring(0, 2) + "XX-XXXX-XXXX-" + verifyCard.getText().substring(12, 16);
-                PinVerification objPinVerification = context.getBean(PinVerification.class);
-                objPinVerification.initializeComponent(accNumber, md.getHashText());
+//                PinVerification objPinVerification = context.getBean(PinVerification.class);
+//                objPinVerification.initializeComponent(accNumber, md.getHashText());
+//                objPinVerification.setVisible(true);
+                PinVerification objPinVerification = new PinVerification();
                 objPinVerification.setVisible(true);
                 dispose();
                 break;

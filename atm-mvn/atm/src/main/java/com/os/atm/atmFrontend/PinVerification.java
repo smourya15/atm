@@ -49,6 +49,12 @@ public class PinVerification extends javax.swing.JFrame {
         }; 
         timer.schedule(tt, 30000);
     }
+   public PinVerification(String maskedCardNumber, String cardNumberHash){
+        initComponents();
+        cardNumberLabel.setText(maskedCardNumber);
+        iniComponents();
+        this.encryptCard = cardNumberHash;       
+   } 
     private void iniComponents(){
         verifyPin.setText(null);
         verifyPinNum_Btn.setEnabled(Boolean.FALSE);
@@ -170,9 +176,10 @@ public class PinVerification extends javax.swing.JFrame {
             
         }
         else if(pinValid){
-            
-            Services objServices = context.getBean(Services.class);
-            objServices.initializeComponents();
+            Services objServices = new Services();
+//            Services objServices = context.getBean(Services.class);
+//            objServices.initializeComponents();
+            objServices.setVisible(true);
             dispose();
         }
         else{

@@ -277,9 +277,9 @@ public class Denominations extends javax.swing.JFrame {
 
     private void withdrawButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawButtonActionPerformed
         
-        try {
+        try {   
                 int temp[] = new int[5];
-                int a;
+ 
 //                int i = 1;
                 String sqlQuery1 = "SELECT rs50, rs100, rs500, rs1000, rs2000 FROM `atm_machine` WHERE `machine_id` = 1010000000";
                 Class.forName("com.mysql.jdbc.Driver");
@@ -287,7 +287,7 @@ public class Denominations extends javax.swing.JFrame {
                 
                 pst= con.prepareStatement(sqlQuery1);
                 rs= pst.executeQuery();
-                String[] s = {"rs50", "rs100", "rs500", "rs1000", "rs2000"};
+                
                 while(rs.next()){
                    temp[0]=Integer.parseInt(rs.getString("rs50"));
                    temp[1]=Integer.parseInt(rs.getString("rs100"));
@@ -297,6 +297,27 @@ public class Denominations extends javax.swing.JFrame {
                 }
 
                 if(no_notes<=temp[selected]){
+                    String sqlQuery2="";
+                    String sqlQuery3="UPDATE atm_machine SET atm_balance = ((SELECT rs50 from atm_machine)*50)+((SELECT rs100 from atm_machine)*100)+((SELECT rs500 from atm_machine)*500)+((SELECT rs1000 from atm_machine)*1000)+((SELECT rs2000 from atm_machine)*2000);";
+                    String sqlQuery4="";
+                    
+                    Statement stmt = con.createStatement();
+                    if(selected == 0)
+                        sqlQuery2 = "UPDATE atm_machine SET rs50=(SELECT rs50 FROM atm_machine)-"+ no_notes;
+                    else if(selected == 1)
+                        sqlQuery2 = "UPDATE atm_machine SET rs100 = (SELECT rs100 FROM atm_machine) -"+ no_notes;
+                    else if(selected == 2)
+                        sqlQuery2 = "UPDATE atm_machine SET rs500 = (SELECT rs500 FROM atm_machine) -"+no_notes;
+                    else if(selected == 3)
+                        sqlQuery2 = "UPDATE atm_machine SET rs1000 = (SELECT rs1000 FROM atm_machine) -"+no_notes;
+                    else if(selected == 4)
+                        sqlQuery2 = "UPDATE atm_machine SET rs2000 = (SELECT rs2000 FROM atm_machine ) -"+no_notes ;
+                       
+                    stmt.executeUpdate(sqlQuery2);
+                    stmt.executeUpdate(sqlQuery3);
+                    
+                    
+                    
                     Success objSuccess = new Success(amount);
                     objSuccess.setVisible(true);
                     dispose();
@@ -307,7 +328,7 @@ public class Denominations extends javax.swing.JFrame {
 //                    zb.setVisible(true);
 //                    dispose();
                     }
-        }
+            }
             catch (ClassNotFoundException | SQLException ex) {
                 JOptionPane.showMessageDialog(null,ex.getMessage());
             }          
