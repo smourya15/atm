@@ -5,27 +5,30 @@
  */
 package com.os.atm.atmFrontend;
 
+import java.sql.*;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
-import org.springframework.stereotype.Component;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author smourya
  */
-@Component
-public class Denominations extends javax.swing.JFrame {
+public class denominations extends javax.swing.JFrame {
      
     private int selected_denomination, amount, no_notes;
     /**
      * Creates new form denominations
      */
-    public Denominations() {
+    public denominations() {
         
         initComponents();
         groupRadioButtons();
         withdrawButton.setEnabled(false);
     }
-    public Denominations(int amount){
+    public denominations(int amount){
         initComponents();
         groupRadioButtons();
         withdrawButton.setEnabled(false);
@@ -254,14 +257,37 @@ public class Denominations extends javax.swing.JFrame {
     }//GEN-LAST:event_D2000ActionPerformed
 
     private void withdrawButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawButtonActionPerformed
-        // TODO add your handling code here:
+        
+        try {
+                // TODO add your handling code here:
+                int[] deno = new int[5];
+                int i =0;
+                String sqlQuery1 = "SELECT d50, d100, d500, d1000, d2000 FROM atm_machine WHERE machine_id = 1010000000";
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
+                
+//                Statement st= (Statement) con.createStatement();
+//                ResultSet rs= st.executeQuery(sqlQuery1);
+//                
+//                while(rs.next()){
+//                    deno[i]=Integer.parseInt(rs.getString(i));
+//                    i++;
+//                }
+//                JOptionPane.showMessageDialog(null, deno[0]+" "+deno[1]);
+//                success objSuccess = new success(amount);
+//                objSuccess.setVisible(true);
+//                dispose();
+                 System.out.println("Worked!!!");
+
+            } 
+            catch (ClassNotFoundException | SQLException ex) {
+                System.out.println("There is an error");
+            }
+   
         
         
         
         
-        Success objSuccess = new Success(amount);
-        objSuccess.setVisible(true);
-        dispose();
             
     }//GEN-LAST:event_withdrawButtonActionPerformed
 
@@ -286,51 +312,20 @@ public class Denominations extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Denominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(denominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Denominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(denominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Denominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(denominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Denominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(denominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Denominations().setVisible(true);
+                new denominations().setVisible(true);
             }
         });
     }
