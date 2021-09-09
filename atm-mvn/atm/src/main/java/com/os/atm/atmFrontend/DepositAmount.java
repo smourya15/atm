@@ -97,7 +97,7 @@ public class DepositAmount extends javax.swing.JFrame {
 
         cancelButton.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         cancelButton.setForeground(new java.awt.Color(0, 86, 126));
-        cancelButton.setText("CANCEL");
+        cancelButton.setText("BACK");
         cancelButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -300,9 +300,9 @@ public class DepositAmount extends javax.swing.JFrame {
     }//GEN-LAST:event_d50FieldActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
-        WelcomePage objPage = new WelcomePage();
-        objPage.createAndShow();
-        objPage.setVisible(true);
+        SelectDenominations denomination = new SelectDenominations();
+        
+        denomination.setVisible(true);
         dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
