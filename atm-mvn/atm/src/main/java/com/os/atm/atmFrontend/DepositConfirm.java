@@ -6,6 +6,7 @@
 package com.os.atm.atmFrontend;
 
 import java.awt.event.KeyEvent;
+import java.sql.*;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.JOptionPane;
@@ -23,6 +24,7 @@ public class DepositConfirm extends javax.swing.JFrame {
     private int d500;
     private int d1000;
     private int d2000;
+    Boolean D50, D100, D500 ,D1000, D2000;
     
     public DepositConfirm() {
         initComponents();
@@ -42,43 +44,58 @@ public class DepositConfirm extends javax.swing.JFrame {
     public DepositConfirm(int d50, int d100, int d500, int d1000, int d2000){
         initComponents();
         this.d50 = d50;
-        if (d50 == 0)
+        if (d50 == 0){
             d50Pane.setVisible(false);
+            D50=false;
+        }
         else{
             d50Notes.setText(String.valueOf(d50));
             eq50Confirm.setText("=  Rs." + d50 * 50);
+            D50 = true;
         }
         
         this.d100 = d100;
-        if (d100 == 0)
+        if (d100 == 0){
             d100Pane.setVisible(false);
+            D100=false;
+        }    
         else {
             d100Notes.setText(String.valueOf(d100));
             eq100Confirm.setText("=  Rs." + d100 * 100);
+            D100=true;
         }
         
         this.d500 = d500;
-        if (d500 == 0)
+        if (d500 == 0){
             d500Pane.setVisible(false);
-        else{
+            D500=false;
+        }
+            else{
             d500Notes.setText(String.valueOf(d500));
             eq500Confirm.setText("=  Rs." + d500 * 500);
+            D500=true;
         }
         
         this.d1000 = d1000;
-         if (d1000 == 0)
+         if (d1000 == 0){
             d1000Pane.setVisible(false);
+            D1000=false;
+         }
          else{
               d1000Notes.setText(String.valueOf(d1000));
               eq1000Confirm.setText("=  Rs." + d1000 * 1000);
+              D1000=true;
         }
         
         this.d2000 = d2000;
-        if (d2000 == 0)
+        if (d2000 == 0){
             d2000Pane.setVisible(false);
+            D2000=false;
+        }
         else {
                d2000Notes.setText(String.valueOf(d2000));
                eq2000Confirm.setText("=  Rs." + d2000 * 2000);
+               D2000=true;
         }
         
         String  total = String.valueOf(d50 * 50 + d100 * 100 + d500 * 500 + d1000 * 1000 + d2000 * 2000);
@@ -465,7 +482,61 @@ public class DepositConfirm extends javax.swing.JFrame {
 
     private void depositbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositbuttonActionPerformed
        
-    	//Success success =new Success(String.valueOf(d50 * 50 + d100 * 100 + d500 * 500 + d1000 * 1000 + d2000 * 2000));
+
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
+                
+                
+                    String sqlQuery2="";
+                    String sqlQuery3="UPDATE atm_machine SET atm_balance = ((SELECT rs50 from atm_machine)*50)+((SELECT rs100 from atm_machine)*100)+((SELECT rs500 from atm_machine)*500)+((SELECT rs1000 from atm_machine)*1000)+((SELECT rs2000 from atm_machine)*2000);";
+                    String sqlQuery4="";
+                    
+                    Statement stmt = con.createStatement();
+                    if(D50){
+                        sqlQuery2 = "UPDATE atm_machine SET rs50=(SELECT rs50 FROM atm_machine)+" + d50;
+                        stmt.executeUpdate(sqlQuery2);
+                    }
+                    if(D100){
+                        sqlQuery2 = "UPDATE atm_machine SET rs100 = (SELECT rs100 FROM atm_machine) +"+ d100;
+                        stmt.executeUpdate(sqlQuery2);
+                    }
+                    if(D500){
+                        sqlQuery2 = "UPDATE atm_machine SET rs500 = (SELECT rs500 FROM atm_machine) +"+d500;
+                        stmt.executeUpdate(sqlQuery2);
+                    }
+                    if(D1000){
+                        sqlQuery2 = "UPDATE atm_machine SET rs1000 = (SELECT rs1000 FROM atm_machine) +"+d1000;
+                        stmt.executeUpdate(sqlQuery2);
+                    }
+                    if(D2000){
+                        sqlQuery2 = "UPDATE atm_machine SET rs2000 = (SELECT rs2000 FROM atm_machine ) +"+d2000 ;
+                        stmt.executeUpdate(sqlQuery2);
+                    }
+                       
+//                    stmt.executeUpdate(sqlQuery2);
+                    stmt.executeUpdate(sqlQuery3);
+                    
+                    Success objsuccess = new Success(String.valueOf(d50 * 50 + d100 * 100 + d500 * 500 + d1000 * 1000 + d2000 * 2000));
+                    objsuccess.setVisible(true);
+                    dispose();
+
+               
+//                    WelcomePage zb = new WelcomePage();
+//                    zb.setVisible(true);
+//                    dispose();
+                    
+            }
+            catch (ClassNotFoundException | SQLException ex) {
+                JOptionPane.showMessageDialog(null,ex.getMessage());
+            }
+    	
+    	;
+        // TODO add your handling code here:
+                                              
+
+
+        //Success success =new Success(String.valueOf(d50 * 50 + d100 * 100 + d500 * 500 + d1000 * 1000 + d2000 * 2000));
     	DepositCash deposit= new DepositCash(String.valueOf(d50 * 50 + d100 * 100 + d500 * 500 + d1000 * 1000 + d2000 * 2000));
         deposit.setVisible(true);
         dispose();
