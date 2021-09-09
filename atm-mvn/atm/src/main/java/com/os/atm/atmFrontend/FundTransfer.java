@@ -23,8 +23,8 @@ public class FundTransfer extends javax.swing.JFrame {
         benAccNoTextField.setText(null);
         reBenAccNoTextField.setText(null);
         trfAmt.setText(null);
-        errorMessage.setVisible(false);
-        trfConfirm.setEnabled(false);
+        errorMsgLabel.setVisible(false);
+        trfConfirmBtn.setEnabled(false);
     }
 
     /**
@@ -40,11 +40,11 @@ public class FundTransfer extends javax.swing.JFrame {
         benAccNoTextField = new javax.swing.JTextField();
         enterAmount = new javax.swing.JLabel();
         trfAmt = new javax.swing.JTextField();
-        trfConfirm = new javax.swing.JButton();
+        trfConfirmBtn = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         reBenAccNoTextField = new javax.swing.JTextField();
-        errorMessage = new javax.swing.JLabel();
-        trfcancel = new javax.swing.JButton();
+        errorMsgLabel = new javax.swing.JLabel();
+        trfCancelBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,12 +86,12 @@ public class FundTransfer extends javax.swing.JFrame {
             }
         });
 
-        trfConfirm.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        trfConfirm.setText("CONFIRM");
-        trfConfirm.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        trfConfirm.addActionListener(new java.awt.event.ActionListener() {
+        trfConfirmBtn.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        trfConfirmBtn.setText("CONFIRM");
+        trfConfirmBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        trfConfirmBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                trfConfirmActionPerformed(evt);
+                trfConfirmBtnActionPerformed(evt);
             }
         });
 
@@ -114,17 +114,17 @@ public class FundTransfer extends javax.swing.JFrame {
             }
         });
 
-        errorMessage.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        errorMessage.setForeground(new java.awt.Color(255, 51, 51));
-        errorMessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        errorMessage.setText("Error");
+        errorMsgLabel.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        errorMsgLabel.setForeground(new java.awt.Color(255, 51, 51));
+        errorMsgLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        errorMsgLabel.setText("Error");
 
-        trfcancel.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        trfcancel.setText("CANCEL");
-        trfcancel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        trfcancel.addActionListener(new java.awt.event.ActionListener() {
+        trfCancelBtn.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        trfCancelBtn.setText("CANCEL");
+        trfCancelBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        trfCancelBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                trfcancelActionPerformed(evt);
+                trfCancelBtnActionPerformed(evt);
             }
         });
 
@@ -154,11 +154,11 @@ public class FundTransfer extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(trfAmt, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(12, 12, 12))
-                        .addComponent(errorMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(errorMsgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(trfcancel, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(trfCancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(48, 48, 48)
-                        .addComponent(trfConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(trfConfirmBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(82, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -173,15 +173,15 @@ public class FundTransfer extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(reBenAccNoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(errorMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(errorMsgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(trfAmt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(enterAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(trfConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(trfcancel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(trfConfirmBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(trfCancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -192,7 +192,7 @@ public class FundTransfer extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_benAccNoTextFieldActionPerformed
 
-    private void trfConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trfConfirmActionPerformed
+    private void trfConfirmBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trfConfirmBtnActionPerformed
         // TODO add your handling code here:
         
         
@@ -203,15 +203,15 @@ public class FundTransfer extends javax.swing.JFrame {
         
         if(benAcc.isEmpty() || reBenAcc.isEmpty() || trfAmt.getText().isEmpty())
         {
-            errorMessage.setText("Please Enter in the empty fields");
-            errorMessage.setVisible(true);
+            errorMsgLabel.setText("Please Enter in the empty fields");
+            errorMsgLabel.setVisible(true);
             return ;
         }
         
         if(benAcc.equals(reBenAcc))
         { 
-            errorMessage.setText("Error");
-            errorMessage.setVisible(false);
+            errorMsgLabel.setText("Error");
+            errorMsgLabel.setVisible(false);
             int transferAmt = Integer.parseInt(trfAmt.getText());
             AccountServices a = new AccountServices();
             a.transferFunds(benAcc, transferAmt);
@@ -219,10 +219,10 @@ public class FundTransfer extends javax.swing.JFrame {
             objsuccess.setVisible(true);
             dispose();
         } else {
-                errorMessage.setText("<html>Account numbers do not match.<br/> Please check and enter again.</html>");
-                errorMessage.setVisible(true);
+                errorMsgLabel.setText("<html>Account numbers do not match.<br/> Please check and enter again.</html>");
+                errorMsgLabel.setVisible(true);
         }
-    }//GEN-LAST:event_trfConfirmActionPerformed
+    }//GEN-LAST:event_trfConfirmBtnActionPerformed
 
     private void trfAmtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trfAmtActionPerformed
         // TODO add your handling code here:
@@ -262,11 +262,11 @@ public class FundTransfer extends javax.swing.JFrame {
             System.out.println("length" + benAccNoTextField.getText().length());
             if(!trfAmt.getText().isEmpty()){
                 System.out.println("works");
-                trfConfirm.setEnabled(Boolean.TRUE);
+                trfConfirmBtn.setEnabled(Boolean.TRUE);
             }
         }
         if(c == KeyEvent.VK_BACK_SPACE){
-                trfConfirm.setEnabled(Boolean.FALSE);
+                trfConfirmBtn.setEnabled(Boolean.FALSE);
         }
     }//GEN-LAST:event_benAccNoTextFieldKeyReleased
 
@@ -276,15 +276,15 @@ public class FundTransfer extends javax.swing.JFrame {
             System.out.println("length" + benAccNoTextField.getText().length());
              
             if(!trfAmt.getText().isEmpty()){
-                trfConfirm.setEnabled(Boolean.TRUE);
+                trfConfirmBtn.setEnabled(Boolean.TRUE);
                 if(c == KeyEvent.VK_BACK_SPACE){
-                    trfConfirm.setEnabled(Boolean.FALSE);
+                    trfConfirmBtn.setEnabled(Boolean.FALSE);
                 }
             }
         }
          
         if(c == KeyEvent.VK_BACK_SPACE){
-            trfConfirm.setEnabled(Boolean.FALSE);
+            trfConfirmBtn.setEnabled(Boolean.FALSE);
         }
     }//GEN-LAST:event_reBenAccNoTextFieldKeyReleased
 
@@ -294,17 +294,20 @@ public class FundTransfer extends javax.swing.JFrame {
             System.out.println("length" + benAccNoTextField.getText().length());
              
             if(!trfAmt.getText().isEmpty()){
-                trfConfirm.setEnabled(Boolean.TRUE);
+                trfConfirmBtn.setEnabled(Boolean.TRUE);
             }
         }
         if(trfAmt.getText().isEmpty()){
-            trfConfirm.setEnabled(Boolean.FALSE);
+            trfConfirmBtn.setEnabled(Boolean.FALSE);
         }
     }//GEN-LAST:event_trfAmtKeyReleased
 
-    private void trfcancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trfcancelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_trfcancelActionPerformed
+    private void trfCancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trfCancelBtnActionPerformed
+        WelcomePage objPage = new WelcomePage();
+        objPage.createAndShow();
+        objPage.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_trfCancelBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -342,12 +345,12 @@ public class FundTransfer extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField benAccNoTextField;
     private javax.swing.JLabel enterAmount;
-    private javax.swing.JLabel errorMessage;
+    private javax.swing.JLabel errorMsgLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField reBenAccNoTextField;
     private javax.swing.JTextField trfAmt;
-    private javax.swing.JButton trfConfirm;
-    private javax.swing.JButton trfcancel;
+    private javax.swing.JButton trfCancelBtn;
+    private javax.swing.JButton trfConfirmBtn;
     // End of variables declaration//GEN-END:variables
 }

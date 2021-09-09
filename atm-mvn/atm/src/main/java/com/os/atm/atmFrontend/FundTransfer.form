@@ -51,12 +51,12 @@
                           <Component id="trfAmt" min="-2" pref="105" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="errorMessage" min="-2" pref="305" max="-2" attributes="0"/>
+                      <Component id="errorMsgLabel" min="-2" pref="305" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="trfcancel" min="-2" pref="140" max="-2" attributes="0"/>
+                      <Component id="trfCancelBtn" min="-2" pref="140" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                      <Component id="trfConfirm" min="-2" pref="155" max="-2" attributes="0"/>
+                      <Component id="trfConfirmBtn" min="-2" pref="155" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="82" max="32767" attributes="0"/>
@@ -77,7 +77,7 @@
                   <Component id="reBenAccNoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="errorMessage" min="-2" pref="44" max="-2" attributes="0"/>
+              <Component id="errorMsgLabel" min="-2" pref="44" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="trfAmt" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -85,8 +85,8 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="trfConfirm" alignment="3" min="-2" pref="78" max="-2" attributes="0"/>
-                  <Component id="trfcancel" alignment="3" min="-2" pref="78" max="-2" attributes="0"/>
+                  <Component id="trfConfirmBtn" alignment="3" min="-2" pref="78" max="-2" attributes="0"/>
+                  <Component id="trfCancelBtn" alignment="3" min="-2" pref="78" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="30" max="32767" attributes="0"/>
           </Group>
@@ -136,7 +136,7 @@
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="trfAmtKeyTyped"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="trfConfirm">
+    <Component class="javax.swing.JButton" name="trfConfirmBtn">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial Black" size="24" style="1"/>
@@ -149,7 +149,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="trfConfirmActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="trfConfirmBtnActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
@@ -173,7 +173,7 @@
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="reBenAccNoTextFieldKeyTyped"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="errorMessage">
+    <Component class="javax.swing.JLabel" name="errorMsgLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="18" style="0"/>
@@ -185,7 +185,7 @@
         <Property name="text" type="java.lang.String" value="Error"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="trfcancel">
+    <Component class="javax.swing.JButton" name="trfCancelBtn">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial Black" size="24" style="1"/>
@@ -198,7 +198,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="trfcancelActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="trfCancelBtnActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

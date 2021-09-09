@@ -149,8 +149,8 @@ public class PinVerification extends javax.swing.JFrame {
         DebitCardServices db=new DebitCardServices();
         ATMServices objATMServices = new ATMServices();
         Boolean pinValid = objATMServices.VerifyPin(md.getHashText(), getEncryptCard());
-        if(attempts >1 && (!pinValid)){
-            attempts -=1;
+        if(attempts > 1 && (!pinValid)){
+            attempts -= 1;
             JOptionPane.showMessageDialog(this, "Inccorrect Pin\nAttempts Left "+attempts);
             verifyPin.setText("");
             
@@ -195,7 +195,10 @@ public class PinVerification extends javax.swing.JFrame {
     }//GEN-LAST:event_verifyPinActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
-        // TODO add your handling code here:
+        WelcomePage objPage = new WelcomePage();
+        objPage.createAndShow();
+        objPage.setVisible(true);
+        dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     /**

@@ -177,7 +177,10 @@ public class CardNumber extends javax.swing.JFrame {
     }//GEN-LAST:event_verifyCardKeyTyped
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
-        // TODO add your handling code here:
+        WelcomePage objPage = new WelcomePage();
+        objPage.createAndShow();
+        objPage.setVisible(true);
+        dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     /**

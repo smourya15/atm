@@ -28,7 +28,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="homeButton" min="-2" pref="127" max="-2" attributes="0"/>
+                          <Component id="cancelButton" min="-2" pref="127" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="nextbutton" min="-2" pref="142" max="-2" attributes="0"/>
                       </Group>
@@ -99,7 +99,7 @@
               </Group>
               <EmptySpace min="-2" pref="149" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="homeButton" alignment="3" min="-2" pref="90" max="-2" attributes="0"/>
+                  <Component id="cancelButton" alignment="3" min="-2" pref="90" max="-2" attributes="0"/>
                   <Component id="nextbutton" alignment="3" min="-2" pref="90" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="43" max="32767" attributes="0"/>
@@ -116,7 +116,7 @@
         <Property name="text" type="java.lang.String" value="Rs. 50          X"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="homeButton">
+    <Component class="javax.swing.JButton" name="cancelButton">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial Black" size="24" style="1"/>
@@ -124,7 +124,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="7e" green="56" red="0" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="HOME"/>
+        <Property name="text" type="java.lang.String" value="CANCEL"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
             <BevelBorder/>
@@ -132,7 +132,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="homeButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="d50Field">
