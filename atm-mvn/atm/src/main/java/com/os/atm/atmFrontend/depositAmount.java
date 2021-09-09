@@ -313,7 +313,7 @@ public class DepositAmount extends javax.swing.JFrame {
             d2000 = Integer.parseInt(d2000Field.getText());
         }
         
-        depositConfirm deposit= new depositConfirm(d50,d100, d500, d1000, d2000);
+        DepositConfirm deposit= new DepositConfirm(d50,d100, d500, d1000, d2000);
          deposit.setVisible(true);
          dispose();
             // TODO add your handling code here:

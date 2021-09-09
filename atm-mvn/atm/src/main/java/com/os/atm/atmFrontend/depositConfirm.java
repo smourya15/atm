@@ -10,7 +10,7 @@ import java.awt.event.KeyEvent;
  *
  * @author mdesousa
  */
-public class depositConfirm extends javax.swing.JFrame {
+public class DepositConfirm extends javax.swing.JFrame {
 
     /**
      * Creates new form depositConfirm
@@ -21,13 +21,13 @@ public class depositConfirm extends javax.swing.JFrame {
     private int D1000;
     private int D2000;
     
-    public depositConfirm() {
+    public DepositConfirm() {
        
     
         initComponents();
     }
 
-    public depositConfirm(int D50, int D100, int D500, int D1000, int D2000){
+    public DepositConfirm(int D50, int D100, int D500, int D1000, int D2000){
        
     initComponents();
         this.D50 = D50;
@@ -482,20 +482,21 @@ public class depositConfirm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(depositConfirm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DepositConfirm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(depositConfirm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DepositConfirm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(depositConfirm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DepositConfirm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(depositConfirm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DepositConfirm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new depositConfirm().setVisible(true);
+                new DepositConfirm().setVisible(true);
             }
         });
     }

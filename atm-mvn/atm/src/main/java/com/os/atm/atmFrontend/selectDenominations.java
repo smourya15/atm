@@ -79,7 +79,7 @@ public class SelectDenominations extends javax.swing.JFrame {
 
         nextBtn.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         nextBtn.setText("NEXT");
-        nextBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        nextBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         nextBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nextBtnActionPerformed(evt);
@@ -88,7 +88,7 @@ public class SelectDenominations extends javax.swing.JFrame {
 
         homeBtn.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         homeBtn.setText("CANCEL");
-        homeBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        homeBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         homeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 homeBtnActionPerformed(evt);
@@ -202,6 +202,18 @@ public class SelectDenominations extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(SelectDenominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
