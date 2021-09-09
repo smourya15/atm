@@ -35,7 +35,12 @@
                     <groupId>org.jasypt</groupId>
                     <artifactId>jasypt</artifactId>
                     <version>1.9.3</version>
-</dependency>
+                </dependency>
+                <dependency>
+                    <groupId>mysql</groupId>
+                    <artifactId>mysql-connector-java</artifactId>
+                    <scope>runtime</scope>
+                </dependency>
                 
 	</dependencies>
 

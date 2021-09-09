@@ -18,7 +18,10 @@ import javax.swing.JOptionPane;
  */
 public class Denominations extends javax.swing.JFrame {
      
-    private int selected_denomination, amount, no_notes;
+    PreparedStatement pst = null;
+    ResultSet rs = null;
+    private int selected_denomination, amount, no_notes, selected;
+    
     /**
      * Creates new form denominations
      */
@@ -224,6 +227,7 @@ public class Denominations extends javax.swing.JFrame {
     private void D50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D50ActionPerformed
         // TODO add your handling code here:
         no_notes = amount/50;
+        selected = 0;
         displayDenomination.setText(no_notes+" x 50 = "+amount);
         withdrawButton.setEnabled(true);
     }//GEN-LAST:event_D50ActionPerformed
@@ -231,6 +235,7 @@ public class Denominations extends javax.swing.JFrame {
     private void D100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D100ActionPerformed
         // TODO add your handling code here:
         no_notes = amount/100;
+        selected = 1;
         displayDenomination.setText(no_notes+" x 100 = "+amount);
         withdrawButton.setEnabled(true);
     }//GEN-LAST:event_D100ActionPerformed
@@ -238,6 +243,7 @@ public class Denominations extends javax.swing.JFrame {
     private void D500ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D500ActionPerformed
         // TODO add your handling code here:
         no_notes = amount/500;
+        selected = 2;
         displayDenomination.setText(no_notes+" x 500 = "+amount);
         withdrawButton.setEnabled(true);
     }//GEN-LAST:event_D500ActionPerformed
@@ -245,6 +251,7 @@ public class Denominations extends javax.swing.JFrame {
     private void D1000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D1000ActionPerformed
         // TODO add your handling code here:
         no_notes = amount/1000;
+        selected = 3;
         displayDenomination.setText(no_notes+" x 1000 = "+amount);
         withdrawButton.setEnabled(true);
     }//GEN-LAST:event_D1000ActionPerformed
@@ -252,6 +259,7 @@ public class Denominations extends javax.swing.JFrame {
     private void D2000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D2000ActionPerformed
         // TODO add your handling code here:
         no_notes = amount/2000;
+        selected = 4;
         displayDenomination.setText(no_notes+" x 2000 = "+amount);
         withdrawButton.setEnabled(true);
     }//GEN-LAST:event_D2000ActionPerformed
@@ -259,35 +267,43 @@ public class Denominations extends javax.swing.JFrame {
     private void withdrawButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawButtonActionPerformed
         
         try {
-                // TODO add your handling code here:
-                int[] deno = new int[5];
-                int i =0;
-                String sqlQuery1 = "SELECT d50, d100, d500, d1000, d2000 FROM atm_machine WHERE machine_id = 1010000000";
+                int temp[] = new int[5];
+                int a;
+//                int i = 1;
+                String sqlQuery1 = "SELECT rs50, rs100, rs500, rs1000, rs2000 FROM `atm_machine` WHERE `machine_id` = 1010000000";
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
                 
-//                Statement st= (Statement) con.createStatement();
-//                ResultSet rs= st.executeQuery(sqlQuery1);
-//                
-//                while(rs.next()){
-//                    deno[i]=Integer.parseInt(rs.getString(i));
-//                    i++;
-//                }
-//                JOptionPane.showMessageDialog(null, deno[0]+" "+deno[1]);
-//                success objSuccess = new success(amount);
-//                objSuccess.setVisible(true);
-//                dispose();
-                 System.out.println("Worked!!!");
+                pst= con.prepareStatement(sqlQuery1);
+                rs= pst.executeQuery();
+                String[] s = {"rs50", "rs100", "rs500", "rs1000", "rs2000"};
+                while(rs.next()){
+                   temp[0]=Integer.parseInt(rs.getString("rs50"));
+                   temp[1]=Integer.parseInt(rs.getString("rs100"));
+                   temp[2]=Integer.parseInt(rs.getString("rs500"));
+                   temp[3]=Integer.parseInt(rs.getString("rs1000"));
+                   temp[4]=Integer.parseInt(rs.getString("rs2000"));
+                   
+//                    for(int j=0;j<5;j++)
+//                        System.out.println(temp[j]);
 
-            } 
+                }
+
+                if(no_notes<=temp[selected]){
+                    Success objSuccess = new Success(amount);
+                    objSuccess.setVisible(true);
+                    dispose();
+                }
+                else{
+                    JOptionPane.showMessageDialog(null,"The Selected Denomination Is Not Available");
+//                    WelcomePage zb = new WelcomePage();
+//                    zb.setVisible(true);
+//                    dispose();
+                    }
+        }
             catch (ClassNotFoundException | SQLException ex) {
-                System.out.println("There is an error");
-            }
-   
-        
-        
-        
-        
+                JOptionPane.showMessageDialog(null,ex.getMessage());
+            }          
             
     }//GEN-LAST:event_withdrawButtonActionPerformed
 
