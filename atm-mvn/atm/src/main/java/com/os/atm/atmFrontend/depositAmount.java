@@ -392,6 +392,7 @@ public class depositAmount extends javax.swing.JFrame {
 
  
     private void d50FieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_d50FieldKeyTyped
+        
         char c = evt.getKeyChar();
 
         if(!(c == KeyEvent.VK_BACK_SPACE || Character.isDigit(c))){
@@ -403,14 +404,16 @@ public class depositAmount extends javax.swing.JFrame {
     }//GEN-LAST:event_d50FieldKeyPressed
 
     private void d50FieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_d50FieldFocusLost
+        
         String s = d50Field.getText();
          if(s.isEmpty()){
             return;
         }
-        else{
-            long ans = Integer.parseInt(s) * 50;
-            eq50Label.setText("=  Rs. " + Long.toString(ans));
-        }
+         
+      //else{
+          //long ans = Integer.parseInt(s) * 50;
+           //q50Label.setText("=  Rs. " + Long.toString(ans));
+      //}
     }//GEN-LAST:event_d50FieldFocusLost
 
     private void d100FieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_d100FieldKeyTyped
@@ -491,6 +494,10 @@ public class depositAmount extends javax.swing.JFrame {
 
     private void verifyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verifyButtonActionPerformed
         
+         
+             long ans = Integer.parseInt(d50Field.getText())* 50;
+            eq50Label.setText("=  Rs. " + Long.toString(ans));
+         
     }//GEN-LAST:event_verifyButtonActionPerformed
 
     /**
