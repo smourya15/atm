@@ -5,16 +5,19 @@
  */
 package com.os.atm.atmFrontend;
 
+import org.springframework.stereotype.Component;
+
 /**
  *
  * @author smourya
  */
-public class verifyDeposit extends javax.swing.JFrame {
+@Component
+public class VerifyDeposit extends javax.swing.JFrame {
 
     /**
      * Creates new form verifyDeposit
      */
-    public verifyDeposit() {
+    public VerifyDeposit() {
         initComponents();
     }
 
@@ -84,7 +87,7 @@ public class verifyDeposit extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        success objsuccess = new success();
+        TransactionSuccess objsuccess = new TransactionSuccess();
         objsuccess.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -113,20 +116,21 @@ public class verifyDeposit extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(verifyDeposit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerifyDeposit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(verifyDeposit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerifyDeposit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(verifyDeposit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerifyDeposit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(verifyDeposit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerifyDeposit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new verifyDeposit().setVisible(true);
+                new VerifyDeposit().setVisible(true);
             }
         });
     }

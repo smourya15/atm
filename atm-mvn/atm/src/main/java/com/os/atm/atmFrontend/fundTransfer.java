@@ -6,17 +6,19 @@
 package com.os.atm.atmFrontend;
 import com.os.atm.encapsulateClasses.AccountServices;
 import java.awt.event.KeyEvent;
+import org.springframework.stereotype.Component;
 //import java.u
 /**
  *
  * @author smourya
  */
-public class fundTransfer extends javax.swing.JFrame {
+@Component
+public class FundTransfer extends javax.swing.JFrame {
 
     /**
      * Creates new form fundTransfer
      */
-    public fundTransfer() {
+    public FundTransfer() {
         initComponents();
         BenAccNoTextField.setText(null);
         ReBenAccNoTextField.setText(null);
@@ -42,6 +44,7 @@ public class fundTransfer extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         ReBenAccNoTextField = new javax.swing.JTextField();
         ErrorMessage = new javax.swing.JLabel();
+        trfcancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,15 +59,16 @@ public class fundTransfer extends javax.swing.JFrame {
             }
         });
         BenAccNoTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                BenAccNoTextFieldKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 BenAccNoTextFieldKeyTyped(evt);
             }
         });
 
         EnterAmount.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        EnterAmount.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         EnterAmount.setText("Enter Amount");
-        EnterAmount.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         trfAmt.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         trfAmt.setText("000000");
@@ -74,6 +78,9 @@ public class fundTransfer extends javax.swing.JFrame {
             }
         });
         trfAmt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                trfAmtKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 trfAmtKeyTyped(evt);
             }
@@ -81,8 +88,7 @@ public class fundTransfer extends javax.swing.JFrame {
 
         trfConfirm.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         trfConfirm.setText("CONFIRM");
-        trfConfirm.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        trfConfirm.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        trfConfirm.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
         trfConfirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 trfConfirmActionPerformed(evt);
@@ -100,6 +106,9 @@ public class fundTransfer extends javax.swing.JFrame {
             }
         });
         ReBenAccNoTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                ReBenAccNoTextFieldKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 ReBenAccNoTextFieldKeyTyped(evt);
             }
@@ -110,57 +119,70 @@ public class fundTransfer extends javax.swing.JFrame {
         ErrorMessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ErrorMessage.setText("Error");
 
+        trfcancel.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        trfcancel.setText("CANCEL");
+        trfcancel.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        trfcancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                trfcancelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(ErrorMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(51, 51, 51)
+                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel3))
-                                .addGap(15, 15, 15)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(BenAccNoTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
-                                    .addComponent(ReBenAccNoTextField)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(EnterAmount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(trfAmt, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(jLabel3)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ReBenAccNoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                    .addComponent(BenAccNoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                .addGap(23, 23, 23))
             .addGroup(layout.createSequentialGroup()
-                .addGap(164, 164, 164)
-                .addComponent(trfConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(72, 72, 72)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(EnterAmount)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(trfAmt, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(12, 12, 12))
+                        .addComponent(ErrorMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(trfcancel, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
+                        .addComponent(trfConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(44, 44, 44)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(BenAccNoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(ReBenAccNoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
+                .addGap(18, 18, 18)
                 .addComponent(ErrorMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(trfAmt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EnterAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(EnterAmount)
-                    .addComponent(trfAmt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(trfConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+                    .addComponent(trfConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(trfcancel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
@@ -190,10 +212,10 @@ public class fundTransfer extends javax.swing.JFrame {
         { 
             ErrorMessage.setText("Error");
             ErrorMessage.setVisible(false);
-            long transferAmt = Long.parseLong(trfAmt.getText());
+            int transferAmt = Integer.parseInt(trfAmt.getText());
             AccountServices a = new AccountServices();
         a.transferFunds(benAcc, transferAmt);
-        success objsuccess = new success("Funds Transfered");
+        TransactionSuccess objsuccess = new TransactionSuccess(transferAmt);
         
         objsuccess.setVisible(true);
         dispose();
@@ -219,9 +241,117 @@ public class fundTransfer extends javax.swing.JFrame {
     private void BenAccNoTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BenAccNoTextFieldKeyTyped
         char c = evt.getKeyChar();
         
+           System.out.println(c);
+          System.out.println(BenAccNoTextField.getText().length());
         if(!((Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE) && BenAccNoTextField.getText().length()<16)){
              evt.consume();
+             System.out.println("works");
         }
+//        
+////        if(BenAccNoTextField.getText().isEmpty()){
+////            System.out.println("length"+BenAccNoTextField.getText().length());
+////            trfConfirm.setEnabled(Boolean.FALSE);
+////        }
+////        else if(BenAccNoTextField.getText().length()<15){
+////            System.out.println("length"+BenAccNoTextField.getText().length());
+////            trfConfirm.setEnabled(Boolean.FALSE);
+////        }
+////System.out.println(ReBenAccNoTextField.getText().length());
+////        System.out.println(BenAccNoTextField.getText().length());
+////System.out.println(BenAccNoTextField.getText().length()==16 && ReBenAccNoTextField.getText().length()==16);
+//        if(BenAccNoTextField.getText().length()==15 && ReBenAccNoTextField.getText().length()==15){
+//             System.out.println("length"+BenAccNoTextField.getText().length());
+//             
+//             if(!trfAmt.getText().isEmpty()){
+//                  System.out.println("works");
+//            trfConfirm.setEnabled(Boolean.TRUE);
+//            
+//        }
+//        }
+//        
+//        if(c == KeyEvent.VK_BACK_SPACE){
+//                trfConfirm.setEnabled(Boolean.FALSE);
+//            }
+    }//GEN-LAST:event_BenAccNoTextFieldKeyTyped
+
+    private void ReBenAccNoTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ReBenAccNoTextFieldKeyTyped
+        // TODO add your handling code here:
+        
+         char c = evt.getKeyChar();
+        
+        if(!((Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE) && ReBenAccNoTextField.getText().length()<16)){
+             evt.consume();
+        }
+//        
+////       if(ReBenAccNoTextField.getText().isEmpty()){
+////            System.out.println("length"+ReBenAccNoTextField.getText().length());
+////            trfConfirm.setEnabled(Boolean.FALSE);
+////        }
+////        else if(ReBenAccNoTextField.getText().length()<15){
+////            System.out.println("length"+ReBenAccNoTextField.getText().length());
+////            trfConfirm.setEnabled(Boolean.FALSE);
+////        }
+////        else if(ReBenAccNoTextField.getText().length()==15){
+////             System.out.println("length"+ReBenAccNoTextField.getText().length());
+////            trfConfirm.setEnabled(Boolean.TRUE);
+////            if(c == KeyEvent.VK_BACK_SPACE){
+////                trfConfirm.setEnabled(Boolean.FALSE);
+////                
+////            }
+////        }
+////System.out.println(BenAccNoTextField.getText().length()==15 && ReBenAccNoTextField.getText().length()==15 && !trfAmt.getText().isEmpty());
+//         if(BenAccNoTextField.getText().length()==16 && ReBenAccNoTextField.getText().length()==16){
+//             System.out.println("length"+BenAccNoTextField.getText().length());
+//             
+//             if(!trfAmt.getText().isEmpty()){
+//                  System.out.println("works");
+//            trfConfirm.setEnabled(Boolean.TRUE);
+//            if(c == KeyEvent.VK_BACK_SPACE){
+//                trfConfirm.setEnabled(Boolean.FALSE);
+//            }
+//        }
+//        }
+//         
+//         if(c == KeyEvent.VK_BACK_SPACE){
+//                trfConfirm.setEnabled(Boolean.FALSE);
+//            }
+    }//GEN-LAST:event_ReBenAccNoTextFieldKeyTyped
+
+    private void trfAmtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_trfAmtKeyTyped
+        // TODO add your handling code here:
+         char c = evt.getKeyChar();
+        
+        if(!(Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE)){
+             evt.consume();
+        }
+//       // System.out.println(BenAccNoTextField.getText().length()==15 && ReBenAccNoTextField.getText().length()==15 && !trfAmt.getText().isEmpty());
+//       if(BenAccNoTextField.getText().length()==16 && ReBenAccNoTextField.getText().length()==16){
+//             System.out.println("length"+BenAccNoTextField.getText().length());
+//             
+//             if(!trfAmt.getText().isEmpty()){
+//                  System.out.println("works");
+//            trfConfirm.setEnabled(Boolean.TRUE);
+//            
+//        }
+//        }
+//if(trfAmt.getText().isEmpty()){
+//    System.out.println("Empty");
+//                trfConfirm.setEnabled(Boolean.FALSE);
+//            }
+    }//GEN-LAST:event_trfAmtKeyTyped
+
+    private void BenAccNoTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BenAccNoTextFieldKeyReleased
+        // TODO add your handling code here:
+        
+          char c = evt.getKeyChar();
+          
+//          System.out.println(c);
+//          System.out.println(BenAccNoTextField.getText().length());
+        
+//        if(!((Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE) && BenAccNoTextField.getText().length()<16)){
+//            System.out.println("true");
+//             evt.consume();
+//        }
         
 //        if(BenAccNoTextField.getText().isEmpty()){
 //            System.out.println("length"+BenAccNoTextField.getText().length());
@@ -234,7 +364,7 @@ public class fundTransfer extends javax.swing.JFrame {
 //System.out.println(ReBenAccNoTextField.getText().length());
 //        System.out.println(BenAccNoTextField.getText().length());
 //System.out.println(BenAccNoTextField.getText().length()==16 && ReBenAccNoTextField.getText().length()==16);
-        if(BenAccNoTextField.getText().length()==15 && ReBenAccNoTextField.getText().length()==15){
+        if(BenAccNoTextField.getText().length()==16 && ReBenAccNoTextField.getText().length()==16){
              System.out.println("length"+BenAccNoTextField.getText().length());
              
              if(!trfAmt.getText().isEmpty()){
@@ -247,17 +377,16 @@ public class fundTransfer extends javax.swing.JFrame {
         if(c == KeyEvent.VK_BACK_SPACE){
                 trfConfirm.setEnabled(Boolean.FALSE);
             }
-    }//GEN-LAST:event_BenAccNoTextFieldKeyTyped
+    }//GEN-LAST:event_BenAccNoTextFieldKeyReleased
 
-    private void ReBenAccNoTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ReBenAccNoTextFieldKeyTyped
+    private void ReBenAccNoTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ReBenAccNoTextFieldKeyReleased
         // TODO add your handling code here:
-        
-         char c = evt.getKeyChar();
-        
-        if(!((Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE) && ReBenAccNoTextField.getText().length()<16)){
-             evt.consume();
-        }
-        
+          char c = evt.getKeyChar();
+//        
+//        if(!((Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE) && ReBenAccNoTextField.getText().length()<16)){
+//             evt.consume();
+//        }
+//        
 //       if(ReBenAccNoTextField.getText().isEmpty()){
 //            System.out.println("length"+ReBenAccNoTextField.getText().length());
 //            trfConfirm.setEnabled(Boolean.FALSE);
@@ -290,15 +419,15 @@ public class fundTransfer extends javax.swing.JFrame {
          if(c == KeyEvent.VK_BACK_SPACE){
                 trfConfirm.setEnabled(Boolean.FALSE);
             }
-    }//GEN-LAST:event_ReBenAccNoTextFieldKeyTyped
+    }//GEN-LAST:event_ReBenAccNoTextFieldKeyReleased
 
-    private void trfAmtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_trfAmtKeyTyped
+    private void trfAmtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_trfAmtKeyReleased
         // TODO add your handling code here:
          char c = evt.getKeyChar();
-        
-        if(!(Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE)){
-             evt.consume();
-        }
+//        
+//        if(!(Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE)){
+//             evt.consume();
+//        }
        // System.out.println(BenAccNoTextField.getText().length()==15 && ReBenAccNoTextField.getText().length()==15 && !trfAmt.getText().isEmpty());
        if(BenAccNoTextField.getText().length()==16 && ReBenAccNoTextField.getText().length()==16){
              System.out.println("length"+BenAccNoTextField.getText().length());
@@ -310,9 +439,14 @@ public class fundTransfer extends javax.swing.JFrame {
         }
         }
 if(trfAmt.getText().isEmpty()){
+//    System.out.println("Empty");
                 trfConfirm.setEnabled(Boolean.FALSE);
             }
-    }//GEN-LAST:event_trfAmtKeyTyped
+    }//GEN-LAST:event_trfAmtKeyReleased
+
+    private void trfcancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trfcancelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_trfcancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -331,20 +465,21 @@ if(trfAmt.getText().isEmpty()){
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(fundTransfer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FundTransfer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(fundTransfer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FundTransfer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(fundTransfer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FundTransfer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(fundTransfer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FundTransfer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new fundTransfer().setVisible(true);
+                new FundTransfer().setVisible(true);
             }
         });
     }
@@ -358,5 +493,6 @@ if(trfAmt.getText().isEmpty()){
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField trfAmt;
     private javax.swing.JButton trfConfirm;
+    private javax.swing.JButton trfcancel;
     // End of variables declaration//GEN-END:variables
 }

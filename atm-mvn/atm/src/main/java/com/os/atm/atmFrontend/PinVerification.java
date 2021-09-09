@@ -5,41 +5,55 @@
  */
 package com.os.atm.atmFrontend;
 import com.os.atm.encapsulateClasses.Account;
-import encapsulateClasses.ATMServices;
+import com.os.atm.encapsulateClasses.ATMServices;
 import com.os.atm.encapsulateClasses.DebitCardServices;
+import com.os.atm.encapsulateClasses.MD5Hashing;
 import com.os.atm.encapsulateClasses.PBES_Encryption;
 import java.awt.event.KeyEvent;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author smourya
  */
-public class pin extends javax.swing.JFrame {
+@Component
+public class PinVerification extends javax.swing.JFrame {
 
+    @Autowired
+    private ApplicationContext context;
     /**
-     * Creates new form pin
+     * Creates new form PinVerification
      */
 //    private DebitCard dbCard;
-    private final String encryptCard;
+    private String encryptCard;
     private int attempts =3;
-    public pin() {
+    public PinVerification() {
         initComponents();
         this.encryptCard= "test";
         iniComponents();
     }
-    public pin(String maskedCardNumber, String cardNumber){
-        
+//    public PinVerification(String maskedCardNumber, String cardNumberHash){
+//        
+//        initComponents();
+//        cardNumberLabel.setText(maskedCardNumber);
+//        iniComponents();
+////        DebitCard db = new DebitCard(, cardNumber, cardNumber, LocalDate.MIN, rootPaneCheckingEnabled)
+//        this.encryptCard = cardNumberHash;
+//    }
+    private void iniComponents(){
+        verifyPin.setText(null);
+        verifyPinNum_Btn.setEnabled(Boolean.FALSE);
+    }
+    public  void initializeComponent(String maskedCardNumber, String cardNumberHash){
         initComponents();
         cardNumberLabel.setText(maskedCardNumber);
         iniComponents();
 //        DebitCard db = new DebitCard(, cardNumber, cardNumber, LocalDate.MIN, rootPaneCheckingEnabled)
-        this.encryptCard = cardNumber;
-    }
-    private void iniComponents(){
-        verifyPin.setText(null);
-        verifyPinNum_Btn.setEnabled(Boolean.FALSE);
+        this.encryptCard = cardNumberHash;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -55,6 +69,7 @@ public class pin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         verifyPin = new javax.swing.JPasswordField();
         cardNumberLabel = new javax.swing.JLabel();
+        cancelButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,7 +78,7 @@ public class pin extends javax.swing.JFrame {
 
         verifyPinNum_Btn.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         verifyPinNum_Btn.setText("VERIFY");
-        verifyPinNum_Btn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        verifyPinNum_Btn.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
         verifyPinNum_Btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 verifyPinNum_BtnActionPerformed(evt);
@@ -88,14 +103,24 @@ public class pin extends javax.swing.JFrame {
         cardNumberLabel.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         cardNumberLabel.setText("XXXXXXX1234");
 
+        cancelButton.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        cancelButton.setText("CANCEL");
+        cancelButton.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(verifyPinNum_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1))
@@ -103,9 +128,9 @@ public class pin extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(verifyPin, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cardNumberLabel)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(208, 208, 208)
-                        .addComponent(verifyPinNum_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(108, 108, 108)
+                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(149, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -119,9 +144,11 @@ public class pin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(verifyPin, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addComponent(verifyPinNum_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(verifyPinNum_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         pack();
@@ -130,11 +157,11 @@ public class pin extends javax.swing.JFrame {
     private void verifyPinNum_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verifyPinNum_BtnActionPerformed
         // TODO add your handling code here:
         
-        PBES_Encryption pbes = new PBES_Encryption(getEncryptCard(), verifyPin.getText());
+//        PBES_Encryption pbes = new PBES_Encryption(getEncryptCard(), verifyPin.getText());
+        MD5Hashing md = new MD5Hashing(verifyPin.getText());
         DebitCardServices db=new DebitCardServices();
         ATMServices objATMServices = new ATMServices();
-        
-        Boolean pinValid = objATMServices.VerifyPin(pbes.getEncrypt(), getEncryptCard());
+        Boolean pinValid = objATMServices.VerifyPin(md.getHashText(), getEncryptCard());
         if(attempts >1 && (!pinValid)){
             attempts -=1;
             JOptionPane.showMessageDialog(this, "Inccorrect Pin\nAttempts Left "+attempts);
@@ -143,14 +170,14 @@ public class pin extends javax.swing.JFrame {
         }
         else if(pinValid){
             
-            Services objServices = new Services();
-            objServices.setVisible(true);
+            Services objServices = context.getBean(Services.class);
+            objServices.initializeComponents();
             dispose();
         }
         else{
             JOptionPane.showMessageDialog(this, "Card Blocked Contact your Bank");
-            welcomPage welcomPage = new welcomPage();
-            welcomPage.setVisible(true);
+            WelcomePage objWelcomePage = context.getBean(WelcomePage.class);
+            objWelcomePage.createAndShow();
             dispose();
         }
         
@@ -184,6 +211,10 @@ public class pin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_verifyPinActionPerformed
 
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancelButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -201,25 +232,27 @@ public class pin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(pin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PinVerification.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(pin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PinVerification.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(pin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PinVerification.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(pin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PinVerification.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new pin().setVisible(true);
+                new PinVerification().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cancelButton;
     private javax.swing.JLabel cardNumberLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

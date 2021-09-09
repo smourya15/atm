@@ -6,20 +6,29 @@
 package com.os.atm.atmFrontend;
 
 import java.awt.event.ItemEvent;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author smourya
  */
-public class selectDenominations extends javax.swing.JFrame {
+@Component
+public class SelectDenominations extends javax.swing.JFrame {
 
+    @Autowired
+    private ApplicationContext context;
     /**
      * Creates new form depositCash
      */
-    public selectDenominations() {
+    public SelectDenominations() {
         initComponents();
     }
-
+    public void initializeComponents(){
+        initComponents();
+    }
+    
    /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -70,7 +79,7 @@ public class selectDenominations extends javax.swing.JFrame {
 
         nextBtn.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         nextBtn.setText("NEXT");
-        nextBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        nextBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
         nextBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nextBtnActionPerformed(evt);
@@ -78,8 +87,8 @@ public class selectDenominations extends javax.swing.JFrame {
         });
 
         homeBtn.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        homeBtn.setText("HOME");
-        homeBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        homeBtn.setText("CANCEL");
+        homeBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
         homeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 homeBtnActionPerformed(evt);
@@ -105,7 +114,7 @@ public class selectDenominations extends javax.swing.JFrame {
                                 .addComponent(D100_checkbox)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(D500_checkbox))
-                            .addComponent(homeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(homeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nextBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -152,7 +161,7 @@ public class selectDenominations extends javax.swing.JFrame {
         boolean d1000= D1000_checkbox.isSelected();
         boolean d2000 = D2000_checkbox.isSelected();
          
-        depositAmount objDeposit = new depositAmount(d50,d100,d500,d1000,d2000);
+        DepositAmount objDeposit = new DepositAmount(d50,d100,d500,d1000,d2000);
         objDeposit.setVisible(true);
         dispose();
         
@@ -185,21 +194,23 @@ public class selectDenominations extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(selectDenominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SelectDenominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(selectDenominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SelectDenominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(selectDenominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SelectDenominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(selectDenominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SelectDenominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new selectDenominations().setVisible(true);
+                new SelectDenominations().setVisible(true);
             }
         });
     }

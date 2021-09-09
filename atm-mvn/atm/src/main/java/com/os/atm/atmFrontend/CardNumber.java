@@ -8,13 +8,11 @@ package com.os.atm.atmFrontend;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import com.os.atm.encapsulateClasses.*;
-import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 
 /**
  *
@@ -24,13 +22,18 @@ import java.util.List;
 //@Scope(value = BeanDefinition.SCOPE_PROTOTYPE)
 public class CardNumber extends javax.swing.JFrame {
 
+    @Autowired
+    private ApplicationContext context;
     public void initialize() {
+        
+    }
+
+    public void initializeComponent(){
         initComponents();
         verifyCard.setText(null);
 
         verifyCardNum_Btn.setEnabled(Boolean.FALSE);
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,13 +46,13 @@ public class CardNumber extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         verifyCardNum_Btn = new javax.swing.JButton();
         verifyCard = new javax.swing.JPasswordField();
+        cancelButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel1.setText("Enter the Card Number");
 
-        verifyCardNum_Btn.setBackground(new java.awt.Color(255, 255, 255));
         verifyCardNum_Btn.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         verifyCardNum_Btn.setText("VERIFY");
         verifyCardNum_Btn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -72,20 +75,30 @@ public class CardNumber extends javax.swing.JFrame {
             }
         });
 
+        cancelButton.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        cancelButton.setText("CANCEL");
+        cancelButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(97, 97, 97)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(97, 97, 97)
+                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(verifyCardNum_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(31, 31, 31)
-                        .addComponent(verifyCard, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(255, 255, 255)
-                        .addComponent(verifyCardNum_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(verifyCard, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(127, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -95,9 +108,11 @@ public class CardNumber extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(verifyCard, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(72, 72, 72)
-                .addComponent(verifyCardNum_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addGap(75, 75, 75)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(verifyCardNum_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         pack();
@@ -106,16 +121,17 @@ public class CardNumber extends javax.swing.JFrame {
     private void verifyCardNum_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verifyCardNum_BtnActionPerformed
         // TODO add your handling code here:
         
-        final StringBuilder salt = new StringBuilder(verifyCard.getText());
-        PBES_Encryption pb = new PBES_Encryption(salt.toString(), verifyCard.getText());
-        System.out.println("card: "+verifyCard.getText()+"Encrypt:"+ pb.getEncrypt() + "Decrypt: "+pb.decrypt());
-        final int returnType = (new ATMServices()).verifyCard(pb.getEncrypt(), verifyCard.getText());
+        final StringBuilder cardNum = new StringBuilder(verifyCard.getText());
+        MD5Hashing md = new MD5Hashing(cardNum.toString());
+//        PBES_Encryption pb = new PBES_Encryption(salt.toString(), verifyCard.getText());
+        System.out.println("card: "+verifyCard.getText()+" Hash:"+ md.getHashText());
+        final int returnType = (new ATMServices()).verifyCard(md.getHashText());
         switch (returnType) {
             case 1:
                 JOptionPane.showMessageDialog(this, "Incorrect Account Number");
                 break;
 //        JOptionPane.showMessageDialog(this, verifyCard.getText());
-//        pin objPin = new pin();
+//        PinVerification objPin = new PinVerification();
 //        objPin.setVisible(true);
 //        dispose();
             case 2:
@@ -123,9 +139,10 @@ public class CardNumber extends javax.swing.JFrame {
                 break;
             case 3:
                 JOptionPane.showMessageDialog(this, verifyCard.getText());
-                StringBuilder accNumber = new StringBuilder(verifyCard.getText().substring(0, 2)).append("XX-XXXX-XXXX-").append(verifyCard.getText().substring(12, 16));
-                pin objPin = new pin(accNumber.toString(), pb.getEncrypt());
-                objPin.setVisible(true);
+                String accNumber = verifyCard.getText().substring(0, 2) + "XX-XXXX-XXXX-" + verifyCard.getText().substring(12, 16);
+                PinVerification objPinVerification = context.getBean(PinVerification.class);
+                objPinVerification.initializeComponent(accNumber, md.getHashText());
+                objPinVerification.setVisible(true);
                 dispose();
                 break;
         }
@@ -146,15 +163,15 @@ public class CardNumber extends javax.swing.JFrame {
              evt.consume();
         }
         if(verifyCard.getText().isEmpty()){
-            System.out.println("length"+verifyCard.getText().length());
+//            System.out.println("length"+verifyCard.getText().length());
             verifyCardNum_Btn.setEnabled(Boolean.FALSE);
         }
         else if(verifyCard.getText().length()<15){
-            System.out.println("length"+verifyCard.getText().length());
+//            System.out.println("length"+verifyCard.getText().length());
             verifyCardNum_Btn.setEnabled(Boolean.FALSE);
         }
         else if(verifyCard.getText().length()==15){
-             System.out.println("length"+verifyCard.getText().length());
+//             System.out.println("length"+verifyCard.getText().length());
             verifyCardNum_Btn.setEnabled(Boolean.TRUE);
             if(c == KeyEvent.VK_BACK_SPACE){
                 verifyCardNum_Btn.setEnabled(Boolean.FALSE);
@@ -168,6 +185,10 @@ public class CardNumber extends javax.swing.JFrame {
 //        }
         
     }//GEN-LAST:event_verifyCardKeyTyped
+
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancelButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,6 +230,7 @@ public class CardNumber extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cancelButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPasswordField verifyCard;
     private javax.swing.JButton verifyCardNum_Btn;

@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
  * @author smourya
  */
 @Component
-public class welcomPage extends javax.swing.JFrame {
+public class WelcomePage extends javax.swing.JFrame {
 
     @Autowired
     private MessageService messageService;
@@ -25,7 +25,7 @@ public class welcomPage extends javax.swing.JFrame {
 
 
     /**
-     * Creates new form welcomPage
+     * Creates new form WelcomePage
      */
 
 
@@ -52,14 +52,14 @@ public class welcomPage extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText(messageService.getMsg("welcomePage.title"));
+        jLabel1.setText("WELCOME TO ABC BANK,");
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jLabel2.setText(messageService.getMsg("welcomePage.click.continue"));
+        jLabel2.setText("Please Click Continue");
 
         jButton1.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        jButton1.setText(messageService.getMsg("welcomePage.continue"));
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.setText("CONTINUE");
+        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -81,7 +81,7 @@ public class welcomPage extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(220, 220, 220)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,7 +92,7 @@ public class welcomPage extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(38, 38, 38)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -100,9 +100,9 @@ public class welcomPage extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        CardNumber aNum= context.getBean(CardNumber.class);//new CardNumber();
-        aNum.initialize();
-        aNum.setVisible(true);
+        CardNumber objCardNumber= context.getBean(CardNumber.class);//new CardNumber();
+        objCardNumber.initializeComponent();
+        objCardNumber.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -123,13 +123,13 @@ public class welcomPage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(welcomPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(WelcomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(welcomPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(WelcomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(welcomPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(WelcomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(welcomPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(WelcomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -137,6 +137,13 @@ public class welcomPage extends javax.swing.JFrame {
        /* java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new welcomPage().setVisible(true);
+            }
+        //</editor-fold>
+
+        /* Create and display the form */
+       /* java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new WelcomePage().setVisible(true);
             }
         }); */
     }
