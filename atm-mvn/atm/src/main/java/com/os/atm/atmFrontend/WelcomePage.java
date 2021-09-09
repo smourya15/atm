@@ -6,6 +6,7 @@
 package com.os.atm.atmFrontend;
 
 import com.os.atm.MessageService;
+import java.awt.HeadlessException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
@@ -23,6 +24,12 @@ public class WelcomePage extends javax.swing.JFrame {
     @Autowired
     private ApplicationContext context;
 
+    public WelcomePage() throws HeadlessException {
+        initComponents();
+        
+    }
+
+    
 
     /**
      * Creates new form WelcomePage
@@ -97,9 +104,11 @@ public class WelcomePage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
         CardNumber objCardNumber= new CardNumber();
 //        context.getBean(CardNumber.class);
 //        objCardNumber.initializeComponent();
+
         objCardNumber.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

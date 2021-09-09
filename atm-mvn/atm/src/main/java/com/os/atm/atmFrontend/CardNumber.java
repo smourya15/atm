@@ -34,6 +34,7 @@ public class CardNumber extends javax.swing.JFrame {
         verifyCard.setText(null);
 
         verifyCardNum_Btn.setEnabled(Boolean.FALSE);
+
         Timer timer = new Timer();
         TimerTask tt = new TimerTask() {
             @Override
@@ -45,6 +46,19 @@ public class CardNumber extends javax.swing.JFrame {
             };
         }; 
         timer.schedule(tt, 120000);
+
+//        Timer timer = new Timer();
+//        TimerTask tt = new TimerTask() {
+//            @Override
+//            public void run() {
+//                WelcomePage objPage = new WelcomePage();
+//                objPage.createAndShow();
+//                objPage.setVisible(true);
+//                dispose();
+//            };
+//        }; 
+//        timer.schedule(tt, 180000);
+
     }
     
 
@@ -53,6 +67,7 @@ public class CardNumber extends javax.swing.JFrame {
         verifyCard.setText(null);
 
         verifyCardNum_Btn.setEnabled(Boolean.FALSE);
+
         Timer timer = new Timer();
         TimerTask tt = new TimerTask() {
             @Override
@@ -64,6 +79,19 @@ public class CardNumber extends javax.swing.JFrame {
             };
         }; 
         timer.schedule(tt, 120000);
+
+//        Timer timer = new Timer();
+//        TimerTask tt = new TimerTask() {
+//            @Override
+//            public void run() {
+//                WelcomePage objPage = new WelcomePage();
+//                objPage.createAndShow();
+//                objPage.setVisible(true);
+//                dispose();
+//            };
+//        }; 
+//        timer.schedule(tt, 180000);
+
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -174,7 +202,7 @@ public class CardNumber extends javax.swing.JFrame {
 //                PinVerification objPinVerification = context.getBean(PinVerification.class);
 //                objPinVerification.initializeComponent(accNumber, md.getHashText());
 //                objPinVerification.setVisible(true);
-                PinVerification objPinVerification = new PinVerification();
+                PinVerification objPinVerification = new PinVerification(accNumber, md.getHashText());
                 objPinVerification.setVisible(true);
                 dispose();
                 break;

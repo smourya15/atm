@@ -6,13 +6,18 @@
 package com.os.atm.atmFrontend;
 import com.os.atm.encapsulateClasses.Account;
 import com.os.atm.encapsulateClasses.ATMServices;
+import com.os.atm.encapsulateClasses.DebitCard;
 import com.os.atm.encapsulateClasses.DebitCardServices;
 import com.os.atm.encapsulateClasses.MD5Hashing;
 import com.os.atm.encapsulateClasses.PBES_Encryption;
 import java.awt.event.KeyEvent;
+import java.sql.SQLException;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -34,7 +39,7 @@ public class PinVerification extends javax.swing.JFrame {
     private int attempts =3;
     public PinVerification() {
         initComponents();
-        this.encryptCard= "test";
+        this.encryptCard= "7b8802b5aa06e55f70c9d8711213364b";
         iniComponents();
         
         Timer timer = new Timer();
@@ -170,7 +175,9 @@ public class PinVerification extends javax.swing.JFrame {
         MD5Hashing md = new MD5Hashing(verifyPin.getText());
         DebitCardServices db=new DebitCardServices();
         ATMServices objATMServices = new ATMServices();
+        JOptionPane.showMessageDialog(this, md.getHashText());
         Boolean pinValid = objATMServices.VerifyPin(md.getHashText(), getEncryptCard());
+        JOptionPane.showMessageDialog(this, pinValid);
         if(attempts > 1 && (!pinValid)){
             attempts -= 1;
             JOptionPane.showMessageDialog(this, "Inccorrect Pin\nAttempts Left "+attempts);
@@ -178,7 +185,17 @@ public class PinVerification extends javax.swing.JFrame {
             
         }
         else if(pinValid){
+            DebitCard debitCard;
+            try {
+                JOptionPane.showMessageDialog(this, "hashpin = "+md.getHashText()+" hashcard="+ getEncryptCard());
+                debitCard = db.Populate(md.getHashText(), getEncryptCard());
+            } catch (ParseException ex) {
+                Logger.getLogger(PinVerification.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(PinVerification.class.getName()).log(Level.SEVERE, null, ex);
+            }
             Services objServices = new Services();
+            
 //            Services objServices = context.getBean(Services.class);
 //            objServices.initializeComponents();
             objServices.setVisible(true);

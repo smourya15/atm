@@ -18,29 +18,35 @@ public class DebitCard {
     private final String card_no;
     private final String cardStatus;
     private final String cardHolderName;
-    private final Date expiryDate;
-    private final Boolean status; //to check if card is found or not.
+    private  long cardLimit;
+//    private final Boolean status; //to check if card is found or not.
+    private final Account accNum;
 
-    public DebitCard(String card_no, String cardStatus, String cardHolderName, Date expiryDate, Boolean status) {
+    public DebitCard(String card_no, String cardStatus, String cardHolderName, long cardLimit, Account accNum) {
         this.card_no = card_no;
         this.cardStatus = cardStatus;
         this.cardHolderName = cardHolderName;
-        this.expiryDate = expiryDate;
-        this.status = status;
+        this.cardLimit = cardLimit;
+//        this.status = status;
+        this.accNum = accNum;
     }
 
-    public Boolean getStatus() {
-        return status;
-    }    
+//    public Boolean getStatus() {
+//        return status;
+//    }    
+
+    public long getCardLimit() {
+        return cardLimit;
+    }
+
     /**
      * Get the value of expiryDate
      *
      * @return the value of expiryDate
      */
-    public String getExpiryDate() {
-        return expiryDate.toString();
+    public Account getAccNum() {
+        return accNum;
     }
-
 
     /**
      * Get the value of cardHolderName
