@@ -6,6 +6,9 @@
 package com.os.atm.atmFrontend;
 
 import java.awt.event.KeyEvent;
+import java.util.Timer;
+import java.util.TimerTask;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,6 +21,17 @@ public class DepositAmount extends javax.swing.JFrame {
      */
     public DepositAmount() {
         initComponents();
+        Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                WelcomePage objPage = new WelcomePage();
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
+        timer.schedule(tt, 120000);
     }
     
      public DepositAmount(boolean d50,boolean d100,boolean d500,boolean d1000,boolean d2000) {
@@ -34,6 +48,19 @@ public class DepositAmount extends javax.swing.JFrame {
         d500Field.setVisible(d500);
         d1000Field.setVisible(d1000);
         d2000Field.setVisible(d2000);
+        
+        Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                JOptionPane.showMessageDialog(null, "No input from user. Aborting session");
+                WelcomePage objPage = new WelcomePage();
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
+        timer.schedule(tt, 30000);
     }
 
     /**

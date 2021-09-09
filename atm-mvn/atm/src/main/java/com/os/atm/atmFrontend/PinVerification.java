@@ -11,6 +11,8 @@ import com.os.atm.encapsulateClasses.MD5Hashing;
 import com.os.atm.encapsulateClasses.PBES_Encryption;
 import java.awt.event.KeyEvent;
 import java.time.LocalDate;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.swing.JOptionPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -34,6 +36,18 @@ public class PinVerification extends javax.swing.JFrame {
         initComponents();
         this.encryptCard= "test";
         iniComponents();
+        
+        Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                WelcomePage objPage = new WelcomePage();
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
+        timer.schedule(tt, 30000);
     }
     private void iniComponents(){
         verifyPin.setText(null);

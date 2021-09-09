@@ -8,9 +8,10 @@ package com.os.atm.atmFrontend;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import com.os.atm.encapsulateClasses.*;
+import java.awt.HeadlessException;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
+import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
@@ -28,11 +29,41 @@ public class CardNumber extends javax.swing.JFrame {
         
     }
 
+    public CardNumber() throws HeadlessException {
+        initComponents();
+        verifyCard.setText(null);
+
+        verifyCardNum_Btn.setEnabled(Boolean.FALSE);
+        Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                WelcomePage objPage = new WelcomePage();
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
+        timer.schedule(tt, 60000);
+    }
+    
+
     public void initializeComponent(){
         initComponents();
         verifyCard.setText(null);
 
         verifyCardNum_Btn.setEnabled(Boolean.FALSE);
+        Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                WelcomePage objPage = new WelcomePage();
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
+        timer.schedule(tt, 60000);
     }
     /**
      * This method is called from within the constructor to initialize the form.

@@ -6,6 +6,9 @@
  */
 package com.os.atm.atmFrontend;
 import com.os.atm.encapsulateClasses.Account;
+import java.util.Timer;
+import java.util.TimerTask;
+import javax.swing.JOptionPane;
 import org.springframework.stereotype.Component;
 /**
  *
@@ -21,10 +24,35 @@ public class RetrieveBalance extends javax.swing.JFrame {
         initComponents();
         accno.setText(a);
         bal.setText(Double.toString(b));
+        
+        Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                WelcomePage objPage = new WelcomePage();
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
+        timer.schedule(tt, 30000);
     }
     
     public RetrieveBalance() {
             initComponents();
+            
+            Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                JOptionPane.showMessageDialog(null, "No input from user. Aborting session");
+                WelcomePage objPage = new WelcomePage();
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
+        timer.schedule(tt, 10000);
         }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,7 +69,6 @@ public class RetrieveBalance extends javax.swing.JFrame {
         bal = new javax.swing.JLabel();
         printButton = new javax.swing.JButton();
         accno = new javax.swing.JLabel();
-        timerLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,31 +97,25 @@ public class RetrieveBalance extends javax.swing.JFrame {
         accno.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         accno.setText("00987654321");
 
-        timerLabel.setText("Remaining Time: 00.00");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ballabel)
+                    .addComponent(accnolabel))
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(ballabel)
-                            .addComponent(accnolabel))
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bal)
-                            .addComponent(accno)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(timerLabel)))
+                    .addComponent(bal)
+                    .addComponent(accno))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(printButton, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(printButton, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                    .addComponent(cancelButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(140, 140, 140))
         );
         layout.setVerticalGroup(
@@ -111,11 +132,9 @@ public class RetrieveBalance extends javax.swing.JFrame {
                         .addComponent(ballabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(2, 2, 2)))
                 .addComponent(printButton, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(timerLabel))
-                .addGap(34, 34, 34))
+                .addGap(18, 18, 18)
+                .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42))
         );
 
         pack();
@@ -175,6 +194,5 @@ public class RetrieveBalance extends javax.swing.JFrame {
     private javax.swing.JLabel ballabel;
     private javax.swing.JButton cancelButton;
     private javax.swing.JButton printButton;
-    private javax.swing.JLabel timerLabel;
     // End of variables declaration//GEN-END:variables
 }

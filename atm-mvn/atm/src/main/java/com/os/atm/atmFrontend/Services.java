@@ -5,6 +5,9 @@
  */
 package com.os.atm.atmFrontend;
 
+import java.util.Timer;
+import java.util.TimerTask;
+import javax.swing.JOptionPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
@@ -23,6 +26,18 @@ public class Services extends javax.swing.JFrame {
      */
     public Services() {
         initComponents();
+        
+        Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                WelcomePage objPage = new WelcomePage();
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
+        timer.schedule(tt, 30000);
     }
 
     public void initializeComponents(){

@@ -6,6 +6,9 @@
 package com.os.atm.atmFrontend;
 
 import java.awt.event.KeyEvent;
+import java.util.Timer;
+import java.util.TimerTask;
+import javax.swing.JOptionPane;
 /**
  *
  * @author mdesousa
@@ -22,14 +25,22 @@ public class DepositConfirm extends javax.swing.JFrame {
     private int d2000;
     
     public DepositConfirm() {
-       
-    
         initComponents();
+        Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                WelcomePage objPage = new WelcomePage();
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
+        timer.schedule(tt, 30000);
     }
 
     public DepositConfirm(int d50, int d100, int d500, int d1000, int d2000){
-       
-    initComponents();
+        initComponents();
         this.d50 = d50;
         if (d50 == 0)
             d50Pane.setVisible(false);
@@ -73,8 +84,19 @@ public class DepositConfirm extends javax.swing.JFrame {
         String  total = String.valueOf(d50 * 50 + d100 * 100 + d500 * 500 + d1000 * 1000 + d2000 * 2000);
         displaytotal.setText(total);
         
-        
-}
+        Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                JOptionPane.showMessageDialog(null, "No input from user. Aborting session");
+                WelcomePage objPage = new WelcomePage();
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
+        timer.schedule(tt, 10000);
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.

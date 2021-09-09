@@ -30,6 +30,17 @@ public class Denominations extends javax.swing.JFrame {
         initComponents();
         groupRadioButtons();
         withdrawButton.setEnabled(false);
+        Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                WelcomePage objPage = new WelcomePage();
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
+        timer.schedule(tt, 30000);
     }
     public Denominations(int amount){
         initComponents();

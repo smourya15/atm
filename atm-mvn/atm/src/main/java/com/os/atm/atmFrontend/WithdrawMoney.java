@@ -8,6 +8,8 @@ package com.os.atm.atmFrontend;
 import com.os.atm.encapsulateClasses.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.swing.text.PlainDocument;
 
 import javax.swing.JOptionPane;
@@ -26,9 +28,19 @@ public class WithdrawMoney extends javax.swing.JFrame {
     
     public WithdrawMoney() {
         initComponents();
-        
         confirmButton.setEnabled(Boolean.FALSE);
         
+        Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                WelcomePage objPage = new WelcomePage();
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
+        timer.schedule(tt, 30000);
     }
 
     /**

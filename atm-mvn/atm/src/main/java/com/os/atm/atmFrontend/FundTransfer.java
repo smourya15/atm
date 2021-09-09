@@ -6,6 +6,9 @@
 package com.os.atm.atmFrontend;
 import com.os.atm.encapsulateClasses.AccountServices;
 import java.awt.event.KeyEvent;
+import java.util.Timer;
+import java.util.TimerTask;
+import javax.swing.JOptionPane;
 import org.springframework.stereotype.Component;
 //import java.u
 /**
@@ -25,6 +28,18 @@ public class FundTransfer extends javax.swing.JFrame {
         trfAmt.setText(null);
         errorMsgLabel.setVisible(false);
         trfConfirmBtn.setEnabled(false);
+        
+        Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                WelcomePage objPage = new WelcomePage();
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
+        timer.schedule(tt, 120000);
     }
 
     /**
