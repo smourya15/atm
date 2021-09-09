@@ -5,10 +5,13 @@
  */
 package com.os.atm.atmFrontend;
 
+import org.springframework.stereotype.Component;
+
 /**
  *
  * @author lnoronha
  */
+@Component
 public class DepositCash extends javax.swing.JFrame {
 
     /**

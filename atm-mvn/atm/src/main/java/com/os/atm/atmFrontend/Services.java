@@ -5,12 +5,19 @@
  */
 package com.os.atm.atmFrontend;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Component;
+
 /**
  *
  * @author smourya
  */
+@Component
 public class Services extends javax.swing.JFrame {
 
+    @Autowired
+    private ApplicationContext context;
     /**
      * Creates new form Services
      */
@@ -18,6 +25,9 @@ public class Services extends javax.swing.JFrame {
         initComponents();
     }
 
+    public void initializeComponents(){
+        initComponents();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -133,8 +143,9 @@ public class Services extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        SelectDenominations objCash = new SelectDenominations();
-        objCash.setVisible(true);
+        SelectDenominations objSelectDenominations = context.getBean(SelectDenominations.class);
+        objSelectDenominations.initializeComponents();
+        objSelectDenominations.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 

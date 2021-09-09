@@ -6,11 +6,13 @@
 package com.os.atm.atmFrontend;
 import com.os.atm.encapsulateClasses.AccountServices;
 import java.awt.event.KeyEvent;
+import org.springframework.stereotype.Component;
 //import java.u
 /**
  *
  * @author smourya
  */
+@Component
 public class FundTransfer extends javax.swing.JFrame {
 
     /**

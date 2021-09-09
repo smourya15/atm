@@ -5,10 +5,13 @@
  */
 package com.os.atm.atmFrontend;
 
+import org.springframework.stereotype.Component;
+
 /**
  *
  * @author smourya
  */
+@Component
 public class VerifyDeposit extends javax.swing.JFrame {
 
     /**

@@ -6,20 +6,29 @@
 package com.os.atm.atmFrontend;
 
 import java.awt.event.ItemEvent;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author smourya
  */
+@Component
 public class SelectDenominations extends javax.swing.JFrame {
 
+    @Autowired
+    private ApplicationContext context;
     /**
      * Creates new form depositCash
      */
     public SelectDenominations() {
         initComponents();
     }
-
+    public void initializeComponents(){
+        initComponents();
+    }
+    
    /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

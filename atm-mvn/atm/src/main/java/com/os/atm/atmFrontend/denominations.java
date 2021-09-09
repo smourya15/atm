@@ -6,11 +6,13 @@
 package com.os.atm.atmFrontend;
 
 import javax.swing.ButtonGroup;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author smourya
  */
+@Component
 public class Denominations extends javax.swing.JFrame {
      
     private int selected_denomination, amount, no_notes;

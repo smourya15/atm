@@ -6,10 +6,12 @@
 package com.os.atm.atmFrontend;
 
 import java.awt.event.KeyEvent;
+import org.springframework.stereotype.Component;
 /**
  *
  * @author mdesousa
  */
+@Component
 public class DepositConfirm extends javax.swing.JFrame {
 
     /**

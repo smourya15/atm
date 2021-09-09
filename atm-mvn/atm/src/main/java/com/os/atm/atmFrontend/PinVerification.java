@@ -12,6 +12,8 @@ import com.os.atm.encapsulateClasses.PBES_Encryption;
 import java.awt.event.KeyEvent;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 /**
@@ -21,28 +23,37 @@ import org.springframework.stereotype.Component;
 @Component
 public class PinVerification extends javax.swing.JFrame {
 
+    @Autowired
+    private ApplicationContext context;
     /**
      * Creates new form PinVerification
      */
 //    private DebitCard dbCard;
-    private final String encryptCard;
+    private String encryptCard;
     private int attempts =3;
     public PinVerification() {
         initComponents();
         this.encryptCard= "test";
         iniComponents();
     }
-    public PinVerification(String maskedCardNumber, String cardNumberHash){
-        
+//    public PinVerification(String maskedCardNumber, String cardNumberHash){
+//        
+//        initComponents();
+//        cardNumberLabel.setText(maskedCardNumber);
+//        iniComponents();
+////        DebitCard db = new DebitCard(, cardNumber, cardNumber, LocalDate.MIN, rootPaneCheckingEnabled)
+//        this.encryptCard = cardNumberHash;
+//    }
+    private void iniComponents(){
+        verifyPin.setText(null);
+        verifyPinNum_Btn.setEnabled(Boolean.FALSE);
+    }
+    public  void initializeComponent(String maskedCardNumber, String cardNumberHash){
         initComponents();
         cardNumberLabel.setText(maskedCardNumber);
         iniComponents();
 //        DebitCard db = new DebitCard(, cardNumber, cardNumber, LocalDate.MIN, rootPaneCheckingEnabled)
         this.encryptCard = cardNumberHash;
-    }
-    private void iniComponents(){
-        verifyPin.setText(null);
-        verifyPinNum_Btn.setEnabled(Boolean.FALSE);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -159,14 +170,14 @@ public class PinVerification extends javax.swing.JFrame {
         }
         else if(pinValid){
             
-            Services objServices = new Services();
-            objServices.setVisible(true);
+            Services objServices = context.getBean(Services.class);
+            objServices.initializeComponents();
             dispose();
         }
         else{
             JOptionPane.showMessageDialog(this, "Card Blocked Contact your Bank");
-            WelcomePage welcomPage = new WelcomePage();
-            welcomPage.setVisible(true);
+            WelcomePage objWelcomePage = context.getBean(WelcomePage.class);
+            objWelcomePage.createAndShow();
             dispose();
         }
         

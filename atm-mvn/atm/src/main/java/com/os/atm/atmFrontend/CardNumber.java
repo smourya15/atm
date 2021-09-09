@@ -8,13 +8,11 @@ package com.os.atm.atmFrontend;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import com.os.atm.encapsulateClasses.*;
-import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 
 /**
  *
@@ -24,13 +22,18 @@ import java.util.List;
 //@Scope(value = BeanDefinition.SCOPE_PROTOTYPE)
 public class CardNumber extends javax.swing.JFrame {
 
+    @Autowired
+    private ApplicationContext context;
     public void initialize() {
+        
+    }
+
+    public void initializeComponent(){
         initComponents();
         verifyCard.setText(null);
 
         verifyCardNum_Btn.setEnabled(Boolean.FALSE);
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -136,9 +139,10 @@ public class CardNumber extends javax.swing.JFrame {
                 break;
             case 3:
                 JOptionPane.showMessageDialog(this, verifyCard.getText());
-                StringBuilder accNumber = new StringBuilder(verifyCard.getText().substring(0, 2)).append("XX-XXXX-XXXX-").append(verifyCard.getText().substring(12, 16));
-                PinVerification objPin = new PinVerification(accNumber.toString(), md.getHashText());
-                objPin.setVisible(true);
+                String accNumber = verifyCard.getText().substring(0, 2) + "XX-XXXX-XXXX-" + verifyCard.getText().substring(12, 16);
+                PinVerification objPinVerification = context.getBean(PinVerification.class);
+                objPinVerification.initializeComponent(accNumber, md.getHashText());
+                objPinVerification.setVisible(true);
                 dispose();
                 break;
         }
