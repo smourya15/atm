@@ -11,16 +11,16 @@ import java.awt.event.KeyEvent;
  *
  * @author smourya
  */
-public class depositAmount extends javax.swing.JFrame {
+public class DepositAmount extends javax.swing.JFrame {
 
     /**
      * Creates new form depositAmount
      */
-    public depositAmount() {
+    public DepositAmount() {
         initComponents();
     }
     
-     public depositAmount(boolean d50,boolean d100,boolean d500,boolean d1000,boolean d2000) {
+     public DepositAmount(boolean d50,boolean d100,boolean d500,boolean d1000,boolean d2000) {
         initComponents();
                 
         rs50Label.setVisible(d50);
@@ -81,7 +81,7 @@ public class depositAmount extends javax.swing.JFrame {
 
         homeButton.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         homeButton.setText("HOME");
-        homeButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        homeButton.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
         homeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 homeButtonActionPerformed(evt);
@@ -110,7 +110,7 @@ public class depositAmount extends javax.swing.JFrame {
 
         depositButton.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         depositButton.setText("DEPOSIT");
-        depositButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        depositButton.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
         depositButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 depositButtonActionPerformed(evt);
@@ -223,7 +223,7 @@ public class depositAmount extends javax.swing.JFrame {
 
         verifyButton.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         verifyButton.setText("VERIFY");
-        verifyButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        verifyButton.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
         verifyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 verifyButtonActionPerformed(evt);
@@ -482,20 +482,21 @@ public class depositAmount extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(depositAmount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DepositAmount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(depositAmount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DepositAmount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(depositAmount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DepositAmount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(depositAmount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DepositAmount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new depositAmount().setVisible(true);
+                new DepositAmount().setVisible(true);
             }
         });
     }

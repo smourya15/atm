@@ -11,19 +11,19 @@ import javax.swing.ButtonGroup;
  *
  * @author smourya
  */
-public class denominations extends javax.swing.JFrame {
+public class Denominations extends javax.swing.JFrame {
      
     private int selected_denomination, amount, no_notes;
     /**
      * Creates new form denominations
      */
-    public denominations() {
+    public Denominations() {
         
         initComponents();
         groupRadioButtons();
         withdrawButton.setEnabled(false);
     }
-    public denominations(int amount){
+    public Denominations(int amount){
         initComponents();
         groupRadioButtons();
         withdrawButton.setEnabled(false);
@@ -79,7 +79,7 @@ public class denominations extends javax.swing.JFrame {
 
         withdrawButton.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         withdrawButton.setText("WITHDRAW");
-        withdrawButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        withdrawButton.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
         withdrawButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 withdrawButtonActionPerformed(evt);
@@ -168,7 +168,7 @@ public class denominations extends javax.swing.JFrame {
 
         cancelButton.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         cancelButton.setText("CANCEL");
-        cancelButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cancelButton.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelButtonActionPerformed(evt);
@@ -257,7 +257,7 @@ public class denominations extends javax.swing.JFrame {
         
         
         
-        success objSuccess = new success(amount);
+        TransactionSuccess objSuccess = new TransactionSuccess(amount);
         objSuccess.setVisible(true);
         dispose();
             
@@ -284,20 +284,21 @@ public class denominations extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(denominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Denominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(denominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Denominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(denominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Denominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(denominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Denominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new denominations().setVisible(true);
+                new Denominations().setVisible(true);
             }
         });
     }

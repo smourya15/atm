@@ -9,22 +9,22 @@ package com.os.atm.atmFrontend;
  *
  * @author smourya
  */
-public class success extends javax.swing.JFrame {
+public class TransactionSuccess extends javax.swing.JFrame {
 
     /**
-     * Creates new form success
+     * Creates new form TransactionSuccess
      */
     int amount;
-    public success(){
+    public TransactionSuccess(){
         initComponents();
     }
-    public success(int amount) {
+    public TransactionSuccess(int amount) {
         initComponents();
         this.amount = amount;
         SuccessMessage.setText("Your Transaction of Rs."+ amount +" was successfull");
     }
     
-      public success(String s) {
+      public TransactionSuccess(String s) {
         initComponents();
         
       }
@@ -50,7 +50,7 @@ public class success extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         jButton1.setText("PRINT RECEIPT");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -59,7 +59,7 @@ public class success extends javax.swing.JFrame {
 
         jButton3.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         jButton3.setText("CANCEL");
-        jButton3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton3.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -130,20 +130,21 @@ public class success extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(success.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TransactionSuccess.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(success.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TransactionSuccess.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(success.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TransactionSuccess.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(success.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TransactionSuccess.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new success().setVisible(true);
+                new TransactionSuccess().setVisible(true);
             }
         });
     }

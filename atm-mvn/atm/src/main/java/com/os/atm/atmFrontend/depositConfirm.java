@@ -10,10 +10,10 @@ import java.awt.event.KeyEvent;
  *
  * @author mdesousa
  */
-public class depositConfirm extends javax.swing.JFrame {
+public class DepositConfirm extends javax.swing.JFrame {
 
     /**
-     * Creates new form depositConfirm
+     * Creates new form DepositConfirm
      */
     private int D50;
     private int D100;
@@ -21,13 +21,13 @@ public class depositConfirm extends javax.swing.JFrame {
     private int D1000;
     private int D2000;
     
-    public depositConfirm() {
+    public DepositConfirm() {
        
     
         initComponents();
     }
 
-    public depositConfirm(int D50, int D100, int D500, int D1000, int D2000){
+    public DepositConfirm(int D50, int D100, int D500, int D1000, int D2000){
        
     initComponents();
         this.D50 = D50;
@@ -399,30 +399,25 @@ public class depositConfirm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(d50Pane, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(d100Pane)
-                            .addComponent(d500Pane, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(d1000Pane)
-                            .addComponent(d2000Pane, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addContainerGap())
+                    .addComponent(d50Pane, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(d100Pane)
+                    .addComponent(d500Pane, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(d1000Pane)
+                    .addComponent(d2000Pane, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(backbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(depositbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addComponent(depositbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(245, 245, 245)
                 .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(252, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -455,14 +450,14 @@ public class depositConfirm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void depositbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositbuttonActionPerformed
-        success objsuccess = new success();
+        TransactionSuccess objsuccess = new TransactionSuccess();
         objsuccess.setVisible(true);
         dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_depositbuttonActionPerformed
 
     private void backbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbuttonActionPerformed
-        depositAmount deposit= new depositAmount();
+        DepositAmount deposit= new DepositAmount();
         deposit.setVisible(true);
         dispose();
         // TODO add your handling code here:
@@ -485,20 +480,21 @@ public class depositConfirm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(depositConfirm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DepositConfirm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(depositConfirm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DepositConfirm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(depositConfirm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DepositConfirm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(depositConfirm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DepositConfirm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new depositConfirm().setVisible(true);
+                new DepositConfirm().setVisible(true);
             }
         });
     }
@@ -523,10 +519,7 @@ public class depositConfirm extends javax.swing.JFrame {
     private javax.swing.JLabel eq2000Confirm;
     private javax.swing.JLabel eq500Confirm;
     private javax.swing.JLabel eq50Confirm;
-    private javax.swing.JLabel eq50Label8;
-    private javax.swing.JLabel eq50Label9;
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JDesktopPane jDesktopPane5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -535,6 +528,5 @@ public class depositConfirm extends javax.swing.JFrame {
     private javax.swing.JLabel rs2000Label;
     private javax.swing.JLabel rs500Label;
     private javax.swing.JLabel rs50Label;
-    private javax.swing.JLabel rs50Label4;
     // End of variables declaration//GEN-END:variables
 }

@@ -11,12 +11,12 @@ import java.awt.event.ItemEvent;
  *
  * @author smourya
  */
-public class selectDenominations extends javax.swing.JFrame {
+public class SelectDenominations extends javax.swing.JFrame {
 
     /**
      * Creates new form depositCash
      */
-    public selectDenominations() {
+    public SelectDenominations() {
         initComponents();
     }
 
@@ -70,7 +70,7 @@ public class selectDenominations extends javax.swing.JFrame {
 
         nextBtn.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         nextBtn.setText("NEXT");
-        nextBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        nextBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
         nextBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nextBtnActionPerformed(evt);
@@ -79,7 +79,7 @@ public class selectDenominations extends javax.swing.JFrame {
 
         homeBtn.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         homeBtn.setText("CANCEL");
-        homeBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        homeBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
         homeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 homeBtnActionPerformed(evt);
@@ -152,7 +152,7 @@ public class selectDenominations extends javax.swing.JFrame {
         boolean d1000= D1000_checkbox.isSelected();
         boolean d2000 = D2000_checkbox.isSelected();
          
-        depositAmount objDeposit = new depositAmount(d50,d100,d500,d1000,d2000);
+        DepositAmount objDeposit = new DepositAmount(d50,d100,d500,d1000,d2000);
         objDeposit.setVisible(true);
         dispose();
         
@@ -185,21 +185,23 @@ public class selectDenominations extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(selectDenominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SelectDenominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(selectDenominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SelectDenominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(selectDenominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SelectDenominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(selectDenominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SelectDenominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new selectDenominations().setVisible(true);
+                new SelectDenominations().setVisible(true);
             }
         });
     }

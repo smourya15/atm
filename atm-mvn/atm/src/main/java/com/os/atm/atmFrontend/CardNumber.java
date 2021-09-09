@@ -118,16 +118,17 @@ public class CardNumber extends javax.swing.JFrame {
     private void verifyCardNum_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verifyCardNum_BtnActionPerformed
         // TODO add your handling code here:
         
-        final StringBuilder salt = new StringBuilder(verifyCard.getText());
-        PBES_Encryption pb = new PBES_Encryption(salt.toString(), verifyCard.getText());
-        System.out.println("card: "+verifyCard.getText()+"Encrypt:"+ pb.getEncrypt() + "Decrypt: "+pb.decrypt());
-        final int returnType = (new ATMServices()).verifyCard(pb.getEncrypt(), verifyCard.getText());
+        final StringBuilder cardNum = new StringBuilder(verifyCard.getText());
+        MD5Hashing md = new MD5Hashing(cardNum.toString());
+//        PBES_Encryption pb = new PBES_Encryption(salt.toString(), verifyCard.getText());
+        System.out.println("card: "+verifyCard.getText()+" Hash:"+ md.getHashText());
+        final int returnType = (new ATMServices()).verifyCard(md.getHashText());
         switch (returnType) {
             case 1:
                 JOptionPane.showMessageDialog(this, "Incorrect Account Number");
                 break;
 //        JOptionPane.showMessageDialog(this, verifyCard.getText());
-//        pin objPin = new pin();
+//        PinVerification objPin = new PinVerification();
 //        objPin.setVisible(true);
 //        dispose();
             case 2:
@@ -136,7 +137,7 @@ public class CardNumber extends javax.swing.JFrame {
             case 3:
                 JOptionPane.showMessageDialog(this, verifyCard.getText());
                 StringBuilder accNumber = new StringBuilder(verifyCard.getText().substring(0, 2)).append("XX-XXXX-XXXX-").append(verifyCard.getText().substring(12, 16));
-                pin objPin = new pin(accNumber.toString(), pb.getEncrypt());
+                PinVerification objPin = new PinVerification(accNumber.toString(), md.getHashText());
                 objPin.setVisible(true);
                 dispose();
                 break;
@@ -158,15 +159,15 @@ public class CardNumber extends javax.swing.JFrame {
              evt.consume();
         }
         if(verifyCard.getText().isEmpty()){
-            System.out.println("length"+verifyCard.getText().length());
+//            System.out.println("length"+verifyCard.getText().length());
             verifyCardNum_Btn.setEnabled(Boolean.FALSE);
         }
         else if(verifyCard.getText().length()<15){
-            System.out.println("length"+verifyCard.getText().length());
+//            System.out.println("length"+verifyCard.getText().length());
             verifyCardNum_Btn.setEnabled(Boolean.FALSE);
         }
         else if(verifyCard.getText().length()==15){
-             System.out.println("length"+verifyCard.getText().length());
+//             System.out.println("length"+verifyCard.getText().length());
             verifyCardNum_Btn.setEnabled(Boolean.TRUE);
             if(c == KeyEvent.VK_BACK_SPACE){
                 verifyCardNum_Btn.setEnabled(Boolean.FALSE);
