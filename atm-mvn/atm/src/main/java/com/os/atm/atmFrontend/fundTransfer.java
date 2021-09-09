@@ -6,11 +6,13 @@
 package com.os.atm.atmFrontend;
 import com.os.atm.encapsulateClasses.AccountServices;
 import java.awt.event.KeyEvent;
+import org.springframework.stereotype.Component;
 //import java.u
 /**
  *
  * @author smourya
  */
+@Component
 public class fundTransfer extends javax.swing.JFrame {
 
     /**
@@ -471,6 +473,9 @@ if(trfAmt.getText().isEmpty()){
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(fundTransfer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

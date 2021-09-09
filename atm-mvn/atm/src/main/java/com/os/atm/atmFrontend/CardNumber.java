@@ -8,13 +8,11 @@ package com.os.atm.atmFrontend;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import com.os.atm.encapsulateClasses.*;
-import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 
 /**
  *
@@ -24,13 +22,18 @@ import java.util.List;
 //@Scope(value = BeanDefinition.SCOPE_PROTOTYPE)
 public class CardNumber extends javax.swing.JFrame {
 
+    @Autowired
+    private ApplicationContext context;
     public void initialize() {
+        
+    }
+
+    public void initializeComponent(){
         initComponents();
         verifyCard.setText(null);
 
         verifyCardNum_Btn.setEnabled(Boolean.FALSE);
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -118,16 +121,17 @@ public class CardNumber extends javax.swing.JFrame {
     private void verifyCardNum_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verifyCardNum_BtnActionPerformed
         // TODO add your handling code here:
         
-        final StringBuilder salt = new StringBuilder(verifyCard.getText());
-        PBES_Encryption pb = new PBES_Encryption(salt.toString(), verifyCard.getText());
-        System.out.println("card: "+verifyCard.getText()+"Encrypt:"+ pb.getEncrypt() + "Decrypt: "+pb.decrypt());
-        final int returnType = (new ATMServices()).verifyCard(pb.getEncrypt(), verifyCard.getText());
+        final StringBuilder cardNum = new StringBuilder(verifyCard.getText());
+        MD5Hashing md = new MD5Hashing(cardNum.toString());
+//        PBES_Encryption pb = new PBES_Encryption(salt.toString(), verifyCard.getText());
+        System.out.println("card: "+verifyCard.getText()+" Hash:"+ md.getHashText());
+        final int returnType = (new ATMServices()).verifyCard(md.getHashText());
         switch (returnType) {
             case 1:
                 JOptionPane.showMessageDialog(this, "Incorrect Account Number");
                 break;
 //        JOptionPane.showMessageDialog(this, verifyCard.getText());
-//        pin objPin = new pin();
+//        PinVerification objPin = new PinVerification();
 //        objPin.setVisible(true);
 //        dispose();
             case 2:
@@ -135,9 +139,10 @@ public class CardNumber extends javax.swing.JFrame {
                 break;
             case 3:
                 JOptionPane.showMessageDialog(this, verifyCard.getText());
-                StringBuilder accNumber = new StringBuilder(verifyCard.getText().substring(0, 2)).append("XX-XXXX-XXXX-").append(verifyCard.getText().substring(12, 16));
-                pin objPin = new pin(accNumber.toString(), pb.getEncrypt());
-                objPin.setVisible(true);
+                String accNumber = verifyCard.getText().substring(0, 2) + "XX-XXXX-XXXX-" + verifyCard.getText().substring(12, 16);
+                PinVerification objPinVerification = context.getBean(PinVerification.class);
+                objPinVerification.initializeComponent(accNumber, md.getHashText());
+                objPinVerification.setVisible(true);
                 dispose();
                 break;
         }
@@ -158,15 +163,15 @@ public class CardNumber extends javax.swing.JFrame {
              evt.consume();
         }
         if(verifyCard.getText().isEmpty()){
-            System.out.println("length"+verifyCard.getText().length());
+//            System.out.println("length"+verifyCard.getText().length());
             verifyCardNum_Btn.setEnabled(Boolean.FALSE);
         }
         else if(verifyCard.getText().length()<15){
-            System.out.println("length"+verifyCard.getText().length());
+//            System.out.println("length"+verifyCard.getText().length());
             verifyCardNum_Btn.setEnabled(Boolean.FALSE);
         }
         else if(verifyCard.getText().length()==15){
-             System.out.println("length"+verifyCard.getText().length());
+//             System.out.println("length"+verifyCard.getText().length());
             verifyCardNum_Btn.setEnabled(Boolean.TRUE);
             if(c == KeyEvent.VK_BACK_SPACE){
                 verifyCardNum_Btn.setEnabled(Boolean.FALSE);

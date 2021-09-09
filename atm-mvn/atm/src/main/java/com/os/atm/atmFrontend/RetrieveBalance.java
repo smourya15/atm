@@ -6,22 +6,24 @@
  */
 package com.os.atm.atmFrontend;
 import com.os.atm.encapsulateClasses.Account;
+import org.springframework.stereotype.Component;
 /**
  *
  * @author smourya
  */
-public class enquire extends javax.swing.JFrame {
+@Component
+public class RetrieveBalance extends javax.swing.JFrame {
 
     /**
      * Creates new form enquire
      */
-    public enquire(String a, double b) {
+    public RetrieveBalance(String a, double b) {
         initComponents();
         accno.setText(a);
         bal.setText(Double.toString(b));
     }
     
-    public enquire() {
+    public RetrieveBalance() {
             initComponents();
         }
     /**
@@ -51,7 +53,7 @@ public class enquire extends javax.swing.JFrame {
 
         exitbutton.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         exitbutton.setText("EXIT");
-        exitbutton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        exitbutton.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
         exitbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitbuttonActionPerformed(evt);
@@ -63,7 +65,7 @@ public class enquire extends javax.swing.JFrame {
 
         printbutton.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         printbutton.setText("PRINT");
-        printbutton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        printbutton.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
 
         accno.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         accno.setText("00987654321");
@@ -120,7 +122,7 @@ public class enquire extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitbuttonActionPerformed
-        welcomPage objwelcomePage = new welcomPage();
+        WelcomePage objwelcomePage = new WelcomePage();
         objwelcomePage.setVisible(true);
     }//GEN-LAST:event_exitbuttonActionPerformed
 
@@ -141,14 +143,15 @@ public class enquire extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(enquire.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RetrieveBalance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(enquire.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RetrieveBalance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(enquire.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RetrieveBalance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(enquire.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RetrieveBalance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
@@ -158,7 +161,7 @@ public class enquire extends javax.swing.JFrame {
                 Account a = new Account("123456", "987654321", "1NB00732", 10000.5678);
                 String accno = a.getAccNum();
                 double bal = a.getAccount_Bal();
-                new enquire(accno,bal).setVisible(true);
+                new RetrieveBalance(accno,bal).setVisible(true);
             }
         });
     }

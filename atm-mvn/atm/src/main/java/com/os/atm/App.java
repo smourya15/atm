@@ -1,6 +1,6 @@
 package com.os.atm;
 
-import com.os.atm.atmFrontend.welcomPage;
+import com.os.atm.atmFrontend.WelcomePage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -25,7 +25,7 @@ public class App implements CommandLineRunner
     @Override
     public void run(String... strings) throws Exception {
         System.out.println("starting the JFrame");
-        welcomPage wp = context.getBean(welcomPage.class);
+        WelcomePage wp = context.getBean(WelcomePage.class);
         wp.createAndShow();
     }
 }

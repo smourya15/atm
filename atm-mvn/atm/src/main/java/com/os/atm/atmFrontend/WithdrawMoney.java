@@ -11,17 +11,19 @@ import java.awt.event.KeyEvent;
 import javax.swing.text.PlainDocument;
 
 import javax.swing.JOptionPane;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author smourya
  */
-public class withdraw extends javax.swing.JFrame {
+@Component
+public class WithdrawMoney extends javax.swing.JFrame {
 
     /**
      * Creates new form withdraw
      */
-    public withdraw() {
+    public WithdrawMoney() {
         initComponents();
         
         confirmButton.setEnabled(Boolean.FALSE);
@@ -72,7 +74,7 @@ public class withdraw extends javax.swing.JFrame {
 
         confirmButton.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         confirmButton.setText("CONFIRM");
-        confirmButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        confirmButton.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
         confirmButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmButtonActionPerformed(evt);
@@ -81,7 +83,7 @@ public class withdraw extends javax.swing.JFrame {
 
         cancelButton.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         cancelButton.setText("CANCEL");
-        cancelButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cancelButton.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelButtonActionPerformed(evt);
@@ -156,7 +158,7 @@ public class withdraw extends javax.swing.JFrame {
         System.out.println(amount);
         
         if(amount%50==0){
-            denominations objDenomination= new denominations(amount);
+            Denominations objDenomination= new Denominations(amount);
             objDenomination.setVisible(true);
             dispose();
         }
@@ -208,20 +210,21 @@ public class withdraw extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(withdraw.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(WithdrawMoney.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(withdraw.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(WithdrawMoney.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(withdraw.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(WithdrawMoney.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(withdraw.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(WithdrawMoney.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new withdraw().setVisible(true);
+                new WithdrawMoney().setVisible(true);
             }
         });
     }

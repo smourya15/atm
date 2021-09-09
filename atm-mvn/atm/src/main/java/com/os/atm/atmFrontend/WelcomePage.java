@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
  * @author smourya
  */
 @Component
-public class welcomPage extends javax.swing.JFrame {
+public class WelcomePage extends javax.swing.JFrame {
 
     @Autowired
     private MessageService messageService;
@@ -25,7 +25,7 @@ public class welcomPage extends javax.swing.JFrame {
 
 
     /**
-     * Creates new form welcomPage
+     * Creates new form WelcomePage
      */
 
 
@@ -59,7 +59,7 @@ public class welcomPage extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         jButton1.setText("CONTINUE");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -100,9 +100,9 @@ public class welcomPage extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        CardNumber aNum= context.getBean(CardNumber.class);//new CardNumber();
-        aNum.initialize();
-        aNum.setVisible(true);
+        CardNumber objCardNumber= context.getBean(CardNumber.class);//new CardNumber();
+        objCardNumber.initializeComponent();
+        objCardNumber.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -123,13 +123,13 @@ public class welcomPage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(welcomPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(WelcomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(welcomPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(WelcomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(welcomPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(WelcomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(welcomPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(WelcomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -137,6 +137,13 @@ public class welcomPage extends javax.swing.JFrame {
        /* java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new welcomPage().setVisible(true);
+            }
+        //</editor-fold>
+
+        /* Create and display the form */
+       /* java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new WelcomePage().setVisible(true);
             }
         }); */
     }
