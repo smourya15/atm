@@ -11,16 +11,16 @@ import java.awt.event.KeyEvent;
  *
  * @author smourya
  */
-public class depositAmount extends javax.swing.JFrame {
+public class DepositAmount extends javax.swing.JFrame {
 
     /**
      * Creates new form depositAmount
      */
-    public depositAmount() {
+    public DepositAmount() {
         initComponents();
     }
     
-     public depositAmount(boolean d50,boolean d100,boolean d500,boolean d1000,boolean d2000) {
+     public DepositAmount(boolean d50,boolean d100,boolean d500,boolean d1000,boolean d2000) {
         initComponents();
                 
         rs50Label.setVisible(d50);
@@ -454,20 +454,21 @@ public class depositAmount extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(depositAmount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DepositAmount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(depositAmount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DepositAmount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(depositAmount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DepositAmount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(depositAmount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DepositAmount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new depositAmount().setVisible(true);
+                new DepositAmount().setVisible(true);
             }
         });
     }

@@ -452,7 +452,7 @@ public class depositConfirm extends javax.swing.JFrame {
     private void depositbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositbuttonActionPerformed
        
     	
-    	success objsuccess = new success(String.valueOf(D50*50+D100*100+D500*500+D1000*1000+D2000*2000));
+    	Success objsuccess = new Success(String.valueOf(D50*50+D100*100+D500*500+D1000*1000+D2000*2000));
         objsuccess.setVisible(true);
         dispose();
         // TODO add your handling code here:

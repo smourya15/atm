@@ -13,12 +13,12 @@ import org.springframework.stereotype.Component;
  * @author smourya
  */
 @Component
-public class fundTransfer extends javax.swing.JFrame {
+public class FundTransfer extends javax.swing.JFrame {
 
     /**
      * Creates new form fundTransfer
      */
-    public fundTransfer() {
+    public FundTransfer() {
         initComponents();
         BenAccNoTextField.setText(null);
         ReBenAccNoTextField.setText(null);
@@ -215,7 +215,7 @@ public class fundTransfer extends javax.swing.JFrame {
             int transferAmt = Integer.parseInt(trfAmt.getText());
             AccountServices a = new AccountServices();
         a.transferFunds(benAcc, transferAmt);
-        success objsuccess = new success(transferAmt);
+        Success objsuccess = new Success(transferAmt);
         
         objsuccess.setVisible(true);
         dispose();
@@ -465,14 +465,18 @@ if(trfAmt.getText().isEmpty()){
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(fundTransfer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FundTransfer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(fundTransfer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FundTransfer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(fundTransfer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FundTransfer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(fundTransfer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FundTransfer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -481,7 +485,7 @@ if(trfAmt.getText().isEmpty()){
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new fundTransfer().setVisible(true);
+                new FundTransfer().setVisible(true);
             }
         });
     }

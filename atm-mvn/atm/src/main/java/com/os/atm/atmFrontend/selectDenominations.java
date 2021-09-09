@@ -161,7 +161,7 @@ public class SelectDenominations extends javax.swing.JFrame {
         boolean d1000= D1000_checkbox.isSelected();
         boolean d2000 = D2000_checkbox.isSelected();
          
-        depositAmount objDeposit = new depositAmount(d50,d100,d500,d1000,d2000);
+        DepositAmount objDeposit = new DepositAmount(d50,d100,d500,d1000,d2000);
         objDeposit.setVisible(true);
         dispose();
         
