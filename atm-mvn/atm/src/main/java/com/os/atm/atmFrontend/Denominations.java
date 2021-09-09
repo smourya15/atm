@@ -283,10 +283,6 @@ public class Denominations extends javax.swing.JFrame {
                    temp[2]=Integer.parseInt(rs.getString("rs500"));
                    temp[3]=Integer.parseInt(rs.getString("rs1000"));
                    temp[4]=Integer.parseInt(rs.getString("rs2000"));
-                   
-//                    for(int j=0;j<5;j++)
-//                        System.out.println(temp[j]);
-
                 }
 
                 if(no_notes<=temp[selected]){
