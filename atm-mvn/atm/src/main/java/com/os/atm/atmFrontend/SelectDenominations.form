@@ -107,6 +107,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Rs. 500"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="D500_checkboxActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JCheckBox" name="D100_checkbox">
       <Properties>
@@ -126,6 +129,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Rs. 1000"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="D1000_checkboxActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JCheckBox" name="D2000_checkbox">
       <Properties>
@@ -134,6 +140,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Rs. 2000"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="D2000_checkboxActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="nextBtn">
       <Properties>

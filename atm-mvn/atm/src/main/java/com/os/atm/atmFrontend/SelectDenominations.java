@@ -24,6 +24,7 @@ public class SelectDenominations extends javax.swing.JFrame {
      */
     public SelectDenominations() {
         initComponents();
+        nextBtn.setEnabled(false);
     }
     public void initializeComponents(){
         initComponents();
@@ -62,6 +63,11 @@ public class SelectDenominations extends javax.swing.JFrame {
 
         D500_checkbox.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         D500_checkbox.setText("Rs. 500");
+        D500_checkbox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                D500_checkboxActionPerformed(evt);
+            }
+        });
 
         D100_checkbox.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         D100_checkbox.setText("Rs. 100");
@@ -73,9 +79,19 @@ public class SelectDenominations extends javax.swing.JFrame {
 
         D1000_checkbox.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         D1000_checkbox.setText("Rs. 1000");
+        D1000_checkbox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                D1000_checkboxActionPerformed(evt);
+            }
+        });
 
         D2000_checkbox.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         D2000_checkbox.setText("Rs. 2000");
+        D2000_checkbox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                D2000_checkboxActionPerformed(evt);
+            }
+        });
 
         nextBtn.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         nextBtn.setText("NEXT");
@@ -148,7 +164,11 @@ public class SelectDenominations extends javax.swing.JFrame {
 
     private void D50_checkboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D50_checkboxActionPerformed
         // TODO add your handling code here:
-       
+       nextBtn.setEnabled(true);
+        if(!D50_checkbox.isSelected() && !D100_checkbox.isSelected() && !D500_checkbox.isSelected() && !D1000_checkbox.isSelected() && !D2000_checkbox.isSelected() ){
+            nextBtn.setEnabled(false);
+        }
+    
          
         
     }//GEN-LAST:event_D50_checkboxActionPerformed
@@ -165,12 +185,19 @@ public class SelectDenominations extends javax.swing.JFrame {
         objDeposit.setVisible(true);
         dispose();
         
+//        if(!d50 && !d100 && !d500 && !d1000 && !d2000 ){
+//            
+//        }
         
         
     }//GEN-LAST:event_nextBtnActionPerformed
 
     private void D100_checkboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D100_checkboxActionPerformed
         // TODO add your handling code here:
+          nextBtn.setEnabled(true);
+        if(!D50_checkbox.isSelected() && !D100_checkbox.isSelected() && !D500_checkbox.isSelected() && !D1000_checkbox.isSelected() && !D2000_checkbox.isSelected() ){
+            nextBtn.setEnabled(false);
+        }
     }//GEN-LAST:event_D100_checkboxActionPerformed
 
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
@@ -179,6 +206,30 @@ public class SelectDenominations extends javax.swing.JFrame {
         objPage.setVisible(true);
         dispose();
     }//GEN-LAST:event_cancelBtnActionPerformed
+
+    private void D500_checkboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D500_checkboxActionPerformed
+        // TODO add your handling code here:
+          nextBtn.setEnabled(true);
+        if(!D50_checkbox.isSelected() && !D100_checkbox.isSelected() && !D500_checkbox.isSelected() && !D1000_checkbox.isSelected() && !D2000_checkbox.isSelected() ){
+            nextBtn.setEnabled(false);
+        }
+    }//GEN-LAST:event_D500_checkboxActionPerformed
+
+    private void D1000_checkboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D1000_checkboxActionPerformed
+        // TODO add your handling code here:
+          nextBtn.setEnabled(true);
+        if(!D50_checkbox.isSelected() && !D100_checkbox.isSelected() && !D500_checkbox.isSelected() && !D1000_checkbox.isSelected() && !D2000_checkbox.isSelected() ){
+            nextBtn.setEnabled(false);
+        }
+    }//GEN-LAST:event_D1000_checkboxActionPerformed
+
+    private void D2000_checkboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D2000_checkboxActionPerformed
+        // TODO add your handling code here:
+          nextBtn.setEnabled(true);
+        if(!D50_checkbox.isSelected() && !D100_checkbox.isSelected() && !D500_checkbox.isSelected() && !D1000_checkbox.isSelected() && !D2000_checkbox.isSelected() ){
+            nextBtn.setEnabled(false);
+        }
+    }//GEN-LAST:event_D2000_checkboxActionPerformed
 
     /**
      * @param args the command line arguments
