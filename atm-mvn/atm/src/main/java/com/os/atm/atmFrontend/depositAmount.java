@@ -35,11 +35,11 @@ public class depositAmount extends javax.swing.JFrame {
         d1000Field.setVisible(d1000);
         d2000Field.setVisible(d2000);
         
-        eq50Label.setVisible(d50);
-        eq100Label.setVisible(d100);
-        eq500Label.setVisible(d500);
-        eq1000Label.setVisible(d1000);
-        eq2000Label.setVisible(d2000);
+      //eq50Label.setVisible(d50);
+      //eq100Label.setVisible(d100);
+     // eq500Label.setVisible(d500);
+     // eq1000Label.setVisible(d1000);
+      //eq2000Label.setVisible(d2000);
         
     }
 
@@ -64,13 +64,7 @@ public class depositAmount extends javax.swing.JFrame {
         d500Field = new javax.swing.JTextField();
         d1000Field = new javax.swing.JTextField();
         d2000Field = new javax.swing.JTextField();
-        eq100Label = new javax.swing.JLabel();
-        eq1000Label = new javax.swing.JLabel();
-        eq50Label = new javax.swing.JLabel();
-        eq500Label = new javax.swing.JLabel();
-        eq2000Label = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        verifyButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -197,33 +191,8 @@ public class depositAmount extends javax.swing.JFrame {
             }
         });
 
-        eq100Label.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        eq100Label.setText("=  Rs. 0000");
-
-        eq1000Label.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        eq1000Label.setText("=  Rs. 0000");
-
-        eq50Label.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        eq50Label.setText("=  Rs. 0000");
-
-        eq500Label.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        eq500Label.setText("=  Rs. 0000");
-
-        eq2000Label.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        eq2000Label.setText("=  Rs. 0000");
-
         jLabel7.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel7.setText("Enter the number of notes for the denominations");
-
-        verifyButton.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        verifyButton.setForeground(new java.awt.Color(0, 86, 126));
-        verifyButton.setText("VERIFY");
-        verifyButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        verifyButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                verifyButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -245,17 +214,10 @@ public class depositAmount extends javax.swing.JFrame {
                             .addComponent(rs1000Label))
                         .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(d100Field, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(d50Field, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(d500Field, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(eq100Label, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
-                                    .addComponent(eq500Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(eq50Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(d100Field, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d50Field, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(d500Field, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
@@ -264,20 +226,12 @@ public class depositAmount extends javax.swing.JFrame {
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
                                         .addComponent(d1000Field, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(eq2000Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(eq1000Label, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE))))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(verifyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(231, 231, 231))))
+                .addContainerGap(21, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -287,33 +241,24 @@ public class depositAmount extends javax.swing.JFrame {
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rs50Label)
-                    .addComponent(d50Field, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eq50Label))
+                    .addComponent(d50Field, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(d100Field, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(rs100Label))
-                    .addComponent(eq100Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(d500Field, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rs500Label)
-                    .addComponent(eq500Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(d100Field, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rs100Label))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(eq1000Label)
+                    .addComponent(d500Field, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rs500Label))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(rs1000Label)
                     .addComponent(d1000Field, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(d2000Field, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(rs2000Label))
-                    .addComponent(eq2000Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(verifyButton, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
-                .addGap(46, 46, 46)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(d2000Field, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rs2000Label))
+                .addGap(149, 149, 149)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(homeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nextbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -410,10 +355,10 @@ public class depositAmount extends javax.swing.JFrame {
             return;
         }
          
-      //else{
-          //long ans = Integer.parseInt(s) * 50;
-           //q50Label.setText("=  Rs. " + Long.toString(ans));
-      //}
+      else{
+          long ans = Integer.parseInt(s) * 50;
+       // eq50Label.setText("=  Rs. " + Long.toString(ans));
+     }
     }//GEN-LAST:event_d50FieldFocusLost
 
     private void d100FieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_d100FieldKeyTyped
@@ -431,7 +376,7 @@ public class depositAmount extends javax.swing.JFrame {
         }
         else{
             long ans = Integer.parseInt(s) * 100;
-            eq100Label.setText("=  Rs. " + Long.toString(ans));
+          //eq100Label.setText("=  Rs. " + Long.toString(ans));
          }
     }//GEN-LAST:event_d100FieldFocusLost
 
@@ -450,7 +395,7 @@ public class depositAmount extends javax.swing.JFrame {
         }
         else{
             long ans = Integer.parseInt(s) * 500;
-            eq500Label.setText("=  Rs. " + Long.toString(ans));
+         // eq500Label.setText("=  Rs. " + Long.toString(ans));
          }
     }//GEN-LAST:event_d500FieldFocusLost
 
@@ -469,7 +414,7 @@ public class depositAmount extends javax.swing.JFrame {
         }
         else{
             long ans = Integer.parseInt(s) * 1000;
-            eq1000Label.setText("=  Rs. " + Long.toString(ans));
+         // eq1000Label.setText("=  Rs. " + Long.toString(ans));
          }
     }//GEN-LAST:event_d1000FieldFocusLost
 
@@ -488,17 +433,9 @@ public class depositAmount extends javax.swing.JFrame {
         }
         else{
             long ans = Integer.parseInt(s) * 2000;
-            eq2000Label.setText("=  Rs. " + Long.toString(ans));
+          //eq2000Label.setText("=  Rs. " + Long.toString(ans));
          }
     }//GEN-LAST:event_d2000FieldFocusLost
-
-    private void verifyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verifyButtonActionPerformed
-        
-         
-             long ans = Integer.parseInt(d50Field.getText())* 50;
-            eq50Label.setText("=  Rs. " + Long.toString(ans));
-         
-    }//GEN-LAST:event_verifyButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -541,11 +478,6 @@ public class depositAmount extends javax.swing.JFrame {
     private javax.swing.JTextField d2000Field;
     private javax.swing.JTextField d500Field;
     private javax.swing.JTextField d50Field;
-    private javax.swing.JLabel eq1000Label;
-    private javax.swing.JLabel eq100Label;
-    private javax.swing.JLabel eq2000Label;
-    private javax.swing.JLabel eq500Label;
-    private javax.swing.JLabel eq50Label;
     private javax.swing.JButton homeButton;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JButton nextbutton;
@@ -554,6 +486,5 @@ public class depositAmount extends javax.swing.JFrame {
     private javax.swing.JLabel rs2000Label;
     private javax.swing.JLabel rs500Label;
     private javax.swing.JLabel rs50Label;
-    private javax.swing.JButton verifyButton;
     // End of variables declaration//GEN-END:variables
 }

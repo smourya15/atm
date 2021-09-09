@@ -81,7 +81,7 @@ public class Denominations extends javax.swing.JFrame {
 
         withdrawButton.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         withdrawButton.setText("WITHDRAW");
-        withdrawButton.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        withdrawButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         withdrawButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 withdrawButtonActionPerformed(evt);
@@ -170,7 +170,7 @@ public class Denominations extends javax.swing.JFrame {
 
         cancelButton.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         cancelButton.setText("CANCEL");
-        cancelButton.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        cancelButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelButtonActionPerformed(evt);
@@ -294,6 +294,12 @@ public class Denominations extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Denominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 

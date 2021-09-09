@@ -32,7 +32,7 @@
                   <Component id="d1000Pane" alignment="0" max="32767" attributes="0"/>
                   <Component id="d2000Pane" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="backbutton" min="-2" pref="161" max="-2" attributes="0"/>
+                      <Component id="backtoselectdenomination" min="-2" pref="161" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="depositbutton" min="-2" pref="160" max="-2" attributes="0"/>
                   </Group>
@@ -76,7 +76,7 @@
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="depositbutton" pref="63" max="32767" attributes="0"/>
-                  <Component id="backbutton" max="32767" attributes="0"/>
+                  <Component id="backtoselectdenomination" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="87" max="32767" attributes="0"/>
           </Group>
@@ -486,7 +486,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="depositbuttonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="backbutton">
+    <Component class="javax.swing.JButton" name="backtoselectdenomination">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -500,7 +500,7 @@
         <Property name="text" type="java.lang.String" value="BACK"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backbuttonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backtoselectdenominationActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JDesktopPane" name="jDesktopPane1">

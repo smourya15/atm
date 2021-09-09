@@ -41,21 +41,11 @@
                       </Group>
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                      <Component id="d100Field" min="-2" pref="206" max="-2" attributes="0"/>
-                                      <Component id="d50Field" min="-2" pref="205" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="d500Field" alignment="0" min="-2" pref="205" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="eq100Label" pref="152" max="32767" attributes="0"/>
-                                  <Component id="eq500Label" max="32767" attributes="0"/>
-                                  <Component id="eq50Label" max="32767" attributes="0"/>
-                              </Group>
+                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                              <Component id="d100Field" min="-2" pref="206" max="-2" attributes="0"/>
+                              <Component id="d50Field" min="-2" pref="205" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="d500Field" alignment="0" min="-2" pref="205" max="-2" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" attributes="0">
@@ -67,11 +57,7 @@
                                       <Component id="d1000Field" min="-2" pref="205" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="eq2000Label" max="32767" attributes="0"/>
-                                  <Component id="eq1000Label" pref="152" max="32767" attributes="0"/>
-                              </Group>
+                              <EmptySpace pref="170" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -79,17 +65,9 @@
               <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="verifyButton" min="-2" pref="119" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="231" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
+              <EmptySpace pref="21" max="32767" attributes="0"/>
+              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="35" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -102,39 +80,28 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="rs50Label" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="d50Field" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                  <Component id="eq50Label" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="d100Field" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                      <Component id="rs100Label" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="eq100Label" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="d500Field" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
-                  <Component id="rs500Label" min="-2" max="-2" attributes="0"/>
-                  <Component id="eq500Label" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="d100Field" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                  <Component id="rs100Label" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="eq1000Label" min="-2" max="-2" attributes="0"/>
+                  <Component id="d500Field" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
+                  <Component id="rs500Label" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="rs1000Label" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="d1000Field" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="d2000Field" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="rs2000Label" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="eq2000Label" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="d2000Field" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="rs2000Label" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="verifyButton" pref="87" max="32767" attributes="0"/>
-              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="149" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="homeButton" alignment="3" min="-2" pref="90" max="-2" attributes="0"/>
                   <Component id="nextbutton" alignment="3" min="-2" pref="90" max="-2" attributes="0"/>
@@ -284,46 +251,6 @@
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="d2000FieldKeyTyped"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="eq100Label">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Times New Roman" size="24" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="=  Rs. 0000"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="eq1000Label">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Times New Roman" size="24" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="=  Rs. 0000"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="eq50Label">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Times New Roman" size="24" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="=  Rs. 0000"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="eq500Label">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Times New Roman" size="24" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="=  Rs. 0000"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="eq2000Label">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Times New Roman" size="24" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="=  Rs. 0000"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -331,25 +258,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Enter the number of notes for the denominations"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="verifyButton">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Arial Black" size="24" style="1"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="7e" green="56" red="0" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="VERIFY"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-            <BevelBorder/>
-          </Border>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="verifyButtonActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>

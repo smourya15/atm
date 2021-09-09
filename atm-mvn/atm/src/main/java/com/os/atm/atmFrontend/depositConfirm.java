@@ -108,7 +108,7 @@ public class depositConfirm extends javax.swing.JFrame {
         d2000Notes = new javax.swing.JLabel();
         eq2000Confirm = new javax.swing.JLabel();
         depositbutton = new javax.swing.JButton();
-        backbutton = new javax.swing.JButton();
+        backtoselectdenomination = new javax.swing.JButton();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         displaytotal = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -345,13 +345,13 @@ public class depositConfirm extends javax.swing.JFrame {
             }
         });
 
-        backbutton.setBackground(new java.awt.Color(255, 255, 255));
-        backbutton.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        backbutton.setForeground(new java.awt.Color(0, 86, 126));
-        backbutton.setText("BACK");
-        backbutton.addActionListener(new java.awt.event.ActionListener() {
+        backtoselectdenomination.setBackground(new java.awt.Color(255, 255, 255));
+        backtoselectdenomination.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        backtoselectdenomination.setForeground(new java.awt.Color(0, 86, 126));
+        backtoselectdenomination.setText("BACK");
+        backtoselectdenomination.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backbuttonActionPerformed(evt);
+                backtoselectdenominationActionPerformed(evt);
             }
         });
 
@@ -399,30 +399,25 @@ public class depositConfirm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(d50Pane, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(d100Pane)
+                    .addComponent(d500Pane, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(d1000Pane)
+                    .addComponent(d2000Pane, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(d50Pane, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(d100Pane)
-                            .addComponent(d500Pane, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(d1000Pane)
-                            .addComponent(d2000Pane, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(backbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(backtoselectdenomination, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(depositbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addComponent(depositbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(245, 245, 245)
                 .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(252, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -447,7 +442,7 @@ public class depositConfirm extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(depositbutton, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
-                    .addComponent(backbutton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(backtoselectdenomination, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(87, Short.MAX_VALUE))
         );
 
@@ -463,12 +458,12 @@ public class depositConfirm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_depositbuttonActionPerformed
 
-    private void backbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbuttonActionPerformed
-        depositAmount deposit= new depositAmount();
+    private void backtoselectdenominationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backtoselectdenominationActionPerformed
+        SelectDenominations deposit= new SelectDenominations();
         deposit.setVisible(true);
         dispose();
         // TODO add your handling code here:
-    }//GEN-LAST:event_backbuttonActionPerformed
+    }//GEN-LAST:event_backtoselectdenominationActionPerformed
 
     /**
      * @param args the command line arguments
@@ -507,7 +502,7 @@ public class depositConfirm extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backbutton;
+    private javax.swing.JButton backtoselectdenomination;
     private javax.swing.JLabel d1000Notes;
     private javax.swing.JDesktopPane d1000Pane;
     private javax.swing.JLabel d100Notes;
@@ -525,10 +520,7 @@ public class depositConfirm extends javax.swing.JFrame {
     private javax.swing.JLabel eq2000Confirm;
     private javax.swing.JLabel eq500Confirm;
     private javax.swing.JLabel eq50Confirm;
-    private javax.swing.JLabel eq50Label8;
-    private javax.swing.JLabel eq50Label9;
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JDesktopPane jDesktopPane5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -537,6 +529,5 @@ public class depositConfirm extends javax.swing.JFrame {
     private javax.swing.JLabel rs2000Label;
     private javax.swing.JLabel rs500Label;
     private javax.swing.JLabel rs50Label;
-    private javax.swing.JLabel rs50Label4;
     // End of variables declaration//GEN-END:variables
 }
