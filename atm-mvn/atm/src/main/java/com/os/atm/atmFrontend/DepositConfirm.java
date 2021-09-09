@@ -473,9 +473,9 @@ public class DepositConfirm extends javax.swing.JFrame {
 
     private void depositbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositbuttonActionPerformed
        
-    	
-    	Success objsuccess = new Success(String.valueOf(d50 * 50 + d100 * 100 + d500 * 500 + d1000 * 1000 + d2000 * 2000));
-        objsuccess.setVisible(true);
+    	//Success success =new Success(String.valueOf(d50 * 50 + d100 * 100 + d500 * 500 + d1000 * 1000 + d2000 * 2000));
+    	DepositCash deposit= new DepositCash(String.valueOf(d50 * 50 + d100 * 100 + d500 * 500 + d1000 * 1000 + d2000 * 2000));
+        deposit.setVisible(true);
         dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_depositbuttonActionPerformed

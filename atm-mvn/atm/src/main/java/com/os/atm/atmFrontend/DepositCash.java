@@ -18,7 +18,17 @@ public class DepositCash extends javax.swing.JFrame {
     /**
      * Creates new form depositCash
      */
-    public DepositCash() {
+    String amt;
+    public DepositCash(String amt) {
+        this.amt=amt;
+        initComponents();
+        confirmbutton.setEnabled(false);
+        buttonGroup1.add(correctdenomination);
+        buttonGroup1.add(incorrectdenomination);
+        
+    }
+     public DepositCash() {
+        
         initComponents();
         confirmbutton.setEnabled(false);
         buttonGroup1.add(correctdenomination);
@@ -175,8 +185,8 @@ public class DepositCash extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void confirmbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmbuttonActionPerformed
-       
-           Success depositconfirm = new Success();
+          
+           Success depositconfirm = new Success(amt);
            depositconfirm.setVisible(true);
            dispose();
             // TODO add your handling code here:
