@@ -1,11 +1,14 @@
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * and open the template in the editor..
  */
 package com.os.atm.atmFrontend;
 
 import java.awt.event.KeyEvent;
+import java.util.Timer;
+import java.util.TimerTask;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,11 +21,25 @@ public class DepositAmount extends javax.swing.JFrame {
      */
     public DepositAmount() {
         initComponents();
+        nextBtn.setEnabled(false);
+        errorMessageLabel.setVisible(false);
+        Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                WelcomePage objPage = new WelcomePage();
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
+        timer.schedule(tt, 120000);
     }
     
      public DepositAmount(boolean d50,boolean d100,boolean d500,boolean d1000,boolean d2000) {
         initComponents();
-                
+                nextBtn.setEnabled(false);
+                errorMessageLabel.setVisible(false);
         rs50Label.setVisible(d50);
         rs100Label.setVisible(d100);
         rs500Label.setVisible(d500);
@@ -34,6 +51,19 @@ public class DepositAmount extends javax.swing.JFrame {
         d500Field.setVisible(d500);
         d1000Field.setVisible(d1000);
         d2000Field.setVisible(d2000);
+        
+        Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                JOptionPane.showMessageDialog(null, "No input from user. Aborting session");
+                WelcomePage objPage = new WelcomePage();
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
+        timer.schedule(tt, 30000);
     }
 
     /**
@@ -48,7 +78,7 @@ public class DepositAmount extends javax.swing.JFrame {
         rs50Label = new javax.swing.JLabel();
         cancelButton = new javax.swing.JButton();
         d50Field = new javax.swing.JTextField();
-        nextbutton = new javax.swing.JButton();
+        nextBtn = new javax.swing.JButton();
         rs100Label = new javax.swing.JLabel();
         rs500Label = new javax.swing.JLabel();
         rs1000Label = new javax.swing.JLabel();
@@ -58,6 +88,7 @@ public class DepositAmount extends javax.swing.JFrame {
         d1000Field = new javax.swing.JTextField();
         d2000Field = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        errorMessageLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,7 +97,7 @@ public class DepositAmount extends javax.swing.JFrame {
 
         cancelButton.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         cancelButton.setForeground(new java.awt.Color(0, 86, 126));
-        cancelButton.setText("CANCEL");
+        cancelButton.setText("BACK");
         cancelButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,13 +125,13 @@ public class DepositAmount extends javax.swing.JFrame {
             }
         });
 
-        nextbutton.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        nextbutton.setForeground(new java.awt.Color(0, 86, 126));
-        nextbutton.setText("NEXT");
-        nextbutton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        nextbutton.addActionListener(new java.awt.event.ActionListener() {
+        nextBtn.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        nextBtn.setForeground(new java.awt.Color(0, 86, 126));
+        nextBtn.setText("NEXT");
+        nextBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        nextBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nextbuttonActionPerformed(evt);
+                nextBtnActionPerformed(evt);
             }
         });
 
@@ -187,48 +218,54 @@ public class DepositAmount extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel7.setText("Enter the number of notes for the denominations");
 
+        errorMessageLabel.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        errorMessageLabel.setForeground(new java.awt.Color(255, 51, 51));
+        errorMessageLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        errorMessageLabel.setText("Please Enter the Fields");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(nextBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(nextbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(rs50Label)
-                                .addComponent(rs2000Label)
-                                .addComponent(rs100Label)
-                                .addComponent(rs500Label)
-                                .addComponent(rs1000Label))
-                            .addGap(34, 34, 34)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(d100Field, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(d50Field, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(d500Field, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(d2000Field, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 1, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(d1000Field, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)))
-                    .addComponent(jLabel7))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rs50Label)
+                            .addComponent(rs2000Label)
+                            .addComponent(rs100Label)
+                            .addComponent(rs500Label)
+                            .addComponent(rs1000Label))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(d100Field, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d50Field, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(d500Field, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(d2000Field, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(1, 1, 1))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGap(1, 1, 1)
+                                    .addComponent(d1000Field, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(errorMessageLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel7)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addContainerGap(36, Short.MAX_VALUE)
                 .addComponent(jLabel7)
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addGap(18, 32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rs50Label)
                     .addComponent(d50Field, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -248,11 +285,13 @@ public class DepositAmount extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(d2000Field, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rs2000Label))
-                .addGap(149, 149, 149)
+                .addGap(18, 32, Short.MAX_VALUE)
+                .addComponent(errorMessageLabel)
+                .addGap(18, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nextbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(43, Short.MAX_VALUE))
+                    .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nextBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
@@ -263,13 +302,13 @@ public class DepositAmount extends javax.swing.JFrame {
     }//GEN-LAST:event_d50FieldActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
-        WelcomePage objPage = new WelcomePage();
-        objPage.createAndShow();
-        objPage.setVisible(true);
+        SelectDenominations denomination = new SelectDenominations();
+        
+        denomination.setVisible(true);
         dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
-    private void nextbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextbuttonActionPerformed
+    private void nextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBtnActionPerformed
         int d50, d100,d500, d1000, d2000;
         if(d50Field.getText().isEmpty()){
             d50 = 0;
@@ -306,11 +345,16 @@ public class DepositAmount extends javax.swing.JFrame {
             d2000 = Integer.parseInt(d2000Field.getText());
         }
         
+            if(d50Field.getText().isEmpty() && d100Field.getText().isEmpty() && d500Field.getText().isEmpty() && d1000Field.getText().isEmpty() && d2000Field.getText().isEmpty() ){
+          errorMessageLabel.setVisible(true);
+            } else{
         DepositConfirm deposit= new DepositConfirm(d50,d100, d500, d1000, d2000);
          deposit.setVisible(true);
          dispose();
+         
+            }
             // TODO add your handling code here:
-    }//GEN-LAST:event_nextbuttonActionPerformed
+    }//GEN-LAST:event_nextBtnActionPerformed
 
     private void d100FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_d100FieldActionPerformed
         // TODO add your handling code here:
@@ -330,7 +374,8 @@ public class DepositAmount extends javax.swing.JFrame {
 
  
     private void d50FieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_d50FieldKeyTyped
-        
+        nextBtn.setEnabled(true);
+        errorMessageLabel.setVisible(false);
         char c = evt.getKeyChar();
 
         if(!(c == KeyEvent.VK_BACK_SPACE || Character.isDigit(c))){
@@ -355,7 +400,9 @@ public class DepositAmount extends javax.swing.JFrame {
     }//GEN-LAST:event_d50FieldFocusLost
 
     private void d100FieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_d100FieldKeyTyped
+        nextBtn.setEnabled(true);
         char c = evt.getKeyChar();
+        errorMessageLabel.setVisible(false);
 
         if(!(c == KeyEvent.VK_BACK_SPACE || Character.isDigit(c))){
             evt.consume();
@@ -374,7 +421,9 @@ public class DepositAmount extends javax.swing.JFrame {
     }//GEN-LAST:event_d100FieldFocusLost
 
     private void d500FieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_d500FieldKeyTyped
+        nextBtn.setEnabled(true);
         char c = evt.getKeyChar();
+        errorMessageLabel.setVisible(false);
 
         if(!(c == KeyEvent.VK_BACK_SPACE || Character.isDigit(c))){
             evt.consume();
@@ -393,7 +442,9 @@ public class DepositAmount extends javax.swing.JFrame {
     }//GEN-LAST:event_d500FieldFocusLost
 
     private void d1000FieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_d1000FieldKeyTyped
+        nextBtn.setEnabled(true);
         char c = evt.getKeyChar();
+        errorMessageLabel.setVisible(false);
 
         if(!(c == KeyEvent.VK_BACK_SPACE || Character.isDigit(c))){
             evt.consume();
@@ -412,7 +463,9 @@ public class DepositAmount extends javax.swing.JFrame {
     }//GEN-LAST:event_d1000FieldFocusLost
 
     private void d2000FieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_d2000FieldKeyTyped
+       nextBtn.setEnabled(true);
         char c = evt.getKeyChar();
+        errorMessageLabel.setVisible(false);
 
         if(!(c == KeyEvent.VK_BACK_SPACE || Character.isDigit(c))){
             evt.consume();
@@ -473,8 +526,9 @@ public class DepositAmount extends javax.swing.JFrame {
     private javax.swing.JTextField d2000Field;
     private javax.swing.JTextField d500Field;
     private javax.swing.JTextField d50Field;
+    private javax.swing.JLabel errorMessageLabel;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JButton nextbutton;
+    private javax.swing.JButton nextBtn;
     private javax.swing.JLabel rs1000Label;
     private javax.swing.JLabel rs100Label;
     private javax.swing.JLabel rs2000Label;

@@ -1,12 +1,13 @@
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
- * and open the template in the editor..
+ * and open the template in the editor...
  */
 package com.os.atm.atmFrontend;
 
 import java.awt.event.KeyEvent;
-import java.sql.*;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.swing.JOptionPane;
 /**
  *
@@ -21,25 +22,31 @@ public class DepositConfirm extends javax.swing.JFrame {
     private int d100;
     private int d500;
     private int d1000;
-    private int d2000, selected;
+    private int d2000;
     
     public DepositConfirm() {
-       
-    
         initComponents();
+        Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                WelcomePage objPage = new WelcomePage();
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
+        timer.schedule(tt, 30000);
     }
 
     public DepositConfirm(int d50, int d100, int d500, int d1000, int d2000){
-       
-    initComponents();
+        initComponents();
         this.d50 = d50;
         if (d50 == 0)
             d50Pane.setVisible(false);
         else{
             d50Notes.setText(String.valueOf(d50));
             eq50Confirm.setText("=  Rs." + d50 * 50);
-            selected = 0;
-            
         }
         
         this.d100 = d100;
@@ -48,7 +55,6 @@ public class DepositConfirm extends javax.swing.JFrame {
         else {
             d100Notes.setText(String.valueOf(d100));
             eq100Confirm.setText("=  Rs." + d100 * 100);
-            selected = 1;
         }
         
         this.d500 = d500;
@@ -57,7 +63,6 @@ public class DepositConfirm extends javax.swing.JFrame {
         else{
             d500Notes.setText(String.valueOf(d500));
             eq500Confirm.setText("=  Rs." + d500 * 500);
-            selected = 2;
         }
         
         this.d1000 = d1000;
@@ -66,7 +71,6 @@ public class DepositConfirm extends javax.swing.JFrame {
          else{
               d1000Notes.setText(String.valueOf(d1000));
               eq1000Confirm.setText("=  Rs." + d1000 * 1000);
-              selected = 3;
         }
         
         this.d2000 = d2000;
@@ -75,14 +79,24 @@ public class DepositConfirm extends javax.swing.JFrame {
         else {
                d2000Notes.setText(String.valueOf(d2000));
                eq2000Confirm.setText("=  Rs." + d2000 * 2000);
-               selected = 4;
         }
         
         String  total = String.valueOf(d50 * 50 + d100 * 100 + d500 * 500 + d1000 * 1000 + d2000 * 2000);
         displaytotal.setText(total);
         
-        
-}
+        Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                JOptionPane.showMessageDialog(null, "No input from user. Aborting session");
+                WelcomePage objPage = new WelcomePage();
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
+        timer.schedule(tt, 10000);
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -93,7 +107,6 @@ public class DepositConfirm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         d50Pane = new javax.swing.JDesktopPane();
         rs50Label = new javax.swing.JLabel();
@@ -123,11 +136,8 @@ public class DepositConfirm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
-        jLabel7.setText("SUMMARY");
-
-        jLabel8.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
-        jLabel8.setText("ABC BANK CASH DEPOSIT");
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel8.setText("ABC BANK CASH DEPOSIT SUMMARY");
 
         d50Pane.setBackground(new java.awt.Color(204, 204, 204));
         d50Pane.setForeground(new java.awt.Color(255, 255, 255));
@@ -157,7 +167,7 @@ public class DepositConfirm extends javax.swing.JFrame {
                 .addGap(53, 53, 53)
                 .addComponent(d50Notes, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(eq50Confirm, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
+                .addComponent(eq50Confirm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         d50PaneLayout.setVerticalGroup(
@@ -200,7 +210,7 @@ public class DepositConfirm extends javax.swing.JFrame {
                 .addGap(53, 53, 53)
                 .addComponent(d100Notes, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(eq100Confirm, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
+                .addComponent(eq100Confirm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(9, 9, 9))
         );
         d100PaneLayout.setVerticalGroup(
@@ -243,7 +253,7 @@ public class DepositConfirm extends javax.swing.JFrame {
                 .addGap(54, 54, 54)
                 .addComponent(d500Notes, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(eq500Confirm, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
+                .addComponent(eq500Confirm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(9, 9, 9))
         );
         d500PaneLayout.setVerticalGroup(
@@ -286,7 +296,7 @@ public class DepositConfirm extends javax.swing.JFrame {
                 .addGap(56, 56, 56)
                 .addComponent(d1000Notes, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(eq1000Confirm, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
+                .addComponent(eq1000Confirm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(6, 6, 6))
         );
         d1000PaneLayout.setVerticalGroup(
@@ -329,7 +339,7 @@ public class DepositConfirm extends javax.swing.JFrame {
                 .addGap(61, 61, 61)
                 .addComponent(d2000Notes, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(eq2000Confirm, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                .addComponent(eq2000Confirm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         d2000PaneLayout.setVerticalGroup(
@@ -405,7 +415,7 @@ public class DepositConfirm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(11, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(d50Pane, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(d100Pane)
@@ -413,96 +423,52 @@ public class DepositConfirm extends javax.swing.JFrame {
                     .addComponent(d1000Pane)
                     .addComponent(d2000Pane, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(backtoselectdenomination, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(backtoselectdenomination, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(depositbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(245, 245, 245)
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(252, Short.MAX_VALUE))
+                        .addComponent(depositbutton)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8))
+                .addComponent(jLabel8)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(42, Short.MAX_VALUE)
                 .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGap(18, 20, Short.MAX_VALUE)
                 .addComponent(d50Pane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(d100Pane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addComponent(d500Pane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(d1000Pane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(d2000Pane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(18, 18, 18)
                 .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(depositbutton, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
-                    .addComponent(backtoselectdenomination, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(backtoselectdenomination, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(depositbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void depositbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositbuttonActionPerformed
-        
-        
-        try {   
-                int temp[] = new int[5];
- 
-//                int i = 1;
-                
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
-                
-                
-                    String sqlQuery2="";
-                    String sqlQuery3="UPDATE atm_machine SET atm_balance = ((SELECT rs50 from atm_machine)*50)+((SELECT rs100 from atm_machine)*100)+((SELECT rs500 from atm_machine)*500)+((SELECT rs1000 from atm_machine)*1000)+((SELECT rs2000 from atm_machine)*2000);";
-                    String sqlQuery4="";
-                    
-                    Statement stmt = con.createStatement();
-                    if(selected == 0)
-                        sqlQuery2 = "UPDATE atm_machine SET rs50=(SELECT rs50 FROM atm_machine)+" + d50;
-                    else if(selected == 1)
-                        sqlQuery2 = "UPDATE atm_machine SET rs100 = (SELECT rs100 FROM atm_machine) +"+ d100;
-                    else if(selected == 2)
-                        sqlQuery2 = "UPDATE atm_machine SET rs500 = (SELECT rs500 FROM atm_machine) +"+d500;
-                    else if(selected == 3)
-                        sqlQuery2 = "UPDATE atm_machine SET rs1000 = (SELECT rs1000 FROM atm_machine) +"+d1000;
-                    else if(selected == 4)
-                        sqlQuery2 = "UPDATE atm_machine SET rs2000 = (SELECT rs2000 FROM atm_machine ) +"+d2000 ;
-                       
-                    stmt.executeUpdate(sqlQuery2);
-                    stmt.executeUpdate(sqlQuery3);
-                    
-                    Success objsuccess = new Success(String.valueOf(d50 * 50 + d100 * 100 + d500 * 500 + d1000 * 1000 + d2000 * 2000));
-                    objsuccess.setVisible(true);
-                    dispose();
-
-               
-//                    WelcomePage zb = new WelcomePage();
-//                    zb.setVisible(true);
-//                    dispose();
-                    
-            }
-            catch (ClassNotFoundException | SQLException ex) {
-                JOptionPane.showMessageDialog(null,ex.getMessage());
-            }
-    	
-    	;
+       
+    	//Success success =new Success(String.valueOf(d50 * 50 + d100 * 100 + d500 * 500 + d1000 * 1000 + d2000 * 2000));
+    	DepositCash deposit= new DepositCash(String.valueOf(d50 * 50 + d100 * 100 + d500 * 500 + d1000 * 1000 + d2000 * 2000));
+        deposit.setVisible(true);
+        dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_depositbuttonActionPerformed
 
@@ -571,7 +537,6 @@ public class DepositConfirm extends javax.swing.JFrame {
     private javax.swing.JLabel eq50Confirm;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel rs1000Label;
     private javax.swing.JLabel rs100Label;

@@ -8,9 +8,10 @@ package com.os.atm.atmFrontend;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import com.os.atm.encapsulateClasses.*;
+import java.awt.HeadlessException;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
+import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
@@ -28,11 +29,69 @@ public class CardNumber extends javax.swing.JFrame {
         
     }
 
+    public CardNumber() throws HeadlessException {
+        initComponents();
+        verifyCard.setText(null);
+
+        verifyCardNum_Btn.setEnabled(Boolean.FALSE);
+
+        Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                WelcomePage objPage = new WelcomePage();
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
+        timer.schedule(tt, 120000);
+
+//        Timer timer = new Timer();
+//        TimerTask tt = new TimerTask() {
+//            @Override
+//            public void run() {
+//                WelcomePage objPage = new WelcomePage();
+//                objPage.createAndShow();
+//                objPage.setVisible(true);
+//                dispose();
+//            };
+//        }; 
+//        timer.schedule(tt, 180000);
+
+    }
+    
+
     public void initializeComponent(){
         initComponents();
         verifyCard.setText(null);
 
         verifyCardNum_Btn.setEnabled(Boolean.FALSE);
+
+        Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                WelcomePage objPage = new WelcomePage();
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
+        timer.schedule(tt, 120000);
+
+//        Timer timer = new Timer();
+//        TimerTask tt = new TimerTask() {
+//            @Override
+//            public void run() {
+//                WelcomePage objPage = new WelcomePage();
+//                objPage.createAndShow();
+//                objPage.setVisible(true);
+//                dispose();
+//            };
+//        }; 
+//        timer.schedule(tt, 180000);
+
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -89,30 +148,30 @@ public class CardNumber extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(97, 97, 97)
+                .addContainerGap(48, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(verifyCardNum_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(verifyCardNum_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(31, 31, 31)
+                        .addGap(18, 18, Short.MAX_VALUE)
                         .addComponent(verifyCard, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(97, 97, 97)
+                .addContainerGap(63, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(verifyCard, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(75, 75, 75)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(verifyCardNum_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(91, Short.MAX_VALUE))
+                    .addComponent(verifyCardNum_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         pack();
@@ -143,7 +202,7 @@ public class CardNumber extends javax.swing.JFrame {
 //                PinVerification objPinVerification = context.getBean(PinVerification.class);
 //                objPinVerification.initializeComponent(accNumber, md.getHashText());
 //                objPinVerification.setVisible(true);
-                PinVerification objPinVerification = new PinVerification();
+                PinVerification objPinVerification = new PinVerification(accNumber, md.getHashText());
                 objPinVerification.setVisible(true);
                 dispose();
                 break;
@@ -160,8 +219,10 @@ public class CardNumber extends javax.swing.JFrame {
 
     private void verifyCardKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verifyCardKeyTyped
         // TODO add your handling code here:
+        System.out.println("RUns");
         char c = evt.getKeyChar();
         if(!((Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE) && verifyCard.getText().length()<16)){
+            
              evt.consume();
         }
         if(verifyCard.getText().isEmpty()){

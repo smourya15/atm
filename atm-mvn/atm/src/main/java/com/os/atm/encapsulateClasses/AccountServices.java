@@ -5,13 +5,21 @@
  */
 package com.os.atm.encapsulateClasses;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author smourya
  */
 public class AccountServices  implements DbQueryInterface{
     
-    Account objAccount = new Account("123", "4576", "sjdk", 90);
+    Account objAccount = new Account("123", "4576", 90);
     
     public double viewBalance(){
         return objAccount.getAccount_Bal();
@@ -58,6 +66,31 @@ public class AccountServices  implements DbQueryInterface{
         // input should be table name as string, and rest can be accessed via *this."variable_name"* such asa objAccount.getAccount_Bal()
         
         
+    }
+    
+    public Account populateAccount(String accountNum){
+        String query = "select * from account where account_no = ?";
+        Account acc =null;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
+
+            PreparedStatement pst= con.prepareStatement(query);
+            pst.setString(1, accountNum);
+            ResultSet rs= pst.executeQuery();
+            
+            while(rs.next()){
+                acc = new Account(rs.getString("account_no"), rs.getString("cif_no"), rs.getInt("acc_bal"));
+                break;
+            }
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DebitCardServices.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ATMServices.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return acc;
+
     }
 
     @Override
