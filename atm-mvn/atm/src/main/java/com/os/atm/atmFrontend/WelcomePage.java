@@ -21,13 +21,13 @@ public class WelcomePage extends javax.swing.JFrame {
     @Autowired
     private MessageService messageService;
 
-    @Autowired
+   @Autowired
     private ApplicationContext context;
 
-    public WelcomePage() throws HeadlessException {
-        initComponents();
-        
-    }
+//    public WelcomePage() throws HeadlessException {
+//        initComponents();
+//        
+//    }
 
     
 
@@ -107,7 +107,7 @@ public class WelcomePage extends javax.swing.JFrame {
 
         CardNumber objCardNumber= new CardNumber();
 //        context.getBean(CardNumber.class);
-//        objCardNumber.initializeComponent();
+        objCardNumber.initializeComponent();
 
         objCardNumber.setVisible(true);
         dispose();
@@ -140,17 +140,14 @@ public class WelcomePage extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
-       /* java.awt.EventQueue.invokeLater(new Runnable() {
+  
+       
+        
+        java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new welcomPage().setVisible(true);
+                new WelcomePage().createAndShow();
             }
-        /* Create and display the form */
-        /* java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new WelcomePage().setVisible(true);
-            }
-        }); */
+        }); 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

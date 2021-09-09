@@ -25,7 +25,7 @@ public class App implements CommandLineRunner
     @Override
     public void run(String... strings) throws Exception {
         System.out.println("starting the JFrame");
-        WelcomePage wp = context.getBean(WelcomePage.class);
+        WelcomePage wp =  new WelcomePage();//context.getBean(WelcomePage.class);
         wp.createAndShow();
     }
 }

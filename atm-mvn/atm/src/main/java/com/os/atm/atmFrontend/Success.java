@@ -30,13 +30,14 @@ public class Success extends javax.swing.JFrame {
         TimerTask tt = new TimerTask() {
             @Override
             public void run() {
+                System.out.println("timer success1");
                 WelcomePage objPage = new WelcomePage();
                 objPage.createAndShow();
                 objPage.setVisible(true);
                 dispose();
             };
         }; 
-        timer.schedule(tt, 30000);
+        timer.schedule(tt, 10000);
     }
     
 //    public void 
@@ -49,7 +50,8 @@ public class Success extends javax.swing.JFrame {
         TimerTask tt = new TimerTask() {
             @Override
             public void run() {
-                JOptionPane.showMessageDialog(null, "No input from user. Aborting session");
+                JOptionPane.showMessageDialog(null, "No input from user. Aborting ");
+                 System.out.println("timer success2");
                 WelcomePage objPage = new WelcomePage();
                 objPage.createAndShow();
                 objPage.setVisible(true);

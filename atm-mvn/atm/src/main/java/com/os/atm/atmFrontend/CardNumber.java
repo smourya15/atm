@@ -23,29 +23,31 @@ import org.springframework.context.ApplicationContext;
 //@Scope(value = BeanDefinition.SCOPE_PROTOTYPE)
 public class CardNumber extends javax.swing.JFrame {
 
-    @Autowired
+  @Autowired
     private ApplicationContext context;
     public void initialize() {
         
     }
 
-    public CardNumber() throws HeadlessException {
-        initComponents();
-        verifyCard.setText(null);
-
-        verifyCardNum_Btn.setEnabled(Boolean.FALSE);
-
-        Timer timer = new Timer();
-        TimerTask tt = new TimerTask() {
-            @Override
-            public void run() {
-                WelcomePage objPage = new WelcomePage();
-                objPage.createAndShow();
-                objPage.setVisible(true);
-                dispose();
-            };
-        }; 
-        timer.schedule(tt, 120000);
+//    public CardNumber() throws HeadlessException {
+//        initComponents();
+//        verifyCard.setText(null);
+//
+//        verifyCardNum_Btn.setEnabled(Boolean.FALSE);
+//
+//        Timer timer = new Timer();
+//        TimerTask tt = new TimerTask() {
+//            @Override
+//            public void run() {
+//                
+//                WelcomePage objPage = new WelcomePage();
+//                 System.out.println("timer CardNumber1");
+//                objPage.createAndShow();
+//                objPage.setVisible(true);
+//                dispose();
+//            };
+//        }; 
+//        timer.schedule(tt, 120000);
 
 //        Timer timer = new Timer();
 //        TimerTask tt = new TimerTask() {
@@ -59,7 +61,7 @@ public class CardNumber extends javax.swing.JFrame {
 //        }; 
 //        timer.schedule(tt, 180000);
 
-    }
+  //  }
     
 
     public void initializeComponent(){
@@ -73,6 +75,7 @@ public class CardNumber extends javax.swing.JFrame {
             @Override
             public void run() {
                 WelcomePage objPage = new WelcomePage();
+                 System.out.println("timer cardNumber2");
                 objPage.createAndShow();
                 objPage.setVisible(true);
                 dispose();

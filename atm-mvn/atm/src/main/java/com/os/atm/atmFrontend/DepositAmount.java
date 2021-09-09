@@ -28,12 +28,13 @@ public class DepositAmount extends javax.swing.JFrame {
             @Override
             public void run() {
                 WelcomePage objPage = new WelcomePage();
+                 System.out.println("timer DepAmount");
                 objPage.createAndShow();
                 objPage.setVisible(true);
                 dispose();
             };
         }; 
-        timer.schedule(tt, 120000);
+        timer.schedule(tt, 10000);
     }
     
      public DepositAmount(boolean d50,boolean d100,boolean d500,boolean d1000,boolean d2000) {

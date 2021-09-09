@@ -32,12 +32,13 @@ public class Services extends javax.swing.JFrame {
             @Override
             public void run() {
                 WelcomePage objPage = new WelcomePage();
+                 System.out.println("timer Services");
                 objPage.createAndShow();
                 objPage.setVisible(true);
                 dispose();
             };
         }; 
-        timer.schedule(tt, 30000);
+        timer.schedule(tt, 10000);
     }
 
     public void initializeComponents(){

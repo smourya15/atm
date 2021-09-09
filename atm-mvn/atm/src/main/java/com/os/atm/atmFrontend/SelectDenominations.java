@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
 public class SelectDenominations extends javax.swing.JFrame {
 
     @Autowired
-    private ApplicationContext context;
+   private ApplicationContext context;
     /**
      * Creates new form depositCash
      */
@@ -34,12 +34,13 @@ public class SelectDenominations extends javax.swing.JFrame {
             @Override
             public void run() {
                 WelcomePage objPage = new WelcomePage();
+                 System.out.println("timer selectDenominations");
                 objPage.createAndShow();
                 objPage.setVisible(true);
                 dispose();
             };
         }; 
-        timer.schedule(tt, 30000);
+        timer.schedule(tt, 10000);
     }
     public void initializeComponents(){
         initComponents();

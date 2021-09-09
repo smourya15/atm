@@ -30,7 +30,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class PinVerification extends javax.swing.JFrame {
 
-    @Autowired
+  @Autowired
     private ApplicationContext context;
     /**
      * Creates new form PinVerification
@@ -47,12 +47,13 @@ public class PinVerification extends javax.swing.JFrame {
             @Override
             public void run() {
                 WelcomePage objPage = new WelcomePage();
+                 System.out.println("timer PinV");
                 objPage.createAndShow();
                 objPage.setVisible(true);
                 dispose();
             };
         }; 
-        timer.schedule(tt, 30000);
+        timer.schedule(tt, 10000);
     }
    public PinVerification(String maskedCardNumber, String cardNumberHash){
         initComponents();
@@ -203,7 +204,7 @@ public class PinVerification extends javax.swing.JFrame {
         }
         else{
             JOptionPane.showMessageDialog(this, "Card Blocked Contact your Bank");
-            WelcomePage objWelcomePage = context.getBean(WelcomePage.class);
+            WelcomePage objWelcomePage =  new WelcomePage();//context.getBean(WelcomePage.class);
             objWelcomePage.createAndShow();
             dispose();
         }

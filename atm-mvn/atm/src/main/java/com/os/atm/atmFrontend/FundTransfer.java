@@ -39,7 +39,7 @@ public class FundTransfer extends javax.swing.JFrame {
                 dispose();
             };
         }; 
-        timer.schedule(tt, 120000);
+        timer.schedule(tt, 10000);
     }
 
     /**

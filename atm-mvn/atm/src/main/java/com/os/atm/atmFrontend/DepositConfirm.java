@@ -33,12 +33,13 @@ public class DepositConfirm extends javax.swing.JFrame {
             @Override
             public void run() {
                 WelcomePage objPage = new WelcomePage();
+                 System.out.println("DepConfirm ");
                 objPage.createAndShow();
                 objPage.setVisible(true);
                 dispose();
             };
         }; 
-        timer.schedule(tt, 30000);
+        timer.schedule(tt, 10000);
     }
 
     public DepositConfirm(int d50, int d100, int d500, int d1000, int d2000){
