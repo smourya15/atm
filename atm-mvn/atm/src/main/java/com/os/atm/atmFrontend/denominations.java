@@ -259,7 +259,7 @@ public class Denominations extends javax.swing.JFrame {
         
         
         
-        TransactionSuccess objSuccess = new TransactionSuccess(amount);
+        success objSuccess = new success(amount);
         objSuccess.setVisible(true);
         dispose();
             

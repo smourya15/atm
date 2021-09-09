@@ -165,7 +165,7 @@ public class Services extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        FundTransfer objTransfer = new FundTransfer();
+        fundTransfer objTransfer = new fundTransfer();
         objTransfer.setVisible(true);
         dispose();
                 

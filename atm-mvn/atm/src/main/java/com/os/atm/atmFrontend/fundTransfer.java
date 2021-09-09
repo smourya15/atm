@@ -13,12 +13,12 @@ import org.springframework.stereotype.Component;
  * @author smourya
  */
 @Component
-public class FundTransfer extends javax.swing.JFrame {
+public class fundTransfer extends javax.swing.JFrame {
 
     /**
      * Creates new form fundTransfer
      */
-    public FundTransfer() {
+    public fundTransfer() {
         initComponents();
         BenAccNoTextField.setText(null);
         ReBenAccNoTextField.setText(null);
@@ -88,7 +88,7 @@ public class FundTransfer extends javax.swing.JFrame {
 
         trfConfirm.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         trfConfirm.setText("CONFIRM");
-        trfConfirm.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        trfConfirm.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         trfConfirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 trfConfirmActionPerformed(evt);
@@ -121,7 +121,7 @@ public class FundTransfer extends javax.swing.JFrame {
 
         trfcancel.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         trfcancel.setText("CANCEL");
-        trfcancel.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        trfcancel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         trfcancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 trfcancelActionPerformed(evt);
@@ -215,7 +215,7 @@ public class FundTransfer extends javax.swing.JFrame {
             int transferAmt = Integer.parseInt(trfAmt.getText());
             AccountServices a = new AccountServices();
         a.transferFunds(benAcc, transferAmt);
-        TransactionSuccess objsuccess = new TransactionSuccess(transferAmt);
+        success objsuccess = new success(transferAmt);
         
         objsuccess.setVisible(true);
         dispose();
@@ -465,21 +465,23 @@ if(trfAmt.getText().isEmpty()){
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FundTransfer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(fundTransfer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FundTransfer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(fundTransfer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FundTransfer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(fundTransfer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FundTransfer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(fundTransfer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FundTransfer().setVisible(true);
+                new fundTransfer().setVisible(true);
             }
         });
     }
