@@ -44,7 +44,7 @@ public class CardNumber extends javax.swing.JFrame {
                 dispose();
             };
         }; 
-        timer.schedule(tt, 60000);
+        timer.schedule(tt, 120000);
     }
     
 
@@ -63,7 +63,7 @@ public class CardNumber extends javax.swing.JFrame {
                 dispose();
             };
         }; 
-        timer.schedule(tt, 60000);
+        timer.schedule(tt, 120000);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -191,8 +191,10 @@ public class CardNumber extends javax.swing.JFrame {
 
     private void verifyCardKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verifyCardKeyTyped
         // TODO add your handling code here:
+        System.out.println("RUns");
         char c = evt.getKeyChar();
         if(!((Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE) && verifyCard.getText().length()<16)){
+            
              evt.consume();
         }
         if(verifyCard.getText().isEmpty()){

@@ -155,8 +155,8 @@ public class Services extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        SelectDenominations objSelectDenominations = context.getBean(SelectDenominations.class);
-        objSelectDenominations.initializeComponents();
+        SelectDenominations objSelectDenominations = new SelectDenominations();
+        // objSelectDenominations.initializeComponents();
         objSelectDenominations.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
