@@ -25,19 +25,19 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="D50_checkbox" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
+                      <Component id="D50_checkbox" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="32767" attributes="0"/>
                       <Component id="D100_checkbox" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="32767" attributes="0"/>
                       <Component id="D500_checkbox" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="cancelBtn" min="-2" pref="150" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -45,15 +45,18 @@
                       <Component id="D1000_checkbox" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="32767" attributes="0"/>
                       <Component id="D2000_checkbox" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="11" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="nextBtn" min="-2" pref="150" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="nextBtn" min="-2" pref="150" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace min="0" pref="11" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="173" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

@@ -24,26 +24,33 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="d50Pane" alignment="1" max="32767" attributes="0"/>
-                  <Component id="d100Pane" alignment="0" max="32767" attributes="0"/>
-                  <Component id="d500Pane" alignment="1" max="32767" attributes="0"/>
-                  <Component id="d1000Pane" alignment="0" max="32767" attributes="0"/>
-                  <Component id="d2000Pane" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="backtoselectdenomination" min="-2" pref="150" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="depositbutton" min="-2" max="-2" attributes="0"/>
                   </Group>
-              </Group>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jDesktopPane1" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="d2000Pane" alignment="0" max="32767" attributes="0"/>
+                          <Component id="d1000Pane" alignment="0" max="32767" attributes="0"/>
+                          <Component id="d50Pane" alignment="0" max="32767" attributes="0"/>
+                          <Component id="d100Pane" alignment="0" max="32767" attributes="0"/>
+                          <Component id="d500Pane" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="116" max="32767" attributes="0"/>
+                      <Component id="jDesktopPane1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="117" max="32767" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -54,19 +61,19 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace pref="42" max="32767" attributes="0"/>
               <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" pref="20" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="32767" attributes="0"/>
               <Component id="d50Pane" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="32767" attributes="0"/>
               <Component id="d100Pane" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="32767" attributes="0"/>
               <Component id="d500Pane" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="14" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="32767" attributes="0"/>
               <Component id="d1000Pane" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="12" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="32767" attributes="0"/>
               <Component id="d2000Pane" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="32767" attributes="0"/>
               <Component id="jDesktopPane1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="46" max="32767" attributes="0"/>
+              <EmptySpace pref="56" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="backtoselectdenomination" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                   <Component id="depositbutton" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
@@ -98,13 +105,14 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="rs50Label" min="-2" pref="165" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                  <Component id="d50Notes" min="-2" pref="191" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="eq50Confirm" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
+                  <Component id="d50Notes" min="-2" pref="150" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="32767" attributes="0"/>
+                  <Component id="eq50Confirm" pref="128" max="32767" attributes="0"/>
+                  <EmptySpace pref="12" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -131,7 +139,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Rs. 50              X"/>
+            <Property name="text" type="java.lang.String" value="Rs. 50             X"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="d50Notes">
@@ -174,11 +182,11 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                   <Component id="rs100Label" min="-2" pref="165" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                  <Component id="d100Notes" min="-2" pref="187" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="eq100Confirm" max="32767" attributes="0"/>
-                  <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="32767" attributes="0"/>
+                  <Component id="d100Notes" min="-2" pref="147" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="32767" attributes="0"/>
+                  <Component id="eq100Confirm" pref="134" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -205,7 +213,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Rs. 100           X"/>
+            <Property name="text" type="java.lang.String" value="Rs. 100            X"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="d100Notes">
@@ -247,12 +255,12 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                  <Component id="rs500Label" min="-2" pref="165" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                  <Component id="d500Notes" min="-2" pref="187" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="eq500Confirm" max="32767" attributes="0"/>
-                  <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                  <Component id="rs500Label" min="-2" pref="162" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="32767" attributes="0"/>
+                  <Component id="d500Notes" min="-2" pref="150" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="32767" attributes="0"/>
+                  <Component id="eq500Confirm" pref="134" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -322,11 +330,11 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                   <Component id="rs1000Label" min="-2" pref="165" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                  <Component id="d1000Notes" min="-2" pref="187" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="32767" attributes="0"/>
+                  <Component id="d1000Notes" min="-2" pref="147" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="32767" attributes="0"/>
                   <Component id="eq1000Confirm" max="32767" attributes="0"/>
-                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -396,11 +404,11 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                   <Component id="rs2000Label" min="-2" pref="165" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                  <Component id="d2000Notes" min="-2" pref="178" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="eq2000Confirm" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="32767" attributes="0"/>
+                  <Component id="d2000Notes" min="-2" pref="147" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="32767" attributes="0"/>
+                  <Component id="eq2000Confirm" pref="137" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -504,7 +512,7 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="displaytotal" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
