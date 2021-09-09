@@ -16,19 +16,19 @@ import javax.swing.JOptionPane;
  *
  * @author smourya
  */
-public class denominations extends javax.swing.JFrame {
+public class Denominations extends javax.swing.JFrame {
      
     private int selected_denomination, amount, no_notes;
     /**
      * Creates new form denominations
      */
-    public denominations() {
+    public Denominations() {
         
         initComponents();
         groupRadioButtons();
         withdrawButton.setEnabled(false);
     }
-    public denominations(int amount){
+    public Denominations(int amount){
         initComponents();
         groupRadioButtons();
         withdrawButton.setEnabled(false);
@@ -312,20 +312,21 @@ public class denominations extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(denominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Denominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(denominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Denominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(denominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Denominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(denominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Denominations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new denominations().setVisible(true);
+                new Denominations().setVisible(true);
             }
         });
     }

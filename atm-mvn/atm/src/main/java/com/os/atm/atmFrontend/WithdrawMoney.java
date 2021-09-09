@@ -23,6 +23,7 @@ public class WithdrawMoney extends javax.swing.JFrame {
     /**
      * Creates new form withdraw
      */
+    
     public WithdrawMoney() {
         initComponents();
         
