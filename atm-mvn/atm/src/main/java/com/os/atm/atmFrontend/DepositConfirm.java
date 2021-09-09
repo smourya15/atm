@@ -6,6 +6,8 @@
 package com.os.atm.atmFrontend;
 
 import java.awt.event.KeyEvent;
+import java.sql.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author mdesousa
@@ -19,7 +21,7 @@ public class DepositConfirm extends javax.swing.JFrame {
     private int d100;
     private int d500;
     private int d1000;
-    private int d2000;
+    private int d2000, selected;
     
     public DepositConfirm() {
        
@@ -36,6 +38,8 @@ public class DepositConfirm extends javax.swing.JFrame {
         else{
             d50Notes.setText(String.valueOf(d50));
             eq50Confirm.setText("=  Rs." + d50 * 50);
+            selected = 0;
+            
         }
         
         this.d100 = d100;
@@ -44,6 +48,7 @@ public class DepositConfirm extends javax.swing.JFrame {
         else {
             d100Notes.setText(String.valueOf(d100));
             eq100Confirm.setText("=  Rs." + d100 * 100);
+            selected = 1;
         }
         
         this.d500 = d500;
@@ -52,6 +57,7 @@ public class DepositConfirm extends javax.swing.JFrame {
         else{
             d500Notes.setText(String.valueOf(d500));
             eq500Confirm.setText("=  Rs." + d500 * 500);
+            selected = 2;
         }
         
         this.d1000 = d1000;
@@ -60,6 +66,7 @@ public class DepositConfirm extends javax.swing.JFrame {
          else{
               d1000Notes.setText(String.valueOf(d1000));
               eq1000Confirm.setText("=  Rs." + d1000 * 1000);
+              selected = 3;
         }
         
         this.d2000 = d2000;
@@ -68,6 +75,7 @@ public class DepositConfirm extends javax.swing.JFrame {
         else {
                d2000Notes.setText(String.valueOf(d2000));
                eq2000Confirm.setText("=  Rs." + d2000 * 2000);
+               selected = 4;
         }
         
         String  total = String.valueOf(d50 * 50 + d100 * 100 + d500 * 500 + d1000 * 1000 + d2000 * 2000);
@@ -450,11 +458,51 @@ public class DepositConfirm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void depositbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositbuttonActionPerformed
-       
+        
+        
+        try {   
+                int temp[] = new int[5];
+ 
+//                int i = 1;
+                
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
+                
+                
+                    String sqlQuery2="";
+                    String sqlQuery3="UPDATE atm_machine SET atm_balance = ((SELECT rs50 from atm_machine)*50)+((SELECT rs100 from atm_machine)*100)+((SELECT rs500 from atm_machine)*500)+((SELECT rs1000 from atm_machine)*1000)+((SELECT rs2000 from atm_machine)*2000);";
+                    String sqlQuery4="";
+                    
+                    Statement stmt = con.createStatement();
+                    if(selected == 0)
+                        sqlQuery2 = "UPDATE atm_machine SET rs50=(SELECT rs50 FROM atm_machine)+" + d50;
+                    else if(selected == 1)
+                        sqlQuery2 = "UPDATE atm_machine SET rs100 = (SELECT rs100 FROM atm_machine) +"+ d100;
+                    else if(selected == 2)
+                        sqlQuery2 = "UPDATE atm_machine SET rs500 = (SELECT rs500 FROM atm_machine) +"+d500;
+                    else if(selected == 3)
+                        sqlQuery2 = "UPDATE atm_machine SET rs1000 = (SELECT rs1000 FROM atm_machine) +"+d1000;
+                    else if(selected == 4)
+                        sqlQuery2 = "UPDATE atm_machine SET rs2000 = (SELECT rs2000 FROM atm_machine ) +"+d2000 ;
+                       
+                    stmt.executeUpdate(sqlQuery2);
+                    stmt.executeUpdate(sqlQuery3);
+                    
+                    Success objsuccess = new Success(String.valueOf(d50 * 50 + d100 * 100 + d500 * 500 + d1000 * 1000 + d2000 * 2000));
+                    objsuccess.setVisible(true);
+                    dispose();
+
+               
+//                    WelcomePage zb = new WelcomePage();
+//                    zb.setVisible(true);
+//                    dispose();
+                    
+            }
+            catch (ClassNotFoundException | SQLException ex) {
+                JOptionPane.showMessageDialog(null,ex.getMessage());
+            }
     	
-    	Success objsuccess = new Success(String.valueOf(d50 * 50 + d100 * 100 + d500 * 500 + d1000 * 1000 + d2000 * 2000));
-        objsuccess.setVisible(true);
-        dispose();
+    	;
         // TODO add your handling code here:
     }//GEN-LAST:event_depositbuttonActionPerformed
 
