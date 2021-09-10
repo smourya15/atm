@@ -5,6 +5,7 @@
  */
 package com.os.atm.atmFrontend;
 
+import com.os.atm.encapsulateClasses.DebitCard;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -23,20 +24,22 @@ public class DepositCash extends javax.swing.JFrame {
      * Creates new form depositCash
      */
     String amt;
-    private int d50;
-    private int d100;
-    private int d500;
-    private int d1000;
-    private int d2000;
+    int d50;
+    int d100;
+    int d500;
+    int d1000;
+    int d2000;
     public Boolean D50, D100, D500, D1000, D2000;
     
-    public DepositCash(String amt, Boolean D50, Boolean D100, Boolean D500, Boolean D1000, Boolean D2000) {
-        this.amt=amt;
+    
+    public DepositCash(int d50, int d100, int d500, int d1000, int d2000, DebitCard debitCard){
         this.d50 = d50;
         this.d100 = d100;
         this.d500 = d500;
         this.d1000 = d1000;
         this.d2000 = d2000;
+        
+        System.out.println(" "+d50+" "+d100+" "+d500+" "+d1000+" "+d2000);
         
         if (d50 == 0){
             D50=false;
@@ -51,9 +54,8 @@ public class DepositCash extends javax.swing.JFrame {
         }    
         else {
             D100=true;
-        }
-        
-        
+        }      
+   
         if (d500 == 0){
             D500=false;
         }
@@ -61,23 +63,20 @@ public class DepositCash extends javax.swing.JFrame {
             D500=true;
         }
         
-        
-         if (d1000 == 0){
+        if (d1000 == 0){
             D1000=false;
-         }
+        }
          else{
               D1000=true;
         }
-        
-        
+              
         if (d2000 == 0){
             D2000=false;
         }
         else {
                D2000=true;
         }
-        
-        
+ 
         initComponents();
         confirmbutton.setEnabled(false);
         buttonGroup1.add(correctdenomination);
@@ -244,11 +243,12 @@ public class DepositCash extends javax.swing.JFrame {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
+            System.out.println(d50+" "+d100+" "+d500);
 
 
                 String sqlQuery2="";
                 String sqlQuery3="UPDATE atm_machine SET atm_balance = ((SELECT rs50 from atm_machine)*50)+((SELECT rs100 from atm_machine)*100)+((SELECT rs500 from atm_machine)*500)+((SELECT rs1000 from atm_machine)*1000)+((SELECT rs2000 from atm_machine)*2000);";
-//                    String sqlQuery4="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'DEPOSIT', ?, (SELECT now(), 'P' )";
+                   String sqlQuery4="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'DEPOSIT', ?, (SELECT now(), 'P' )";
 
                 Statement stmt = con.createStatement();
                 if(D50){
@@ -270,22 +270,21 @@ public class DepositCash extends javax.swing.JFrame {
                 if(D2000){
                     sqlQuery2 = "UPDATE atm_machine SET rs2000 = (SELECT rs2000 FROM atm_machine ) +"+d2000 ;
                     stmt.executeUpdate(sqlQuery2);
-                }
-                       
+                }                    
+                stmt.executeUpdate(sqlQuery3);
                     
-                    stmt.executeUpdate(sqlQuery3);
+                        
+           Success depositconfirm = new Success(amt);
+           depositconfirm.setVisible(true);
+           dispose();
+                    
         }
         catch (ClassNotFoundException | SQLException ex) {
                 JOptionPane.showMessageDialog(null,ex.getMessage());
             }
         
         
-        
-        
-        
-           Success depositconfirm = new Success(amt);
-           depositconfirm.setVisible(true);
-           dispose();
+
             // TODO add your handling code here:
     }//GEN-LAST:event_confirmbuttonActionPerformed
 

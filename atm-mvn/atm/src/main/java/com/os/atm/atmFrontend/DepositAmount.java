@@ -351,6 +351,7 @@ public class DepositAmount extends javax.swing.JFrame {
                 errorMessageLabel.setVisible(true);
             } else{
                 DepositConfirm deposit= new DepositConfirm(d50,d100, d500, d1000, d2000, debitCard);
+//                DepositCash depositcash = new DepositCash(d50,d100, d500, d1000, d2000, debitCard);
                 deposit.setVisible(true);
                 dispose();
             }

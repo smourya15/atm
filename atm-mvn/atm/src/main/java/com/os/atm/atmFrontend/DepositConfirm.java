@@ -51,15 +51,15 @@ public class DepositConfirm extends javax.swing.JFrame {
     public DepositConfirm(int d50, int d100, int d500, int d1000, int d2000, DebitCard debitCard){
         initComponents();
         this.d50 = d50;
-<<<<<<< Updated upstream
+
         this.debitCard = debitCard;
         
-=======
+
         this.d100 = d100;
         this.d500 = d500;
         this.d1000 = d1000;
         this.d2000 = d2000;
->>>>>>> Stashed changes
+
         if (d50 == 0){
             d50Pane.setVisible(false);
         }
@@ -531,9 +531,6 @@ public class DepositConfirm extends javax.swing.JFrame {
 //                    dispose();
 //
 //               
-////                    WelcomePage zb = new WelcomePage();
-////                    zb.setVisible(true);
-////                    dispose();
 //                    
 //            }
 //            catch (ClassNotFoundException | SQLException ex) {
@@ -546,7 +543,7 @@ public class DepositConfirm extends javax.swing.JFrame {
 
 
         //Success success =new Success(String.valueOf(d50 * 50 + d100 * 100 + d500 * 500 + d1000 * 1000 + d2000 * 2000));
-    	DepositCash deposit= new DepositCash(String.valueOf(d50 * 50 + d100 * 100 + d500 * 500 + d1000 * 1000 + d2000 * 2000), D50, D100, D500, D1000, D2000);
+    	DepositCash deposit= new DepositCash(d50,d100, d500, d1000, d2000, debitCard);
         deposit.setVisible(true);
         dispose();
         // TODO add your handling code here:
