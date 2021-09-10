@@ -24,7 +24,7 @@ public class DepositConfirm extends javax.swing.JFrame {
     private int d100;
     private int d500;
     private int d1000;
-    private int d2000;
+    private int d2000, amt;
     Boolean D50, D100, D500 ,D1000, D2000;
     private DebitCard debitCard;
     
@@ -103,7 +103,7 @@ public class DepositConfirm extends javax.swing.JFrame {
                d2000Notes.setText(String.valueOf(d2000));
                eq2000Confirm.setText("=  Rs." + d2000 * 2000);
         }
-        
+        amt = d50 * 50 + d100 * 100 + d500 * 500 + d1000 * 1000 + d2000 * 2000;
         String  total = String.valueOf(d50 * 50 + d100 * 100 + d500 * 500 + d1000 * 1000 + d2000 * 2000);
         displaytotal.setText(total);
         
@@ -490,60 +490,9 @@ public class DepositConfirm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void depositbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositbuttonActionPerformed
-       
-
-//        try{
-//            Class.forName("com.mysql.jdbc.Driver");
-//                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
-//                
-//                
-//                    String sqlQuery2="";
-//                    String sqlQuery3="UPDATE atm_machine SET atm_balance = ((SELECT rs50 from atm_machine)*50)+((SELECT rs100 from atm_machine)*100)+((SELECT rs500 from atm_machine)*500)+((SELECT rs1000 from atm_machine)*1000)+((SELECT rs2000 from atm_machine)*2000);";
-////                    String sqlQuery4="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'DEPOSIT', ?, (SELECT now(), 'P' )";
-//                    
-//                    Statement stmt = con.createStatement();
-//                    if(D50){
-//                        sqlQuery2 = "UPDATE atm_machine SET rs50=(SELECT rs50 FROM atm_machine)+" + d50;
-//                        stmt.executeUpdate(sqlQuery2);
-//                    }
-//                    if(D100){
-//                        sqlQuery2 = "UPDATE atm_machine SET rs100 = (SELECT rs100 FROM atm_machine) +"+ d100;
-//                        stmt.executeUpdate(sqlQuery2);
-//                    }
-//                    if(D500){
-//                        sqlQuery2 = "UPDATE atm_machine SET rs500 = (SELECT rs500 FROM atm_machine) +"+d500;
-//                        stmt.executeUpdate(sqlQuery2);
-//                    }
-//                    if(D1000){
-//                        sqlQuery2 = "UPDATE atm_machine SET rs1000 = (SELECT rs1000 FROM atm_machine) +"+d1000;
-//                        stmt.executeUpdate(sqlQuery2);
-//                    }
-//                    if(D2000){
-//                        sqlQuery2 = "UPDATE atm_machine SET rs2000 = (SELECT rs2000 FROM atm_machine ) +"+d2000 ;
-//                        stmt.executeUpdate(sqlQuery2);
-//                    }
-//                       
-//                    
-//                    stmt.executeUpdate(sqlQuery3);
-//                    
-//                    Success objsuccess = new Success(String.valueOf(d50 * 50 + d100 * 100 + d500 * 500 + d1000 * 1000 + d2000 * 2000));
-//                    objsuccess.setVisible(true);
-//                    dispose();
-//
-//               
-//                    
-//            }
-//            catch (ClassNotFoundException | SQLException ex) {
-//                JOptionPane.showMessageDialog(null,ex.getMessage());
-//            }
-//    	
-    	
-        // TODO add your handling code here:
-                                              
-
-
+ 
         //Success success =new Success(String.valueOf(d50 * 50 + d100 * 100 + d500 * 500 + d1000 * 1000 + d2000 * 2000));
-    	DepositCash deposit= new DepositCash(d50,d100, d500, d1000, d2000, debitCard);
+    	DepositCash deposit= new DepositCash(d50,d100, d500, d1000, d2000, debitCard, amt);
         deposit.setVisible(true);
         dispose();
         // TODO add your handling code here:

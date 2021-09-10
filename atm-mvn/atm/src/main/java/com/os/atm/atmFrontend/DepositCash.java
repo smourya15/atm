@@ -6,10 +6,7 @@
 package com.os.atm.atmFrontend;
 
 import com.os.atm.encapsulateClasses.DebitCard;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import org.springframework.stereotype.Component;
 import javax.swing.JOptionPane;
 
@@ -29,18 +26,20 @@ public class DepositCash extends javax.swing.JFrame {
     int d500;
     int d1000;
     int d2000;
+    int trans_amt;
     public Boolean D50, D100, D500, D1000, D2000;
-    DebitCard debitCard;
+    String debitCard;
     
     
-    public DepositCash(int d50, int d100, int d500, int d1000, int d2000, DebitCard debitCard){
+    public DepositCash(int d50, int d100, int d500, int d1000, int d2000, DebitCard debitCard, int amt){
         this.d50 = d50;
         this.d100 = d100;
         this.d500 = d500;
         this.d1000 = d1000;
         this.d2000 = d2000;
-        this.debitCard = debitCard;
-        System.out.println(debitCard);
+        this.debitCard = debitCard.getCard_no();
+        System.out.println(debitCard.getAccNum());
+        trans_amt = amt;
         
         
         System.out.println(" "+d50+" "+d100+" "+d500+" "+d1000+" "+d2000);
@@ -248,11 +247,19 @@ public class DepositCash extends javax.swing.JFrame {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
             System.out.println(d50+" "+d100+" "+d500);
+            
+                String sqlQuery4="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'DEPOSIT', ?, (SELECT now()), 'P' )";
+                
+                PreparedStatement pst = con.prepareStatement(sqlQuery4);
+                pst.setString(1, String.valueOf(debitCard));
+                pst.setString(2, String.valueOf(debitCard));
+                pst.setString(3, String.valueOf(trans_amt));
+                pst.execute();
 
 
                 String sqlQuery2="";
                 String sqlQuery3="UPDATE atm_machine SET atm_balance = ((SELECT rs50 from atm_machine)*50)+((SELECT rs100 from atm_machine)*100)+((SELECT rs500 from atm_machine)*500)+((SELECT rs1000 from atm_machine)*1000)+((SELECT rs2000 from atm_machine)*2000);";
-                   String sqlQuery4="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'DEPOSIT', ?, (SELECT now(), 'P' )";
+                
 
                 Statement stmt = con.createStatement();
                 if(D50){
@@ -276,7 +283,9 @@ public class DepositCash extends javax.swing.JFrame {
                     stmt.executeUpdate(sqlQuery2);
                 }                    
                 stmt.executeUpdate(sqlQuery3);
-                    
+                
+                
+                
                         
            Success depositconfirm = new Success(amt);
            depositconfirm.setVisible(true);
