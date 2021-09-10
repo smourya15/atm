@@ -18,22 +18,37 @@ import java.util.logging.Logger;
  * @author smourya
  */
 public class ATMServices {
-    
+//    private final String ACTIVE="ACTIVE";
+    private final String BLOCKED="BLOCKED";
     //verify the card status
     //if card is active return true else if blocked return false
     public int verifyCard(String searchCardHash){
-        String query = "select card_status from debit_card where card_num =  "+searchCardHash;
-//        if(rs.isempty()){
-//            return 1;
-//            
-//        }else if(card_status == blocked){
-//            return 2;
-//        }
-//        else{
-            return 3;
+        String query = "select card_status from debit_card where card_no = ? ";
+        Connection con = (new DatabaseConnections()).databaseCon();
+        try{
+        PreparedStatement pst = con.prepareStatement(query);
+        pst.setString(1, searchCardHash);
+        ResultSet rs = pst.executeQuery();
+        
+            if(!rs.isBeforeFirst()){
+                return 1;
+            }
+            while(rs.next()){
+                if(rs.getString("card_status").equals(this.BLOCKED)){
+                    return 2;
+                }
+                else{
+                    return 3;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ATMServices.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
 //        }
         //select card-No, from atm where card_no = hashCardValue.parseInt something.
 //        return Boolean.FALSE;
+        return 0;
     }
     
     //verify pin 
