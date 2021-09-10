@@ -343,7 +343,7 @@ public class DepositAmount extends javax.swing.JFrame {
             d2000 = Integer.parseInt(d2000Field.getText());
         }
         
-            if(d50Field.getText().isEmpty() && d100Field.getText().isEmpty() && d500Field.getText().isEmpty() && d1000Field.getText().isEmpty() && d2000Field.getText().isEmpty() ){
+            if(d50Field.getText().isEmpty() && d100Field.getText().isEmpty() && d500Field.getText().isEmpty() && d1000Field.getText().isEmpty() && d2000Field.getText().isEmpty()){
           errorMessageLabel.setVisible(true);
             } else{
         DepositConfirm deposit= new DepositConfirm(d50,d100, d500, d1000, d2000);
@@ -351,7 +351,6 @@ public class DepositAmount extends javax.swing.JFrame {
          dispose();
          
             }
-            // TODO add your handling code here:
     }//GEN-LAST:event_nextBtnActionPerformed
 
     private void d100FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_d100FieldActionPerformed
