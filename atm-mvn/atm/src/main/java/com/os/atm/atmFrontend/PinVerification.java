@@ -179,7 +179,7 @@ public class PinVerification extends javax.swing.JFrame {
         MD5Hashing md = new MD5Hashing(verifyPin.getText());
         DebitCardServices db=new DebitCardServices();
         ATMServices objATMServices = new ATMServices();
-        JOptionPane.showMessageDialog(this, md.getHashText());
+        JOptionPane.showMessageDialog(this, md.getHashText()+"\t"+ verifyPin.getText());
         Boolean pinValid = objATMServices.VerifyPin(md.getHashText(), getEncryptCard());
         JOptionPane.showMessageDialog(this, pinValid);
         if(attempts > 1 && (!pinValid)){

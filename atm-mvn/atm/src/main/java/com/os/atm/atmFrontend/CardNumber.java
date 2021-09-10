@@ -187,7 +187,7 @@ public class CardNumber extends javax.swing.JFrame {
 //        objPin.setVisible(true);
 //        dispose();
             case 2:
-                JOptionPane.showMessageDialog(this, "Your Card is Blocked,\n Contact Your Branch\n"+Arrays.toString(verifyCard.getPassword()));
+                JOptionPane.showMessageDialog(this, "Your Card is Blocked,\n Contact Your Branch\n");
                 break;
             case 3:
                 JOptionPane.showMessageDialog(this, verifyCard.getText());
