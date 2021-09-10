@@ -45,7 +45,7 @@
                       <Component id="D1000_checkbox" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="32767" attributes="0"/>
                       <Component id="D2000_checkbox" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="11" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="nextBtn" min="-2" pref="150" max="-2" attributes="0"/>
@@ -63,9 +63,9 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace pref="29" max="32767" attributes="0"/>
+              <EmptySpace pref="93" max="32767" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="32767" attributes="0"/>
+              <EmptySpace type="separate" pref="84" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="D50_checkbox" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="D100_checkbox" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -73,12 +73,12 @@
                   <Component id="D1000_checkbox" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="D2000_checkbox" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" pref="46" max="32767" attributes="0"/>
+              <EmptySpace type="separate" pref="110" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="nextBtn" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                   <Component id="cancelBtn" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="29" max="32767" attributes="0"/>
+              <EmptySpace pref="93" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

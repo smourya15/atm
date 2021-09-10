@@ -163,7 +163,7 @@ public class SelectDenominations extends javax.swing.JFrame {
                         .addComponent(D1000_checkbox)
                         .addGap(18, 18, Short.MAX_VALUE)
                         .addComponent(D2000_checkbox)
-                        .addGap(0, 11, Short.MAX_VALUE))
+                        .addGap(0, 10, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(nextBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
@@ -175,20 +175,20 @@ public class SelectDenominations extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
+                .addContainerGap(93, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addGap(18, 84, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(D50_checkbox)
                     .addComponent(D100_checkbox)
                     .addComponent(D500_checkbox)
                     .addComponent(D1000_checkbox)
                     .addComponent(D2000_checkbox))
-                .addGap(18, 46, Short.MAX_VALUE)
+                .addGap(18, 110, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nextBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
 
         pack();
