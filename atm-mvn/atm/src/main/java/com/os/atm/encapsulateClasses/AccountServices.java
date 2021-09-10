@@ -76,7 +76,7 @@ public class AccountServices{
                     System.out.println("user Balc: "+debitCard.getBalcance());
                     t=(int) (debitCard.getBalcance()-Amount);
                     updateUserPST.setInt(1, t);
-                    updateUserPST.setString(2, rs.getString("account_no"));
+                    updateUserPST.setString(2, debitCard.getAccNum());
                     updateUserPST.executeUpdate();
 //                    con.commit();
                     
