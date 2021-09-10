@@ -145,11 +145,11 @@ public class DepositCash extends javax.swing.JFrame {
                 .addGap(18, 115, Short.MAX_VALUE)
                 .addComponent(confirmbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(111, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(correctdenomination)
@@ -176,8 +176,9 @@ public class DepositCash extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
-        SelectDenominations goback = new SelectDenominations();
-        goback.setVisible(true);
+        WelcomePage objPage = new WelcomePage();
+        objPage.createAndShow();
+        objPage.setVisible(true);
         dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
@@ -199,7 +200,9 @@ public class DepositCash extends javax.swing.JFrame {
                
                 confirmbutton.setEnabled(false);
                 JOptionPane.showMessageDialog(null,"INCORRECT AMOUNT DEPOSITED\n"+"PLEASE TRY AGAIN");
-                // TODO add your handling code here:
+                SelectDenominations seldenom = new SelectDenominations();
+                dispose();
+                seldenom.setVisible(true);
     }//GEN-LAST:event_incorrectdenominationActionPerformed
 
     /**

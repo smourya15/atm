@@ -82,19 +82,6 @@ public class CardNumber extends javax.swing.JFrame {
             };
         }; 
         timer.schedule(tt, 120000);
-
-//        Timer timer = new Timer();
-//        TimerTask tt = new TimerTask() {
-//            @Override
-//            public void run() {
-//                WelcomePage objPage = new WelcomePage();
-//                objPage.createAndShow();
-//                objPage.setVisible(true);
-//                dispose();
-//            };
-//        }; 
-//        timer.schedule(tt, 180000);
-
     }
     /**
      * This method is called from within the constructor to initialize the form.
