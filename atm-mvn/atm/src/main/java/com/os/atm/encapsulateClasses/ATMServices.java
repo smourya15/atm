@@ -48,6 +48,9 @@ public class ATMServices {
             pst.setString(1, pinCardHash);
             pst.setString(2, cardHash);
             ResultSet rs= pst.executeQuery();
+            if(!rs.isBeforeFirst()){
+                return Boolean.FALSE;
+            }
             while(rs.next()){
                 return  Boolean.TRUE;
             }
@@ -64,7 +67,7 @@ public class ATMServices {
 //                return Boolean.TRUE
 //        DebitCard debitCard = new DebitCard("12345", "active", "Sidhant", LocalDate.parse("25/08/2021", this.formatter),Boolean.TRUE);
 //        db.add(debitCard);
-        return Boolean.TRUE;
+        return Boolean.FALSE;
     }
     
     public Boolean callWithdrawNodule(){

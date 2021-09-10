@@ -5,6 +5,7 @@
  */
 package com.os.atm.atmFrontend;
 
+import com.os.atm.encapsulateClasses.DebitCard;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.JOptionPane;
@@ -24,6 +25,7 @@ public class Services extends javax.swing.JFrame {
     /**
      * Creates new form Services
      */
+    private DebitCard debitCard;
     public Services() {
         initComponents();
         
@@ -38,7 +40,25 @@ public class Services extends javax.swing.JFrame {
                 dispose();
             };
         }; 
-        timer.schedule(tt, 10000);
+        timer.schedule(tt, 120000);
+    }
+
+    Services(DebitCard debitCard) {
+        this.debitCard = debitCard;
+        initComponents();
+        
+        Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                WelcomePage objPage = new WelcomePage();
+                 System.out.println("timer Services");
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
+        timer.schedule(tt, 120000);
     }
 
     public void initializeComponents(){
@@ -156,7 +176,7 @@ public class Services extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        SelectDenominations objSelectDenominations = new SelectDenominations();
+        SelectDenominations objSelectDenominations = new SelectDenominations(debitCard);
         // objSelectDenominations.initializeComponents();
         objSelectDenominations.setVisible(true);
         dispose();
@@ -164,21 +184,21 @@ public class Services extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        WithdrawMoney objWithdraw = new WithdrawMoney();
+        WithdrawMoney objWithdraw = new WithdrawMoney(debitCard);
         objWithdraw.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        RetrieveBalance objEnquire = new  RetrieveBalance();
+        RetrieveBalance objEnquire = new  RetrieveBalance(debitCard);
         objEnquire.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        FundTransfer objTransfer = new FundTransfer();
+        FundTransfer objTransfer = new FundTransfer(debitCard);
         objTransfer.setVisible(true);
         dispose();
                 

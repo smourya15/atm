@@ -5,6 +5,7 @@
  */
 package com.os.atm.atmFrontend;
 
+import com.os.atm.encapsulateClasses.DebitCard;
 import java.sql.*;
 import java.util.*;
 import java.util.logging.Level;
@@ -18,6 +19,7 @@ import javax.swing.JOptionPane;
  */
 public class Denominations extends javax.swing.JFrame {
      
+    private DebitCard debitCard;
     PreparedStatement pst = null;
     ResultSet rs = null;
     private int selected_denomination, amount, no_notes, selected;
@@ -43,9 +45,10 @@ public class Denominations extends javax.swing.JFrame {
         }; 
         timer.schedule(tt, 10000);
     }
-    public Denominations(int amount){
+    public Denominations(int amount, DebitCard debitCard){
         initComponents();
         groupRadioButtons();
+        this.debitCard = debitCard;
         withdrawButton.setEnabled(false);
         this.amount = amount;
         headText.setText("Your Amount is Rs."+amount);

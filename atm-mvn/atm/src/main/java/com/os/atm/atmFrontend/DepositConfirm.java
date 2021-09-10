@@ -5,6 +5,7 @@
  */
 package com.os.atm.atmFrontend;
 
+import com.os.atm.encapsulateClasses.DebitCard;
 import java.awt.event.KeyEvent;
 import java.sql.*;
 import java.util.Timer;
@@ -25,6 +26,7 @@ public class DepositConfirm extends javax.swing.JFrame {
     private int d1000;
     private int d2000;
     Boolean D50, D100, D500 ,D1000, D2000;
+    private DebitCard debitCard;
     
     public DepositConfirm() {
         initComponents();
@@ -42,9 +44,11 @@ public class DepositConfirm extends javax.swing.JFrame {
         timer.schedule(tt, 30000);
     }
 
-    public DepositConfirm(int d50, int d100, int d500, int d1000, int d2000){
+    public DepositConfirm(int d50, int d100, int d500, int d1000, int d2000, DebitCard debitCard){
         initComponents();
         this.d50 = d50;
+        this.debitCard = debitCard;
+        
         if (d50 == 0){
             d50Pane.setVisible(false);
             D50=false;
@@ -548,7 +552,7 @@ public class DepositConfirm extends javax.swing.JFrame {
     }//GEN-LAST:event_depositbuttonActionPerformed
 
     private void backtoselectdenominationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backtoselectdenominationActionPerformed
-        SelectDenominations deposit = new SelectDenominations();
+        SelectDenominations deposit = new SelectDenominations(debitCard);
         deposit.setVisible(true);
         dispose();
         // TODO add your handling code here:

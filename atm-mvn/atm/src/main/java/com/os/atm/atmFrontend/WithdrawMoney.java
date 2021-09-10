@@ -25,7 +25,7 @@ public class WithdrawMoney extends javax.swing.JFrame {
     /**
      * Creates new form withdraw
      */
-    
+    private DebitCard debitCard;
     public WithdrawMoney() {
         initComponents();
         confirmButton.setEnabled(Boolean.FALSE);
@@ -44,6 +44,24 @@ public class WithdrawMoney extends javax.swing.JFrame {
         timer.schedule(tt, 10000);
     }
 
+    WithdrawMoney(DebitCard debitCard) {
+        initComponents();
+        confirmButton.setEnabled(Boolean.FALSE);
+        
+        Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                 System.out.println("timer withdrawMoney");
+                WelcomePage objPage = new WelcomePage();
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
+        timer.schedule(tt, 10000);
+        this.debitCard = debitCard;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -169,7 +187,7 @@ public class WithdrawMoney extends javax.swing.JFrame {
         System.out.println(amount);
         
         if(amount%50==0){
-            Denominations objDenomination= new Denominations(amount);
+            Denominations objDenomination= new Denominations(amount,debitCard);
             objDenomination.setVisible(true);
             dispose();
         }

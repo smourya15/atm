@@ -189,16 +189,18 @@ public class PinVerification extends javax.swing.JFrame {
             
         }
         else if(pinValid){
-            DebitCard debitCard;
+            DebitCard debitCard=null;
             try {
                 JOptionPane.showMessageDialog(this, "hashpin = "+md.getHashText()+" hashcard="+ getEncryptCard());
                 debitCard = db.Populate(md.getHashText(), getEncryptCard());
+                System.out.println("Debit Card: "+debitCard.getCardHolderName()+"\t "+debitCard.getCardStatus()+" \t"+debitCard.getCard_no()+"\t"+debitCard.getBalcance());
+                System.out.println("Account Details: "+ debitCard.getAccNum() +"\t"+debitCard.getCardLimit());
             } catch (ParseException ex) {
                 Logger.getLogger(PinVerification.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
                 Logger.getLogger(PinVerification.class.getName()).log(Level.SEVERE, null, ex);
             }
-            Services objServices = new Services();
+            Services objServices = new Services(debitCard);
             
 //            Services objServices = context.getBean(Services.class);
 //            objServices.initializeComponents();

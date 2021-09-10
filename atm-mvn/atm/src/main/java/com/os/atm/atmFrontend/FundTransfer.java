@@ -5,6 +5,7 @@
  */
 package com.os.atm.atmFrontend;
 import com.os.atm.encapsulateClasses.AccountServices;
+import com.os.atm.encapsulateClasses.DebitCard;
 import java.awt.event.KeyEvent;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -21,6 +22,7 @@ public class FundTransfer extends javax.swing.JFrame {
     /**
      * Creates new form fundTransfer
      */
+    private DebitCard debitCard;
     public FundTransfer() {
         initComponents();
         benAccNoTextField.setText(null);
@@ -39,7 +41,29 @@ public class FundTransfer extends javax.swing.JFrame {
                 dispose();
             };
         }; 
-        timer.schedule(tt, 10000);
+        timer.schedule(tt, 120000);
+    }
+
+    FundTransfer(DebitCard debitCard) {
+        initComponents();
+        this.debitCard=debitCard;
+        benAccNoTextField.setText(null);
+        reBenAccNoTextField.setText(null);
+        trfAmt.setText(null);
+        errorMsgLabel.setVisible(false);
+        trfConfirmBtn.setEnabled(false);
+        
+        Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                WelcomePage objPage = new WelcomePage();
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
+        timer.schedule(tt, 120000);
     }
 
     /**
@@ -235,7 +259,7 @@ public class FundTransfer extends javax.swing.JFrame {
             errorMsgLabel.setVisible(false);
             int transferAmt = Integer.parseInt(trfAmt.getText());
             AccountServices a = new AccountServices();
-            a.transferFunds(benAcc, transferAmt);
+            a.transferFunds(benAcc, transferAmt, debitCard);
             Success objsuccess = new Success(transferAmt);
             objsuccess.setVisible(true);
             dispose();
@@ -256,7 +280,7 @@ public class FundTransfer extends javax.swing.JFrame {
     private void benAccNoTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_benAccNoTextFieldKeyTyped
         char c = evt.getKeyChar();
         
-        if(!((Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE) && benAccNoTextField.getText().length() < 16)){
+        if(!((Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE) && benAccNoTextField.getText().length() < 10)){
             evt.consume();
         }
     }//GEN-LAST:event_benAccNoTextFieldKeyTyped
@@ -264,7 +288,7 @@ public class FundTransfer extends javax.swing.JFrame {
     private void reBenAccNoTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_reBenAccNoTextFieldKeyTyped
         char c = evt.getKeyChar();
         
-        if(!((Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE) && reBenAccNoTextField.getText().length() < 16)){
+        if(!((Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE) && reBenAccNoTextField.getText().length() < 10)){
              evt.consume();
         }
     }//GEN-LAST:event_reBenAccNoTextFieldKeyTyped
@@ -279,7 +303,7 @@ public class FundTransfer extends javax.swing.JFrame {
 
     private void benAccNoTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_benAccNoTextFieldKeyReleased
         char c = evt.getKeyChar();
-        if(benAccNoTextField.getText().length() == 16 && reBenAccNoTextField.getText().length() == 16){
+        if(benAccNoTextField.getText().length() == 10 && reBenAccNoTextField.getText().length() == 10){
             System.out.println("length" + benAccNoTextField.getText().length());
             if(!trfAmt.getText().isEmpty()){
                 System.out.println("works");
@@ -293,7 +317,7 @@ public class FundTransfer extends javax.swing.JFrame {
 
     private void reBenAccNoTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_reBenAccNoTextFieldKeyReleased
         char c = evt.getKeyChar();
-        if(benAccNoTextField.getText().length() == 16 && reBenAccNoTextField.getText().length() == 16){
+        if(benAccNoTextField.getText().length() == 10 && reBenAccNoTextField.getText().length() == 10){
             System.out.println("length" + benAccNoTextField.getText().length());
              
             if(!trfAmt.getText().isEmpty()){
@@ -311,7 +335,7 @@ public class FundTransfer extends javax.swing.JFrame {
 
     private void trfAmtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_trfAmtKeyReleased
         char c = evt.getKeyChar();
-        if(benAccNoTextField.getText().length() == 16 && reBenAccNoTextField.getText().length() == 16){
+        if(benAccNoTextField.getText().length() == 10 && reBenAccNoTextField.getText().length() == 10){
             System.out.println("length" + benAccNoTextField.getText().length());
              
             if(!trfAmt.getText().isEmpty()){

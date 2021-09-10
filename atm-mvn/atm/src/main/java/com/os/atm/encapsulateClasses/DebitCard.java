@@ -44,8 +44,8 @@ public class DebitCard {
      *
      * @return the value of expiryDate
      */
-    public Account getAccNum() {
-        return accNum;
+    public String getAccNum() {
+        return accNum.getAccNum();
     }
 
     /**
@@ -72,6 +72,9 @@ public class DebitCard {
      */
     public String getCard_no() {
         return card_no;
+    }
+    public double getBalcance(){
+        return this.accNum.getAccount_Bal();
     }
     
 

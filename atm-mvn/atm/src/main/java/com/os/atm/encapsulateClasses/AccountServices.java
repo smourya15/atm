@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  *
  * @author smourya
  */
-public class AccountServices  implements DbQueryInterface{
+public class AccountServices{
     
     Account objAccount = new Account("123", "4576", 90);
     
@@ -43,10 +43,47 @@ public class AccountServices  implements DbQueryInterface{
     public void addAmount(long addAmt){
         objAccount.setAccount_Bal(objAccount.getAccount_Bal() + addAmt);
     }
-    public void transferFunds(final String benificiary_Account_num, long Amount){
+    public void transferFunds(final String benificiary_Account_num, int Amount, DebitCard debitCard){
         try{
-            if(objAccount.getAccount_Bal() < Amount)
+            if(debitCard.getBalcance() < Amount)
                 throw new NoAmountException("Specify the Correct Amount");
+            
+            String query = "select account_no, acc_bal from account where account_no =?";
+            Connection con = (new DatabaseConnections()).databaseCon();
+            PreparedStatement pst = con.prepareStatement(query);
+            pst.setString(1, benificiary_Account_num);
+//            con.commit();
+            ResultSet rs = pst.executeQuery();
+            if(!rs.isBeforeFirst()){
+                con.close();
+                throw new NoAccountFound("No Account Found");
+            }
+            else{
+                while(rs.next()){
+//                    System.out.println(""+con.isClosed());
+                    String updateBeneficiaryAccountQuery = " update account set acc_bal=? where account_no =?";
+                    PreparedStatement updateBenPST = con.prepareStatement(updateBeneficiaryAccountQuery);
+                    System.out.println("Ben Amount: "+ rs.getInt("acc_bal"));
+                    int t = (int)rs.getInt("acc_bal")+(int)Amount;
+                    System.out.println("new Amount: "+ t);
+                    updateBenPST.setInt(1,t);
+                    updateBenPST.setString(2, benificiary_Account_num);
+                    updateBenPST.executeUpdate();
+                    
+                    t=0;
+                    String updateUserAccountQuery = "update account set acc_bal = ? where account_no = ?";
+                    PreparedStatement updateUserPST = con.prepareStatement(updateUserAccountQuery);
+                    System.out.println("user Balc: "+debitCard.getBalcance());
+                    t=(int) (debitCard.getBalcance()-Amount);
+                    updateUserPST.setInt(1, t);
+                    updateUserPST.setString(2, rs.getString("account_no"));
+                    updateUserPST.executeUpdate();
+//                    con.commit();
+                    
+                }
+
+            }
+            con.close();
             
             // check if the account number of the benificiary exist in the database, if not then throw exception.
             if(Boolean.TRUE){
@@ -56,17 +93,12 @@ public class AccountServices  implements DbQueryInterface{
             objAccount.setAccount_Bal(objAccount.getAccount_Bal() - Amount);
 
         }catch(NoAmountException | NoAccountFound ne){            
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountServices.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    @Override
-    public void update_query(String... Param) {
-        
-        // update balance query here after withdrawing or transfering funds have been taken place.
-        // input should be table name as string, and rest can be accessed via *this."variable_name"* such asa objAccount.getAccount_Bal()
-        
-        
-    }
+
     
     public Account populateAccount(String accountNum){
         String query = "select * from account where account_no = ?";
@@ -93,11 +125,7 @@ public class AccountServices  implements DbQueryInterface{
 
     }
 
-    @Override
-    public void view_query(String... Param) {
-        
-        //insert select statement here balance check.
-    }
+
  
 //    public static void main(String[] args) {
 //        AccountServices acc = new AccountServices();

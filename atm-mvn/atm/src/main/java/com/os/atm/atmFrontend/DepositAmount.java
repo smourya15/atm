@@ -5,6 +5,7 @@
  */
 package com.os.atm.atmFrontend;
 
+import com.os.atm.encapsulateClasses.DebitCard;
 import java.awt.event.KeyEvent;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -19,6 +20,7 @@ public class DepositAmount extends javax.swing.JFrame {
     /**
      * Creates new form depositAmount
      */
+    private DebitCard debitCard;
     public DepositAmount() {
         initComponents();
         nextBtn.setEnabled(false);
@@ -37,7 +39,7 @@ public class DepositAmount extends javax.swing.JFrame {
         timer.schedule(tt, 10000);
     }
     
-     public DepositAmount(boolean d50,boolean d100,boolean d500,boolean d1000,boolean d2000) {
+     public DepositAmount(boolean d50,boolean d100,boolean d500,boolean d1000,boolean d2000, DebitCard debitCard) {
         initComponents();
                 nextBtn.setEnabled(false);
                 errorMessageLabel.setVisible(false);
@@ -52,6 +54,8 @@ public class DepositAmount extends javax.swing.JFrame {
         d500Field.setVisible(d500);
         d1000Field.setVisible(d1000);
         d2000Field.setVisible(d2000);
+        
+        this.debitCard = debitCard;
         
         Timer timer = new Timer();
         TimerTask tt = new TimerTask() {
@@ -346,7 +350,7 @@ public class DepositAmount extends javax.swing.JFrame {
             if(d50Field.getText().isEmpty() && d100Field.getText().isEmpty() && d500Field.getText().isEmpty() && d1000Field.getText().isEmpty() && d2000Field.getText().isEmpty()){
                 errorMessageLabel.setVisible(true);
             } else{
-                DepositConfirm deposit= new DepositConfirm(d50,d100, d500, d1000, d2000);
+                DepositConfirm deposit= new DepositConfirm(d50,d100, d500, d1000, d2000, debitCard);
                 deposit.setVisible(true);
                 dispose();
             }

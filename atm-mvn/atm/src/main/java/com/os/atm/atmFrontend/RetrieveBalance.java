@@ -6,6 +6,7 @@
  */
 package com.os.atm.atmFrontend;
 import com.os.atm.encapsulateClasses.Account;
+import com.os.atm.encapsulateClasses.DebitCard;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.JOptionPane;
@@ -15,11 +16,13 @@ import org.springframework.stereotype.Component;
  * @author smourya
  */
 @Component
+
 public class RetrieveBalance extends javax.swing.JFrame {
 
     /**
      * Creates new form RetrieveBalance
      */
+    private DebitCard debitCard;
     public RetrieveBalance(String a, double b) {
         initComponents();
         accno.setText(a);
@@ -55,6 +58,26 @@ public class RetrieveBalance extends javax.swing.JFrame {
         }; 
         timer.schedule(tt, 10000);
         }
+
+    RetrieveBalance(DebitCard debitCard) {
+         initComponents();
+         this.debitCard=debitCard;
+         accno.setText(this.debitCard.getAccNum());
+        bal.setText(String.valueOf(this.debitCard.getBalcance()));
+            
+            Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                JOptionPane.showMessageDialog(null, "No input from user. Aborting session");
+                WelcomePage objPage = new WelcomePage();
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
+        timer.schedule(tt, 10000);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

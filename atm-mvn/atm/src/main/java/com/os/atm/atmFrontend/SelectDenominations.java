@@ -5,6 +5,7 @@
  */
 package com.os.atm.atmFrontend;
 
+import com.os.atm.encapsulateClasses.DebitCard;
 import java.awt.event.ItemEvent;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -25,9 +26,29 @@ public class SelectDenominations extends javax.swing.JFrame {
     /**
      * Creates new form depositCash
      */
+    private DebitCard debitCard;
     public SelectDenominations() {
         initComponents();
         nextBtn.setEnabled(false);
+        
+        Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                WelcomePage objPage = new WelcomePage();
+                 System.out.println("timer selectDenominations");
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
+        timer.schedule(tt, 30000);
+    }
+
+    SelectDenominations(DebitCard debitCard) {
+        initComponents();
+        nextBtn.setEnabled(false);
+        this.debitCard = debitCard;
         
         Timer timer = new Timer();
         TimerTask tt = new TimerTask() {
@@ -213,7 +234,7 @@ public class SelectDenominations extends javax.swing.JFrame {
         boolean d1000= D1000_checkbox.isSelected();
         boolean d2000 = D2000_checkbox.isSelected();
          
-        DepositAmount objDeposit = new DepositAmount(d50,d100,d500,d1000,d2000);
+        DepositAmount objDeposit = new DepositAmount(d50,d100,d500,d1000,d2000, debitCard);
         objDeposit.setVisible(true);
         dispose();
         
