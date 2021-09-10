@@ -31,15 +31,26 @@
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="depositbutton" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="d1000Pane" alignment="1" max="32767" attributes="0"/>
-                      <Component id="d500Pane" alignment="1" max="32767" attributes="0"/>
-                      <Component id="d2000Pane" max="32767" attributes="0"/>
-                      <Component id="d100Pane" alignment="1" max="32767" attributes="0"/>
-                      <Component id="d50Pane" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="d1000Pane" alignment="1" max="32767" attributes="0"/>
+                          <Component id="d500Pane" alignment="1" max="32767" attributes="0"/>
+                          <Component id="d2000Pane" max="32767" attributes="0"/>
+                          <Component id="d100Pane" alignment="1" max="32767" attributes="0"/>
+                          <Component id="d50Pane" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <Component id="jDesktopPane1" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jDesktopPane1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace pref="78" max="32767" attributes="0"/>
           </Group>
