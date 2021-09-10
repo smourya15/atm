@@ -171,6 +171,9 @@ public class CardNumber extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         final StringBuilder cardNum = new StringBuilder(verifyCard.getText());
+        
+        DepositConfirm dp = new DepositConfirm(cardNum);
+        
         MD5Hashing md = new MD5Hashing(cardNum.toString());
 //        PBES_Encryption pb = new PBES_Encryption(salt.toString(), verifyCard.getText());
         System.out.println("card: "+verifyCard.getText()+" Hash:"+ md.getHashText());
