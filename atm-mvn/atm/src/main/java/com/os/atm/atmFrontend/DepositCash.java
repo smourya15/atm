@@ -30,6 +30,7 @@ public class DepositCash extends javax.swing.JFrame {
     int d1000;
     int d2000;
     public Boolean D50, D100, D500, D1000, D2000;
+    DebitCard debitCard;
     
     
     public DepositCash(int d50, int d100, int d500, int d1000, int d2000, DebitCard debitCard){
@@ -38,6 +39,9 @@ public class DepositCash extends javax.swing.JFrame {
         this.d500 = d500;
         this.d1000 = d1000;
         this.d2000 = d2000;
+        this.debitCard = debitCard;
+        System.out.println(debitCard);
+        
         
         System.out.println(" "+d50+" "+d100+" "+d500+" "+d1000+" "+d2000);
         
