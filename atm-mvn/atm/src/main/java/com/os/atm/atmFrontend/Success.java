@@ -5,6 +5,7 @@
  */
 package com.os.atm.atmFrontend;
 
+import com.os.atm.encapsulateClasses.DebitCard;
 import java.util.*;
 import javax.swing.JOptionPane;
 
@@ -18,7 +19,9 @@ public class Success extends javax.swing.JFrame {
      * Creates new form success
      */
     int amount1;
+    private String txnType;
     String amount2;
+    private DebitCard objDebitCard = null;
     public Success(){
         initComponents();
     }
@@ -42,9 +45,11 @@ public class Success extends javax.swing.JFrame {
     
 //    public void 
     
-    public Success(String amount2) {
+    public Success(String amount2,String tType, DebitCard db) {
         initComponents();
+        this.txnType = tType;
         this.amount2 = amount2;
+        this.objDebitCard = db;
         SuccessMessage.setText("Your Transaction of Rs."+ amount2 +" was successful");
         Timer timer = new Timer();
         TimerTask tt = new TimerTask() {
@@ -145,8 +150,8 @@ public class Success extends javax.swing.JFrame {
 
     private void printReceiptBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printReceiptBtnActionPerformed
         // TODO add your handling code here:
-        PrintReceipt pr = new PrintReceipt("");
-        pr.printTransaction(pr.t);
+        PrintReceipt pr = new PrintReceipt(this.txnType, this.objDebitCard);
+//        pr.printTransaction(pr.t);
         pr.setVisible(true);
         dispose();
     }//GEN-LAST:event_printReceiptBtnActionPerformed

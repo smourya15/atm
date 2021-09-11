@@ -5,24 +5,33 @@
  */
 package com.os.atm.atmFrontend;
 
+import com.os.atm.encapsulateClasses.DebitCard;
+import java.awt.HeadlessException;
+
 /**
  *
  * @author skorgaonkar
  */
 public class PrintReceipt extends javax.swing.JFrame {
-
+    
+    String tType;
+    private DebitCard objDebitCard;
     /**
      * Creates new form PrintReceipt
      */
-    public PrintReceipt(String txnType) {
-    initComponents();
     
-    String tType =txnType;
-    
+   public PrintReceipt() throws HeadlessException {
+       initComponents();
+    }
+
+    public PrintReceipt(String txnType, DebitCard db) {
+        initComponents();
+        
+        this.tType = txnType;
+        this.objDebitCard = db;
+        
+        
 //    printTransaction(txnType);
-        
-        
-        
     }
     
     String t ="hello";
@@ -32,15 +41,15 @@ public class PrintReceipt extends javax.swing.JFrame {
     public void printTransaction() {
     // Menu driven program
     
-    CardNumber cn = new CardNumber();
-        System.out.println(cn.abc);
+//    CardNumber cn = new CardNumber();
+//        System.out.println(cn.abc);
         Services t = new Services();
         String pt = t.txnType;
          
     
     
     
-    switch(pt){
+    switch(this.tType){
         
         case "WITHDRAW" : {
             
@@ -315,7 +324,7 @@ public class PrintReceipt extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PrintReceipt("").setVisible(true);
+                new PrintReceipt().setVisible(true);
             }
         });
     }
