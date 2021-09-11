@@ -209,9 +209,14 @@ public class WithdrawMoney extends javax.swing.JFrame {
                 withdrawAmountField.setText(null);
             }
             else{
-                Denominations objDenomination= new Denominations(amount,objDebitCard);
-                objDenomination.setVisible(true);
-                dispose();
+                if(objDebitCard.getCardLimit()<amount){
+                    JOptionPane.showMessageDialog(this, "Daily Limit Exceeded");
+                }
+                else{
+                    Denominations objDenomination= new Denominations(amount,objDebitCard);
+                    objDenomination.setVisible(true);
+                    dispose();
+                }
             }
         }
         else{
