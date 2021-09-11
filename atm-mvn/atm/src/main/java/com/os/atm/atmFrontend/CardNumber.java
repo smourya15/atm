@@ -177,6 +177,7 @@ public class CardNumber extends javax.swing.JFrame {
         
         
         DepositConfirm dp = new DepositConfirm(cardNum);
+        WithdrawMoney wm = new WithdrawMoney(cardNum);
         
         MD5Hashing md = new MD5Hashing(cardNum.toString());
 //        PBES_Encryption pb = new PBES_Encryption(salt.toString(), verifyCard.getText());
