@@ -22,6 +22,8 @@ import org.springframework.context.ApplicationContext;
 @Component
 //@Scope(value = BeanDefinition.SCOPE_PROTOTYPE)
 public class CardNumber extends javax.swing.JFrame {
+    
+    String abc = "";
 
   @Autowired
     private ApplicationContext context;
@@ -169,8 +171,10 @@ public class CardNumber extends javax.swing.JFrame {
 
     private void verifyCardNum_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verifyCardNum_BtnActionPerformed
         // TODO add your handling code here:
-        
+        abc = verifyCard.getText();
+        System.out.println(abc);
         final StringBuilder cardNum = new StringBuilder(verifyCard.getText());
+        
         
         DepositConfirm dp = new DepositConfirm(cardNum);
         WithdrawMoney wm = new WithdrawMoney(cardNum);

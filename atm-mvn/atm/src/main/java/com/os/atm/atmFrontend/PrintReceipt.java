@@ -17,17 +17,27 @@ public class PrintReceipt extends javax.swing.JFrame {
     public PrintReceipt(String txnType) {
     initComponents();
     
-//    String tType =txnType;
+    String tType =txnType;
     
-    printTransaction(txnType);
+//    printTransaction(txnType);
         
         
         
     }
+    
+    String t ="hello";
+  
 
     
-    public void printTransaction(String pt) {
+    public void printTransaction() {
     // Menu driven program
+    
+    CardNumber cn = new CardNumber();
+        System.out.println(cn.abc);
+        Services t = new Services();
+        String pt = t.txnType;
+         
+    
     
     
     switch(pt){
