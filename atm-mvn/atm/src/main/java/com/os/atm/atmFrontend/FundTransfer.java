@@ -11,6 +11,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.JOptionPane;
 import org.springframework.stereotype.Component;
+import java.sql.*;
 //import java.u
 /**
  *
@@ -23,6 +24,9 @@ public class FundTransfer extends javax.swing.JFrame {
      * Creates new form fundTransfer
      */
     private DebitCard debitCard;
+    String debitcard;
+    
+    
     public FundTransfer() {
         initComponents();
         benAccNoTextField.setText(null);
@@ -64,6 +68,7 @@ public class FundTransfer extends javax.swing.JFrame {
             };
         }; 
         timer.schedule(tt, 120000);
+        this.debitcard = debitCard.getCard_no();
     }
 
     /**
@@ -254,16 +259,35 @@ public class FundTransfer extends javax.swing.JFrame {
         }
         
         if(benAcc.equals(reBenAcc))
-        { 
+        {   
             errorMsgLabel.setText("Error");
             errorMsgLabel.setVisible(false);
             int transferAmt = Integer.parseInt(trfAmt.getText());
-            AccountServices a = new AccountServices();
-            a.transferFunds(benAcc, transferAmt, debitCard);
+           // AccountServices a = new AccountServices();
+            //a.transferFunds(benAcc, transferAmt, debitCard);
+
+
+            try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
+            String sqlQuery0="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'TRANSFER', ?, (SELECT now()), 'P' )";
+            PreparedStatement pst = con.prepareStatement(sqlQuery0);
+                    pst.setString(1, String.valueOf(debitcard));
+                    pst.setString(2, String.valueOf(debitcard));
+                    pst.setString(3, String.valueOf(transferAmt));
+                    pst.execute();
+                    System.out.println("Successfully Completed Fund Transfer Transaction\t");
+            
+            
             Success objsuccess = new Success(transferAmt);
             objsuccess.setVisible(true);
             dispose();
-        } else {
+             } 
+            catch (ClassNotFoundException | SQLException ex) {
+                JOptionPane.showMessageDialog(null,ex.getMessage());
+            } 
+}
+            else {
                 errorMsgLabel.setText("<html>Account numbers do not match.<br/> Please check and enter again.</html>");
                 errorMsgLabel.setVisible(true);
         }
@@ -348,10 +372,32 @@ public class FundTransfer extends javax.swing.JFrame {
     }//GEN-LAST:event_trfAmtKeyReleased
 
     private void trfCancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trfCancelBtnActionPerformed
-        WelcomePage objPage = new WelcomePage();
-        objPage.createAndShow();
-        objPage.setVisible(true);
-        dispose();
+       int amt;
+       amt = Integer.parseInt(trfAmt.getText());
+       System.out.println("Amount:\t"+amt);
+       try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
+            String sqlQuery0="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'TRANSFER', ?, (SELECT now()), 'CANCELLED' )";
+                
+                    PreparedStatement pst = con.prepareStatement(sqlQuery0);
+                    pst.setString(1, String.valueOf(debitcard));
+                    pst.setString(2, String.valueOf(debitcard));
+                    pst.setString(3, String.valueOf(amt));
+                    pst.execute();
+                    System.out.println("Successfully Cancelled Fund Transfer Transaction\t");
+            
+                    
+                    WelcomePage objPage = new WelcomePage();
+                    objPage.createAndShow();
+                    objPage.setVisible(true);
+                    dispose();
+            }
+         catch (ClassNotFoundException | SQLException ex) {
+                JOptionPane.showMessageDialog(null,ex.getMessage());
+            }   
+           
+        
     }//GEN-LAST:event_trfCancelBtnActionPerformed
 
     /**
@@ -385,7 +431,7 @@ public class FundTransfer extends javax.swing.JFrame {
                 new FundTransfer().setVisible(true);
             }
         });
-    }
+    } 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField benAccNoTextField;

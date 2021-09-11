@@ -36,12 +36,12 @@
                               <EmptySpace type="separate" max="32767" attributes="0"/>
                               <Component id="TimeLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="TimeDisplay" min="-2" max="-2" attributes="0"/>
+                              <Component id="DisplayTime" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="CardNumbelLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="17" max="32767" attributes="0"/>
-                              <Component id="CardNumberDisplay" pref="195" max="32767" attributes="0"/>
+                              <Component id="DisplayCardNumber" pref="195" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="28" max="32767" attributes="0"/>
@@ -59,8 +59,8 @@
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                          <Component id="TxnNumberLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="TxnTypeLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -76,17 +76,17 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                                  <Component id="AvailableBalancelabel" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                              <Component id="FromAccNumberLabel" min="-2" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                                  <Component id="TxnAmountlabel" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
+                              <Component id="ToAccountNumberLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -116,7 +116,7 @@
                   <Component id="DateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="DisplayDate" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="TimeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="TimeDisplay" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="DisplayTime" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -126,39 +126,39 @@
               <EmptySpace type="separate" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="CardNumbelLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="CardNumberDisplay" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="DisplayCardNumber" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TxnNumberLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TxnTypeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="FromAccNumberLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ToAccountNumberLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TxnAmountlabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="AvailableBalancelabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="32767" attributes="0"/>
               <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
@@ -203,7 +203,7 @@
         <Property name="text" type="java.lang.String" value="Time"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="TimeDisplay">
+    <Component class="javax.swing.JLabel" name="DisplayTime">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="18" style="0"/>
@@ -220,7 +220,7 @@
         <Property name="text" type="java.lang.String" value="CARD NUMBER: "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="CardNumberDisplay">
+    <Component class="javax.swing.JLabel" name="DisplayCardNumber">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="18" style="0"/>
@@ -249,7 +249,7 @@
         <Property name="text" type="java.lang.String" value="TXN NO.:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
+    <Component class="javax.swing.JLabel" name="TxnNumberLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="1234"/>
       </Properties>
@@ -259,7 +259,7 @@
         <Property name="text" type="java.lang.String" value="TXN TYPE:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel6">
+    <Component class="javax.swing.JLabel" name="TxnTypeLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="WITHDRAWAL"/>
       </Properties>
@@ -269,7 +269,7 @@
         <Property name="text" type="java.lang.String" value="FROM A/C:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel8">
+    <Component class="javax.swing.JLabel" name="FromAccNumberLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="00XXXXXXX12"/>
       </Properties>
@@ -279,7 +279,7 @@
         <Property name="text" type="java.lang.String" value="Rs."/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel10">
+    <Component class="javax.swing.JLabel" name="TxnAmountlabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="10000.00"/>
       </Properties>
@@ -289,7 +289,7 @@
         <Property name="text" type="java.lang.String" value="AVAILABLE BAL:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel12">
+    <Component class="javax.swing.JLabel" name="AvailableBalancelabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="12345.67"/>
       </Properties>
@@ -317,7 +317,7 @@
         <Property name="text" type="java.lang.String" value="TO A/C:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel17">
+    <Component class="javax.swing.JLabel" name="ToAccountNumberLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="00XXXXXXX12"/>
       </Properties>
