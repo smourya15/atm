@@ -15,6 +15,13 @@ import javax.swing.text.PlainDocument;
 import javax.swing.JOptionPane;
 import org.springframework.stereotype.Component;
 
+import com.os.atm.encapsulateClasses.DebitCard;
+import java.sql.*;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
 /**
  *
  * @author smourya
@@ -26,6 +33,13 @@ public class WithdrawMoney extends javax.swing.JFrame {
      * Creates new form withdraw
      */
     private DebitCard debitCard;
+    String debitcard;
+    PreparedStatement pst = null;
+    
+    
+    public WithdrawMoney(StringBuilder c){
+        System.out.print(c);
+    }
     public WithdrawMoney() {
         initComponents();
         confirmButton.setEnabled(Boolean.FALSE);
@@ -60,7 +74,9 @@ public class WithdrawMoney extends javax.swing.JFrame {
             };
         }; 
         timer.schedule(tt, 10000);
-        this.debitCard = debitCard;
+        this.debitcard = debitCard.getCard_no();
+        
+        System.out.println("AccNo: \t"+debitCard.getAccNum());
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -219,6 +235,32 @@ public class WithdrawMoney extends javax.swing.JFrame {
     }//GEN-LAST:event_withdrawAmountFieldKeyReleased
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        try{
+            int amount;
+        if (withdrawAmountField.getText().isEmpty()){
+            amount = 0;
+        }
+        else{
+            amount = Integer.parseInt(withdrawAmountField.getText());
+        }
+        System.out.println(amount);
+        
+        
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
+            String sqlQuery0="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'WITHDRAW', ?, (SELECT now()), 'CANCELLED' )";
+                
+                    PreparedStatement pst = con.prepareStatement(sqlQuery0);
+                    pst.setString(1, String.valueOf(debitcard));
+                    pst.setString(2, String.valueOf(debitcard));
+                    pst.setString(3, String.valueOf(amount));
+                    pst.execute();
+                    System.out.println("Successfully Cancelled Withdraw Transaction\t");
+            }
+         catch (ClassNotFoundException | SQLException ex) {
+                JOptionPane.showMessageDialog(null,ex.getMessage());
+            }  
+
         WelcomePage objPage = new WelcomePage();
         objPage.createAndShow();
         objPage.setVisible(true);

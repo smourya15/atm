@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  */
 public class Denominations extends javax.swing.JFrame {
      
-    private String debitCard;
+    String debitCard;
     PreparedStatement pst = null;
     ResultSet rs = null;
     private int selected_denomination, amount, no_notes, selected;
