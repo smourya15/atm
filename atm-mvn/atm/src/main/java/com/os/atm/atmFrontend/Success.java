@@ -145,6 +145,9 @@ public class Success extends javax.swing.JFrame {
 
     private void printReceiptBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printReceiptBtnActionPerformed
         // TODO add your handling code here:
+        PrintReceipt pr = new PrintReceipt("");
+        pr.setVisible(true);
+        dispose();
     }//GEN-LAST:event_printReceiptBtnActionPerformed
 
     /**
