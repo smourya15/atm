@@ -274,6 +274,7 @@ public class FundTransfer extends javax.swing.JFrame {
             else{
                 
                 try{
+                    int temp=0;
                     Class.forName("com.mysql.jdbc.Driver");
                     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
                     String sqlQuery0="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'TRANSFER', ?, (SELECT now()), 'P' )";
@@ -282,13 +283,28 @@ public class FundTransfer extends javax.swing.JFrame {
                     pst.setString(2, String.valueOf(debitcard));
                     pst.setString(3, String.valueOf(transferAmt));
                     pst.execute();
+                    
+                    String sqlQuery1 = "SELECT acc_bal FROM account WHERE account_no = "+benAcc;
+                    pst = con.prepareStatement(sqlQuery1);
+                    ResultSet rs = pst.executeQuery();
+                    
+                    while(rs.next()){
+                        temp = Integer.parseInt(rs.getString("acc_bal"));
+                    }
+                    
+                    temp+=transferAmt;
+                    String sqlQuery2 = "UPDATE account SET acc_bal = "+temp+" WHERE account_no = "+benAcc;
+                    Statement stmt = con.createStatement();
+                    stmt.executeUpdate(sqlQuery2);
+                    
+                                       
                     System.out.println("Successfully Completed Fund Transfer Transaction\t");
                     con.close();
                     objDebitCard.setBalance(objDebitCard.getBalcance()- (double)transferAmt);
                     Success objsuccess = new Success(transferAmt,"FUND TRANSFER",objDebitCard, benAcc );
                     objsuccess.setVisible(true);
                     dispose();
-                     } 
+                    } 
                     catch (ClassNotFoundException | SQLException ex) {
                         JOptionPane.showMessageDialog(null,ex.getMessage());
                     }
