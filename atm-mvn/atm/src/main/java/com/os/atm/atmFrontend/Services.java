@@ -19,6 +19,8 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class Services extends javax.swing.JFrame {
+    
+    String txnType="";
 
     @Autowired
     private ApplicationContext context;
@@ -182,10 +184,10 @@ public class Services extends javax.swing.JFrame {
 
     private void withdrawBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawBtnActionPerformed
         // TODO add your handling code here:
-        String txnType="WITHDRAW";
+         txnType="WITHDRAW";
         WithdrawMoney objWithdraw = new WithdrawMoney(debitCard);
-        PrintReceipt pr = new PrintReceipt("");
-        pr.printTransaction(txnType);
+        PrintReceipt pr = new PrintReceipt(txnType);
+        pr.printTransaction();
         
         objWithdraw.setVisible(true);
         dispose();
