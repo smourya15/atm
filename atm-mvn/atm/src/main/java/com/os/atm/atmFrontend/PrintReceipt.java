@@ -19,6 +19,7 @@ public class PrintReceipt extends javax.swing.JFrame {
     String tType;
     private DebitCard objDebitCard;
     private String amount;
+    private String benificiaryAccount;
     /**
      * Creates new form PrintReceipt
      */
@@ -27,11 +28,12 @@ public class PrintReceipt extends javax.swing.JFrame {
        initComponents();
     }
 
-    public PrintReceipt(String txnType, DebitCard db, String amt) {
+    public PrintReceipt(String txnType, DebitCard db, String amt, String benificiaryAccount) {
         initComponents();
         this.amount = amt;
         this.tType = txnType;
         this.objDebitCard = db;
+        this.benificiaryAccount = benificiaryAccount;
 //        DisplayDate.setText();
         setDateTime();
         printTransaction();
@@ -64,26 +66,45 @@ public class PrintReceipt extends javax.swing.JFrame {
     switch(tType){
         
         case "WITHDRAW" : {
+            String cardNumber = objDebitCard.getCardNoUn().substring(0, 2) + "XX-XXXX-XXXX-" + objDebitCard.getCardNoUn().substring(12, 16);
+            DisplayCardNumber.setText(cardNumber);
+            txnTypeLabel.setText(tType);
+            ToAccountNumberLabel.setText("NA");
+//            jLabel7.setVisible(false);
+            TxnAmountlabel.setText(amount);
+//            Double d = new Double(objDebitCard.getBalcance());
+//            int t = d.intValue();
+//            final int  balance= Integer.parseInt(amount)+ t;
+            AvailableBalancelabel.setText(Double.toString(objDebitCard.getBalcance()));
+            FromAccNumberLabel.setText(objDebitCard.getAccNum());
+            break;
             
             
-          break;  
         }   
         case "DEPOSIT" : {
             
             String cardNumber = objDebitCard.getCardNoUn().substring(0, 2) + "XX-XXXX-XXXX-" + objDebitCard.getCardNoUn().substring(12, 16);
             DisplayCardNumber.setText(cardNumber);
             txnTypeLabel.setText(tType);
-            FromAccNumberLabel.setVisible(false);
-            jLabel7.setVisible(false);
+            FromAccNumberLabel.setText("NA");
+//            jLabel7.setVisible(false);
             TxnAmountlabel.setText(amount);
             Double d = new Double(objDebitCard.getBalcance());
             int t = d.intValue();
             final int  balance= Integer.parseInt(amount)+ t;
-            AvailableBalancelabel.setText(Integer.toString(balance));
+            AvailableBalancelabel.setText(Double.toString(objDebitCard.getBalcance()));
+            ToAccountNumberLabel.setText(objDebitCard.getAccNum());
             break;
         }
         case "FUND TRANSFER" :{
-            
+            String cardNumber = objDebitCard.getCardNoUn().substring(0, 2) + "XX-XXXX-XXXX-" + objDebitCard.getCardNoUn().substring(12, 16);
+            DisplayCardNumber.setText(cardNumber);
+            txnTypeLabel.setText(tType);
+            FromAccNumberLabel.setText(benificiaryAccount);
+//            jLabel7.setVisible(false);
+            TxnAmountlabel.setText(amount);
+            AvailableBalancelabel.setText(Double.toString(objDebitCard.getBalcance()));
+            ToAccountNumberLabel.setText(objDebitCard.getAccNum());
             break;
         }
         

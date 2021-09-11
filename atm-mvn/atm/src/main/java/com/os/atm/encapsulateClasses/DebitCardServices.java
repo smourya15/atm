@@ -84,12 +84,12 @@ public class DebitCardServices {
         java.util.Date localDate = formatter.parse(dd);
         return localDate;
     }
-    
+
     public static void main(String[] args) throws ParseException {
-        DebitCardServices db = new DebitCardServices();
+//        DebitCardServices db = new DebitCardServices();
         
         
-        String date = "28/01/2026";
+//        String date = "28/01/2026";
 
         
         

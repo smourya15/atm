@@ -308,13 +308,11 @@ public class DepositCash extends javax.swing.JFrame {
                     stmt.executeUpdate(sqlQuery2);
                 }                    
                 stmt.executeUpdate(sqlQuery3);
-                
-                
-               
-                        
-           Success depositconfirm = new Success(Integer.toString(trans_amt),"DEPOSIT",debitCard);
-           depositconfirm.setVisible(true);
-           dispose();
+
+                debitCard.setBalance(debitCard.getBalcance()+(double)trans_amt);
+                Success depositconfirm = new Success(Integer.toString(trans_amt),"DEPOSIT",debitCard);
+                depositconfirm.setVisible(true);
+                dispose();
                     
         }
         catch (ClassNotFoundException | SQLException ex) {

@@ -79,6 +79,11 @@ public class DebitCard {
         return this.accNum.getAccount_Bal();
     }
 
+    public void setBalance(double bal){
+        this.accNum.setAccount_Bal(bal);
+    }
+    
+    
     public String getCardNoUn() {
         return cardNoUn;
     }
