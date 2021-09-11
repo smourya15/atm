@@ -35,9 +35,9 @@
                   <Component id="cancelButton" min="-2" pref="150" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="116" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="confirmButton" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
-                  <Component id="withdrawAmountField" alignment="1" min="-2" pref="155" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="withdrawAmountField" pref="155" max="32767" attributes="0"/>
+                  <Component id="confirmButton" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="110" max="32767" attributes="0"/>
           </Group>

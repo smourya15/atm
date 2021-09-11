@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  */
 public class Denominations extends javax.swing.JFrame {
      
-//    private DebitCard debitCard;
+    private DebitCard debit_Card;
     String debitCard, account_no;
     PreparedStatement pst = null;
     ResultSet rs = null;
@@ -336,7 +336,7 @@ public class Denominations extends javax.swing.JFrame {
                     
                     
                     
-                    Success objSuccess = new Success(amount);
+                    Success objSuccess = new Success(amount, debit_Card);
                     objSuccess.setVisible(true);
                     dispose();
                 }
