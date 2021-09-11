@@ -208,7 +208,7 @@ public class PrintReceipt extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(jLabel13)
                     .addComponent(jLabel10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(jLabel12)
