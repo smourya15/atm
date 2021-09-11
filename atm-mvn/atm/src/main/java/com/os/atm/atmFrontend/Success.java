@@ -5,6 +5,7 @@
  */
 package com.os.atm.atmFrontend;
 
+import com.os.atm.encapsulateClasses.DebitCard;
 import java.util.*;
 import javax.swing.JOptionPane;
 
@@ -18,13 +19,38 @@ public class Success extends javax.swing.JFrame {
      * Creates new form success
      */
     int amount1;
+    private String txnType;
     String amount2;
+    private String benificiaryAccount=null;
+    private DebitCard objDebitCard = null;
     public Success(){
         initComponents();
     }
-    public Success(int amount1) {
+    
+    public Success(int amount1, DebitCard db) {
         initComponents();
         this.amount1 = amount1;
+        this.objDebitCard = db;
+        SuccessMessage.setText("Your Transaction of Rs."+ amount1 +" was successful");
+        Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                System.out.println("timer success1");
+                WelcomePage objPage = new WelcomePage();
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
+        timer.schedule(tt, 10000);
+    }
+    
+    public Success(int amount1, DebitCard db, String benificiaryAccount) {
+        initComponents();
+        this.amount1 = amount1;
+        this.objDebitCard = db;
+        this.benificiaryAccount = benificiaryAccount;
         SuccessMessage.setText("Your Transaction of Rs."+ amount1 +" was successful");
         Timer timer = new Timer();
         TimerTask tt = new TimerTask() {
@@ -42,10 +68,12 @@ public class Success extends javax.swing.JFrame {
     
 //    public void 
     
-    public Success(String amount2) {
+    public Success(String amount2,String tType, DebitCard db) {
         initComponents();
-        this.amount2 = amount2;
-        SuccessMessage.setText("Your Transaction of Rs."+ amount2 +" was successful");
+        this.txnType = tType;
+        this.amount1 =  Integer.parseInt(amount2);
+        this.objDebitCard = db;
+        SuccessMessage.setText("Your Transaction of Rs."+ amount1 +" was successful");
         Timer timer = new Timer();
         TimerTask tt = new TimerTask() {
             @Override
@@ -145,8 +173,8 @@ public class Success extends javax.swing.JFrame {
 
     private void printReceiptBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printReceiptBtnActionPerformed
         // TODO add your handling code here:
-        PrintReceipt pr = new PrintReceipt("");
-        pr.printTransaction();
+        PrintReceipt pr = new PrintReceipt(txnType, objDebitCard, Integer.toString(amount1), benificiaryAccount);
+//        pr.printTransaction(pr.t);
         pr.setVisible(true);
         dispose();
     }//GEN-LAST:event_printReceiptBtnActionPerformed

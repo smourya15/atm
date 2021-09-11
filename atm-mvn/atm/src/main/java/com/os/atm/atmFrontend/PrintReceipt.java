@@ -4,73 +4,107 @@
  * and open the template in the editor.
  */
 package com.os.atm.atmFrontend;
-import java.time.*;
-import java.time.format.DateTimeFormatter;
+
+import com.os.atm.encapsulateClasses.DebitCard;
+import java.awt.HeadlessException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
  * @author skorgaonkar
  */
 public class PrintReceipt extends javax.swing.JFrame {
-
+    
+    String tType;
+    private DebitCard objDebitCard;
+    private String amount;
+    private String benificiaryAccount;
     /**
      * Creates new form PrintReceipt
      */
-    public PrintReceipt(String txnType) {
-    initComponents();
     
-    String tType =txnType;
-    
+   public PrintReceipt() throws HeadlessException {
+       initComponents();
+    }
+
+    public PrintReceipt(String txnType, DebitCard db, String amt, String benificiaryAccount) {
+        initComponents();
+        this.amount = amt;
+        this.tType = txnType;
+        this.objDebitCard = db;
+        this.benificiaryAccount = benificiaryAccount;
+//        DisplayDate.setText();
+        setDateTime();
+        printTransaction();
+        
+        
 //    printTransaction(txnType);
-        
-        
-        
     }
     
     String t ="hello";
+    private void setDateTime(){
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        DisplayDate.setText(formatter.format(date));
+        formatter = new SimpleDateFormat("HH:mm:ss");
+        DisplayTime.setText(formatter.format(date));
+    }
   
 
     
     public void printTransaction() {
     // Menu driven program
     
-    CardNumber cn = new CardNumber();
-      
-        Services t = new Services();
-        String pt = "WITHDRAW";
+//    CardNumber cn = new CardNumber();
+//        System.out.println(cn.abc);
+//        Services t = new Services();
+//        String pt = t.txnType;
          
     
     
-    
-    switch(pt){
+    switch(tType){
         
         case "WITHDRAW" : {
-            ToAccountNumberLabel.setVisible(false);
-            DisplayDate.setText(LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-            DisplayTime.setText(LocalTime.now().format(DateTimeFormatter.ofPattern("hh:mm a")));
-            
-            DisplayCardNumber.setText(cn.card_number.substring(0, 2) + "XX-XXXX-XXXX-" + cn.card_number.substring(12, 16));
-            TxnNumberLabel.setText("1");
-            TxnTypeLabel.setText("WITHDRAWAL");
-            FromAccNumberLabel.setText("");
-            TxnAmountlabel.setText("5000");
-            AvailableBalancelabel.setText("20000");
-            
-            
-           
-            
+            String cardNumber = objDebitCard.getCardNoUn().substring(0, 2) + "XX-XXXX-XXXX-" + objDebitCard.getCardNoUn().substring(12, 16);
+            DisplayCardNumber.setText(cardNumber);
+            txnTypeLabel.setText(tType);
+            ToAccountNumberLabel.setText("NA");
+//            jLabel7.setVisible(false);
+            TxnAmountlabel.setText(amount);
+//            Double d = new Double(objDebitCard.getBalcance());
+//            int t = d.intValue();
+//            final int  balance= Integer.parseInt(amount)+ t;
+            AvailableBalancelabel.setText(Double.toString(objDebitCard.getBalcance()));
+            FromAccNumberLabel.setText(objDebitCard.getAccNum());
+            break;
             
             
-            
-            
-          break;  
         }   
         case "DEPOSIT" : {
             
+            String cardNumber = objDebitCard.getCardNoUn().substring(0, 2) + "XX-XXXX-XXXX-" + objDebitCard.getCardNoUn().substring(12, 16);
+            DisplayCardNumber.setText(cardNumber);
+            txnTypeLabel.setText(tType);
+            FromAccNumberLabel.setText("NA");
+//            jLabel7.setVisible(false);
+            TxnAmountlabel.setText(amount);
+            Double d = new Double(objDebitCard.getBalcance());
+            int t = d.intValue();
+            final int  balance= Integer.parseInt(amount)+ t;
+            AvailableBalancelabel.setText(Double.toString(objDebitCard.getBalcance()));
+            ToAccountNumberLabel.setText(objDebitCard.getAccNum());
             break;
         }
         case "FUND TRANSFER" :{
-            
+            String cardNumber = objDebitCard.getCardNoUn().substring(0, 2) + "XX-XXXX-XXXX-" + objDebitCard.getCardNoUn().substring(12, 16);
+            DisplayCardNumber.setText(cardNumber);
+            txnTypeLabel.setText(tType);
+            FromAccNumberLabel.setText(benificiaryAccount);
+//            jLabel7.setVisible(false);
+            TxnAmountlabel.setText(amount);
+            AvailableBalancelabel.setText(Double.toString(objDebitCard.getBalcance()));
+            ToAccountNumberLabel.setText(objDebitCard.getAccNum());
             break;
         }
         
@@ -106,7 +140,7 @@ public class PrintReceipt extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         TxnNumberLabel = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        TxnTypeLabel = new javax.swing.JLabel();
+        txnTypeLabel = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         FromAccNumberLabel = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -158,7 +192,7 @@ public class PrintReceipt extends javax.swing.JFrame {
 
         jLabel5.setText("TXN TYPE:");
 
-        TxnTypeLabel.setText("WITHDRAWAL");
+        txnTypeLabel.setText("WITHDRAWAL");
 
         jLabel7.setText("FROM A/C:");
 
@@ -218,7 +252,7 @@ public class PrintReceipt extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(TxnNumberLabel)
-                            .addComponent(TxnTypeLabel))
+                            .addComponent(txnTypeLabel))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,7 +310,7 @@ public class PrintReceipt extends javax.swing.JFrame {
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(TxnTypeLabel))
+                    .addComponent(txnTypeLabel))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -306,7 +340,6 @@ public class PrintReceipt extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -334,9 +367,7 @@ public class PrintReceipt extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PrintReceipt("").setVisible(true);
-                
-                
+                new PrintReceipt().setVisible(true);
             }
         });
     }
@@ -354,7 +385,6 @@ public class PrintReceipt extends javax.swing.JFrame {
     private javax.swing.JLabel ToAccountNumberLabel;
     private javax.swing.JLabel TxnAmountlabel;
     private javax.swing.JLabel TxnNumberLabel;
-    private javax.swing.JLabel TxnTypeLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
@@ -366,5 +396,6 @@ public class PrintReceipt extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel txnTypeLabel;
     // End of variables declaration//GEN-END:variables
 }

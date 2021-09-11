@@ -23,7 +23,7 @@ public class FundTransfer extends javax.swing.JFrame {
     /**
      * Creates new form fundTransfer
      */
-    private DebitCard debitCard;
+    private DebitCard objDebitCard;
     String debitcard;
     
     
@@ -50,7 +50,7 @@ public class FundTransfer extends javax.swing.JFrame {
 
     FundTransfer(DebitCard debitCard) {
         initComponents();
-        this.debitCard=debitCard;
+        this.objDebitCard=debitCard;
         benAccNoTextField.setText(null);
         reBenAccNoTextField.setText(null);
         trfAmt.setText(null);
@@ -267,25 +267,32 @@ public class FundTransfer extends javax.swing.JFrame {
             //a.transferFunds(benAcc, transferAmt, debitCard);
 
 
-            try{
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
-            String sqlQuery0="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'TRANSFER', ?, (SELECT now()), 'P' )";
-            PreparedStatement pst = con.prepareStatement(sqlQuery0);
+            if(objDebitCard.getBalcance()< (double)transferAmt){
+                JOptionPane.showMessageDialog(this, "Insufficient Funds");
+                trfAmt.setText(null);
+            }
+            else{
+                
+                try{
+                    Class.forName("com.mysql.jdbc.Driver");
+                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
+                    String sqlQuery0="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'TRANSFER', ?, (SELECT now()), 'P' )";
+                    PreparedStatement pst = con.prepareStatement(sqlQuery0);
                     pst.setString(1, String.valueOf(debitcard));
                     pst.setString(2, String.valueOf(debitcard));
                     pst.setString(3, String.valueOf(transferAmt));
                     pst.execute();
                     System.out.println("Successfully Completed Fund Transfer Transaction\t");
-            
-            
-            Success objsuccess = new Success(transferAmt);
-            objsuccess.setVisible(true);
-            dispose();
-             } 
-            catch (ClassNotFoundException | SQLException ex) {
-                JOptionPane.showMessageDialog(null,ex.getMessage());
-            } 
+                    con.close();
+                    objDebitCard.setBalance(objDebitCard.getBalcance()- (double)transferAmt);
+                    Success objsuccess = new Success(transferAmt,objDebitCard, benAcc );
+                    objsuccess.setVisible(true);
+                    dispose();
+                     } 
+                    catch (ClassNotFoundException | SQLException ex) {
+                        JOptionPane.showMessageDialog(null,ex.getMessage());
+                    }
+            }
 }
             else {
                 errorMsgLabel.setText("<html>Account numbers do not match.<br/> Please check and enter again.</html>");

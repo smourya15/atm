@@ -21,14 +21,16 @@ public class DebitCard {
     private  long cardLimit;
 //    private final Boolean status; //to check if card is found or not.
     private final Account accNum;
+    private final String cardNoUn;
 
-    public DebitCard(String card_no, String cardStatus, String cardHolderName, long cardLimit, Account accNum) {
+    public DebitCard(String card_no, String cardStatus, String cardHolderName, long cardLimit, Account accNum, String cardNoUn) {
         this.card_no = card_no;
         this.cardStatus = cardStatus;
         this.cardHolderName = cardHolderName;
         this.cardLimit = cardLimit;
 //        this.status = status;
         this.accNum = accNum;
+        this.cardNoUn = cardNoUn;
     }
 
 //    public Boolean getStatus() {
@@ -75,6 +77,15 @@ public class DebitCard {
     }
     public double getBalcance(){
         return this.accNum.getAccount_Bal();
+    }
+
+    public void setBalance(double bal){
+        this.accNum.setAccount_Bal(bal);
+    }
+    
+    
+    public String getCardNoUn() {
+        return cardNoUn;
     }
     
 

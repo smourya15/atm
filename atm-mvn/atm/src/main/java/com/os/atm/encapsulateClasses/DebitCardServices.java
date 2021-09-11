@@ -56,14 +56,14 @@ public class DebitCardServices {
 //                    String query2 = "select * from account where account_no = ?";
                     AccountServices acc = new AccountServices();
                     Account a = acc.populateAccount(rs.getString("account_no"));
-//                    String query2 = " select card_num from card_pin_hash where pinHash = ?  and cardHash= ?";
-//                    PreparedStatement pst2 = con.prepareStatement(query2);
-//                    pst2.setString(1, pinCardHash);
-//                    pst2.setString(2, cardHash);
-//                    ResultSet rs2 = pst2.executeQuery();
-//                    while(rs2.next()){
-                        debitCard = new DebitCard(rs.getString("card_no"), rs.getString("card_status"), rs.getString("card_holder_name"), rs.getInt("limit_amt"), a);
-//                    }
+                    String query2 = " select card_num from card_pin_hash where pinHash = ?  and cardHash= ?";
+                    PreparedStatement pst2 = con.prepareStatement(query2);
+                    pst2.setString(1, pinCardHash);
+                    pst2.setString(2, cardHash);
+                    ResultSet rs2 = pst2.executeQuery();
+                    while(rs2.next()){
+                        debitCard = new DebitCard(rs.getString("card_no"), rs.getString("card_status"), rs.getString("card_holder_name"), rs.getInt("limit_amt"), a, rs2.getString("card_num"));
+                    }
                     
             }
         } catch (ClassNotFoundException ex) {
@@ -84,12 +84,12 @@ public class DebitCardServices {
         java.util.Date localDate = formatter.parse(dd);
         return localDate;
     }
-    
+
     public static void main(String[] args) throws ParseException {
-        DebitCardServices db = new DebitCardServices();
+//        DebitCardServices db = new DebitCardServices();
         
         
-        String date = "28/01/2026";
+//        String date = "28/01/2026";
 
         
         
