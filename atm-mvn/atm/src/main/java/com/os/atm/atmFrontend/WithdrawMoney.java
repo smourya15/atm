@@ -32,8 +32,8 @@ public class WithdrawMoney extends javax.swing.JFrame {
     /**
      * Creates new form withdraw
      */
-    private DebitCard debitCard;
-    String debitcard;
+//    private DebitCard debitCard;
+    String debitcard, account_no;
     PreparedStatement pst = null;
     
     
@@ -48,7 +48,7 @@ public class WithdrawMoney extends javax.swing.JFrame {
         TimerTask tt = new TimerTask() {
             @Override
             public void run() {
-                 System.out.println("timer withdrawMoney");
+                System.out.println("timer withdrawMoney");
                 WelcomePage objPage = new WelcomePage();
                 objPage.createAndShow();
                 objPage.setVisible(true);
@@ -75,6 +75,7 @@ public class WithdrawMoney extends javax.swing.JFrame {
         }; 
         timer.schedule(tt, 10000);
         this.debitcard = debitCard.getCard_no();
+        this.account_no = debitCard.getAccNum();
         
         System.out.println("AccNo: \t"+debitCard.getAccNum());
     }
@@ -192,7 +193,7 @@ public class WithdrawMoney extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         
-        
+        System.out.println(debitcard);
         int amount;
         if (withdrawAmountField.getText().isEmpty()){
             amount = 1;
@@ -203,7 +204,25 @@ public class WithdrawMoney extends javax.swing.JFrame {
         System.out.println(amount);
         
         if(amount%50==0){
-            Denominations objDenomination= new Denominations(amount,debitCard);
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
+                String sqlQuery1 = "SELECT limit_amt FROM debit_card WHERE account_no = "+account_no;
+                System.out.println(sqlQuery1);
+                
+                Statement stmt = con.createStatement();
+                stmt.executeUpdate(sqlQuery1);
+                
+                
+            } catch (ClassNotFoundException | SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+            
+            
+            
+            
+            
+            Denominations objDenomination= new Denominations(amount, debitcard);
             objDenomination.setVisible(true);
             dispose();
         }

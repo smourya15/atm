@@ -19,7 +19,8 @@ import javax.swing.JOptionPane;
  */
 public class Denominations extends javax.swing.JFrame {
      
-    String debitCard;
+//    private DebitCard debitCard;
+    String debitCard, account_no;
     PreparedStatement pst = null;
     ResultSet rs = null;
     private int selected_denomination, amount, no_notes, selected;
@@ -45,10 +46,10 @@ public class Denominations extends javax.swing.JFrame {
         }; 
         timer.schedule(tt, 10000);
     }
-    public Denominations(int amount, DebitCard debitCard){
+    public Denominations(int amount, String debitCard, String account_no){
         initComponents();
         groupRadioButtons();
-        this.debitCard = debitCard.getCard_no();
+        
         withdrawButton.setEnabled(false);
         this.amount = amount;
         headText.setText("Your Amount is Rs."+amount);
@@ -64,6 +65,8 @@ public class Denominations extends javax.swing.JFrame {
         if(amount<100 || amount%100!=0){
             D100.setVisible(false);
         }
+        this.debitCard = debitCard;
+        this.account_no = account_no;
     }
     
     private void groupRadioButtons(){
@@ -325,8 +328,11 @@ public class Denominations extends javax.swing.JFrame {
                     else if(selected == 4)
                         sqlQuery2 = "UPDATE atm_machine SET rs2000 = (SELECT rs2000 FROM atm_machine ) -"+no_notes ;
                        
+                    String sqlQuery5 = "UPDATE debit_card SET limit_amt = (SELECT limit_amt FROM debit_card WHERE account_no = "+account_no+")- " +amount+" WHERE account_no = "+account_no;
+                    
                     stmt.executeUpdate(sqlQuery2);
                     stmt.executeUpdate(sqlQuery3);
+                    stmt.executeUpdate(sqlQuery5);
                     
                     
                     
