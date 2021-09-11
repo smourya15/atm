@@ -279,7 +279,7 @@ public class FundTransfer extends javax.swing.JFrame {
                     System.out.println("Successfully Completed Fund Transfer Transaction\t");
             
             
-            Success objsuccess = new Success(transferAmt);
+            Success objsuccess = new Success(transferAmt,debitCard );
             objsuccess.setVisible(true);
             dispose();
              } 

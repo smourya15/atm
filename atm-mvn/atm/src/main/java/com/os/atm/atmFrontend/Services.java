@@ -186,8 +186,8 @@ public class Services extends javax.swing.JFrame {
         // TODO add your handling code here:
          txnType="WITHDRAW";
         WithdrawMoney objWithdraw = new WithdrawMoney(debitCard);
-        PrintReceipt pr = new PrintReceipt(txnType);
-        pr.printTransaction();
+//        PrintReceipt pr = new PrintReceipt(txnType);
+//        pr.printTransaction();
         
         objWithdraw.setVisible(true);
         dispose();

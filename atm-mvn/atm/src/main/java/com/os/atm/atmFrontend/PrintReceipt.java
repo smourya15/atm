@@ -7,6 +7,8 @@ package com.os.atm.atmFrontend;
 
 import com.os.atm.encapsulateClasses.DebitCard;
 import java.awt.HeadlessException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -16,6 +18,7 @@ public class PrintReceipt extends javax.swing.JFrame {
     
     String tType;
     private DebitCard objDebitCard;
+    private String amount;
     /**
      * Creates new form PrintReceipt
      */
@@ -24,17 +27,27 @@ public class PrintReceipt extends javax.swing.JFrame {
        initComponents();
     }
 
-    public PrintReceipt(String txnType, DebitCard db) {
+    public PrintReceipt(String txnType, DebitCard db, String amt) {
         initComponents();
-        
+        this.amount = amt;
         this.tType = txnType;
         this.objDebitCard = db;
+//        DisplayDate.setText();
+        setDateTime();
+        printTransaction();
         
         
 //    printTransaction(txnType);
     }
     
     String t ="hello";
+    private void setDateTime(){
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        DisplayDate.setText(formatter.format(date));
+        formatter = new SimpleDateFormat("HH:mm:ss");
+        DisplayTime.setText(formatter.format(date));
+    }
   
 
     
@@ -43,13 +56,12 @@ public class PrintReceipt extends javax.swing.JFrame {
     
 //    CardNumber cn = new CardNumber();
 //        System.out.println(cn.abc);
-        Services t = new Services();
-        String pt = t.txnType;
+//        Services t = new Services();
+//        String pt = t.txnType;
          
     
     
-    
-    switch(this.tType){
+    switch(tType){
         
         case "WITHDRAW" : {
             
@@ -58,6 +70,16 @@ public class PrintReceipt extends javax.swing.JFrame {
         }   
         case "DEPOSIT" : {
             
+            String cardNumber = objDebitCard.getCardNoUn().substring(0, 2) + "XX-XXXX-XXXX-" + objDebitCard.getCardNoUn().substring(12, 16);
+            DisplayCardNumber.setText(cardNumber);
+            txnTypeLabel.setText(tType);
+            FromAccNumberLabel.setVisible(false);
+            jLabel7.setVisible(false);
+            TxnAmountlabel.setText(amount);
+            Double d = new Double(objDebitCard.getBalcance());
+            int t = d.intValue();
+            final int  balance= Integer.parseInt(amount)+ t;
+            AvailableBalancelabel.setText(Integer.toString(balance));
             break;
         }
         case "FUND TRANSFER" :{
@@ -89,26 +111,26 @@ public class PrintReceipt extends javax.swing.JFrame {
         DateLabel = new javax.swing.JLabel();
         DisplayDate = new javax.swing.JLabel();
         TimeLabel = new javax.swing.JLabel();
-        TimeDisplay = new javax.swing.JLabel();
+        DisplayTime = new javax.swing.JLabel();
         CardNumbelLabel = new javax.swing.JLabel();
-        CardNumberDisplay = new javax.swing.JLabel();
+        DisplayCardNumber = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        TxnNumberLabel = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        txnTypeLabel = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        FromAccNumberLabel = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        TxnAmountlabel = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        AvailableBalancelabel = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        ToAccountNumberLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -127,15 +149,15 @@ public class PrintReceipt extends javax.swing.JFrame {
         TimeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         TimeLabel.setText("Time");
 
-        TimeDisplay.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        TimeDisplay.setText("10:10 AM");
+        DisplayTime.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        DisplayTime.setText("10:10 AM");
 
         CardNumbelLabel.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         CardNumbelLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         CardNumbelLabel.setText("CARD NUMBER: ");
 
-        CardNumberDisplay.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        CardNumberDisplay.setText("5132 XXXX XXXX XX09");
+        DisplayCardNumber.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        DisplayCardNumber.setText("5132 XXXX XXXX XX09");
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel1.setText("ATM ID:");
@@ -145,23 +167,23 @@ public class PrintReceipt extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel3.setText("TXN NO.:");
 
-        jLabel4.setText("1234");
+        TxnNumberLabel.setText("1234");
 
         jLabel5.setText("TXN TYPE:");
 
-        jLabel6.setText("WITHDRAWAL");
+        txnTypeLabel.setText("WITHDRAWAL");
 
         jLabel7.setText("FROM A/C:");
 
-        jLabel8.setText("00XXXXXXX12");
+        FromAccNumberLabel.setText("00XXXXXXX12");
 
         jLabel9.setText("Rs.");
 
-        jLabel10.setText("10000.00");
+        TxnAmountlabel.setText("10000.00");
 
         jLabel11.setText("AVAILABLE BAL:");
 
-        jLabel12.setText("12345.67");
+        AvailableBalancelabel.setText("12345.67");
 
         jLabel13.setText("TXN AMT:");
 
@@ -172,7 +194,7 @@ public class PrintReceipt extends javax.swing.JFrame {
 
         jLabel16.setText("TO A/C:");
 
-        jLabel17.setText("00XXXXXXX12");
+        ToAccountNumberLabel.setText("00XXXXXXX12");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -191,11 +213,11 @@ public class PrintReceipt extends javax.swing.JFrame {
                                 .addGap(18, 18, Short.MAX_VALUE)
                                 .addComponent(TimeLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(TimeDisplay))
+                                .addComponent(DisplayTime))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(CardNumbelLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                                .addComponent(CardNumberDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)))
+                                .addComponent(DisplayCardNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)))
                         .addContainerGap(28, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -208,8 +230,8 @@ public class PrintReceipt extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel6))
+                            .addComponent(TxnNumberLabel)
+                            .addComponent(txnTypeLabel))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,14 +244,14 @@ public class PrintReceipt extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel15)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jLabel12))
-                                .addComponent(jLabel8)
+                                    .addComponent(AvailableBalancelabel))
+                                .addComponent(FromAccNumberLabel)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel9)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jLabel10)))
+                                    .addComponent(TxnAmountlabel)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel17)
+                                .addComponent(ToAccountNumberLabel)
                                 .addGap(2, 2, 2)))
                         .addGap(101, 101, 101))))
             .addGroup(layout.createSequentialGroup()
@@ -251,7 +273,7 @@ public class PrintReceipt extends javax.swing.JFrame {
                     .addComponent(DateLabel)
                     .addComponent(DisplayDate)
                     .addComponent(TimeLabel)
-                    .addComponent(TimeDisplay))
+                    .addComponent(DisplayTime))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -259,33 +281,33 @@ public class PrintReceipt extends javax.swing.JFrame {
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CardNumbelLabel)
-                    .addComponent(CardNumberDisplay))
+                    .addComponent(DisplayCardNumber))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel4))
+                    .addComponent(TxnNumberLabel))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel6))
+                    .addComponent(txnTypeLabel))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jLabel8))
+                    .addComponent(FromAccNumberLabel))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
-                    .addComponent(jLabel17))
+                    .addComponent(ToAccountNumberLabel))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(jLabel9)
-                    .addComponent(jLabel10))
+                    .addComponent(TxnAmountlabel))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(jLabel15)
-                    .addComponent(jLabel12))
+                    .addComponent(AvailableBalancelabel))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jLabel14)
                 .addContainerGap(20, Short.MAX_VALUE))
@@ -330,29 +352,29 @@ public class PrintReceipt extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AvailableBalancelabel;
     private javax.swing.JLabel BankNameLabel;
     private javax.swing.JLabel CardNumbelLabel;
-    private javax.swing.JLabel CardNumberDisplay;
     private javax.swing.JLabel DateLabel;
+    private javax.swing.JLabel DisplayCardNumber;
     private javax.swing.JLabel DisplayDate;
-    private javax.swing.JLabel TimeDisplay;
+    private javax.swing.JLabel DisplayTime;
+    private javax.swing.JLabel FromAccNumberLabel;
     private javax.swing.JLabel TimeLabel;
+    private javax.swing.JLabel ToAccountNumberLabel;
+    private javax.swing.JLabel TxnAmountlabel;
+    private javax.swing.JLabel TxnNumberLabel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel txnTypeLabel;
     // End of variables declaration//GEN-END:variables
 }

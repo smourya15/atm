@@ -202,7 +202,7 @@ public class RetrieveBalance extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                Account a = new Account("123456", "987654321", 10000.5678);
+                Account a = new Account("123456", "987654321", 10000);
                 String accno = a.getAccNum();
                 double bal = a.getAccount_Bal();
                 new RetrieveBalance(accno,bal).setVisible(true);

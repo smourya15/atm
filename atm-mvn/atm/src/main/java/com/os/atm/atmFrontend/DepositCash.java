@@ -27,8 +27,9 @@ public class DepositCash extends javax.swing.JFrame {
     int d1000;
     int d2000;
     int trans_amt;
+//    private DebitCard objDebitCard=null;
     public Boolean D50, D100, D500, D1000, D2000;
-    String debitCard;
+    private DebitCard debitCard;
     
     
     public DepositCash(int d50, int d100, int d500, int d1000, int d2000, DebitCard debitCard, int amt){
@@ -37,7 +38,7 @@ public class DepositCash extends javax.swing.JFrame {
         this.d500 = d500;
         this.d1000 = d1000;
         this.d2000 = d2000;
-        this.debitCard = debitCard.getCard_no();
+        this.debitCard = debitCard;
         System.out.println(debitCard.getAccNum());
         trans_amt = amt;
         
@@ -246,8 +247,8 @@ public class DepositCash extends javax.swing.JFrame {
                 String sqlQuery0="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'DEPOSIT', ?, (SELECT now()), 'CANCELLED' )";
                 
                 PreparedStatement pst = con.prepareStatement(sqlQuery0);
-                pst.setString(1, String.valueOf(debitCard));
-                pst.setString(2, String.valueOf(debitCard));
+                pst.setString(1, String.valueOf(debitCard.getCard_no()));
+                pst.setString(2, String.valueOf(debitCard.getCard_no()));
                 pst.setString(3, String.valueOf(trans_amt));
                 pst.execute();
                 
@@ -275,8 +276,8 @@ public class DepositCash extends javax.swing.JFrame {
                 String sqlQuery4="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'DEPOSIT', ?, (SELECT now()), 'P' )";
                 
                 PreparedStatement pst = con.prepareStatement(sqlQuery4);
-                pst.setString(1, String.valueOf(debitCard));
-                pst.setString(2, String.valueOf(debitCard));
+                pst.setString(1, String.valueOf(debitCard.getCard_no()));
+                pst.setString(2, String.valueOf(debitCard.getCard_no()));
                 pst.setString(3, String.valueOf(trans_amt));
                 pst.execute();
 
@@ -311,7 +312,7 @@ public class DepositCash extends javax.swing.JFrame {
                 
                
                         
-           Success depositconfirm = new Success(trans_amt);
+           Success depositconfirm = new Success(Integer.toString(trans_amt),"DEPOSIT",debitCard);
            depositconfirm.setVisible(true);
            dispose();
                     

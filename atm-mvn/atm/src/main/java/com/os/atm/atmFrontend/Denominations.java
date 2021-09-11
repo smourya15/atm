@@ -20,6 +20,7 @@ import javax.swing.JOptionPane;
 public class Denominations extends javax.swing.JFrame {
      
     String debitCard;
+    private DebitCard objDebitCard=null;
     PreparedStatement pst = null;
     ResultSet rs = null;
     private int selected_denomination, amount, no_notes, selected;
@@ -48,6 +49,7 @@ public class Denominations extends javax.swing.JFrame {
     public Denominations(int amount, DebitCard debitCard){
         initComponents();
         groupRadioButtons();
+        this.objDebitCard = debitCard;
         this.debitCard = debitCard.getCard_no();
         withdrawButton.setEnabled(false);
         this.amount = amount;
@@ -330,7 +332,7 @@ public class Denominations extends javax.swing.JFrame {
                     
                     
                     
-                    Success objSuccess = new Success(amount);
+                    Success objSuccess = new Success(amount, objDebitCard);
                     objSuccess.setVisible(true);
                     dispose();
                 }

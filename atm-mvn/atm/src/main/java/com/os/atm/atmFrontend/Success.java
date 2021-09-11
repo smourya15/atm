@@ -25,9 +25,10 @@ public class Success extends javax.swing.JFrame {
     public Success(){
         initComponents();
     }
-    public Success(int amount1) {
+    public Success(int amount1, DebitCard db) {
         initComponents();
         this.amount1 = amount1;
+        this.objDebitCard = db;
         SuccessMessage.setText("Your Transaction of Rs."+ amount1 +" was successful");
         Timer timer = new Timer();
         TimerTask tt = new TimerTask() {
@@ -48,9 +49,9 @@ public class Success extends javax.swing.JFrame {
     public Success(String amount2,String tType, DebitCard db) {
         initComponents();
         this.txnType = tType;
-        this.amount2 = amount2;
+        this.amount1 =  Integer.parseInt(amount2);
         this.objDebitCard = db;
-        SuccessMessage.setText("Your Transaction of Rs."+ amount2 +" was successful");
+        SuccessMessage.setText("Your Transaction of Rs."+ amount1 +" was successful");
         Timer timer = new Timer();
         TimerTask tt = new TimerTask() {
             @Override
@@ -150,7 +151,7 @@ public class Success extends javax.swing.JFrame {
 
     private void printReceiptBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printReceiptBtnActionPerformed
         // TODO add your handling code here:
-        PrintReceipt pr = new PrintReceipt(this.txnType, this.objDebitCard);
+        PrintReceipt pr = new PrintReceipt(txnType, objDebitCard, Integer.toString(amount1));
 //        pr.printTransaction(pr.t);
         pr.setVisible(true);
         dispose();
