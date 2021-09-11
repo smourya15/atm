@@ -7,6 +7,7 @@ package com.os.atm.atmFrontend;
 
 import com.os.atm.encapsulateClasses.DebitCard;
 import java.awt.HeadlessException;
+import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Timer;
@@ -85,7 +86,24 @@ public class PrintReceipt extends javax.swing.JFrame {
 //        String pt = t.txnType;
          
     
-    
+
+     try{
+        int temp;
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
+        String sqlQuery1 = "SELECT trans_id FROM atm_transaction ORDER BY trans_time DESC LIMIT 1";
+        PreparedStatement pst = con.prepareStatement(sqlQuery1);
+        ResultSet rs = pst.executeQuery();
+        while(rs.next())
+            dispTxn.setText(rs.getString("trans_id"));
+                           
+                    
+     }
+     catch (ClassNotFoundException | SQLException ex) {
+                JOptionPane.showMessageDialog(null,ex.getMessage());
+    }
+
+
     switch(tType){
         
         case "WITHDRAW" : {
@@ -100,6 +118,7 @@ public class PrintReceipt extends javax.swing.JFrame {
 //            final int  balance= Integer.parseInt(amount)+ t;
             AvailableBalancelabel.setText(Double.toString(objDebitCard.getBalcance()));
             FromAccNumberLabel.setText(objDebitCard.getAccNum());
+            
             break;
             
             
@@ -166,9 +185,9 @@ public class PrintReceipt extends javax.swing.JFrame {
         CardNumbelLabel = new javax.swing.JLabel();
         DisplayCardNumber = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        atmId = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        TxnNumberLabel = new javax.swing.JLabel();
+        dispTxn = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txnTypeLabel = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -213,12 +232,14 @@ public class PrintReceipt extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel1.setText("ATM ID:");
 
-        jLabel2.setText("ABCD0000012345");
+        atmId.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        atmId.setText("1010000000");
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel3.setText("TXN NO.:");
 
-        TxnNumberLabel.setText("1234");
+        dispTxn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        dispTxn.setText("1234");
 
         jLabel5.setText("TXN TYPE:");
 
@@ -273,16 +294,16 @@ public class PrintReceipt extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2)
+                        .addComponent(atmId)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TxnNumberLabel)
-                            .addComponent(txnTypeLabel))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txnTypeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(dispTxn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -290,20 +311,17 @@ public class PrintReceipt extends javax.swing.JFrame {
                             .addComponent(jLabel16)
                             .addComponent(jLabel7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel15)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(AvailableBalancelabel))
-                                .addComponent(FromAccNumberLabel)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel9)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(TxnAmountlabel)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(ToAccountNumberLabel)
-                                .addGap(2, 2, 2)))
+                                .addComponent(jLabel15)
+                                .addGap(18, 18, 18)
+                                .addComponent(AvailableBalancelabel))
+                            .addComponent(FromAccNumberLabel)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addGap(18, 18, 18)
+                                .addComponent(TxnAmountlabel))
+                            .addComponent(ToAccountNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(101, 101, 101))))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -317,7 +335,7 @@ public class PrintReceipt extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addContainerGap(19, Short.MAX_VALUE)
                 .addComponent(BankNameLabel)
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -328,7 +346,7 @@ public class PrintReceipt extends javax.swing.JFrame {
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                    .addComponent(atmId))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CardNumbelLabel)
@@ -336,7 +354,7 @@ public class PrintReceipt extends javax.swing.JFrame {
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(TxnNumberLabel))
+                    .addComponent(dispTxn))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -361,7 +379,7 @@ public class PrintReceipt extends javax.swing.JFrame {
                     .addComponent(AvailableBalancelabel))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jLabel14)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -414,14 +432,14 @@ public class PrintReceipt extends javax.swing.JFrame {
     private javax.swing.JLabel TimeLabel;
     private javax.swing.JLabel ToAccountNumberLabel;
     private javax.swing.JLabel TxnAmountlabel;
-    private javax.swing.JLabel TxnNumberLabel;
+    private javax.swing.JLabel atmId;
+    private javax.swing.JLabel dispTxn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
