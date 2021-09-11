@@ -37,23 +37,29 @@ public class PrintReceipt extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        BankNameLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        BankNameLabel.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         BankNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         BankNameLabel.setText("ABC Bank");
 
+        DateLabel.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         DateLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         DateLabel.setText("Date:");
 
+        DisplayDate.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         DisplayDate.setText("1/1/21");
 
+        TimeLabel.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         TimeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         TimeLabel.setText("Time");
 
+        TimeDisplay.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         TimeDisplay.setText("10:10:AM");
 
+        CardNumbelLabel.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         CardNumbelLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         CardNumbelLabel.setText("Card Number: ");
 
+        CardNumberDisplay.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         CardNumberDisplay.setText("5132 XXXX XXXX XX09");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -61,29 +67,29 @@ public class PrintReceipt extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BankNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(DateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(DisplayDate, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(121, 121, 121)
-                        .addComponent(TimeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(DisplayDate)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(TimeLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TimeDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(TimeDisplay))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(CardNumbelLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(CardNumberDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(22, Short.MAX_VALUE)
                 .addComponent(BankNameLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DateLabel)
                     .addComponent(DisplayDate)
@@ -93,7 +99,7 @@ public class PrintReceipt extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CardNumbelLabel)
                     .addComponent(CardNumberDisplay))
-                .addContainerGap(197, Short.MAX_VALUE))
+                .addContainerGap(200, Short.MAX_VALUE))
         );
 
         pack();
