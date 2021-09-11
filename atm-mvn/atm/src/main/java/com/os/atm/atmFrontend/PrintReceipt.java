@@ -9,6 +9,9 @@ import com.os.atm.encapsulateClasses.DebitCard;
 import java.awt.HeadlessException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -37,12 +40,32 @@ public class PrintReceipt extends javax.swing.JFrame {
 //        DisplayDate.setText();
         setDateTime();
         printTransaction();
+        Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                JOptionPane.showMessageDialog(null, "No input from user. Aborting ");
+                 System.out.println("timer success2");
+                WelcomePage objPage = new WelcomePage();
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
+        timer.schedule(tt, 30000);
         
         
 //    printTransaction(txnType);
     }
     
-    String t ="hello";
+
+    public PrintReceipt(String balance_enquiry, DebitCard debitCard) {
+        initComponents();
+        this.tType = balance_enquiry;
+        this.objDebitCard = debitCard;
+        setDateTime();
+        printTransaction();
+    }
     private void setDateTime(){
         Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -110,6 +133,13 @@ public class PrintReceipt extends javax.swing.JFrame {
         
         case "BALANCE ENQUIRY" : {
             
+            String cardNumber = objDebitCard.getCardNoUn().substring(0, 2) + "XX-XXXX-XXXX-" + objDebitCard.getCardNoUn().substring(12, 16);
+            DisplayCardNumber.setText(cardNumber);
+            txnTypeLabel.setText(tType);
+            ToAccountNumberLabel.setText("NA");
+            TxnAmountlabel.setText(amount);
+            AvailableBalancelabel.setText(Double.toString(objDebitCard.getBalcance()));
+            FromAccNumberLabel.setText(objDebitCard.getAccNum());
             break;
         }
         

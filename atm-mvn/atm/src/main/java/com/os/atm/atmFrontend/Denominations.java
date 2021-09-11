@@ -19,8 +19,8 @@ import javax.swing.JOptionPane;
  */
 public class Denominations extends javax.swing.JFrame {
      
-    private DebitCard debit_Card;
-    String debitCard, account_no;
+    String debitCard;
+    private DebitCard objDebitCard=null;
     PreparedStatement pst = null;
     ResultSet rs = null;
     private int selected_denomination, amount, no_notes, selected;
@@ -44,12 +44,13 @@ public class Denominations extends javax.swing.JFrame {
                 dispose();
             };
         }; 
-        timer.schedule(tt, 10000);
+        timer.schedule(tt, 60000);
     }
-    public Denominations(int amount, String debitCard, String account_no){
+    public Denominations(int amount, DebitCard debitCard){
         initComponents();
         groupRadioButtons();
-        
+        this.objDebitCard = debitCard;
+        this.debitCard = debitCard.getCard_no();
         withdrawButton.setEnabled(false);
         this.amount = amount;
         headText.setText("Your Amount is Rs."+amount);
@@ -65,8 +66,6 @@ public class Denominations extends javax.swing.JFrame {
         if(amount<100 || amount%100!=0){
             D100.setVisible(false);
         }
-        this.debitCard = debitCard;
-        this.account_no = account_no;
     }
     
     private void groupRadioButtons(){
@@ -328,15 +327,12 @@ public class Denominations extends javax.swing.JFrame {
                     else if(selected == 4)
                         sqlQuery2 = "UPDATE atm_machine SET rs2000 = (SELECT rs2000 FROM atm_machine ) -"+no_notes ;
                        
-                    String sqlQuery5 = "UPDATE debit_card SET limit_amt = (SELECT limit_amt FROM debit_card WHERE account_no = "+account_no+")- " +amount+" WHERE account_no = "+account_no;
-                    
                     stmt.executeUpdate(sqlQuery2);
                     stmt.executeUpdate(sqlQuery3);
-                    stmt.executeUpdate(sqlQuery5);
                     
                     
                     
-                    Success objSuccess = new Success(amount, debit_Card);
+                    Success objSuccess = new Success(Integer.toString(amount),"WITHDRAW", objDebitCard);
                     objSuccess.setVisible(true);
                     dispose();
                 }

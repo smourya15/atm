@@ -36,7 +36,7 @@ public class DepositAmount extends javax.swing.JFrame {
                 dispose();
             };
         }; 
-        timer.schedule(tt, 10000);
+        timer.schedule(tt, 60000);
     }
     
      public DepositAmount(boolean d50,boolean d100,boolean d500,boolean d1000,boolean d2000, DebitCard debitCard) {
@@ -68,7 +68,7 @@ public class DepositAmount extends javax.swing.JFrame {
                 dispose();
             };
         }; 
-        timer.schedule(tt, 30000);
+        timer.schedule(tt, 60000);
     }
 
     /**

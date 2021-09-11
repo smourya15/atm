@@ -32,9 +32,8 @@ public class WithdrawMoney extends javax.swing.JFrame {
     /**
      * Creates new form withdraw
      */
-//    private DebitCard debitCard;
-    String debitcard, account_no;
-    int limit_amt, acc_bal;
+    private DebitCard objDebitCard;
+    String debitcard;
     PreparedStatement pst = null;
     
     
@@ -49,14 +48,14 @@ public class WithdrawMoney extends javax.swing.JFrame {
         TimerTask tt = new TimerTask() {
             @Override
             public void run() {
-                System.out.println("timer withdrawMoney");
+                 System.out.println("timer withdrawMoney");
                 WelcomePage objPage = new WelcomePage();
                 objPage.createAndShow();
                 objPage.setVisible(true);
                 dispose();
             };
         }; 
-        timer.schedule(tt, 10000);
+        timer.schedule(tt, 120000);
     }
 
     WithdrawMoney(DebitCard debitCard) {
@@ -74,9 +73,9 @@ public class WithdrawMoney extends javax.swing.JFrame {
                 dispose();
             };
         }; 
-        timer.schedule(tt, 10000);
+        timer.schedule(tt, 120000);
         this.debitcard = debitCard.getCard_no();
-        this.account_no = debitCard.getAccNum();
+        this.objDebitCard=debitCard;
         
         System.out.println("AccNo: \t"+debitCard.getAccNum());
     }
@@ -154,9 +153,9 @@ public class WithdrawMoney extends javax.swing.JFrame {
                     .addComponent(amountLabel)
                     .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(withdrawAmountField, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-                    .addComponent(confirmButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(confirmButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(withdrawAmountField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(110, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -194,7 +193,7 @@ public class WithdrawMoney extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         
-        System.out.println(debitcard);
+        
         int amount;
         if (withdrawAmountField.getText().isEmpty()){
             amount = 1;
@@ -202,60 +201,18 @@ public class WithdrawMoney extends javax.swing.JFrame {
         else{
             amount = Integer.parseInt(withdrawAmountField.getText());
         }
-        System.out.println(amount);
+        System.out.println(amount+"\t "+Double.toString(objDebitCard.getBalcance()));
         
         if(amount%50==0){
-            
-            try {
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
-                String sqlQuery1 = "SELECT acc_bal FROM account WHERE account_no = "+account_no;
-                PreparedStatement pst = con.prepareStatement(sqlQuery1);
-                ResultSet rs = pst.executeQuery();
-                while(rs.next()){
-                    acc_bal = Integer.parseInt(rs.getString("acc_bal"));
-                }
-                
-                String sqlQuery2 = "SELECT limit_amt FROM debit_card WHERE account_no = "+account_no;
-                System.out.println(sqlQuery2);
-                
-                pst = con.prepareStatement(sqlQuery2);
-                rs = pst.executeQuery();
-                while(rs.next()){
-                    limit_amt = Integer.parseInt(rs.getString("limit_amt"));
-                }
-                
+            if(objDebitCard.getBalcance()< amount){
+                JOptionPane.showMessageDialog(this, "Insuffiencient Balance.");
+                withdrawAmountField.setText(null);
             }
-            catch (ClassNotFoundException | SQLException ex) {
-                JOptionPane.showMessageDialog(null, ex);
-            }
-            
-            if(acc_bal >amount){
-                                
-                if(amount > limit_amt){
-                    JOptionPane.showMessageDialog(null, "Daily Withdraw Limit Exceeded");
-                    WelcomePage objPage = new WelcomePage();
-                    objPage.createAndShow();
-                    objPage.setVisible(true);
-                    dispose();
-                } 
-            
-                else{
-                    Denominations objDenomination= new Denominations(amount, debitcard, account_no);
-                    objDenomination.setVisible(true);
-                    dispose();
-                }
-            }
-            
             else{
-               
-                JOptionPane.showMessageDialog(null, "Low Account Balance");
-                WelcomePage objPage = new WelcomePage();
-                objPage.createAndShow();
-                objPage.setVisible(true);
+                Denominations objDenomination= new Denominations(amount,objDebitCard);
+                objDenomination.setVisible(true);
                 dispose();
-                
-            }    
+            }
         }
         else{
             JOptionPane.showMessageDialog(null,"Enter The Amount In The Multiple Of Rs.50");
@@ -266,8 +223,6 @@ public class WithdrawMoney extends javax.swing.JFrame {
         
     }//GEN-LAST:event_confirmButtonActionPerformed
 
-
-    
     private void withdrawAmountFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_withdrawAmountFieldKeyTyped
         // TODO add your handling code here:
         

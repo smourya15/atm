@@ -285,7 +285,7 @@ public class FundTransfer extends javax.swing.JFrame {
                     System.out.println("Successfully Completed Fund Transfer Transaction\t");
                     con.close();
                     objDebitCard.setBalance(objDebitCard.getBalcance()- (double)transferAmt);
-                    Success objsuccess = new Success(transferAmt,objDebitCard, benAcc );
+                    Success objsuccess = new Success(transferAmt,"FUND TRANSFER",objDebitCard, benAcc );
                     objsuccess.setVisible(true);
                     dispose();
                      } 

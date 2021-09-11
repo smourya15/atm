@@ -196,7 +196,7 @@ public class CardNumber extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Your Card is Blocked,\n Contact Your Branch\n");
                 break;
             case 3:
-                JOptionPane.showMessageDialog(this, verifyCard.getText());
+//                JOptionPane.showMessageDialog(this, verifyCard.getText());
                 String accNumber = verifyCard.getText().substring(0, 2) + "XX-XXXX-XXXX-" + verifyCard.getText().substring(12, 16);
 //                PinVerification objPinVerification = context.getBean(PinVerification.class);
 //                objPinVerification.initializeComponent(accNumber, md.getHashText());
@@ -218,7 +218,7 @@ public class CardNumber extends javax.swing.JFrame {
 
     private void verifyCardKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verifyCardKeyTyped
         // TODO add your handling code here:
-        System.out.println("RUns");
+//        System.out.println("RUns");
         char c = evt.getKeyChar();
         if(!((Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE) && verifyCard.getText().length()<16)){
             

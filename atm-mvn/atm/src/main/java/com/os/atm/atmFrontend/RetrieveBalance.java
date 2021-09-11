@@ -39,7 +39,7 @@ public class RetrieveBalance extends javax.swing.JFrame {
                 dispose();
             };
         }; 
-        timer.schedule(tt, 10000);
+        timer.schedule(tt, 60000);
     }
     
     public RetrieveBalance() {
@@ -56,7 +56,7 @@ public class RetrieveBalance extends javax.swing.JFrame {
                 dispose();
             };
         }; 
-        timer.schedule(tt, 10000);
+        timer.schedule(tt, 60000);
         }
 
     RetrieveBalance(DebitCard debitCard) {
@@ -76,7 +76,7 @@ public class RetrieveBalance extends javax.swing.JFrame {
                 dispose();
             };
         }; 
-        timer.schedule(tt, 10000);
+        timer.schedule(tt, 60000);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -117,6 +117,11 @@ public class RetrieveBalance extends javax.swing.JFrame {
         printButton.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         printButton.setText("PRINT");
         printButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        printButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                printButtonActionPerformed(evt);
+            }
+        });
 
         accno.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         accno.setText("1234567890123456");
@@ -169,6 +174,13 @@ public class RetrieveBalance extends javax.swing.JFrame {
         objPage.setVisible(true);
         dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
+
+    private void printButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printButtonActionPerformed
+        // TODO add your handling code here:
+        PrintReceipt objPrintReceipt = new PrintReceipt("BALANCE ENQUIRY",debitCard);
+        objPrintReceipt.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_printButtonActionPerformed
 
     /**
      * @param args the command line arguments
