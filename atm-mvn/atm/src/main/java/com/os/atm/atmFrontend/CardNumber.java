@@ -23,7 +23,7 @@ import org.springframework.context.ApplicationContext;
 //@Scope(value = BeanDefinition.SCOPE_PROTOTYPE)
 public class CardNumber extends javax.swing.JFrame {
     
-    String abc = "";
+    String card_number= "1234567890123456";
 
   @Autowired
     private ApplicationContext context;
@@ -171,8 +171,8 @@ public class CardNumber extends javax.swing.JFrame {
 
     private void verifyCardNum_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verifyCardNum_BtnActionPerformed
         // TODO add your handling code here:
-        abc = verifyCard.getText();
-        System.out.println(abc);
+        card_number= verifyCard.getText();
+        //System.out.println(abc);
         final StringBuilder cardNum = new StringBuilder(verifyCard.getText());
         
         
