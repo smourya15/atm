@@ -184,7 +184,7 @@ public class Services extends javax.swing.JFrame {
 
     private void withdrawBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawBtnActionPerformed
         // TODO add your handling code here:
-         txnType="WITHDRAW";
+         System.out.println(debitCard.getBalcance());
         WithdrawMoney objWithdraw = new WithdrawMoney(debitCard);
 //        PrintReceipt pr = new PrintReceipt(txnType);
 //        pr.printTransaction();

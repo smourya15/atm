@@ -44,7 +44,7 @@ public class Denominations extends javax.swing.JFrame {
                 dispose();
             };
         }; 
-        timer.schedule(tt, 10000);
+        timer.schedule(tt, 60000);
     }
     public Denominations(int amount, DebitCard debitCard){
         initComponents();
@@ -332,7 +332,7 @@ public class Denominations extends javax.swing.JFrame {
                     
                     
                     
-                    Success objSuccess = new Success(amount, objDebitCard);
+                    Success objSuccess = new Success(Integer.toString(amount),"WITHDRAW", objDebitCard);
                     objSuccess.setVisible(true);
                     dispose();
                 }

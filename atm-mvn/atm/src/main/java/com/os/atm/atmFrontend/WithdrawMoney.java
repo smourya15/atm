@@ -32,7 +32,7 @@ public class WithdrawMoney extends javax.swing.JFrame {
     /**
      * Creates new form withdraw
      */
-    private DebitCard debitCard;
+    private DebitCard objDebitCard;
     String debitcard;
     PreparedStatement pst = null;
     
@@ -55,7 +55,7 @@ public class WithdrawMoney extends javax.swing.JFrame {
                 dispose();
             };
         }; 
-        timer.schedule(tt, 10000);
+        timer.schedule(tt, 120000);
     }
 
     WithdrawMoney(DebitCard debitCard) {
@@ -73,8 +73,9 @@ public class WithdrawMoney extends javax.swing.JFrame {
                 dispose();
             };
         }; 
-        timer.schedule(tt, 10000);
+        timer.schedule(tt, 120000);
         this.debitcard = debitCard.getCard_no();
+        this.objDebitCard=debitCard;
         
         System.out.println("AccNo: \t"+debitCard.getAccNum());
     }
@@ -200,12 +201,18 @@ public class WithdrawMoney extends javax.swing.JFrame {
         else{
             amount = Integer.parseInt(withdrawAmountField.getText());
         }
-        System.out.println(amount);
+        System.out.println(amount+"\t "+Double.toString(objDebitCard.getBalcance()));
         
         if(amount%50==0){
-            Denominations objDenomination= new Denominations(amount,debitCard);
-            objDenomination.setVisible(true);
-            dispose();
+            if(objDebitCard.getBalcance()< amount){
+                JOptionPane.showMessageDialog(this, "Insuffiencient Balance.");
+                withdrawAmountField.setText(null);
+            }
+            else{
+                Denominations objDenomination= new Denominations(amount,objDebitCard);
+                objDenomination.setVisible(true);
+                dispose();
+            }
         }
         else{
             JOptionPane.showMessageDialog(null,"Enter The Amount In The Multiple Of Rs.50");

@@ -53,7 +53,7 @@ public class PinVerification extends javax.swing.JFrame {
                 dispose();
             };
         }; 
-        timer.schedule(tt, 10000);
+        timer.schedule(tt, 120000);
     }
    public PinVerification(String maskedCardNumber, String cardNumberHash){
         initComponents();
@@ -179,9 +179,9 @@ public class PinVerification extends javax.swing.JFrame {
         MD5Hashing md = new MD5Hashing(verifyPin.getText());
         DebitCardServices db=new DebitCardServices();
         ATMServices objATMServices = new ATMServices();
-        JOptionPane.showMessageDialog(this, md.getHashText()+"\t"+ verifyPin.getText());
+//        JOptionPane.showMessageDialog(this, md.getHashText()+"\t"+ verifyPin.getText());
         Boolean pinValid = objATMServices.VerifyPin(md.getHashText(), getEncryptCard());
-        JOptionPane.showMessageDialog(this, pinValid);
+//        JOptionPane.showMessageDialog(this, pinValid);
         if(attempts > 1 && (!pinValid)){
             attempts -= 1;
             JOptionPane.showMessageDialog(this, "Inccorrect Pin\nAttempts Left "+attempts);
@@ -191,7 +191,7 @@ public class PinVerification extends javax.swing.JFrame {
         else if(pinValid){
             DebitCard debitCard=null;
             try {
-                JOptionPane.showMessageDialog(this, "hashpin = "+md.getHashText()+" hashcard="+ getEncryptCard());
+//                JOptionPane.showMessageDialog(this, "hashpin = "+md.getHashText()+" hashcard="+ getEncryptCard());
                 debitCard = db.Populate(md.getHashText(), getEncryptCard());
                 System.out.println("Debit Card: "+debitCard.getCardHolderName()+"\t "+debitCard.getCardStatus()+" \t"+debitCard.getCard_no()+"\t"+debitCard.getBalcance());
                 System.out.println("Account Details: "+ debitCard.getAccNum() +"\t"+debitCard.getCardLimit());

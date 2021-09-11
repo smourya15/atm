@@ -118,7 +118,7 @@ public class DepositConfirm extends javax.swing.JFrame {
                 dispose();
             };
         }; 
-        timer.schedule(tt, 10000);
+        timer.schedule(tt, 30000);
     }
     
     /**

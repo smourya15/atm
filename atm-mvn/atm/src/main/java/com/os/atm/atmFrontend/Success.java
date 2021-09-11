@@ -43,13 +43,15 @@ public class Success extends javax.swing.JFrame {
                 dispose();
             };
         }; 
-        timer.schedule(tt, 10000);
+        timer.schedule(tt, 60000);
     }
     
-    public Success(int amount1, DebitCard db, String benificiaryAccount) {
+    public Success(int amount1,String tType, DebitCard db, String benificiaryAccount) {
         initComponents();
         this.amount1 = amount1;
         this.objDebitCard = db;
+        this.txnType = tType;
+
         this.benificiaryAccount = benificiaryAccount;
         SuccessMessage.setText("Your Transaction of Rs."+ amount1 +" was successful");
         Timer timer = new Timer();
@@ -63,7 +65,7 @@ public class Success extends javax.swing.JFrame {
                 dispose();
             };
         }; 
-        timer.schedule(tt, 10000);
+        timer.schedule(tt, 60000);
     }
     
 //    public void 
@@ -86,7 +88,7 @@ public class Success extends javax.swing.JFrame {
                 dispose();
             };
         }; 
-        timer.schedule(tt, 10000);
+        timer.schedule(tt, 60000);
     }
 
     /**
