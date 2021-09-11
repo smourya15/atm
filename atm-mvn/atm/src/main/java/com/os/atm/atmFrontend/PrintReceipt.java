@@ -14,10 +14,49 @@ public class PrintReceipt extends javax.swing.JFrame {
     /**
      * Creates new form PrintReceipt
      */
-    public PrintReceipt() {
-        initComponents();
+    public PrintReceipt(String txnType) {
+    initComponents();
+    
+//    String tType =txnType;
+    
+    printTransaction(txnType);
+        
+        
+        
     }
 
+    
+    public void printTransaction(String pt) {
+    // Menu driven program
+    
+    
+    switch(pt){
+        
+        case "WITHDRAW" : {
+            
+            
+          break;  
+        }   
+        case "DEPOSIT" : {
+            
+            break;
+        }
+        case "FUND TRANSFER" :{
+            
+            break;
+        }
+        
+        case "BALANCE ENQUIRY" : {
+            
+            break;
+        }
+        
+    }
+    
+    
+        
+        
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -266,7 +305,7 @@ public class PrintReceipt extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PrintReceipt().setVisible(true);
+                new PrintReceipt("").setVisible(true);
             }
         });
     }
