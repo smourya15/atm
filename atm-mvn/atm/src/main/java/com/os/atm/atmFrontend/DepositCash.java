@@ -29,7 +29,7 @@ public class DepositCash extends javax.swing.JFrame {
     int trans_amt;
 //    private DebitCard objDebitCard=null;
     public Boolean D50, D100, D500, D1000, D2000;
-    private DebitCard debitCard;
+    private DebitCard objDebitCard;
     
     
     public DepositCash(int d50, int d100, int d500, int d1000, int d2000, DebitCard debitCard, int amt){
@@ -38,7 +38,7 @@ public class DepositCash extends javax.swing.JFrame {
         this.d500 = d500;
         this.d1000 = d1000;
         this.d2000 = d2000;
-        this.debitCard = debitCard;
+        this.objDebitCard = debitCard;
         System.out.println(debitCard.getAccNum());
         trans_amt = amt;
         
@@ -247,8 +247,8 @@ public class DepositCash extends javax.swing.JFrame {
                 String sqlQuery0="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'DEPOSIT', ?, (SELECT now()), 'CANCELLED' )";
                 
                 PreparedStatement pst = con.prepareStatement(sqlQuery0);
-                pst.setString(1, String.valueOf(debitCard.getCard_no()));
-                pst.setString(2, String.valueOf(debitCard.getCard_no()));
+                pst.setString(1, String.valueOf(objDebitCard.getCard_no()));
+                pst.setString(2, String.valueOf(objDebitCard.getCard_no()));
                 pst.setString(3, String.valueOf(trans_amt));
                 pst.execute();
                 
@@ -273,11 +273,12 @@ public class DepositCash extends javax.swing.JFrame {
            // System.out.println(d50+" "+d100+" "+d500);
             System.out.println(" "+d50+" "+d100+" "+d500+" "+d1000+" "+d2000);
             
-                String sqlQuery4="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'DEPOSIT', ?, (SELECT now()), 'PASSED' )";
+                String sqlQuery4="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, ?, 'DEPOSIT', ?, (SELECT now()), 'PASSED' )";
                 
                 PreparedStatement pst = con.prepareStatement(sqlQuery4);
-                pst.setString(1, String.valueOf(debitCard.getCard_no()));
-                pst.setString(2, String.valueOf(debitCard.getCard_no()));
+                pst.setString(1, String.valueOf(objDebitCard.getCard_no()));
+                pst.setString(2, objDebitCard.getAccNum());
+//                pst.setString(3, String.valueOf(objDebitCard.getCard_no()));
                 pst.setString(3, String.valueOf(trans_amt));
                 pst.execute();
 
@@ -309,10 +310,10 @@ public class DepositCash extends javax.swing.JFrame {
                 }                    
                 stmt.executeUpdate(sqlQuery3);
                 
-                System.out.println(debitCard.getBalcance());
-                debitCard.setBalance(debitCard.getBalcance()+(double)trans_amt);
-                System.out.println(debitCard.getBalcance());
-                Success depositconfirm = new Success(Integer.toString(trans_amt),"DEPOSIT",debitCard);
+                System.out.println(objDebitCard.getBalcance());
+                objDebitCard.setBalance(objDebitCard.getBalcance()+(double)trans_amt);
+                System.out.println(objDebitCard.getBalcance());
+                Success depositconfirm = new Success(Integer.toString(trans_amt),"DEPOSIT",objDebitCard);
                 depositconfirm.setVisible(true);
                 dispose();
                     
@@ -336,7 +337,7 @@ public class DepositCash extends javax.swing.JFrame {
                
                 confirmbutton.setEnabled(false);
                 JOptionPane.showMessageDialog(null,"INCORRECT AMOUNT DEPOSITED\n"+"PLEASE TRY AGAIN");
-                SelectDenominations seldenom = new SelectDenominations();
+                SelectDenominations seldenom = new SelectDenominations(objDebitCard);
                 seldenom.setVisible(true);
                 dispose();
     }//GEN-LAST:event_incorrectdenominationActionPerformed
