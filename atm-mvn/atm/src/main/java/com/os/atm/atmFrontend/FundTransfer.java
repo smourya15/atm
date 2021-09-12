@@ -25,6 +25,7 @@ public class FundTransfer extends javax.swing.JFrame {
      */
     private DebitCard objDebitCard;
     String debitcard;
+    String account_no;
     
     
     public FundTransfer() {
@@ -56,6 +57,7 @@ public class FundTransfer extends javax.swing.JFrame {
         trfAmt.setText(null);
         errorMsgLabel.setVisible(false);
         trfConfirmBtn.setEnabled(false);
+        this.account_no = debitCard.getAccNum();
         
         Timer timer = new Timer();
         TimerTask tt = new TimerTask() {
@@ -258,6 +260,7 @@ public class FundTransfer extends javax.swing.JFrame {
             return ;
         }
         
+        
         if(benAcc.equals(reBenAcc))
         {   
             errorMsgLabel.setText("Error");
@@ -265,49 +268,95 @@ public class FundTransfer extends javax.swing.JFrame {
             int transferAmt = Integer.parseInt(trfAmt.getText());
            // AccountServices a = new AccountServices();
             //a.transferFunds(benAcc, transferAmt, debitCard);
-
-
+           
             if(objDebitCard.getBalcance()< (double)transferAmt){
                 JOptionPane.showMessageDialog(this, "Insufficient Funds");
                 trfAmt.setText(null);
             }
             else{
-                
+//                
+////---------------------------------------------------------------------------------
                 try{
-                    int temp=0;
-                    Class.forName("com.mysql.jdbc.Driver");
-                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
-                    String sqlQuery0="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'TRANSFER', ?, (SELECT now()), 'P' )";
-                    PreparedStatement pst = con.prepareStatement(sqlQuery0);
-                    pst.setString(1, String.valueOf(debitcard));
-                    pst.setString(2, String.valueOf(debitcard));
-                    pst.setString(3, String.valueOf(transferAmt));
-                    pst.execute();
+                        int dbAccount_no = 0;
+                        Class.forName("com.mysql.jdbc.Driver");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
+                        String sqlQuery1 = "SELECT * FROM account WHERE account_no = "+benAcc;
+                        PreparedStatement pst = con.prepareStatement(sqlQuery1);
+                        ResultSet rs = pst.executeQuery();
+                        while(rs.next()){
+                            dbAccount_no = Integer.parseInt(rs.getString("account_no"));
+                        }
+
+                        if(dbAccount_no == Integer.parseInt(benAcc)){
+
+                                int temp=0;
+    //                            Class.forName("com.mysql.jdbc.Driver");
+    //                            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
+                                String sqlQuery0="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'TRANSFER', ?, (SELECT now()), 'P' )";
+                                pst = con.prepareStatement(sqlQuery0);
+                                pst.setString(1, String.valueOf(debitcard));
+                                pst.setString(2, String.valueOf(debitcard));
+                                pst.setString(3, String.valueOf(transferAmt));
+                                pst.execute();
+
+                                temp+=transferAmt;
+                                String sqlQuery2 = "UPDATE account SET acc_bal = (SELECT acc_bal FROM account WHERE account_no = "+benAcc+" )+"+transferAmt+" WHERE account_no = "+benAcc;
+                                Statement stmt = con.createStatement();
+                                stmt.executeUpdate(sqlQuery2);
+
+
+                                System.out.println("Successfully Completed Fund Transfer Transaction\t");
+                                con.close();
+                                objDebitCard.setBalance(objDebitCard.getBalcance()- (double)transferAmt);
+                                Success objsuccess = new Success(transferAmt,"FUND TRANSFER",objDebitCard, benAcc );
+                                objsuccess.setVisible(true);
+                                dispose();
+
+                        }
                     
-//                    String sqlQuery1 = "SELECT acc_bal FROM account WHERE account_no = "+benAcc;
-//                    pst = con.prepareStatement(sqlQuery1);
-//                    ResultSet rs = pst.executeQuery();
-//                    
-//                    while(rs.next()){
-//                        temp = Integer.parseInt(rs.getString("acc_bal"));
-//                    }
+                        else{
+                            JOptionPane.showMessageDialog(null, "Beneficiary Account Number Does Not Exist");
+                            benAccNoTextField.setText(null);
+                            reBenAccNoTextField.setText(null);
+                            trfAmt.setText(null);
+                        }
                     
-                    temp+=transferAmt;
-                    String sqlQuery2 = "UPDATE account SET acc_bal = (SELECT acc_bal FROM account WHERE account_no = "+benAcc+" )+"+transferAmt+" WHERE account_no = "+benAcc;
-                    Statement stmt = con.createStatement();
-                    stmt.executeUpdate(sqlQuery2);
-                    
-                                       
-                    System.out.println("Successfully Completed Fund Transfer Transaction\t");
-                    con.close();
-                    objDebitCard.setBalance(objDebitCard.getBalcance()- (double)transferAmt);
-                    Success objsuccess = new Success(transferAmt,"FUND TRANSFER",objDebitCard, benAcc );
-                    objsuccess.setVisible(true);
-                    dispose();
-                    } 
-                    catch (ClassNotFoundException | SQLException ex) {
+            }
+            catch (ClassNotFoundException | SQLException ex) {
                         JOptionPane.showMessageDialog(null,ex.getMessage());
-                    }
+            }
+            
+            
+            
+            
+//-------------------------------------------------------------------------------------- 
+//                try{
+//                    int temp=0;
+//                    Class.forName("com.mysql.jdbc.Driver");
+//                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
+//                    String sqlQuery0="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'TRANSFER', ?, (SELECT now()), 'P' )";
+//                    PreparedStatement pst = con.prepareStatement(sqlQuery0);
+//                    pst.setString(1, String.valueOf(debitcard));
+//                    pst.setString(2, String.valueOf(debitcard));
+//                    pst.setString(3, String.valueOf(transferAmt));
+//                    pst.execute();
+//                    
+//                    temp+=transferAmt;
+//                    String sqlQuery2 = "UPDATE account SET acc_bal = (SELECT acc_bal FROM account WHERE account_no = "+benAcc+" )+"+transferAmt+" WHERE account_no = "+benAcc;
+//                    Statement stmt = con.createStatement();
+//                    stmt.executeUpdate(sqlQuery2);
+//                    
+//                                       
+//                    System.out.println("Successfully Completed Fund Transfer Transaction\t");
+//                    con.close();
+//                    objDebitCard.setBalance(objDebitCard.getBalcance()- (double)transferAmt);
+//                    Success objsuccess = new Success(transferAmt,"FUND TRANSFER",objDebitCard, benAcc );
+//                    objsuccess.setVisible(true);
+//                    dispose();
+//                    } 
+//                    catch (ClassNotFoundException | SQLException ex) {
+//                        JOptionPane.showMessageDialog(null,ex.getMessage());
+//                    }
             }
 }
             else {
