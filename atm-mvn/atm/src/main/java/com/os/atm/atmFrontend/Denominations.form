@@ -38,8 +38,8 @@
           <Group type="102" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="headText" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="displayDenomination" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="headText" min="-2" max="-2" attributes="0"/>
+                  <Component id="displayDenomination" min="-2" pref="290" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -54,7 +54,7 @@
               <Component id="jDesktopPane1" max="32767" attributes="0"/>
               <EmptySpace pref="78" max="32767" attributes="0"/>
               <Component id="displayDenomination" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="withdrawButton" alignment="3" min="-2" pref="86" max="-2" attributes="0"/>
                   <Component id="cancelButton" alignment="3" min="-2" pref="86" max="-2" attributes="0"/>
