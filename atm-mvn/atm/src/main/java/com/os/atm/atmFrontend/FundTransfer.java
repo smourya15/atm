@@ -284,16 +284,16 @@ public class FundTransfer extends javax.swing.JFrame {
                     pst.setString(3, String.valueOf(transferAmt));
                     pst.execute();
                     
-                    String sqlQuery1 = "SELECT acc_bal FROM account WHERE account_no = "+benAcc;
-                    pst = con.prepareStatement(sqlQuery1);
-                    ResultSet rs = pst.executeQuery();
-                    
-                    while(rs.next()){
-                        temp = Integer.parseInt(rs.getString("acc_bal"));
-                    }
+//                    String sqlQuery1 = "SELECT acc_bal FROM account WHERE account_no = "+benAcc;
+//                    pst = con.prepareStatement(sqlQuery1);
+//                    ResultSet rs = pst.executeQuery();
+//                    
+//                    while(rs.next()){
+//                        temp = Integer.parseInt(rs.getString("acc_bal"));
+//                    }
                     
                     temp+=transferAmt;
-                    String sqlQuery2 = "UPDATE account SET acc_bal = "+temp+" WHERE account_no = "+benAcc;
+                    String sqlQuery2 = "UPDATE account SET acc_bal = (SELECT acc_bal FROM account WHERE account_no = "+benAcc+" )+"+transferAmt+" WHERE account_no = "+benAcc;
                     Statement stmt = con.createStatement();
                     stmt.executeUpdate(sqlQuery2);
                     
