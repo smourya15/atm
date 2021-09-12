@@ -24,6 +24,18 @@ import org.springframework.context.ApplicationContext;
 public class CardNumber extends javax.swing.JFrame {
     
     String card_number= "1234567890123456";
+    
+     Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                WelcomePage objPage = new WelcomePage();
+                 System.out.println("timer cardNumber2");
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
 
   @Autowired
     private ApplicationContext context;
@@ -72,18 +84,8 @@ public class CardNumber extends javax.swing.JFrame {
 
         verifyCardNum_Btn.setEnabled(Boolean.FALSE);
 
-        Timer timer = new Timer();
-        TimerTask tt = new TimerTask() {
-            @Override
-            public void run() {
-                WelcomePage objPage = new WelcomePage();
-                 System.out.println("timer cardNumber2");
-                objPage.createAndShow();
-                objPage.setVisible(true);
-                dispose();
-            };
-        }; 
-        timer.schedule(tt, 120000);
+       
+        timer.schedule(tt, 120000); 
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -196,6 +198,9 @@ public class CardNumber extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Your Card is Blocked,\n Contact Your Branch\n");
                 break;
             case 3:
+               tt.cancel();
+               timer.cancel();
+               timer.purge();
 //                JOptionPane.showMessageDialog(this, verifyCard.getText());
                 String accNumber = verifyCard.getText().substring(0, 2) + "XX-XXXX-XXXX-" + verifyCard.getText().substring(12, 16);
 //                PinVerification objPinVerification = context.getBean(PinVerification.class);
@@ -239,6 +244,11 @@ public class CardNumber extends javax.swing.JFrame {
     }//GEN-LAST:event_verifyCardKeyTyped
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+             
+               
+           tt.cancel();
+           timer.cancel();
+           timer.purge();
         WelcomePage objPage = new WelcomePage();
         objPage.createAndShow();
         objPage.setVisible(true);

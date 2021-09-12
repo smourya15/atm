@@ -23,6 +23,16 @@ public class FundTransfer extends javax.swing.JFrame {
     /**
      * Creates new form fundTransfer
      */
+      Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                WelcomePage objPage = new WelcomePage();
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
     private DebitCard objDebitCard;
     String debitcard;
     
@@ -35,16 +45,7 @@ public class FundTransfer extends javax.swing.JFrame {
         errorMsgLabel.setVisible(false);
         trfConfirmBtn.setEnabled(false);
         
-        Timer timer = new Timer();
-        TimerTask tt = new TimerTask() {
-            @Override
-            public void run() {
-                WelcomePage objPage = new WelcomePage();
-                objPage.createAndShow();
-                objPage.setVisible(true);
-                dispose();
-            };
-        }; 
+       
         timer.schedule(tt, 120000);
     }
 
@@ -57,16 +58,7 @@ public class FundTransfer extends javax.swing.JFrame {
         errorMsgLabel.setVisible(false);
         trfConfirmBtn.setEnabled(false);
         
-        Timer timer = new Timer();
-        TimerTask tt = new TimerTask() {
-            @Override
-            public void run() {
-                WelcomePage objPage = new WelcomePage();
-                objPage.createAndShow();
-                objPage.setVisible(true);
-                dispose();
-            };
-        }; 
+      
         timer.schedule(tt, 120000);
         this.debitcard = debitCard.getCard_no();
     }
@@ -305,6 +297,9 @@ public class FundTransfer extends javax.swing.JFrame {
                     System.out.println("Successfully Completed Fund Transfer Transaction\t");
                     con.close();
                     objDebitCard.setBalance(objDebitCard.getBalcance()- (double)transferAmt);
+                    tt.cancel();
+                    timer.cancel();
+                    timer.purge();
                     Success objsuccess = new Success(transferAmt,"FUND TRANSFER",objDebitCard, benAcc );
                     objsuccess.setVisible(true);
                     dispose();
@@ -414,7 +409,9 @@ public class FundTransfer extends javax.swing.JFrame {
                     pst.execute();
                     System.out.println("Successfully Cancelled Fund Transfer Transaction\t");
             
-                    
+                    tt.cancel();
+                    timer.cancel();
+                    timer.purge();
                     WelcomePage objPage = new WelcomePage();
                     objPage.createAndShow();
                     objPage.setVisible(true);

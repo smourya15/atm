@@ -22,30 +22,7 @@ public class RetrieveBalance extends javax.swing.JFrame {
     /**
      * Creates new form RetrieveBalance
      */
-    private DebitCard debitCard;
-    public RetrieveBalance(String a, double b) {
-        initComponents();
-        accno.setText(a);
-        bal.setText(Double.toString(b));
-        
-        Timer timer = new Timer();
-        TimerTask tt = new TimerTask() {
-            @Override
-            public void run() {
-                WelcomePage objPage = new WelcomePage();
-                 System.out.println("timer RetrieveBalance");
-                objPage.createAndShow();
-                objPage.setVisible(true);
-                dispose();
-            };
-        }; 
-        timer.schedule(tt, 60000);
-    }
-    
-    public RetrieveBalance() {
-            initComponents();
-            
-            Timer timer = new Timer();
+           Timer timer = new Timer();
         TimerTask tt = new TimerTask() {
             @Override
             public void run() {
@@ -55,7 +32,17 @@ public class RetrieveBalance extends javax.swing.JFrame {
                 objPage.setVisible(true);
                 dispose();
             };
-        }; 
+        };
+    private DebitCard debitCard;
+    public RetrieveBalance(String a, double b) {
+        initComponents();
+        accno.setText(a);
+        bal.setText(Double.toString(b));
+        timer.schedule(tt, 60000);
+    }
+    
+    public RetrieveBalance() {
+            initComponents();
         timer.schedule(tt, 60000);
         }
 
@@ -64,18 +51,6 @@ public class RetrieveBalance extends javax.swing.JFrame {
          this.debitCard=debitCard;
          accno.setText(this.debitCard.getAccNum());
         bal.setText(String.valueOf(this.debitCard.getBalcance()));
-            
-            Timer timer = new Timer();
-        TimerTask tt = new TimerTask() {
-            @Override
-            public void run() {
-                JOptionPane.showMessageDialog(null, "No input from user. Aborting session");
-                WelcomePage objPage = new WelcomePage();
-                objPage.createAndShow();
-                objPage.setVisible(true);
-                dispose();
-            };
-        }; 
         timer.schedule(tt, 60000);
     }
     /**
@@ -169,7 +144,11 @@ public class RetrieveBalance extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
-        WelcomePage objPage = new WelcomePage();
+        
+        tt.cancel();
+          timer.cancel();
+          timer.purge();
+          WelcomePage objPage = new WelcomePage();
         objPage.createAndShow();
         objPage.setVisible(true);
         dispose();
@@ -177,6 +156,9 @@ public class RetrieveBalance extends javax.swing.JFrame {
 
     private void printButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printButtonActionPerformed
         // TODO add your handling code here:
+        tt.cancel();
+          timer.cancel();
+          timer.purge();
         PrintReceipt objPrintReceipt = new PrintReceipt("BALANCE ENQUIRY",debitCard);
         objPrintReceipt.setVisible(true);
         dispose();

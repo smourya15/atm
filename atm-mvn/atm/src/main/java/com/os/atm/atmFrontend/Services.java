@@ -27,11 +27,7 @@ public class Services extends javax.swing.JFrame {
     /**
      * Creates new form Services
      */
-    private DebitCard debitCard;
-    public Services() {
-        initComponents();
-        
-        Timer timer = new Timer();
+      Timer timer = new Timer();
         TimerTask tt = new TimerTask() {
             @Override
             public void run() {
@@ -42,24 +38,16 @@ public class Services extends javax.swing.JFrame {
                 dispose();
             };
         }; 
+        
+    private DebitCard debitCard;
+    public Services() {
+        initComponents();
         timer.schedule(tt, 120000);
     }
 
     Services(DebitCard debitCard) {
         this.debitCard = debitCard;
         initComponents();
-        
-        Timer timer = new Timer();
-        TimerTask tt = new TimerTask() {
-            @Override
-            public void run() {
-                WelcomePage objPage = new WelcomePage();
-                 System.out.println("timer Services");
-                objPage.createAndShow();
-                objPage.setVisible(true);
-                dispose();
-            };
-        }; 
         timer.schedule(tt, 120000);
     }
 
@@ -176,6 +164,9 @@ public class Services extends javax.swing.JFrame {
 
     private void depositBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositBtnActionPerformed
         // TODO add your handling code here:
+          tt.cancel();
+          timer.cancel();
+          timer.purge();
         SelectDenominations objSelectDenominations = new SelectDenominations(debitCard);
         // objSelectDenominations.initializeComponents();
         objSelectDenominations.setVisible(true);
@@ -184,6 +175,9 @@ public class Services extends javax.swing.JFrame {
 
     private void withdrawBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawBtnActionPerformed
         // TODO add your handling code here:
+            tt.cancel();
+            timer.cancel();
+            timer.purge();
          System.out.println(debitCard.getBalcance());
         WithdrawMoney objWithdraw = new WithdrawMoney(debitCard);
 //        PrintReceipt pr = new PrintReceipt(txnType);
@@ -198,6 +192,9 @@ public class Services extends javax.swing.JFrame {
 
     private void balanceEnquiryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_balanceEnquiryBtnActionPerformed
         // TODO add your handling code here:
+           tt.cancel();
+           timer.cancel();
+           timer.purge();
         RetrieveBalance objEnquire = new  RetrieveBalance(debitCard);
         objEnquire.setVisible(true);
         dispose();
@@ -205,6 +202,9 @@ public class Services extends javax.swing.JFrame {
 
     private void fundTransferBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fundTransferBtnActionPerformed
         // TODO add your handling code here:
+         tt.cancel();
+         timer.cancel();
+         timer.purge();
         FundTransfer objTransfer = new FundTransfer(debitCard);
         objTransfer.setVisible(true);
         dispose();
@@ -212,6 +212,10 @@ public class Services extends javax.swing.JFrame {
     }//GEN-LAST:event_fundTransferBtnActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        tt.cancel();
+        timer.cancel();
+        timer.purge();
+        
         WelcomePage objPage = new WelcomePage();
         objPage.createAndShow();
         objPage.setVisible(true);

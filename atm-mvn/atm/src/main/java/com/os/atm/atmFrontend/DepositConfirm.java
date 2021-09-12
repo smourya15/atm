@@ -28,23 +28,24 @@ public class DepositConfirm extends javax.swing.JFrame {
     Boolean D50, D100, D500 ,D1000, D2000;
     private DebitCard debitCard;
     
+       Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                JOptionPane.showMessageDialog(null, "No input from user. Aborting session");
+                WelcomePage objPage = new WelcomePage();
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
+    
     public DepositConfirm(StringBuilder a){
         System.out.print(a);
     }
     
     public DepositConfirm() {
         initComponents();
-        Timer timer = new Timer();
-        TimerTask tt = new TimerTask() {
-            @Override
-            public void run() {
-                WelcomePage objPage = new WelcomePage();
-                 System.out.println("DepConfirm ");
-                objPage.createAndShow();
-                objPage.setVisible(true);
-                dispose();
-            };
-        }; 
         timer.schedule(tt, 30000);
     }
 
@@ -106,18 +107,6 @@ public class DepositConfirm extends javax.swing.JFrame {
         amt = d50 * 50 + d100 * 100 + d500 * 500 + d1000 * 1000 + d2000 * 2000;
         String  total = String.valueOf(d50 * 50 + d100 * 100 + d500 * 500 + d1000 * 1000 + d2000 * 2000);
         displaytotal.setText(total);
-        
-        Timer timer = new Timer();
-        TimerTask tt = new TimerTask() {
-            @Override
-            public void run() {
-                JOptionPane.showMessageDialog(null, "No input from user. Aborting session");
-                WelcomePage objPage = new WelcomePage();
-                objPage.createAndShow();
-                objPage.setVisible(true);
-                dispose();
-            };
-        }; 
         timer.schedule(tt, 30000);
     }
     
@@ -492,13 +481,20 @@ public class DepositConfirm extends javax.swing.JFrame {
     private void depositbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositbuttonActionPerformed
  
         //Success success =new Success(String.valueOf(d50 * 50 + d100 * 100 + d500 * 500 + d1000 * 1000 + d2000 * 2000));
-    	DepositCash deposit= new DepositCash(d50,d100, d500, d1000, d2000, debitCard, amt);
+    	tt.cancel();
+          timer.cancel();
+          timer.purge();
+        DepositCash deposit= new DepositCash(d50,d100, d500, d1000, d2000, debitCard, amt);
         deposit.setVisible(true);
         dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_depositbuttonActionPerformed
 
     private void backtoselectdenominationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backtoselectdenominationActionPerformed
+       tt.cancel();
+          timer.cancel();
+          timer.purge();
+        
         SelectDenominations deposit = new SelectDenominations(debitCard);
         deposit.setVisible(true);
         dispose();

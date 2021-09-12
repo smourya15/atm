@@ -20,22 +20,22 @@ public class DepositAmount extends javax.swing.JFrame {
     /**
      * Creates new form depositAmount
      */
-    private DebitCard debitCard;
-    public DepositAmount() {
-        initComponents();
-        nextBtn.setEnabled(false);
-        errorMessageLabel.setVisible(false);
-        Timer timer = new Timer();
+       Timer timer = new Timer();
         TimerTask tt = new TimerTask() {
             @Override
             public void run() {
+                JOptionPane.showMessageDialog(null, "No input from user. Aborting session");
                 WelcomePage objPage = new WelcomePage();
-                 System.out.println("timer DepAmount");
                 objPage.createAndShow();
                 objPage.setVisible(true);
                 dispose();
             };
         }; 
+    private DebitCard debitCard;
+    public DepositAmount() {
+        initComponents();
+        nextBtn.setEnabled(false);
+        errorMessageLabel.setVisible(false);
         timer.schedule(tt, 60000);
     }
     
@@ -57,17 +57,7 @@ public class DepositAmount extends javax.swing.JFrame {
         
         this.debitCard = debitCard;
         
-        Timer timer = new Timer();
-        TimerTask tt = new TimerTask() {
-            @Override
-            public void run() {
-                JOptionPane.showMessageDialog(null, "No input from user. Aborting session");
-                WelcomePage objPage = new WelcomePage();
-                objPage.createAndShow();
-                objPage.setVisible(true);
-                dispose();
-            };
-        }; 
+     
         timer.schedule(tt, 60000);
     }
 
@@ -304,6 +294,10 @@ public class DepositAmount extends javax.swing.JFrame {
     }//GEN-LAST:event_d50FieldActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+       
+         tt.cancel();
+          timer.cancel();
+          timer.purge();
         SelectDenominations denomination = new SelectDenominations();
         
         denomination.setVisible(true);
@@ -350,6 +344,9 @@ public class DepositAmount extends javax.swing.JFrame {
             if(d50Field.getText().isEmpty() && d100Field.getText().isEmpty() && d500Field.getText().isEmpty() && d1000Field.getText().isEmpty() && d2000Field.getText().isEmpty()){
                 errorMessageLabel.setVisible(true);
             } else{
+                 tt.cancel();
+          timer.cancel();
+          timer.purge();
                 DepositConfirm deposit= new DepositConfirm(d50,d100, d500, d1000, d2000, debitCard);
 //                DepositCash depositcash = new DepositCash(d50,d100, d500, d1000, d2000, debitCard);
                 deposit.setVisible(true);

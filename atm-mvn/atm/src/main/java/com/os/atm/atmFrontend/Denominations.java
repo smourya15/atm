@@ -28,27 +28,29 @@ public class Denominations extends javax.swing.JFrame {
     /**
      * Creates new form denominations
      */
-    public Denominations() {
-        
-        initComponents();
-        groupRadioButtons();
-        withdrawButton.setEnabled(false);
-        Timer timer = new Timer();
+      Timer timer = new Timer();
         TimerTask tt = new TimerTask() {
             @Override
             public void run() {
+                 System.out.println("timer withdrawMoney");
                 WelcomePage objPage = new WelcomePage();
-                 System.out.println("timer Denominations");
                 objPage.createAndShow();
                 objPage.setVisible(true);
                 dispose();
             };
         }; 
+    public Denominations() {
+        
+        initComponents();
+        groupRadioButtons();
+        withdrawButton.setEnabled(false);
+       
         timer.schedule(tt, 60000);
     }
     public Denominations(int amount, DebitCard debitCard){
         initComponents();
         groupRadioButtons();
+         timer.schedule(tt, 60000);
         this.objDebitCard = debitCard;
         this.debitCard = debitCard.getCard_no();
         withdrawButton.setEnabled(false);
@@ -332,6 +334,9 @@ public class Denominations extends javax.swing.JFrame {
                     
                     
                     objDebitCard.setBalance(objDebitCard.getBalcance()-(double)amount);
+           tt.cancel();
+          timer.cancel();
+          timer.purge();
                     Success objSuccess = new Success(Integer.toString(amount),"WITHDRAW", objDebitCard);
                     objSuccess.setVisible(true);
                     dispose();

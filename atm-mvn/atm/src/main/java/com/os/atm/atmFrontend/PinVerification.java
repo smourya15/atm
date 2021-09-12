@@ -35,14 +35,8 @@ public class PinVerification extends javax.swing.JFrame {
     /**
      * Creates new form PinVerification
      */
-    private String encryptCard;
-    private int attempts =3;
-    public PinVerification() {
-        initComponents();
-        this.encryptCard= "7b8802b5aa06e55f70c9d8711213364b";
-        iniComponents();
-        
-        Timer timer = new Timer();
+   Timer timer = new Timer();
+
         TimerTask tt = new TimerTask() {
             @Override
             public void run() {
@@ -53,14 +47,26 @@ public class PinVerification extends javax.swing.JFrame {
                 dispose();
             };
         }; 
+    private String encryptCard;
+    private int attempts =3;
+    public PinVerification() {
+        initComponents();
+        this.encryptCard= "7b8802b5aa06e55f70c9d8711213364b";
+        iniComponents();
+      
         timer.schedule(tt, 120000);
     }
    public PinVerification(String maskedCardNumber, String cardNumberHash){
         initComponents();
         cardNumberLabel.setText(maskedCardNumber);
         iniComponents();
-        this.encryptCard = cardNumberHash;       
-   } 
+        this.encryptCard = cardNumberHash;   
+        
+        
+        timer.schedule(tt, 120000);
+    }
+        
+   
     private void iniComponents(){
         verifyPin.setText(null);
         verifyPinNum_Btn.setEnabled(Boolean.FALSE);
@@ -200,6 +206,10 @@ public class PinVerification extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(PinVerification.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
+              tt.cancel();
+              timer.cancel();
+              timer.purge();
             Services objServices = new Services(debitCard);
             
 //            Services objServices = context.getBean(Services.class);
@@ -241,6 +251,11 @@ public class PinVerification extends javax.swing.JFrame {
     }//GEN-LAST:event_verifyPinActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        
+        
+         tt.cancel();
+         timer.cancel();
+         timer.purge();
         WelcomePage objPage = new WelcomePage();
         objPage.createAndShow();
         objPage.setVisible(true);

@@ -32,6 +32,17 @@ public class WithdrawMoney extends javax.swing.JFrame {
     /**
      * Creates new form withdraw
      */
+      Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                 System.out.println("timer withdrawMoney");
+                WelcomePage objPage = new WelcomePage();
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
     private DebitCard objDebitCard;
     String debitcard;
     PreparedStatement pst = null;
@@ -43,18 +54,6 @@ public class WithdrawMoney extends javax.swing.JFrame {
     public WithdrawMoney() {
         initComponents();
         confirmButton.setEnabled(Boolean.FALSE);
-        
-        Timer timer = new Timer();
-        TimerTask tt = new TimerTask() {
-            @Override
-            public void run() {
-                 System.out.println("timer withdrawMoney");
-                WelcomePage objPage = new WelcomePage();
-                objPage.createAndShow();
-                objPage.setVisible(true);
-                dispose();
-            };
-        }; 
         timer.schedule(tt, 120000);
     }
 
@@ -62,17 +61,7 @@ public class WithdrawMoney extends javax.swing.JFrame {
         initComponents();
         confirmButton.setEnabled(Boolean.FALSE);
         
-        Timer timer = new Timer();
-        TimerTask tt = new TimerTask() {
-            @Override
-            public void run() {
-                 System.out.println("timer withdrawMoney");
-                WelcomePage objPage = new WelcomePage();
-                objPage.createAndShow();
-                objPage.setVisible(true);
-                dispose();
-            };
-        }; 
+      
         timer.schedule(tt, 120000);
         this.debitcard = debitCard.getCard_no();
         this.objDebitCard=debitCard;
@@ -213,6 +202,9 @@ public class WithdrawMoney extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Daily Limit Exceeded");
                 }
                 else{
+                     tt.cancel();
+          timer.cancel();
+          timer.purge();
                     Denominations objDenomination= new Denominations(amount,objDebitCard);
                     objDenomination.setVisible(true);
                     dispose();
@@ -272,6 +264,9 @@ public class WithdrawMoney extends javax.swing.JFrame {
          catch (ClassNotFoundException | SQLException ex) {
                 JOptionPane.showMessageDialog(null,ex.getMessage());
             }  
+         tt.cancel();
+          timer.cancel();
+          timer.purge();
 
         WelcomePage objPage = new WelcomePage();
         objPage.createAndShow();

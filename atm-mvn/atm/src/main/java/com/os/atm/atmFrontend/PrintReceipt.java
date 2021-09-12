@@ -27,7 +27,18 @@ public class PrintReceipt extends javax.swing.JFrame {
     /**
      * Creates new form PrintReceipt
      */
-    
+     Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                JOptionPane.showMessageDialog(null, "No input from user. Aborting ");
+                 System.out.println("timer success2");
+                WelcomePage objPage = new WelcomePage();
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
    public PrintReceipt() throws HeadlessException {
        initComponents();
     }
@@ -41,18 +52,6 @@ public class PrintReceipt extends javax.swing.JFrame {
 //        DisplayDate.setText();
         setDateTime();
         printTransaction();
-        Timer timer = new Timer();
-        TimerTask tt = new TimerTask() {
-            @Override
-            public void run() {
-                JOptionPane.showMessageDialog(null, "No input from user. Aborting ");
-                 System.out.println("timer success2");
-                WelcomePage objPage = new WelcomePage();
-                objPage.createAndShow();
-                objPage.setVisible(true);
-                dispose();
-            };
-        }; 
         timer.schedule(tt, 30000);
         
         
