@@ -46,7 +46,7 @@ public class RetrieveBalance extends javax.swing.JFrame {
         timer.schedule(tt, 60000);
         }
 
-    public RetrieveBalance(DebitCard debitCard) {
+    RetrieveBalance(DebitCard debitCard) {
          initComponents();
          this.debitCard=debitCard;
          accno.setText(this.debitCard.getAccNum());
