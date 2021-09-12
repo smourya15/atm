@@ -12,7 +12,6 @@ import java.util.TimerTask;
 import javax.swing.JOptionPane;
 import org.springframework.stereotype.Component;
 import java.sql.*;
-
 //import java.u
 /**
  *
@@ -24,17 +23,6 @@ public class FundTransfer extends javax.swing.JFrame {
     /**
      * Creates new form fundTransfer
      */
-      Timer timer = new Timer();
-        TimerTask tt = new TimerTask() {
-            @Override
-            public void run() {
-                System.out.println("timer FundTransfer");
-                WelcomePage objPage = new WelcomePage();
-                objPage.createAndShow();
-                objPage.setVisible(true);
-                dispose();
-            };
-        }; 
     private DebitCard objDebitCard;
     String debitcard;
     
@@ -47,11 +35,20 @@ public class FundTransfer extends javax.swing.JFrame {
         errorMsgLabel.setVisible(false);
         trfConfirmBtn.setEnabled(false);
         
-       
+        Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                WelcomePage objPage = new WelcomePage();
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
         timer.schedule(tt, 120000);
     }
 
-    public FundTransfer(DebitCard debitCard) {
+    FundTransfer(DebitCard debitCard) {
         initComponents();
         this.objDebitCard=debitCard;
         benAccNoTextField.setText(null);
@@ -60,7 +57,16 @@ public class FundTransfer extends javax.swing.JFrame {
         errorMsgLabel.setVisible(false);
         trfConfirmBtn.setEnabled(false);
         
-      
+        Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                WelcomePage objPage = new WelcomePage();
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
         timer.schedule(tt, 120000);
         this.debitcard = debitCard.getCard_no();
     }
@@ -271,27 +277,23 @@ public class FundTransfer extends javax.swing.JFrame {
                     int temp=0;
                     Class.forName("com.mysql.jdbc.Driver");
                     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
-                    String sqlQuery0="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'TRANSFER', ?, (SELECT now()), 'PASSED' )";
+                    String sqlQuery0="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'TRANSFER', ?, (SELECT now()), 'P' )";
                     PreparedStatement pst = con.prepareStatement(sqlQuery0);
                     pst.setString(1, String.valueOf(debitcard));
                     pst.setString(2, String.valueOf(debitcard));
                     pst.setString(3, String.valueOf(transferAmt));
                     pst.execute();
                     
-                    String sqlQuery1 = "SELECT acc_bal FROM account WHERE account_no = "+benAcc;
-                    pst = con.prepareStatement(sqlQuery1);
-                    ResultSet rs = pst.executeQuery();
+//                    String sqlQuery1 = "SELECT acc_bal FROM account WHERE account_no = "+benAcc;
+//                    pst = con.prepareStatement(sqlQuery1);
+//                    ResultSet rs = pst.executeQuery();
+//                    
+//                    while(rs.next()){
+//                        temp = Integer.parseInt(rs.getString("acc_bal"));
+//                    }
                     
-                    if(!rs.isBeforeFirst()){
-                        System.out.println("NO data");
-                    }
-                    while(rs.next()){
-                        temp = Integer.parseInt(rs.getString("acc_bal"));
-                    }
-                    System.out.println(temp);
                     temp+=transferAmt;
-                    System.out.println(temp);
-                    String sqlQuery2 = "UPDATE account SET acc_bal = "+temp+" WHERE account_no = "+benAcc;
+                    String sqlQuery2 = "UPDATE account SET acc_bal = (SELECT acc_bal FROM account WHERE account_no = "+benAcc+" )+"+transferAmt+" WHERE account_no = "+benAcc;
                     Statement stmt = con.createStatement();
                     stmt.executeUpdate(sqlQuery2);
                     
@@ -299,9 +301,6 @@ public class FundTransfer extends javax.swing.JFrame {
                     System.out.println("Successfully Completed Fund Transfer Transaction\t");
                     con.close();
                     objDebitCard.setBalance(objDebitCard.getBalcance()- (double)transferAmt);
-                    tt.cancel();
-                    timer.cancel();
-                    timer.purge();
                     Success objsuccess = new Success(transferAmt,"FUND TRANSFER",objDebitCard, benAcc );
                     objsuccess.setVisible(true);
                     dispose();
@@ -397,12 +396,7 @@ public class FundTransfer extends javax.swing.JFrame {
 
     private void trfCancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trfCancelBtnActionPerformed
        int amt;
-       if(trfAmt.getText().isEmpty()){
-           amt=0;
-       } else{
-              amt = Integer.parseInt(trfAmt.getText());
-       }
-    
+       amt = Integer.parseInt(trfAmt.getText());
        System.out.println("Amount:\t"+amt);
        try{
             Class.forName("com.mysql.jdbc.Driver");
@@ -416,9 +410,7 @@ public class FundTransfer extends javax.swing.JFrame {
                     pst.execute();
                     System.out.println("Successfully Cancelled Fund Transfer Transaction\t");
             
-                    tt.cancel();
-                    timer.cancel();
-                    timer.purge();
+                    
                     WelcomePage objPage = new WelcomePage();
                     objPage.createAndShow();
                     objPage.setVisible(true);
