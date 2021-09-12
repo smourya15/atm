@@ -96,6 +96,7 @@ public class PrintReceipt extends javax.swing.JFrame {
         ResultSet rs = pst.executeQuery();
         while(rs.next())
             dispTxn.setText(rs.getString("trans_id"));
+        con.close();
                            
                     
      }
@@ -142,11 +143,11 @@ public class PrintReceipt extends javax.swing.JFrame {
             String cardNumber = objDebitCard.getCardNoUn().substring(0, 2) + "XX-XXXX-XXXX-" + objDebitCard.getCardNoUn().substring(12, 16);
             DisplayCardNumber.setText(cardNumber);
             txnTypeLabel.setText(tType);
-            FromAccNumberLabel.setText(benificiaryAccount);
+            FromAccNumberLabel.setText(objDebitCard.getAccNum());
 //            jLabel7.setVisible(false);
             TxnAmountlabel.setText(amount);
             AvailableBalancelabel.setText(Double.toString(objDebitCard.getBalcance()));
-            ToAccountNumberLabel.setText(objDebitCard.getAccNum());
+            ToAccountNumberLabel.setText(benificiaryAccount);
             break;
         }
         

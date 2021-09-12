@@ -288,11 +288,15 @@ public class FundTransfer extends javax.swing.JFrame {
                     pst = con.prepareStatement(sqlQuery1);
                     ResultSet rs = pst.executeQuery();
                     
+                    if(!rs.isBeforeFirst()){
+                        System.out.println("NO data");
+                    }
                     while(rs.next()){
                         temp = Integer.parseInt(rs.getString("acc_bal"));
                     }
-                    
+                    System.out.println(temp);
                     temp+=transferAmt;
+                    System.out.println(temp);
                     String sqlQuery2 = "UPDATE account SET acc_bal = "+temp+" WHERE account_no = "+benAcc;
                     Statement stmt = con.createStatement();
                     stmt.executeUpdate(sqlQuery2);

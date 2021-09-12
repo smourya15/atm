@@ -331,7 +331,7 @@ public class Denominations extends javax.swing.JFrame {
                     stmt.executeUpdate(sqlQuery3);
                     
                     
-                    
+                    objDebitCard.setBalance(objDebitCard.getBalcance()-(double)amount);
                     Success objSuccess = new Success(Integer.toString(amount),"WITHDRAW", objDebitCard);
                     objSuccess.setVisible(true);
                     dispose();

@@ -308,8 +308,10 @@ public class DepositCash extends javax.swing.JFrame {
                     stmt.executeUpdate(sqlQuery2);
                 }                    
                 stmt.executeUpdate(sqlQuery3);
-
+                
+                System.out.println(debitCard.getBalcance());
                 debitCard.setBalance(debitCard.getBalcance()+(double)trans_amt);
+                System.out.println(debitCard.getBalcance());
                 Success depositconfirm = new Success(Integer.toString(trans_amt),"DEPOSIT",debitCard);
                 depositconfirm.setVisible(true);
                 dispose();
