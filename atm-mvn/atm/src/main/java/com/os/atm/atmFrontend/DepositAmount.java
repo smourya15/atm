@@ -71,7 +71,7 @@ public class DepositAmount extends javax.swing.JFrame {
     private void initComponents() {
 
         rs50Label = new javax.swing.JLabel();
-        cancelButton = new javax.swing.JButton();
+        backbutton = new javax.swing.JButton();
         d50Field = new javax.swing.JTextField();
         nextBtn = new javax.swing.JButton();
         rs100Label = new javax.swing.JLabel();
@@ -90,13 +90,13 @@ public class DepositAmount extends javax.swing.JFrame {
         rs50Label.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         rs50Label.setText("Rs. 50          X");
 
-        cancelButton.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        cancelButton.setForeground(new java.awt.Color(0, 86, 126));
-        cancelButton.setText("BACK");
-        cancelButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+        backbutton.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        backbutton.setForeground(new java.awt.Color(0, 86, 126));
+        backbutton.setText("BACK");
+        backbutton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        backbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelButtonActionPerformed(evt);
+                backbuttonActionPerformed(evt);
             }
         });
 
@@ -224,7 +224,7 @@ public class DepositAmount extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(backbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(nextBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -281,7 +281,7 @@ public class DepositAmount extends javax.swing.JFrame {
                 .addComponent(errorMessageLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(backbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nextBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
@@ -293,7 +293,7 @@ public class DepositAmount extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_d50FieldActionPerformed
 
-    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+    private void backbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbuttonActionPerformed
        
          tt.cancel();
           timer.cancel();
@@ -302,7 +302,7 @@ public class DepositAmount extends javax.swing.JFrame {
         
         denomination.setVisible(true);
         dispose();
-    }//GEN-LAST:event_cancelButtonActionPerformed
+    }//GEN-LAST:event_backbuttonActionPerformed
 
     private void nextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBtnActionPerformed
         int d50, d100,d500, d1000, d2000;
@@ -518,7 +518,7 @@ public class DepositAmount extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton cancelButton;
+    private javax.swing.JButton backbutton;
     private javax.swing.JTextField d1000Field;
     private javax.swing.JTextField d100Field;
     private javax.swing.JTextField d2000Field;
