@@ -18,7 +18,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>1.8</java.version>
-    <start-class>com.os.atm.App</start-class>
+    <start-class>com.os.atm.atmFrontend.WelcomePage</start-class>
   </properties>
 	<dependencies>
 		<dependency>
