@@ -30,8 +30,9 @@ public class SelectDenominations extends javax.swing.JFrame {
         TimerTask tt = new TimerTask() {
             @Override
             public void run() {
+                
+                System.out.println("timer selectDenominations");
                 WelcomePage objPage = new WelcomePage();
-                 System.out.println("timer selectDenominations");
                 objPage.createAndShow();
                 objPage.setVisible(true);
                 dispose();

@@ -27,8 +27,7 @@ public class Success extends javax.swing.JFrame {
         TimerTask tt = new TimerTask() {
             @Override
             public void run() {
-                JOptionPane.showMessageDialog(null, "No input from user. Aborting ");
-                 System.out.println("timer success2");
+                System.out.println("timer success");
                 WelcomePage objPage = new WelcomePage();
                 objPage.createAndShow();
                 objPage.setVisible(true);

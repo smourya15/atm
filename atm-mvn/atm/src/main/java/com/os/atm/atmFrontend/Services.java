@@ -31,8 +31,8 @@ public class Services extends javax.swing.JFrame {
         TimerTask tt = new TimerTask() {
             @Override
             public void run() {
+                System.out.println("timer Services");
                 WelcomePage objPage = new WelcomePage();
-                 System.out.println("timer Services");
                 objPage.createAndShow();
                 objPage.setVisible(true);
                 dispose();

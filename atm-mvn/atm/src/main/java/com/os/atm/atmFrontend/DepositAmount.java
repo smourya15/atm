@@ -24,7 +24,7 @@ public class DepositAmount extends javax.swing.JFrame {
         TimerTask tt = new TimerTask() {
             @Override
             public void run() {
-                JOptionPane.showMessageDialog(null, "No input from user. Aborting session");
+                System.out.println(" timer Deposiit Amount");
                 WelcomePage objPage = new WelcomePage();
                 objPage.createAndShow();
                 objPage.setVisible(true);

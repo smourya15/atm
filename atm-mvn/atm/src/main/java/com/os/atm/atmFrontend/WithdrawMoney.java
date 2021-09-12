@@ -36,7 +36,7 @@ public class WithdrawMoney extends javax.swing.JFrame {
         TimerTask tt = new TimerTask() {
             @Override
             public void run() {
-                 System.out.println("timer withdrawMoney");
+                System.out.println("timer withdrawMoney");
                 WelcomePage objPage = new WelcomePage();
                 objPage.createAndShow();
                 objPage.setVisible(true);

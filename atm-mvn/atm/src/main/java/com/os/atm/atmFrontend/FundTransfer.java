@@ -27,6 +27,7 @@ public class FundTransfer extends javax.swing.JFrame {
         TimerTask tt = new TimerTask() {
             @Override
             public void run() {
+                System.out.println("timer FundTransfer");
                 WelcomePage objPage = new WelcomePage();
                 objPage.createAndShow();
                 objPage.setVisible(true);

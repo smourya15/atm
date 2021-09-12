@@ -26,7 +26,7 @@ public class RetrieveBalance extends javax.swing.JFrame {
         TimerTask tt = new TimerTask() {
             @Override
             public void run() {
-                JOptionPane.showMessageDialog(null, "No input from user. Aborting session");
+                System.out.println("timer Retrieve bal");
                 WelcomePage objPage = new WelcomePage();
                 objPage.createAndShow();
                 objPage.setVisible(true);

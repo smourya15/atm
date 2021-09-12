@@ -32,7 +32,7 @@ public class DepositConfirm extends javax.swing.JFrame {
         TimerTask tt = new TimerTask() {
             @Override
             public void run() {
-                JOptionPane.showMessageDialog(null, "No input from user. Aborting session");
+                System.out.println("timer DepositConfirm");
                 WelcomePage objPage = new WelcomePage();
                 objPage.createAndShow();
                 objPage.setVisible(true);
