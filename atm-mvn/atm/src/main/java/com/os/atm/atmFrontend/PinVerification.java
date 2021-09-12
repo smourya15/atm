@@ -10,7 +10,10 @@ import com.os.atm.encapsulateClasses.DebitCard;
 import com.os.atm.encapsulateClasses.DebitCardServices;
 import com.os.atm.encapsulateClasses.MD5Hashing;
 import com.os.atm.encapsulateClasses.PBES_Encryption;
+import java.sql.PreparedStatement;
+import com.os.atm.encapsulateClasses.DatabaseConnections;
 import java.awt.event.KeyEvent;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.time.LocalDate;
@@ -109,7 +112,7 @@ public class PinVerification extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        jLabel2.setText("Your Account Number is");
+        jLabel2.setText("Your Card Number is");
 
         verifyPin.setText("jPasswordField1");
         verifyPin.addActionListener(new java.awt.event.ActionListener() {
@@ -218,10 +221,21 @@ public class PinVerification extends javax.swing.JFrame {
             dispose();
         }
         else{
-            JOptionPane.showMessageDialog(this, "Card Blocked Contact your Bank");
-            WelcomePage objWelcomePage =  new WelcomePage();//context.getBean(WelcomePage.class);
-            objWelcomePage.createAndShow();
-            dispose();
+            try {
+                Connection con = (new DatabaseConnections()).databaseCon();
+                String blockCardQuery = "update debit_card set card_status=? where card_no= ?";
+                PreparedStatement pst = con.prepareStatement(blockCardQuery);
+                pst.setString(1, "BLOCKED");
+                pst.setString(2, encryptCard);
+                pst.executeUpdate();
+                con.close();
+                JOptionPane.showMessageDialog(this, "Card Blocked Contact your Bank");
+                WelcomePage objWelcomePage =  new WelcomePage();//context.getBean(WelcomePage.class);
+                objWelcomePage.createAndShow();
+                dispose();
+            } catch (SQLException ex) {
+                Logger.getLogger(PinVerification.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         
     }//GEN-LAST:event_verifyPinNum_BtnActionPerformed
