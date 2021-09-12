@@ -21,69 +21,40 @@ import org.springframework.context.ApplicationContext;
  */
 @Component
 //@Scope(value = BeanDefinition.SCOPE_PROTOTYPE)
-public class CardNumber extends javax.swing.JFrame {
-    
+public class CardNumber extends javax.swing.JFrame
+{
     String card_number= "1234567890123456";
+    
+    Timer timer = new Timer();
+    TimerTask tt = new TimerTask()
+    {
+        @Override
+        public void run()
+        {
+            System.out.println("timer cardNumber");
+            WelcomePage objPage = new WelcomePage();
+            objPage.createAndShow();
+            objPage.setVisible(true);
+            dispose();
+        };
+    }; 
 
-  @Autowired
+    @Autowired
     private ApplicationContext context;
-    public void initialize() {
+    public void initialize()
+    {
         
     }
-
-//    public CardNumber() throws HeadlessException {
-//        initComponents();
-//        verifyCard.setText(null);
-//
-//        verifyCardNum_Btn.setEnabled(Boolean.FALSE);
-//
-//        Timer timer = new Timer();
-//        TimerTask tt = new TimerTask() {
-//            @Override
-//            public void run() {
-//                
-//                WelcomePage objPage = new WelcomePage();
-//                 System.out.println("timer CardNumber1");
-//                objPage.createAndShow();
-//                objPage.setVisible(true);
-//                dispose();
-//            };
-//        }; 
-//        timer.schedule(tt, 120000);
-
-//        Timer timer = new Timer();
-//        TimerTask tt = new TimerTask() {
-//            @Override
-//            public void run() {
-//                WelcomePage objPage = new WelcomePage();
-//                objPage.createAndShow();
-//                objPage.setVisible(true);
-//                dispose();
-//            };
-//        }; 
-//        timer.schedule(tt, 180000);
-
-  //  }
     
-
-    public void initializeComponent(){
+    public void initializeComponent()
+    {
         initComponents();
+        
         verifyCard.setText(null);
 
         verifyCardNum_Btn.setEnabled(Boolean.FALSE);
-
-        Timer timer = new Timer();
-        TimerTask tt = new TimerTask() {
-            @Override
-            public void run() {
-                WelcomePage objPage = new WelcomePage();
-                 System.out.println("timer cardNumber2");
-                objPage.createAndShow();
-                objPage.setVisible(true);
-                dispose();
-            };
-        }; 
-        timer.schedule(tt, 120000);
+        
+        timer.schedule(tt, 120000); 
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -172,35 +143,27 @@ public class CardNumber extends javax.swing.JFrame {
     private void verifyCardNum_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verifyCardNum_BtnActionPerformed
         // TODO add your handling code here:
         card_number= verifyCard.getText();
-        //System.out.println(abc);
-        final StringBuilder cardNum = new StringBuilder(verifyCard.getText());
         
+        final StringBuilder cardNum = new StringBuilder(verifyCard.getText());
         
         DepositConfirm dp = new DepositConfirm(cardNum);
         WithdrawMoney wm = new WithdrawMoney(cardNum);
-       // FundTransfer ft = new FundTransfer(cardNum);
         
         MD5Hashing md = new MD5Hashing(cardNum.toString());
-//        PBES_Encryption pb = new PBES_Encryption(salt.toString(), verifyCard.getText());
         System.out.println("card: "+verifyCard.getText()+" Hash:"+ md.getHashText());
         final int returnType = (new ATMServices()).verifyCard(md.getHashText());
         switch (returnType) {
             case 1:
-                JOptionPane.showMessageDialog(this, "Incorrect Account Number");
+                JOptionPane.showMessageDialog(this, "Incorrect Card Number");
                 break;
-//        JOptionPane.showMessageDialog(this, verifyCard.getText());
-//        PinVerification objPin = new PinVerification();
-//        objPin.setVisible(true);
-//        dispose();
             case 2:
                 JOptionPane.showMessageDialog(this, "Your Card is Blocked,\n Contact Your Branch\n");
                 break;
             case 3:
-//                JOptionPane.showMessageDialog(this, verifyCard.getText());
+               tt.cancel();
+               timer.cancel();
+               timer.purge();
                 String accNumber = verifyCard.getText().substring(0, 2) + "XX-XXXX-XXXX-" + verifyCard.getText().substring(12, 16);
-//                PinVerification objPinVerification = context.getBean(PinVerification.class);
-//                objPinVerification.initializeComponent(accNumber, md.getHashText());
-//                objPinVerification.setVisible(true);
                 PinVerification objPinVerification = new PinVerification(accNumber, md.getHashText());
                 objPinVerification.setVisible(true);
                 dispose();
@@ -217,28 +180,33 @@ public class CardNumber extends javax.swing.JFrame {
     }//GEN-LAST:event_verifyCardActionPerformed
 
     private void verifyCardKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verifyCardKeyTyped
-        // TODO add your handling code here:
-//        System.out.println("RUns");
         char c = evt.getKeyChar();
-        if(!((Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE) && verifyCard.getText().length()<16)){
-            
+        if(!((Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE) && verifyCard.getText().length()<16))
+        {
              evt.consume();
         }
-        if(verifyCard.getText().isEmpty()){
+        if(verifyCard.getText().isEmpty())
+        {
             verifyCardNum_Btn.setEnabled(Boolean.FALSE);
         }
-        else if(verifyCard.getText().length()<15){
+        else if(verifyCard.getText().length()<15)
+        {
             verifyCardNum_Btn.setEnabled(Boolean.FALSE);
         }
-        else if(verifyCard.getText().length()==15){
-                verifyCardNum_Btn.setEnabled(Boolean.TRUE);
-                if(c == KeyEvent.VK_BACK_SPACE){
-                    verifyCardNum_Btn.setEnabled(Boolean.FALSE);
-                }
+        else if(verifyCard.getText().length()==15)
+        {
+            verifyCardNum_Btn.setEnabled(Boolean.TRUE);
+            if(c == KeyEvent.VK_BACK_SPACE)
+            {
+                verifyCardNum_Btn.setEnabled(Boolean.FALSE);
+            }
         }
     }//GEN-LAST:event_verifyCardKeyTyped
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        tt.cancel();
+        timer.cancel();
+        timer.purge();
         WelcomePage objPage = new WelcomePage();
         objPage.createAndShow();
         objPage.setVisible(true);
@@ -248,40 +216,16 @@ public class CardNumber extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
+    public static void main(String args[])
+    {
+        java.awt.EventQueue.invokeLater(new Runnable()
+            {
+                public void run()
+                {
+                    new CardNumber().setVisible(true);
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CardNumber.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CardNumber.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CardNumber.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CardNumber.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CardNumber().setVisible(true);
-                
-            }
-        });
+        );
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

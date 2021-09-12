@@ -23,6 +23,17 @@ public class Success extends javax.swing.JFrame {
     String amount2;
     private String benificiaryAccount=null;
     private DebitCard objDebitCard = null;
+     Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                System.out.println("timer success");
+                WelcomePage objPage = new WelcomePage();
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
     public Success(){
         initComponents();
     }
@@ -32,17 +43,6 @@ public class Success extends javax.swing.JFrame {
         this.amount1 = amount1;
         this.objDebitCard = db;
         SuccessMessage.setText("Your Transaction of Rs."+ amount1 +" was successful");
-        Timer timer = new Timer();
-        TimerTask tt = new TimerTask() {
-            @Override
-            public void run() {
-                System.out.println("timer success1");
-                WelcomePage objPage = new WelcomePage();
-                objPage.createAndShow();
-                objPage.setVisible(true);
-                dispose();
-            };
-        }; 
         timer.schedule(tt, 60000);
     }
     
@@ -54,17 +54,6 @@ public class Success extends javax.swing.JFrame {
 
         this.benificiaryAccount = benificiaryAccount;
         SuccessMessage.setText("Your Transaction of Rs."+ amount1 +" was successful");
-        Timer timer = new Timer();
-        TimerTask tt = new TimerTask() {
-            @Override
-            public void run() {
-                System.out.println("timer success1");
-                WelcomePage objPage = new WelcomePage();
-                objPage.createAndShow();
-                objPage.setVisible(true);
-                dispose();
-            };
-        }; 
         timer.schedule(tt, 60000);
     }
     
@@ -76,18 +65,7 @@ public class Success extends javax.swing.JFrame {
         this.amount1 =  Integer.parseInt(amount2);
         this.objDebitCard = db;
         SuccessMessage.setText("Your Transaction of Rs."+ amount1 +" was successful");
-        Timer timer = new Timer();
-        TimerTask tt = new TimerTask() {
-            @Override
-            public void run() {
-                JOptionPane.showMessageDialog(null, "No input from user. Aborting ");
-                 System.out.println("timer success2");
-                WelcomePage objPage = new WelcomePage();
-                objPage.createAndShow();
-                objPage.setVisible(true);
-                dispose();
-            };
-        }; 
+       
         timer.schedule(tt, 60000);
     }
 
@@ -131,29 +109,29 @@ public class Success extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 200, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(printReceiptBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(206, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(SuccessMessage)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(245, 245, 245)
                 .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(101, Short.MAX_VALUE)
+                .addComponent(SuccessMessage)
+                .addContainerGap(101, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(82, Short.MAX_VALUE)
+                .addContainerGap(85, Short.MAX_VALUE)
                 .addComponent(SuccessMessage)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                 .addComponent(printReceiptBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                 .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addGap(110, 110, 110))
         );
 
         pack();
@@ -161,12 +139,19 @@ public class Success extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        tt.cancel();
+          timer.cancel();
+          timer.purge();
         Services objServices = new Services();
         objServices.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
+        
+        tt.cancel();
+          timer.cancel();
+          timer.purge();
         WelcomePage objPage = new WelcomePage();
         objPage.createAndShow();
         objPage.setVisible(true);
@@ -175,6 +160,9 @@ public class Success extends javax.swing.JFrame {
 
     private void printReceiptBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printReceiptBtnActionPerformed
         // TODO add your handling code here:
+        tt.cancel();
+          timer.cancel();
+          timer.purge();
         PrintReceipt pr = new PrintReceipt(txnType, objDebitCard, Integer.toString(amount1), benificiaryAccount);
 //        pr.printTransaction(pr.t);
         pr.setVisible(true);

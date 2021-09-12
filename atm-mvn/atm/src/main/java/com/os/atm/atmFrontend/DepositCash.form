@@ -76,11 +76,11 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace pref="76" max="32767" attributes="0"/>
               <Component id="jDesktopPane1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="88" max="32767" attributes="0"/>
+              <EmptySpace pref="83" max="32767" attributes="0"/>
               <Component id="correctdenomination" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="32767" attributes="0"/>
               <Component id="incorrectdenomination" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="74" max="32767" attributes="0"/>
+              <EmptySpace pref="79" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="cancelButton" alignment="3" min="-2" pref="69" max="-2" attributes="0"/>
                   <Component id="confirmbutton" alignment="3" min="-2" pref="69" max="-2" attributes="0"/>

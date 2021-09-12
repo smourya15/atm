@@ -10,7 +10,10 @@ import com.os.atm.encapsulateClasses.DebitCard;
 import com.os.atm.encapsulateClasses.DebitCardServices;
 import com.os.atm.encapsulateClasses.MD5Hashing;
 import com.os.atm.encapsulateClasses.PBES_Encryption;
+import java.sql.PreparedStatement;
+import com.os.atm.encapsulateClasses.DatabaseConnections;
 import java.awt.event.KeyEvent;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.time.LocalDate;
@@ -35,32 +38,38 @@ public class PinVerification extends javax.swing.JFrame {
     /**
      * Creates new form PinVerification
      */
+   Timer timer = new Timer();
+
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                System.out.println("timer PinVerification");
+                WelcomePage objPage = new WelcomePage();
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
     private String encryptCard;
     private int attempts =3;
     public PinVerification() {
         initComponents();
         this.encryptCard= "7b8802b5aa06e55f70c9d8711213364b";
         iniComponents();
-        
-        Timer timer = new Timer();
-        TimerTask tt = new TimerTask() {
-            @Override
-            public void run() {
-                WelcomePage objPage = new WelcomePage();
-                 System.out.println("timer PinV");
-                objPage.createAndShow();
-                objPage.setVisible(true);
-                dispose();
-            };
-        }; 
+      
         timer.schedule(tt, 120000);
     }
    public PinVerification(String maskedCardNumber, String cardNumberHash){
         initComponents();
         cardNumberLabel.setText(maskedCardNumber);
         iniComponents();
-        this.encryptCard = cardNumberHash;       
-   } 
+        this.encryptCard = cardNumberHash;   
+        
+        
+        timer.schedule(tt, 120000);
+    }
+        
+   
     private void iniComponents(){
         verifyPin.setText(null);
         verifyPinNum_Btn.setEnabled(Boolean.FALSE);
@@ -103,7 +112,7 @@ public class PinVerification extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        jLabel2.setText("Your Account Number is");
+        jLabel2.setText("Your Card Number is");
 
         verifyPin.setText("jPasswordField1");
         verifyPin.addActionListener(new java.awt.event.ActionListener() {
@@ -134,7 +143,7 @@ public class PinVerification extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(92, Short.MAX_VALUE)
+                .addContainerGap(95, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -150,9 +159,9 @@ public class PinVerification extends javax.swing.JFrame {
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 150, Short.MAX_VALUE)
+                        .addGap(18, 151, Short.MAX_VALUE)
                         .addComponent(verifyPinNum_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 98, Short.MAX_VALUE))))
+                        .addGap(0, 94, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,6 +209,10 @@ public class PinVerification extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(PinVerification.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
+              tt.cancel();
+              timer.cancel();
+              timer.purge();
             Services objServices = new Services(debitCard);
             
 //            Services objServices = context.getBean(Services.class);
@@ -208,10 +221,21 @@ public class PinVerification extends javax.swing.JFrame {
             dispose();
         }
         else{
-            JOptionPane.showMessageDialog(this, "Card Blocked Contact your Bank");
-            WelcomePage objWelcomePage =  new WelcomePage();//context.getBean(WelcomePage.class);
-            objWelcomePage.createAndShow();
-            dispose();
+            try {
+                Connection con = (new DatabaseConnections()).databaseCon();
+                String blockCardQuery = "update debit_card set card_status=? where card_no= ?";
+                PreparedStatement pst = con.prepareStatement(blockCardQuery);
+                pst.setString(1, "BLOCKED");
+                pst.setString(2, encryptCard);
+                pst.executeUpdate();
+                con.close();
+                JOptionPane.showMessageDialog(this, "Card Blocked Contact your Bank");
+                WelcomePage objWelcomePage =  new WelcomePage();//context.getBean(WelcomePage.class);
+                objWelcomePage.createAndShow();
+                dispose();
+            } catch (SQLException ex) {
+                Logger.getLogger(PinVerification.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         
     }//GEN-LAST:event_verifyPinNum_BtnActionPerformed
@@ -241,6 +265,11 @@ public class PinVerification extends javax.swing.JFrame {
     }//GEN-LAST:event_verifyPinActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        
+        
+         tt.cancel();
+         timer.cancel();
+         timer.purge();
         WelcomePage objPage = new WelcomePage();
         objPage.createAndShow();
         objPage.setVisible(true);

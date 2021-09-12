@@ -29,7 +29,7 @@ public class DepositCash extends javax.swing.JFrame {
     int trans_amt;
 //    private DebitCard objDebitCard=null;
     public Boolean D50, D100, D500, D1000, D2000;
-    private DebitCard debitCard;
+    private DebitCard objDebitCard;
     
     
     public DepositCash(int d50, int d100, int d500, int d1000, int d2000, DebitCard debitCard, int amt){
@@ -38,7 +38,7 @@ public class DepositCash extends javax.swing.JFrame {
         this.d500 = d500;
         this.d1000 = d1000;
         this.d2000 = d2000;
-        this.debitCard = debitCard;
+        this.objDebitCard = debitCard;
         System.out.println(debitCard.getAccNum());
         trans_amt = amt;
         
@@ -209,7 +209,7 @@ public class DepositCash extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(correctdenomination)
@@ -221,11 +221,11 @@ public class DepositCash extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(76, Short.MAX_VALUE)
                 .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                 .addComponent(correctdenomination)
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(incorrectdenomination)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(confirmbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -247,8 +247,8 @@ public class DepositCash extends javax.swing.JFrame {
                 String sqlQuery0="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'DEPOSIT', ?, (SELECT now()), 'CANCELLED' )";
                 
                 PreparedStatement pst = con.prepareStatement(sqlQuery0);
-                pst.setString(1, String.valueOf(debitCard.getCard_no()));
-                pst.setString(2, String.valueOf(debitCard.getCard_no()));
+                pst.setString(1, String.valueOf(objDebitCard.getCard_no()));
+                pst.setString(2, String.valueOf(objDebitCard.getCard_no()));
                 pst.setString(3, String.valueOf(trans_amt));
                 pst.execute();
                 
@@ -273,11 +273,12 @@ public class DepositCash extends javax.swing.JFrame {
            // System.out.println(d50+" "+d100+" "+d500);
             System.out.println(" "+d50+" "+d100+" "+d500+" "+d1000+" "+d2000);
             
-                String sqlQuery4="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'DEPOSIT', ?, (SELECT now()), 'P' )";
+                String sqlQuery4="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, ?, 'DEPOSIT', ?, (SELECT now()), 'PASSED' )";
                 
                 PreparedStatement pst = con.prepareStatement(sqlQuery4);
-                pst.setString(1, String.valueOf(debitCard.getCard_no()));
-                pst.setString(2, String.valueOf(debitCard.getCard_no()));
+                pst.setString(1, String.valueOf(objDebitCard.getCard_no()));
+                pst.setString(2, objDebitCard.getAccNum());
+//                pst.setString(3, String.valueOf(objDebitCard.getCard_no()));
                 pst.setString(3, String.valueOf(trans_amt));
                 pst.execute();
 
@@ -308,9 +309,11 @@ public class DepositCash extends javax.swing.JFrame {
                     stmt.executeUpdate(sqlQuery2);
                 }                    
                 stmt.executeUpdate(sqlQuery3);
-
-                debitCard.setBalance(debitCard.getBalcance()+(double)trans_amt);
-                Success depositconfirm = new Success(Integer.toString(trans_amt),"DEPOSIT",debitCard);
+                
+                System.out.println(objDebitCard.getBalcance());
+                objDebitCard.setBalance(objDebitCard.getBalcance()+(double)trans_amt);
+                System.out.println(objDebitCard.getBalcance());
+                Success depositconfirm = new Success(Integer.toString(trans_amt),"DEPOSIT",objDebitCard);
                 depositconfirm.setVisible(true);
                 dispose();
                     
@@ -334,9 +337,9 @@ public class DepositCash extends javax.swing.JFrame {
                
                 confirmbutton.setEnabled(false);
                 JOptionPane.showMessageDialog(null,"INCORRECT AMOUNT DEPOSITED\n"+"PLEASE TRY AGAIN");
-                SelectDenominations seldenom = new SelectDenominations();
-                dispose();
+                SelectDenominations seldenom = new SelectDenominations(objDebitCard);
                 seldenom.setVisible(true);
+                dispose();
     }//GEN-LAST:event_incorrectdenominationActionPerformed
 
     /**

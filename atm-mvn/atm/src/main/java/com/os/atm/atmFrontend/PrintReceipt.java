@@ -27,7 +27,17 @@ public class PrintReceipt extends javax.swing.JFrame {
     /**
      * Creates new form PrintReceipt
      */
-    
+     Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                 System.out.println("timer success2");
+                WelcomePage objPage = new WelcomePage();
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
    public PrintReceipt() throws HeadlessException {
        initComponents();
     }
@@ -41,18 +51,6 @@ public class PrintReceipt extends javax.swing.JFrame {
 //        DisplayDate.setText();
         setDateTime();
         printTransaction();
-        Timer timer = new Timer();
-        TimerTask tt = new TimerTask() {
-            @Override
-            public void run() {
-                JOptionPane.showMessageDialog(null, "No input from user. Aborting ");
-                 System.out.println("timer success2");
-                WelcomePage objPage = new WelcomePage();
-                objPage.createAndShow();
-                objPage.setVisible(true);
-                dispose();
-            };
-        }; 
         timer.schedule(tt, 30000);
         
         
@@ -96,6 +94,7 @@ public class PrintReceipt extends javax.swing.JFrame {
         ResultSet rs = pst.executeQuery();
         while(rs.next())
             dispTxn.setText(rs.getString("trans_id"));
+        con.close();
                            
                     
      }
@@ -142,11 +141,11 @@ public class PrintReceipt extends javax.swing.JFrame {
             String cardNumber = objDebitCard.getCardNoUn().substring(0, 2) + "XX-XXXX-XXXX-" + objDebitCard.getCardNoUn().substring(12, 16);
             DisplayCardNumber.setText(cardNumber);
             txnTypeLabel.setText(tType);
-            FromAccNumberLabel.setText(benificiaryAccount);
+            FromAccNumberLabel.setText(objDebitCard.getAccNum());
 //            jLabel7.setVisible(false);
             TxnAmountlabel.setText(amount);
             AvailableBalancelabel.setText(Double.toString(objDebitCard.getBalcance()));
-            ToAccountNumberLabel.setText(objDebitCard.getAccNum());
+            ToAccountNumberLabel.setText(benificiaryAccount);
             break;
         }
         

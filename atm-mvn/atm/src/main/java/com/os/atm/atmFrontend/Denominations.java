@@ -17,8 +17,8 @@ import javax.swing.JOptionPane;
  *
  * @author smourya
  */
-public class Denominations extends javax.swing.JFrame {
-     
+public class Denominations extends javax.swing.JFrame
+{
     String debitCard;
     private DebitCard objDebitCard=null;
     PreparedStatement pst = null;
@@ -28,54 +28,72 @@ public class Denominations extends javax.swing.JFrame {
     /**
      * Creates new form denominations
      */
-    public Denominations() {
-        
+    Timer timer = new Timer();
+    TimerTask tt = new TimerTask()
+    {
+        @Override
+        public void run()
+        {
+            System.out.println("timer withdrawMoney");
+            WelcomePage objPage = new WelcomePage();
+            objPage.createAndShow();
+            objPage.setVisible(true);
+            dispose();
+        };
+    }; 
+    
+    public Denominations()
+    {
         initComponents();
         groupRadioButtons();
+        
         withdrawButton.setEnabled(false);
-        Timer timer = new Timer();
-        TimerTask tt = new TimerTask() {
-            @Override
-            public void run() {
-                WelcomePage objPage = new WelcomePage();
-                 System.out.println("timer Denominations");
-                objPage.createAndShow();
-                objPage.setVisible(true);
-                dispose();
-            };
-        }; 
+       
         timer.schedule(tt, 60000);
     }
-    public Denominations(int amount, DebitCard debitCard){
+    
+    public Denominations(int amount, DebitCard debitCard)
+    {
         initComponents();
         groupRadioButtons();
+        
+        timer.schedule(tt, 60000);
+        
         this.objDebitCard = debitCard;
         this.debitCard = debitCard.getCard_no();
+        
         withdrawButton.setEnabled(false);
+        
         this.amount = amount;
+        
         headText.setText("Your Amount is Rs."+amount);
-        if(amount<2000 || amount%2000!=0){
+        
+        if(amount<2000 || amount%2000!=0)
+        {
             D2000.setVisible(false);
         }
-        if(amount<1000 || amount%1000!=0){
+        if(amount<1000 || amount%1000!=0)
+        {
             D1000.setVisible(false);
         }
-        if(amount<500 || amount%500!=0){
+        if(amount<500 || amount%500!=0)
+        {
             D500.setVisible(false);
         }
-        if(amount<100 || amount%100!=0){
+        if(amount<100 || amount%100!=0)
+        {
             D100.setVisible(false);
         }
     }
     
-    private void groupRadioButtons(){
+    private void groupRadioButtons()
+    {
         ButtonGroup buttonGroup = new ButtonGroup();
         buttonGroup.add(D50);
         buttonGroup.add(D100);
         buttonGroup.add(D500);
         buttonGroup.add(D1000);
         buttonGroup.add(D2000);
-//        D50.addActionListener(this);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -166,7 +184,7 @@ public class Denominations extends javax.swing.JFrame {
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addContainerGap(9, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(D50, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 15, Short.MAX_VALUE)
                 .addComponent(D100, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -215,11 +233,9 @@ public class Denominations extends javax.swing.JFrame {
                 .addContainerGap(91, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(headText)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(displayDenomination)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(headText)
+                    .addComponent(displayDenomination, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -231,7 +247,7 @@ public class Denominations extends javax.swing.JFrame {
                 .addComponent(jDesktopPane1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addComponent(displayDenomination)
-                .addGap(18, 18, 18)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(withdrawButton, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -242,10 +258,9 @@ public class Denominations extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void D50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D50ActionPerformed
-        // TODO add your handling code here:
-        no_notes = amount/50;
+        no_notes = amount / 50;
         selected = 0;
-        displayDenomination.setText(no_notes+" x 50 = "+amount);
+        displayDenomination.setText(no_notes + " x 50 = " + amount);
         withdrawButton.setEnabled(true);
     }//GEN-LAST:event_D50ActionPerformed
 
@@ -305,10 +320,26 @@ public class Denominations extends javax.swing.JFrame {
                 if(no_notes<=temp[selected]){
                     String sqlQuery2="";
                     String sqlQuery3="UPDATE atm_machine SET atm_balance = ((SELECT rs50 from atm_machine)*50)+((SELECT rs100 from atm_machine)*100)+((SELECT rs500 from atm_machine)*500)+((SELECT rs1000 from atm_machine)*1000)+((SELECT rs2000 from atm_machine)*2000);";
+                    PreparedStatement pst;
+
+//                    String getLimitQuery = "select limit_amt from debit_card where card_no=?";
+//                    pst= con.prepareStatement(getLimitQuery);
+//                    pst.setString(1, objDebitCard.getCard_no());
+//                    ResultSet rs = pst.executeQuery();
+//                    while(rs.next()){
+//                        objDebitCard.ge
+//                    }
                     
-                    String sqlQuery4="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'WITHDRAW', ?, (SELECT now()), 'P' )";
-                
-                    PreparedStatement pst = con.prepareStatement(sqlQuery4);
+                    int updatedLimit =(int)objDebitCard.getCardLimit() - amount;
+                    String updateLimitQuery = "update debit_card set limit_amt = ? where card_no=?";
+                    pst = con.prepareStatement(updateLimitQuery);
+                    pst.setInt(1, updatedLimit);
+                    pst.setString(2, objDebitCard.getCard_no());
+                    pst.executeUpdate();
+                                       
+                    
+                    String sqlQuery4="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'WITHDRAW', ?, (SELECT now()), 'PASSED' )";
+                    pst = con.prepareStatement(sqlQuery4);
                     pst.setString(1, String.valueOf(debitCard));
                     pst.setString(2, String.valueOf(debitCard));
                     pst.setString(3, String.valueOf(amount));
@@ -331,7 +362,10 @@ public class Denominations extends javax.swing.JFrame {
                     stmt.executeUpdate(sqlQuery3);
                     
                     
-                    
+                    objDebitCard.setBalance(objDebitCard.getBalcance()-(double)amount);
+                    tt.cancel();
+                    timer.cancel();
+                    timer.purge();
                     Success objSuccess = new Success(Integer.toString(amount),"WITHDRAW", objDebitCard);
                     objSuccess.setVisible(true);
                     dispose();
@@ -351,6 +385,13 @@ public class Denominations extends javax.swing.JFrame {
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         // TODO add your handling code here:
+         tt.cancel();
+          timer.cancel();
+          timer.purge();
+          WelcomePage objPage = new WelcomePage();
+        objPage.createAndShow();
+        objPage.setVisible(true);
+        dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     /**

@@ -26,57 +26,33 @@ public class SelectDenominations extends javax.swing.JFrame {
     /**
      * Creates new form depositCash
      */
+     Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                
+                System.out.println("timer selectDenominations");
+                WelcomePage objPage = new WelcomePage();
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
     private DebitCard debitCard;
     public SelectDenominations() {
         initComponents();
         nextBtn.setEnabled(false);
-        
-        Timer timer = new Timer();
-        TimerTask tt = new TimerTask() {
-            @Override
-            public void run() {
-                WelcomePage objPage = new WelcomePage();
-                 System.out.println("timer selectDenominations");
-                objPage.createAndShow();
-                objPage.setVisible(true);
-                dispose();
-            };
-        }; 
         timer.schedule(tt, 30000);
     }
 
-    SelectDenominations(DebitCard debitCard) {
+    public SelectDenominations(DebitCard debitCard) {
         initComponents();
         nextBtn.setEnabled(false);
         this.debitCard = debitCard;
-        
-        Timer timer = new Timer();
-        TimerTask tt = new TimerTask() {
-            @Override
-            public void run() {
-                WelcomePage objPage = new WelcomePage();
-                 System.out.println("timer selectDenominations");
-                objPage.createAndShow();
-                objPage.setVisible(true);
-                dispose();
-            };
-        }; 
         timer.schedule(tt, 30000);
     }
     public void initializeComponents(){
         initComponents();
-        
-        Timer timer = new Timer();
-        TimerTask tt = new TimerTask() {
-            @Override
-            public void run() {
-                JOptionPane.showMessageDialog(null, "No input from user. Aborting session");
-                WelcomePage objPage = new WelcomePage();
-                objPage.createAndShow();
-                objPage.setVisible(true);
-                dispose();
-            };
-        }; 
         timer.schedule(tt, 30000);
     }
     
@@ -234,6 +210,9 @@ public class SelectDenominations extends javax.swing.JFrame {
         boolean d1000= D1000_checkbox.isSelected();
         boolean d2000 = D2000_checkbox.isSelected();
          
+         tt.cancel();
+          timer.cancel();
+          timer.purge();
         DepositAmount objDeposit = new DepositAmount(d50,d100,d500,d1000,d2000, debitCard);
         objDeposit.setVisible(true);
         dispose();
@@ -254,6 +233,11 @@ public class SelectDenominations extends javax.swing.JFrame {
     }//GEN-LAST:event_D100_checkboxActionPerformed
 
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
+       
+         tt.cancel();
+          timer.cancel();
+          timer.purge();
+        
         WelcomePage objPage = new WelcomePage();
         objPage.createAndShow();
         objPage.setVisible(true);

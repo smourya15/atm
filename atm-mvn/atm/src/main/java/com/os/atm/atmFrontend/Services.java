@@ -27,39 +27,27 @@ public class Services extends javax.swing.JFrame {
     /**
      * Creates new form Services
      */
+      Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                System.out.println("timer Services");
+                WelcomePage objPage = new WelcomePage();
+                objPage.createAndShow();
+                objPage.setVisible(true);
+                dispose();
+            };
+        }; 
+        
     private DebitCard debitCard;
     public Services() {
         initComponents();
-        
-        Timer timer = new Timer();
-        TimerTask tt = new TimerTask() {
-            @Override
-            public void run() {
-                WelcomePage objPage = new WelcomePage();
-                 System.out.println("timer Services");
-                objPage.createAndShow();
-                objPage.setVisible(true);
-                dispose();
-            };
-        }; 
         timer.schedule(tt, 120000);
     }
 
-    Services(DebitCard debitCard) {
+    public Services(DebitCard debitCard) {
         this.debitCard = debitCard;
         initComponents();
-        
-        Timer timer = new Timer();
-        TimerTask tt = new TimerTask() {
-            @Override
-            public void run() {
-                WelcomePage objPage = new WelcomePage();
-                 System.out.println("timer Services");
-                objPage.createAndShow();
-                objPage.setVisible(true);
-                dispose();
-            };
-        }; 
         timer.schedule(tt, 120000);
     }
 
@@ -148,9 +136,11 @@ public class Services extends javax.swing.JFrame {
                 .addContainerGap(98, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -166,9 +156,9 @@ public class Services extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(fundTransferBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
                     .addComponent(balanceEnquiryBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addGap(48, 48, 48))
         );
 
         pack();
@@ -176,6 +166,9 @@ public class Services extends javax.swing.JFrame {
 
     private void depositBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositBtnActionPerformed
         // TODO add your handling code here:
+          tt.cancel();
+          timer.cancel();
+          timer.purge();
         SelectDenominations objSelectDenominations = new SelectDenominations(debitCard);
         // objSelectDenominations.initializeComponents();
         objSelectDenominations.setVisible(true);
@@ -184,6 +177,9 @@ public class Services extends javax.swing.JFrame {
 
     private void withdrawBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawBtnActionPerformed
         // TODO add your handling code here:
+            tt.cancel();
+            timer.cancel();
+            timer.purge();
          System.out.println(debitCard.getBalcance());
         WithdrawMoney objWithdraw = new WithdrawMoney(debitCard);
 //        PrintReceipt pr = new PrintReceipt(txnType);
@@ -198,6 +194,9 @@ public class Services extends javax.swing.JFrame {
 
     private void balanceEnquiryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_balanceEnquiryBtnActionPerformed
         // TODO add your handling code here:
+           tt.cancel();
+           timer.cancel();
+           timer.purge();
         RetrieveBalance objEnquire = new  RetrieveBalance(debitCard);
         objEnquire.setVisible(true);
         dispose();
@@ -205,6 +204,9 @@ public class Services extends javax.swing.JFrame {
 
     private void fundTransferBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fundTransferBtnActionPerformed
         // TODO add your handling code here:
+         tt.cancel();
+         timer.cancel();
+         timer.purge();
         FundTransfer objTransfer = new FundTransfer(debitCard);
         objTransfer.setVisible(true);
         dispose();
@@ -212,6 +214,10 @@ public class Services extends javax.swing.JFrame {
     }//GEN-LAST:event_fundTransferBtnActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        tt.cancel();
+        timer.cancel();
+        timer.purge();
+        
         WelcomePage objPage = new WelcomePage();
         objPage.createAndShow();
         objPage.setVisible(true);
