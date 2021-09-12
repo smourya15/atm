@@ -45,7 +45,7 @@ public class SelectDenominations extends javax.swing.JFrame {
         timer.schedule(tt, 30000);
     }
 
-    SelectDenominations(DebitCard debitCard) {
+    public SelectDenominations(DebitCard debitCard) {
         initComponents();
         nextBtn.setEnabled(false);
         this.debitCard = debitCard;

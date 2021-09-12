@@ -50,7 +50,7 @@ public class FundTransfer extends javax.swing.JFrame {
         timer.schedule(tt, 120000);
     }
 
-    FundTransfer(DebitCard debitCard) {
+    public FundTransfer(DebitCard debitCard) {
         initComponents();
         this.objDebitCard=debitCard;
         benAccNoTextField.setText(null);

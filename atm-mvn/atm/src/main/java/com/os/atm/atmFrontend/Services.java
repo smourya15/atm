@@ -45,7 +45,7 @@ public class Services extends javax.swing.JFrame {
         timer.schedule(tt, 120000);
     }
 
-    Services(DebitCard debitCard) {
+    public Services(DebitCard debitCard) {
         this.debitCard = debitCard;
         initComponents();
         timer.schedule(tt, 120000);

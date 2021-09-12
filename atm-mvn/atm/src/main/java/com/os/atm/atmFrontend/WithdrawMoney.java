@@ -57,7 +57,7 @@ public class WithdrawMoney extends javax.swing.JFrame {
         timer.schedule(tt, 120000);
     }
 
-    WithdrawMoney(DebitCard debitCard) {
+    public WithdrawMoney(DebitCard debitCard) {
         initComponents();
         confirmButton.setEnabled(Boolean.FALSE);
         
