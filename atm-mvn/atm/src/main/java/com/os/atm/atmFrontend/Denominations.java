@@ -320,13 +320,26 @@ public class Denominations extends javax.swing.JFrame
                 if(no_notes<=temp[selected]){
                     String sqlQuery2="";
                     String sqlQuery3="UPDATE atm_machine SET atm_balance = ((SELECT rs50 from atm_machine)*50)+((SELECT rs100 from atm_machine)*100)+((SELECT rs500 from atm_machine)*500)+((SELECT rs1000 from atm_machine)*1000)+((SELECT rs2000 from atm_machine)*2000);";
+                    PreparedStatement pst;
+
+//                    String getLimitQuery = "select limit_amt from debit_card where card_no=?";
+//                    pst= con.prepareStatement(getLimitQuery);
+//                    pst.setString(1, objDebitCard.getCard_no());
+//                    ResultSet rs = pst.executeQuery();
+//                    while(rs.next()){
+//                        objDebitCard.ge
+//                    }
                     
-//                    String getLimitQuery = "select limit_amt from debit_card where "
-                    
-                    
+                    int updatedLimit =(int)objDebitCard.getCardLimit() - amount;
+                    String updateLimitQuery = "update debit_card set limit_amt = ? where card_no=?";
+                    pst = con.prepareStatement(updateLimitQuery);
+                    pst.setInt(1, updatedLimit);
+                    pst.setString(2, objDebitCard.getCard_no());
+                    pst.executeUpdate();
+                                       
                     
                     String sqlQuery4="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'WITHDRAW', ?, (SELECT now()), 'PASSED' )";
-                    PreparedStatement pst = con.prepareStatement(sqlQuery4);
+                    pst = con.prepareStatement(sqlQuery4);
                     pst.setString(1, String.valueOf(debitCard));
                     pst.setString(2, String.valueOf(debitCard));
                     pst.setString(3, String.valueOf(amount));
