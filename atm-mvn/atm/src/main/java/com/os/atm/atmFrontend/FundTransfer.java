@@ -270,7 +270,7 @@ public class FundTransfer extends javax.swing.JFrame {
                     int temp=0;
                     Class.forName("com.mysql.jdbc.Driver");
                     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
-                    String sqlQuery0="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'TRANSFER', ?, (SELECT now()), 'P' )";
+                    String sqlQuery0="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'TRANSFER', ?, (SELECT now()), 'PASSED' )";
                     PreparedStatement pst = con.prepareStatement(sqlQuery0);
                     pst.setString(1, String.valueOf(debitcard));
                     pst.setString(2, String.valueOf(debitcard));
