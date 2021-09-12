@@ -17,8 +17,8 @@ import javax.swing.JOptionPane;
  *
  * @author smourya
  */
-public class Denominations extends javax.swing.JFrame {
-     
+public class Denominations extends javax.swing.JFrame
+{
     String debitCard;
     private DebitCard objDebitCard=null;
     PreparedStatement pst = null;
@@ -28,56 +28,72 @@ public class Denominations extends javax.swing.JFrame {
     /**
      * Creates new form denominations
      */
-      Timer timer = new Timer();
-        TimerTask tt = new TimerTask() {
-            @Override
-            public void run() {
-                System.out.println("timer withdrawMoney");
-                WelcomePage objPage = new WelcomePage();
-                objPage.createAndShow();
-                objPage.setVisible(true);
-                dispose();
-            };
-        }; 
-    public Denominations() {
-        
+    Timer timer = new Timer();
+    TimerTask tt = new TimerTask()
+    {
+        @Override
+        public void run()
+        {
+            System.out.println("timer withdrawMoney");
+            WelcomePage objPage = new WelcomePage();
+            objPage.createAndShow();
+            objPage.setVisible(true);
+            dispose();
+        };
+    }; 
+    
+    public Denominations()
+    {
         initComponents();
         groupRadioButtons();
+        
         withdrawButton.setEnabled(false);
        
         timer.schedule(tt, 60000);
     }
-    public Denominations(int amount, DebitCard debitCard){
+    
+    public Denominations(int amount, DebitCard debitCard)
+    {
         initComponents();
         groupRadioButtons();
-         timer.schedule(tt, 60000);
+        
+        timer.schedule(tt, 60000);
+        
         this.objDebitCard = debitCard;
         this.debitCard = debitCard.getCard_no();
+        
         withdrawButton.setEnabled(false);
+        
         this.amount = amount;
+        
         headText.setText("Your Amount is Rs."+amount);
-        if(amount<2000 || amount%2000!=0){
+        
+        if(amount<2000 || amount%2000!=0)
+        {
             D2000.setVisible(false);
         }
-        if(amount<1000 || amount%1000!=0){
+        if(amount<1000 || amount%1000!=0)
+        {
             D1000.setVisible(false);
         }
-        if(amount<500 || amount%500!=0){
+        if(amount<500 || amount%500!=0)
+        {
             D500.setVisible(false);
         }
-        if(amount<100 || amount%100!=0){
+        if(amount<100 || amount%100!=0)
+        {
             D100.setVisible(false);
         }
     }
     
-    private void groupRadioButtons(){
+    private void groupRadioButtons()
+    {
         ButtonGroup buttonGroup = new ButtonGroup();
         buttonGroup.add(D50);
         buttonGroup.add(D100);
         buttonGroup.add(D500);
         buttonGroup.add(D1000);
         buttonGroup.add(D2000);
-//        D50.addActionListener(this);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -242,10 +258,9 @@ public class Denominations extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void D50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D50ActionPerformed
-        // TODO add your handling code here:
-        no_notes = amount/50;
+        no_notes = amount / 50;
         selected = 0;
-        displayDenomination.setText(no_notes+" x 50 = "+amount);
+        displayDenomination.setText(no_notes + " x 50 = " + amount);
         withdrawButton.setEnabled(true);
     }//GEN-LAST:event_D50ActionPerformed
 
