@@ -388,10 +388,34 @@ public class Denominations extends javax.swing.JFrame
          tt.cancel();
           timer.cancel();
           timer.purge();
+           try{
+            
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
+           // System.out.println(d50+" "+d100+" "+d500);
+            System.out.println("Withdraw amount: "+amount);
+            
+                String sqlQuery0="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'WITHDRAW', ?, (SELECT now()), 'CANCELLED' )";
+                
+                PreparedStatement pst = con.prepareStatement(sqlQuery0);
+                pst.setString(1, String.valueOf(objDebitCard.getCard_no()));
+                pst.setString(2, String.valueOf(objDebitCard.getCard_no()));
+                pst.setString(3, String.valueOf(amount));
+                pst.execute();
+                
+                System.out.println("Successfully Cancelled Withdraw Transaction\n");
+        }
+        
+        catch (ClassNotFoundException | SQLException ex) {
+                JOptionPane.showMessageDialog(null,ex.getMessage());
+                
+            }
+          
           WelcomePage objPage = new WelcomePage();
         objPage.createAndShow();
         objPage.setVisible(true);
         dispose();
+        
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     /**

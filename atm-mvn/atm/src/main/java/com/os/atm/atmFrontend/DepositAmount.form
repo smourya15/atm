@@ -25,7 +25,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="cancelButton" min="-2" pref="127" max="-2" attributes="0"/>
+              <Component id="backbutton" min="-2" pref="127" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
               <Component id="nextBtn" min="-2" pref="142" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
@@ -95,7 +95,7 @@
               <Component id="errorMessageLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="49" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="cancelButton" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="backbutton" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                   <Component id="nextBtn" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="29" max="32767" attributes="0"/>
@@ -112,7 +112,7 @@
         <Property name="text" type="java.lang.String" value="Rs. 50          X"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="cancelButton">
+    <Component class="javax.swing.JButton" name="backbutton">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial Black" size="24" style="1"/>
@@ -128,7 +128,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backbuttonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="d50Field">
