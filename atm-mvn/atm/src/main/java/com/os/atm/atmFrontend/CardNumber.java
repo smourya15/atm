@@ -154,7 +154,7 @@ public class CardNumber extends javax.swing.JFrame
         final int returnType = (new ATMServices()).verifyCard(md.getHashText());
         switch (returnType) {
             case 1:
-                JOptionPane.showMessageDialog(this, "Incorrect Account Number");
+                JOptionPane.showMessageDialog(this, "Incorrect Card Number");
                 break;
             case 2:
                 JOptionPane.showMessageDialog(this, "Your Card is Blocked,\n Contact Your Branch\n");
