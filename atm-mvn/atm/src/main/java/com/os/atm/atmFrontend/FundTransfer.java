@@ -12,6 +12,7 @@ import java.util.TimerTask;
 import javax.swing.JOptionPane;
 import org.springframework.stereotype.Component;
 import java.sql.*;
+
 //import java.u
 /**
  *
@@ -396,7 +397,12 @@ public class FundTransfer extends javax.swing.JFrame {
 
     private void trfCancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trfCancelBtnActionPerformed
        int amt;
-       amt = Integer.parseInt(trfAmt.getText());
+       if(trfAmt.getText().isEmpty()){
+           amt=0;
+       } else{
+              amt = Integer.parseInt(trfAmt.getText());
+       }
+    
        System.out.println("Amount:\t"+amt);
        try{
             Class.forName("com.mysql.jdbc.Driver");
