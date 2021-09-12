@@ -117,7 +117,7 @@ CREATE TABLE `atm_transaction` (
   `trans_type` varchar(10) NOT NULL,
   `trans_amt` int(5) NOT NULL,
   `trans_time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `status` varchar(8) NOT NULL
+  `status` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

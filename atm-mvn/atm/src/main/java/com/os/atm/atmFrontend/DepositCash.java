@@ -273,7 +273,7 @@ public class DepositCash extends javax.swing.JFrame {
            // System.out.println(d50+" "+d100+" "+d500);
             System.out.println(" "+d50+" "+d100+" "+d500+" "+d1000+" "+d2000);
             
-                String sqlQuery4="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'DEPOSIT', ?, (SELECT now()), 'P' )";
+                String sqlQuery4="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'DEPOSIT', ?, (SELECT now()), 'PASSED' )";
                 
                 PreparedStatement pst = con.prepareStatement(sqlQuery4);
                 pst.setString(1, String.valueOf(debitCard.getCard_no()));
