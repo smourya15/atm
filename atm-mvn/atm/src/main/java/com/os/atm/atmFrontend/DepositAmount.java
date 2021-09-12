@@ -31,7 +31,7 @@ public class DepositAmount extends javax.swing.JFrame {
                 dispose();
             };
         }; 
-    private DebitCard debitCard;
+    private DebitCard objDebitCard;
     public DepositAmount() {
         initComponents();
         nextBtn.setEnabled(false);
@@ -55,7 +55,7 @@ public class DepositAmount extends javax.swing.JFrame {
         d1000Field.setVisible(d1000);
         d2000Field.setVisible(d2000);
         
-        this.debitCard = debitCard;
+        this.objDebitCard = debitCard;
         
      
         timer.schedule(tt, 60000);
@@ -298,7 +298,7 @@ public class DepositAmount extends javax.swing.JFrame {
          tt.cancel();
           timer.cancel();
           timer.purge();
-        SelectDenominations denomination = new SelectDenominations();
+        SelectDenominations denomination = new SelectDenominations(objDebitCard);
         
         denomination.setVisible(true);
         dispose();
@@ -347,7 +347,7 @@ public class DepositAmount extends javax.swing.JFrame {
                  tt.cancel();
           timer.cancel();
           timer.purge();
-                DepositConfirm deposit= new DepositConfirm(d50,d100, d500, d1000, d2000, debitCard);
+                DepositConfirm deposit= new DepositConfirm(d50,d100, d500, d1000, d2000, objDebitCard);
 //                DepositCash depositcash = new DepositCash(d50,d100, d500, d1000, d2000, debitCard);
                 deposit.setVisible(true);
                 dispose();
