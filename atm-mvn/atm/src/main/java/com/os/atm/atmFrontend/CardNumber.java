@@ -155,9 +155,14 @@ public class CardNumber extends javax.swing.JFrame
         switch (returnType) {
             case 1:
                 JOptionPane.showMessageDialog(this, "Incorrect Card Number");
+                verifyCard.setText(null);
+                verifyCardNum_Btn.setEnabled(Boolean.FALSE);
+                
                 break;
             case 2:
                 JOptionPane.showMessageDialog(this, "Your Card is Blocked,\n Contact Your Branch\n");
+                verifyCard.setText(null);
+                verifyCardNum_Btn.setEnabled(Boolean.FALSE);
                 break;
             case 3:
                tt.cancel();
