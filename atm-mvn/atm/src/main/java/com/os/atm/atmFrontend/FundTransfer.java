@@ -272,14 +272,14 @@ public class FundTransfer extends javax.swing.JFrame {
             
             else{
                 try{
-                        int dbAccount_no = 0;
+                        String dbAccount_no="";
                         Class.forName("com.mysql.jdbc.Driver");
                         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
                         String sqlQuery1 = "SELECT * FROM account WHERE account_no = "+benAcc;
                         PreparedStatement pst = con.prepareStatement(sqlQuery1);
                         ResultSet rs = pst.executeQuery();
                         while(rs.next()){
-                            dbAccount_no = Integer.parseInt(rs.getString("account_no"));
+                            dbAccount_no = rs.getString("account_no");
                         }
                         
                         
@@ -290,7 +290,7 @@ public class FundTransfer extends javax.swing.JFrame {
                             trfAmt.setText(null);
                         }
 
-                        else if(dbAccount_no == Integer.parseInt(benAcc)){
+                        else if(dbAccount_no.equals(benAcc)){
 
                                 int temp=0;
                                 String sqlQuery0="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'TRANSFER', ?, (SELECT now()), 'P' )";
