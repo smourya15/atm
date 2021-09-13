@@ -18,7 +18,6 @@ import java.util.logging.Logger;
  * @author smourya
  */
 public class ATMServices {
-//    private final String ACTIVE="ACTIVE";
     private final String BLOCKED="BLOCKED";
     //verify the card status
     //if card is active return true else if blocked return false
@@ -44,10 +43,7 @@ public class ATMServices {
         } catch (SQLException ex) {
             Logger.getLogger(ATMServices.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-//        }
-        //select card-No, from atm where card_no = hashCardValue.parseInt something.
-//        return Boolean.FALSE;
+
         return 0;
     }
     
@@ -76,20 +72,7 @@ public class ATMServices {
             Logger.getLogger(ATMServices.class.getName()).log(Level.SEVERE, null, ex);
             return Boolean.FALSE;
         }
-//        LocalDate expiryDate= StringToDate(rs.getString(4));
-//        DebitCard debitCard = new DebitCard(Card, rs.getString(2), rs.getString(3), expirydate);
-//        if(pin is correct or result Set is not empty then  return true)
-//                return Boolean.TRUE
-//        DebitCard debitCard = new DebitCard("12345", "active", "Sidhant", LocalDate.parse("25/08/2021", this.formatter),Boolean.TRUE);
-//        db.add(debitCard);
         return Boolean.FALSE;
-    }
-    
-    public Boolean callWithdrawNodule(){
-
-         return Boolean.FALSE;
-
-        
     }
     
     

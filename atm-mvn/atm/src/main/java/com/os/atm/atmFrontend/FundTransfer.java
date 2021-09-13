@@ -25,7 +25,6 @@ public class FundTransfer extends javax.swing.JFrame {
      */
     private DebitCard objDebitCard;
     String debitcard;
-//    String account_no;
     
     
     public FundTransfer() {
@@ -259,26 +258,19 @@ public class FundTransfer extends javax.swing.JFrame {
             errorMsgLabel.setVisible(true);
             return ;
         }
-        
-        
-        
-        
         if(benAcc.equals(reBenAcc))
         {   
             errorMsgLabel.setText("Error");
             errorMsgLabel.setVisible(false);
             int transferAmt = Integer.parseInt(trfAmt.getText());
-           // AccountServices a = new AccountServices();
-            //a.transferFunds(benAcc, transferAmt, debitCard);
+
            
-            if(objDebitCard.getBalcance()< (double)transferAmt){
+            if(objDebitCard.getBalance()< (double)transferAmt){
                 JOptionPane.showMessageDialog(this, "Insufficient Funds");
                 trfAmt.setText(null);
             }
             
             else{
-//                
-////---------------------------------------------------------------------------------
                 try{
                         int dbAccount_no = 0;
                         Class.forName("com.mysql.jdbc.Driver");
@@ -291,7 +283,7 @@ public class FundTransfer extends javax.swing.JFrame {
                         }
                         
                         
-                        if(Integer.parseInt(objDebitCard.getAccNum()) == Integer.parseInt(benAcc)){
+                        if(objDebitCard.getAccNum().equals(benAcc)){
                             JOptionPane.showMessageDialog(null, "Cannot Transfer Money To Same Account.\nPlease Try Again");
                             benAccNoTextField.setText(null);
                             reBenAccNoTextField.setText(null);
@@ -301,8 +293,6 @@ public class FundTransfer extends javax.swing.JFrame {
                         else if(dbAccount_no == Integer.parseInt(benAcc)){
 
                                 int temp=0;
-    //                            Class.forName("com.mysql.jdbc.Driver");
-    //                            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
                                 String sqlQuery0="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'TRANSFER', ?, (SELECT now()), 'P' )";
                                 pst = con.prepareStatement(sqlQuery0);
                                 pst.setString(1, String.valueOf(debitcard));
@@ -318,7 +308,7 @@ public class FundTransfer extends javax.swing.JFrame {
 
                                 System.out.println("Successfully Completed Fund Transfer Transaction\t");
                                 con.close();
-                                objDebitCard.setBalance(objDebitCard.getBalcance()- (double)transferAmt);
+                                objDebitCard.setBalance(objDebitCard.getBalance()- (double)transferAmt);
                                 Success objsuccess = new Success(transferAmt,"FUND TRANSFER",objDebitCard, benAcc );
                                 objsuccess.setVisible(true);
                                 dispose();
@@ -438,6 +428,7 @@ public class FundTransfer extends javax.swing.JFrame {
                     pst.setString(2, String.valueOf(debitcard));
                     pst.setString(3, String.valueOf(amt));
                     pst.execute();
+                    con.close();
                     System.out.println("Successfully Cancelled Fund Transfer Transaction\t");
             
                     

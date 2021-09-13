@@ -217,9 +217,6 @@ public class SelectDenominations extends javax.swing.JFrame {
         objDeposit.setVisible(true);
         dispose();
         
-//        if(!d50 && !d100 && !d500 && !d1000 && !d2000 ){
-//            
-//        }
         
         
     }//GEN-LAST:event_nextBtnActionPerformed

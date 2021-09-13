@@ -50,7 +50,7 @@ public class RetrieveBalance extends javax.swing.JFrame {
          initComponents();
          this.debitCard=debitCard;
          accno.setText(this.debitCard.getAccNum());
-        bal.setText(String.valueOf(this.debitCard.getBalcance()));
+        bal.setText(String.valueOf(this.debitCard.getBalance()));
         timer.schedule(tt, 60000);
     }
     /**

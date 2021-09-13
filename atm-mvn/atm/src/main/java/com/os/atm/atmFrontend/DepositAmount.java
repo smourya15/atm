@@ -295,9 +295,9 @@ public class DepositAmount extends javax.swing.JFrame {
 
     private void backbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbuttonActionPerformed
        
-         tt.cancel();
-          timer.cancel();
-          timer.purge();
+        tt.cancel();
+        timer.cancel();
+        timer.purge();
         SelectDenominations denomination = new SelectDenominations(objDebitCard);
         
         denomination.setVisible(true);
@@ -313,44 +313,43 @@ public class DepositAmount extends javax.swing.JFrame {
             d50 = Integer.parseInt(d50Field.getText());
         }
         
-         if(d100Field.getText().isEmpty()){
+        if(d100Field.getText().isEmpty()){
             d100 = 0;
         }
         else{
             d100 = Integer.parseInt(d100Field.getText());
         }
          
-          if(d500Field.getText().isEmpty()){
+        if(d500Field.getText().isEmpty()){
             d500= 0;
         }
         else{
             d500 = Integer.parseInt(d500Field.getText());
         }
           
-           if(d1000Field.getText().isEmpty()){
+        if(d1000Field.getText().isEmpty()){
             d1000 = 0;
         }
         else{
             d1000 = Integer.parseInt(d1000Field.getText());
         }
            
-            if(d2000Field.getText().isEmpty()){
+        if(d2000Field.getText().isEmpty()){
             d2000 = 0;
         }
         else{
             d2000 = Integer.parseInt(d2000Field.getText());
         }
         
-            if(d50Field.getText().isEmpty() && d100Field.getText().isEmpty() && d500Field.getText().isEmpty() && d1000Field.getText().isEmpty() && d2000Field.getText().isEmpty()){
-                errorMessageLabel.setVisible(true);
-            } else{
-                 tt.cancel();
-          timer.cancel();
-          timer.purge();
-                DepositConfirm deposit= new DepositConfirm(d50,d100, d500, d1000, d2000, objDebitCard);
-//                DepositCash depositcash = new DepositCash(d50,d100, d500, d1000, d2000, debitCard);
-                deposit.setVisible(true);
-                dispose();
+        if(d50Field.getText().isEmpty() && d100Field.getText().isEmpty() && d500Field.getText().isEmpty() && d1000Field.getText().isEmpty() && d2000Field.getText().isEmpty()){
+            errorMessageLabel.setVisible(true);
+        } else{
+            tt.cancel();
+            timer.cancel();
+            timer.purge();
+            DepositConfirm deposit= new DepositConfirm(d50,d100, d500, d1000, d2000, objDebitCard);
+            deposit.setVisible(true);
+            dispose();
             }
     }//GEN-LAST:event_nextBtnActionPerformed
 
@@ -392,8 +391,6 @@ public class DepositAmount extends javax.swing.JFrame {
         }
          
       else{
-          long ans = Integer.parseInt(s) * 50;
-       // eq50Label.setText("=  Rs. " + Long.toString(ans));
      }
     }//GEN-LAST:event_d50FieldFocusLost
 

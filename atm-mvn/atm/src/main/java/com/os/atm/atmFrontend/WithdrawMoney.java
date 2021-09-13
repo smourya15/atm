@@ -5,22 +5,13 @@
  */
 package com.os.atm.atmFrontend;
 
-import com.os.atm.encapsulateClasses.*;
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.Timer;
 import java.util.TimerTask;
-import javax.swing.text.PlainDocument;
-
-import javax.swing.JOptionPane;
 import org.springframework.stereotype.Component;
 
 import com.os.atm.encapsulateClasses.DebitCard;
 import java.sql.*;
-import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 /**
  *
@@ -167,13 +158,6 @@ public class WithdrawMoney extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void withdrawAmountFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawAmountFieldActionPerformed
-        
-      
-//        PlainDocument pd = (PlainDocument) withdrawAmountField.getDocument();
-//        pd.setDocumentFilter(new IntFilter());
-
-
-
 
         // TODO add your handling code here:
     }//GEN-LAST:event_withdrawAmountFieldActionPerformed
@@ -190,10 +174,10 @@ public class WithdrawMoney extends javax.swing.JFrame {
         else{
             amount = Integer.parseInt(withdrawAmountField.getText());
         }
-        System.out.println(amount+"\t "+Double.toString(objDebitCard.getBalcance()));
+        System.out.println(amount+"\t "+Double.toString(objDebitCard.getBalance()));
         
         if(amount%50==0){
-            if(objDebitCard.getBalcance()< amount){
+            if(objDebitCard.getBalance()< amount){
                 JOptionPane.showMessageDialog(this, "Insuffiencient Balance.");
                 withdrawAmountField.setText(null);
             }
@@ -259,6 +243,7 @@ public class WithdrawMoney extends javax.swing.JFrame {
                     pst.setString(2, String.valueOf(debitcard));
                     pst.setString(3, String.valueOf(amount));
                     pst.execute();
+                    con.close();;
                     System.out.println("Successfully Cancelled Withdraw Transaction\t");
             }
          catch (ClassNotFoundException | SQLException ex) {

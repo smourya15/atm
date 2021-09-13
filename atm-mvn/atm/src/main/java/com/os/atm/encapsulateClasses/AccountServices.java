@@ -45,7 +45,7 @@ public class AccountServices{
     }
     public void transferFunds(final String benificiary_Account_num, int Amount, DebitCard debitCard){
         try{
-            if(debitCard.getBalcance() < Amount)
+            if(debitCard.getBalance() < Amount)
                 throw new NoAmountException("Specify the Correct Amount");
             
             String query = "select account_no, acc_bal from account where account_no =?";
@@ -73,8 +73,8 @@ public class AccountServices{
                     t=0;
                     String updateUserAccountQuery = "update account set acc_bal = ? where account_no = ?";
                     PreparedStatement updateUserPST = con.prepareStatement(updateUserAccountQuery);
-                    System.out.println("user Balc: "+debitCard.getBalcance());
-                    t=(int) (debitCard.getBalcance()-Amount);
+                    System.out.println("user Balc: "+debitCard.getBalance());
+                    t=(int) (debitCard.getBalance()-Amount);
                     updateUserPST.setInt(1, t);
                     updateUserPST.setString(2, debitCard.getAccNum());
                     updateUserPST.executeUpdate();
@@ -126,15 +126,4 @@ public class AccountServices{
     }
 
 
- 
-//    public static void main(String[] args) {
-//        AccountServices acc = new AccountServices();
-//        System.out.println(""+acc.viewBalance());
-//        acc.deductAmount(100);
-//        acc.addAmount(500);
-//        System.out.println(""+acc.viewBalance());
-//        acc.deductAmount(20);
-//        System.out.println(""+acc.viewBalance());
-//        System.out.println(""+acc.objAccount.getAccNum());
-//    }
 }

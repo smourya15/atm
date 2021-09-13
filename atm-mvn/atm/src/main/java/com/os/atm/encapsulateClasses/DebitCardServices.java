@@ -30,20 +30,9 @@ public class DebitCardServices {
     public DebitCardServices() {
         this.formatter = new SimpleDateFormat(pattern);
     }
-    
-//    public int SearchCard(String searchCardHash, String Card){
-////        
-////        LocalDate expiryDate= StringToDate(rs.getString(4));
-////        DebitCard debitCard = new DebitCard(Card, rs.getString(2), rs.getString(3), expirydate);
-////        if()
-////        DebitCard debitCard = new DebitCard("12345", "active", "Sidhant", LocalDate.parse("25/08/2021", this.formatter),Boolean.TRUE);
-////        db.add(debitCard);
-////        return debitCard;
-//    }
     public DebitCard Populate(String pinCardHash, String cardHash) throws ParseException, SQLException{
         String query = "select card_no, card_status, card_holder_name, account_no, limit_amt from debit_card where pin = ?  and card_no= ?";
         DebitCard debitCard = null;
-//        String sqlQuery1 = "SELECT rs50, rs100, rs500, rs1000, rs2000 FROM `atm_machine` WHERE `machine_id` = 1010000000";
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
@@ -53,7 +42,6 @@ public class DebitCardServices {
             pst.setString(2, cardHash);
             ResultSet rs= pst.executeQuery();
             while(rs.next()){
-//                    String query2 = "select * from account where account_no = ?";
                     AccountServices acc = new AccountServices();
                     Account a = acc.populateAccount(rs.getString("account_no"));
                     String query2 = " select card_num from card_pin_hash where pinHash = ?  and cardHash= ?";
@@ -69,13 +57,7 @@ public class DebitCardServices {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DebitCardServices.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-//        LocalDate expiryDate= StringToDate(rs.getString(4));
-//        DebitCard debitCard = new DebitCard(Card, rs.getString(2), rs.getString(3), expirydate);
-//        if(pin is correct or result Set is not empty then initialise the Debicard class and return true)
-        
-//        db.add(debitCard);
+
         return debitCard;
     }
     
@@ -85,22 +67,4 @@ public class DebitCardServices {
         return localDate;
     }
 
-    public static void main(String[] args) throws ParseException {
-//        DebitCardServices db = new DebitCardServices();
-        
-        
-//        String date = "28/01/2026";
-
-        
-        
-        
-//        System.out.println("Today = " + localDate.format(formatter));
-//        System.out.println("isAfter: "+ localDate.isBefore(LocalDate.parse("28/02/2021", formatter)));
-        
-        
-//        Date dt= db.StringToDate("20-12-2012");
-//        System.out.println("date="+dt);
-//        if(dt.after())
-
-    }
 }

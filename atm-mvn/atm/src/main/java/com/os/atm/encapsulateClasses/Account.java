@@ -40,9 +40,6 @@ public class Account{
         return CIF_Num;
     }
 
-    /**
-     * @return the IFSC_Code
-     */
 
     /**
      * @return the Account_Bal

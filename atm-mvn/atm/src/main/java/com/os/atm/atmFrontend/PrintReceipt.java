@@ -48,13 +48,10 @@ public class PrintReceipt extends javax.swing.JFrame {
         this.tType = txnType;
         this.objDebitCard = db;
         this.benificiaryAccount = benificiaryAccount;
-//        DisplayDate.setText();
         setDateTime();
         printTransaction();
-        timer.schedule(tt, 30000);
+        timer.schedule(tt, 10000);
         
-        
-//    printTransaction(txnType);
     }
     
 
@@ -77,12 +74,6 @@ public class PrintReceipt extends javax.swing.JFrame {
     
     public void printTransaction() {
     // Menu driven program
-    
-//    CardNumber cn = new CardNumber();
-//        System.out.println(cn.abc);
-//        Services t = new Services();
-//        String pt = t.txnType;
-         
     
 
      try{
@@ -110,12 +101,8 @@ public class PrintReceipt extends javax.swing.JFrame {
             DisplayCardNumber.setText(cardNumber);
             txnTypeLabel.setText(tType);
             ToAccountNumberLabel.setText("NA");
-//            jLabel7.setVisible(false);
             TxnAmountlabel.setText(amount);
-//            Double d = new Double(objDebitCard.getBalcance());
-//            int t = d.intValue();
-//            final int  balance= Integer.parseInt(amount)+ t;
-            AvailableBalancelabel.setText(Double.toString(objDebitCard.getBalcance()));
+            AvailableBalancelabel.setText(Double.toString(objDebitCard.getBalance()));
             FromAccNumberLabel.setText(objDebitCard.getAccNum());
             
             break;
@@ -128,12 +115,8 @@ public class PrintReceipt extends javax.swing.JFrame {
             DisplayCardNumber.setText(cardNumber);
             txnTypeLabel.setText(tType);
             FromAccNumberLabel.setText("NA");
-//            jLabel7.setVisible(false);
             TxnAmountlabel.setText(amount);
-            Double d = new Double(objDebitCard.getBalcance());
-            int t = d.intValue();
-            final int  balance= Integer.parseInt(amount)+ t;
-            AvailableBalancelabel.setText(Double.toString(objDebitCard.getBalcance()));
+            AvailableBalancelabel.setText(Double.toString(objDebitCard.getBalance()));
             ToAccountNumberLabel.setText(objDebitCard.getAccNum());
             break;
         }
@@ -142,9 +125,8 @@ public class PrintReceipt extends javax.swing.JFrame {
             DisplayCardNumber.setText(cardNumber);
             txnTypeLabel.setText(tType);
             FromAccNumberLabel.setText(objDebitCard.getAccNum());
-//            jLabel7.setVisible(false);
             TxnAmountlabel.setText(amount);
-            AvailableBalancelabel.setText(Double.toString(objDebitCard.getBalcance()));
+            AvailableBalancelabel.setText(Double.toString(objDebitCard.getBalance()));
             ToAccountNumberLabel.setText(benificiaryAccount);
             break;
         }
@@ -156,7 +138,7 @@ public class PrintReceipt extends javax.swing.JFrame {
             txnTypeLabel.setText(tType);
             ToAccountNumberLabel.setText("NA");
             TxnAmountlabel.setText(amount);
-            AvailableBalancelabel.setText(Double.toString(objDebitCard.getBalcance()));
+            AvailableBalancelabel.setText(Double.toString(objDebitCard.getBalance()));
             FromAccNumberLabel.setText(objDebitCard.getAccNum());
             break;
         }

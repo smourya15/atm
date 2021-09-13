@@ -27,7 +27,6 @@ public class DepositCash extends javax.swing.JFrame {
     int d1000;
     int d2000;
     int trans_amt;
-//    private DebitCard objDebitCard=null;
     public Boolean D50, D100, D500, D1000, D2000;
     private DebitCard objDebitCard;
     
@@ -43,7 +42,6 @@ public class DepositCash extends javax.swing.JFrame {
         trans_amt = amt;
         
         
-        System.out.println(" "+d50+" "+d100+" "+d500+" "+d1000+" "+d2000);
         
         if (d50 == 0){
             D50=false;
@@ -241,9 +239,6 @@ public class DepositCash extends javax.swing.JFrame {
             
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
-           // System.out.println(d50+" "+d100+" "+d500);
-            System.out.println(" "+d50+" "+d100+" "+d500+" "+d1000+" "+d2000);
-            
                 String sqlQuery0="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'DEPOSIT', ?, (SELECT now()), 'CANCELLED' )";
                 
                 PreparedStatement pst = con.prepareStatement(sqlQuery0);
@@ -251,6 +246,7 @@ public class DepositCash extends javax.swing.JFrame {
                 pst.setString(2, String.valueOf(objDebitCard.getCard_no()));
                 pst.setString(3, String.valueOf(trans_amt));
                 pst.execute();
+                con.close();
                 
                 System.out.println("Successfully Cancelled Deposit Transaction\n");
         }
@@ -270,15 +266,12 @@ public class DepositCash extends javax.swing.JFrame {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
-           // System.out.println(d50+" "+d100+" "+d500);
-            System.out.println(" "+d50+" "+d100+" "+d500+" "+d1000+" "+d2000);
             
                 String sqlQuery4="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, ?, 'DEPOSIT', ?, (SELECT now()), 'PASSED' )";
                 
                 PreparedStatement pst = con.prepareStatement(sqlQuery4);
                 pst.setString(1, String.valueOf(objDebitCard.getCard_no()));
                 pst.setString(2, objDebitCard.getAccNum());
-//                pst.setString(3, String.valueOf(objDebitCard.getCard_no()));
                 pst.setString(3, String.valueOf(trans_amt));
                 pst.execute();
 
@@ -309,10 +302,10 @@ public class DepositCash extends javax.swing.JFrame {
                     stmt.executeUpdate(sqlQuery2);
                 }                    
                 stmt.executeUpdate(sqlQuery3);
-                
-                System.out.println(objDebitCard.getBalcance());
-                objDebitCard.setBalance(objDebitCard.getBalcance()+(double)trans_amt);
-                System.out.println(objDebitCard.getBalcance());
+                con.close();
+                System.out.println(objDebitCard.getBalance());
+                objDebitCard.setBalance(objDebitCard.getBalance()+(double)trans_amt);
+                System.out.println(objDebitCard.getBalance());
                 Success depositconfirm = new Success(Integer.toString(trans_amt),"DEPOSIT",objDebitCard);
                 depositconfirm.setVisible(true);
                 dispose();

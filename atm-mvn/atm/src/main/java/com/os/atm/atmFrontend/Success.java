@@ -164,7 +164,6 @@ public class Success extends javax.swing.JFrame {
           timer.cancel();
           timer.purge();
         PrintReceipt pr = new PrintReceipt(txnType, objDebitCard, Integer.toString(amount1), benificiaryAccount);
-//        pr.printTransaction(pr.t);
         pr.setVisible(true);
         dispose();
     }//GEN-LAST:event_printReceiptBtnActionPerformed

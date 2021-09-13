@@ -170,7 +170,6 @@ public class Services extends javax.swing.JFrame {
           timer.cancel();
           timer.purge();
         SelectDenominations objSelectDenominations = new SelectDenominations(debitCard);
-        // objSelectDenominations.initializeComponents();
         objSelectDenominations.setVisible(true);
         dispose();
     }//GEN-LAST:event_depositBtnActionPerformed
@@ -180,10 +179,8 @@ public class Services extends javax.swing.JFrame {
             tt.cancel();
             timer.cancel();
             timer.purge();
-         System.out.println(debitCard.getBalcance());
+         System.out.println(debitCard.getBalance());
         WithdrawMoney objWithdraw = new WithdrawMoney(debitCard);
-//        PrintReceipt pr = new PrintReceipt(txnType);
-//        pr.printTransaction();
         
         objWithdraw.setVisible(true);
         dispose();

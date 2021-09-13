@@ -150,7 +150,6 @@ public class CardNumber extends javax.swing.JFrame
         WithdrawMoney wm = new WithdrawMoney(cardNum);
         
         MD5Hashing md = new MD5Hashing(cardNum.toString());
-        System.out.println("card: "+verifyCard.getText()+" Hash:"+ md.getHashText());
         final int returnType = (new ATMServices()).verifyCard(md.getHashText());
         switch (returnType) {
             case 1:
@@ -165,9 +164,9 @@ public class CardNumber extends javax.swing.JFrame
                 verifyCardNum_Btn.setEnabled(Boolean.FALSE);
                 break;
             case 3:
-               tt.cancel();
-               timer.cancel();
-               timer.purge();
+                tt.cancel();
+                timer.cancel();
+                timer.purge();
                 String accNumber = verifyCard.getText().substring(0, 2) + "XX-XXXX-XXXX-" + verifyCard.getText().substring(12, 16);
                 PinVerification objPinVerification = new PinVerification(accNumber, md.getHashText());
                 objPinVerification.setVisible(true);

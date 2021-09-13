@@ -24,10 +24,6 @@ public class WelcomePage extends javax.swing.JFrame {
    @Autowired
     private ApplicationContext context;
 
-//    public WelcomePage() throws HeadlessException {
-//        initComponents();
-//        
-//    }
 
     
 
@@ -105,7 +101,6 @@ public class WelcomePage extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         CardNumber objCardNumber= new CardNumber();
-//        context.getBean(CardNumber.class);
         objCardNumber.initializeComponent();
 
         objCardNumber.setVisible(true);

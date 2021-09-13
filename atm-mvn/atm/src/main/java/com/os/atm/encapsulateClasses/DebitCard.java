@@ -75,7 +75,11 @@ public class DebitCard {
     public String getCard_no() {
         return card_no;
     }
-    public double getBalcance(){
+    
+    /**
+     * @return the balance
+     */
+    public double getBalance(){
         return this.accNum.getAccount_Bal();
     }
 

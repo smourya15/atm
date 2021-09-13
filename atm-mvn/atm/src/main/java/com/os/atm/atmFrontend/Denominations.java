@@ -300,8 +300,7 @@ public class Denominations extends javax.swing.JFrame
         
         try {   
                 int temp[] = new int[5];
- 
-//                int i = 1;
+
                 String sqlQuery1 = "SELECT rs50, rs100, rs500, rs1000, rs2000 FROM `atm_machine` WHERE `machine_id` = 1010000000";
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
@@ -322,13 +321,6 @@ public class Denominations extends javax.swing.JFrame
                     String sqlQuery3="UPDATE atm_machine SET atm_balance = ((SELECT rs50 from atm_machine)*50)+((SELECT rs100 from atm_machine)*100)+((SELECT rs500 from atm_machine)*500)+((SELECT rs1000 from atm_machine)*1000)+((SELECT rs2000 from atm_machine)*2000);";
                     PreparedStatement pst;
 
-//                    String getLimitQuery = "select limit_amt from debit_card where card_no=?";
-//                    pst= con.prepareStatement(getLimitQuery);
-//                    pst.setString(1, objDebitCard.getCard_no());
-//                    ResultSet rs = pst.executeQuery();
-//                    while(rs.next()){
-//                        objDebitCard.ge
-//                    }
                     
                     int updatedLimit =(int)objDebitCard.getCardLimit() - amount;
                     String updateLimitQuery = "update debit_card set limit_amt = ? where card_no=?";
@@ -360,9 +352,9 @@ public class Denominations extends javax.swing.JFrame
                        
                     stmt.executeUpdate(sqlQuery2);
                     stmt.executeUpdate(sqlQuery3);
+                    con.close();
                     
-                    
-                    objDebitCard.setBalance(objDebitCard.getBalcance()-(double)amount);
+                    objDebitCard.setBalance(objDebitCard.getBalance()-(double)amount);
                     tt.cancel();
                     timer.cancel();
                     timer.purge();
@@ -372,9 +364,7 @@ public class Denominations extends javax.swing.JFrame
                 }
                 else{
                     JOptionPane.showMessageDialog(null,"The Selected Denomination Is Not Available");
-//                    WelcomePage zb = new WelcomePage();
-//                    zb.setVisible(true);
-//                    dispose();
+
                     }
             }
             catch (ClassNotFoundException | SQLException ex) {
@@ -392,7 +382,6 @@ public class Denominations extends javax.swing.JFrame
             
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","");
-           // System.out.println(d50+" "+d100+" "+d500);
             System.out.println("Withdraw amount: "+amount);
             
                 String sqlQuery0="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'WITHDRAW', ?, (SELECT now()), 'CANCELLED' )";
@@ -404,6 +393,7 @@ public class Denominations extends javax.swing.JFrame
                 pst.execute();
                 
                 System.out.println("Successfully Cancelled Withdraw Transaction\n");
+                con.close();
         }
         
         catch (ClassNotFoundException | SQLException ex) {
