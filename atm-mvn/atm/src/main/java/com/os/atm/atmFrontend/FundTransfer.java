@@ -293,7 +293,7 @@ public class FundTransfer extends javax.swing.JFrame {
                         else if(dbAccount_no.equals(benAcc)){
 
                                 int temp=0;
-                                String sqlQuery0="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'TRANSFER', ?, (SELECT now()), 'P' )";
+                                String sqlQuery0="INSERT INTO `atm_transaction`(`machine_id`, `card_num`, `account_no`, `trans_type`, `trans_amt`, `trans_time`, `status`) VALUES (1010000000,?, (SELECT account_no FROM debit_card WHERE card_no=?), 'TRANSFER', ?, (SELECT now()), 'PASSED' )";
                                 pst = con.prepareStatement(sqlQuery0);
                                 pst.setString(1, String.valueOf(debitcard));
                                 pst.setString(2, String.valueOf(debitcard));
